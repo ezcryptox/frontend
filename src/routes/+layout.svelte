@@ -1,4 +1,7 @@
 <script>
+import { browser } from '$app/environment';
+import { screen } from "$lib/store/screen"
+import { onMount } from "svelte";
 import "../styles/global.css"
 import "../styles/navbar.css"
 
@@ -6,14 +9,26 @@ import Navbar from "$lib/navbar.svelte";
 import Footer from "$lib/footer.svelte";
 
 
+let ens = browser && window.innerWidth
+browser && window.addEventListener("resize", () => {
+    ens = (window.innerWidth)
+    screen.set(ens)
+})
+
+onMount(()=>{
+    ens = browser && window.innerWidth
+    screen.set(ens)
+})
+
+
 </script>
 
 
 <div >
     <Navbar />
-    <slot><!-- optional fallback --></slot>
+    <!-- <slot></slot>
 
-    <Footer />
+    <Footer /> -->
     
     <div class="_960f9952 w1200 font-ss3">
         <div class="_0994c341">
