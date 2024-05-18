@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" data-uniframe-theme="light" data-uniframe-locale="en-us">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/apple-touch-icon.png" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="description" content="Crypto trading application, Bitcoin, ETH, XRP, Buy and Sell crypto, P2P trading">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<title>Ezcryptox | Cryptocurrency Exchange | Buy & sell Cryptocurrency</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,500;0,600;0,700;1,100;1,500;1,600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,700;1,100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<style>
+
+
+*{
+	padding: 0;
+	margin: 0;
+	font-family: Poppins;
+	text-decoration: none;
+	box-sizing: border-box;
+	scrollbar-width: thin;
+}
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+* {
+    scrollbar-width: thin;
+}
+
+:after, :before {
+    box-sizing: border-box;
+}
+/* Firefox */
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+html[data-uniframe-theme=light] .cdd74806 {
+    --uniframe-header-bg-color: #fafafa;
+    --uniframe-header-text-color: #131316;
+    --uniframe-header-active-text-color: #1a8f5c;
+}
+
+body {
+	overflow-anchor: none;
+	margin: 0;
+	width: 100%;
+	font-size: .875rem;
+	line-height: 1.6;
+	background-color: var(--background-color);
+	overscroll-behavior: contain;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
+	scrollbar-width: thin;
+	scrollbar-color: #20313d transparent;
+}
+
+body, input, textarea, a, button {
+	font-family: Montserrat,-apple-system,Framedcn,Helvetica Neue, Poppins, Condensed,DisplayRegular,Helvetica,Arial,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Microsoft Yahei,sans-serif;
+}
+textarea, input{
+	outline: none;
+}
+button {
+	border: none;
+	padding: 0;
+	user-select: none;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+body, input, textarea, a, button {
+	color: var(--text-color);
+}
+:root {
+	--text-color: rgba(153,164,176,.8);
+	--primary-color: #43b309;
+	--background-color: #ffff;
+	--placeholder-color: #75808c;
+	--autofill-color: #f5f6f7;
+	--scroll-color: #24262B;
+	--border-radius:18px
+}
+.ttu {
+	text-transform: uppercase;
+}
+
+
+/* ==================================== Preloader ============================ */
+.center {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wave {
+  width: 2px;
+  height: 7px;
+  background: linear-gradient(45deg, cyan, #fff);
+  margin: 6px;
+  animation: wave 1s linear infinite;
+  border-radius: 20px;
+}
+.wave:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.wave:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.wave:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.wave:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.wave:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.wave:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.wave:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.wave:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.wave:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+a {
+    text-decoration: none;
+}
+
+.tooltiptext {
+	font-size: 14px;
+	opacity: 1;
+	pointer-events: none;
+	transition: opacity 0.3s;
+	position: absolute;
+	display: block;
+	z-index: 100000;
+	/* transform: translate(-50%, -50%); */
+	margin-bottom: 0.375rem;
+	white-space: nowrap;
+	color: var(--original-text);
+	background-color: rgb(37, 39, 43);
+	border-radius: 0.625rem;
+	padding: 0.35em 0.7em;
+	width: max-content;
+	max-width: 400px;
+	box-shadow: rgba(0, 0, 0, 0.12) -2px 4px 8px;
+	white-space: unset;
+	/* word-break: break-word; */
+}
+h1, h2, h3, h4, h5, h6, li, p, ul {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-size: 2em;
+    margin: .67em 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: .5em;
+    color: rgba(0, 0, 0, .85);
+    font-weight: 500;
+}
+a {
+    text-decoration: none;
+}
+.font-ss3, .font-ss3 * {
+    font-family: poppins;
+}
+.uniframe-root * {
+    margin: 0;
+    padding: 0;
+}
+
+
+</style>
+
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover" class="v3-body en-us" data-new-gr-c-s-check-loaded="14.1172.0" data-gr-ext-installed>
+		<div style="display: contents">%sveltekit.body%</div>
+
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute; width: 0; height: 0" aria-hidden="true" id="__SVG_SPRITE_NODE__">
+			<symbol xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" id="uniframe-icon-arrow-down-2">
+			<path fill="currentColor" fill-rule="evenodd" d="m2.453 8.513 1.094-1.026 4.458 4.759 4.447-4.758 1.096 1.024-5.542 5.93-5.553-5.93Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" id="uniframe-icon-arrow-down-3">
+			<path fill="currentColor" d="m17.5 6.915-1.48-1.29-6.026 5.988-6.013-5.987L2.5 6.914l7.493 7.461 7.507-7.46Z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 1024 1024" id="uniframe-icon-arrow-down">
+			<path d="M755.536 435.492 542.192 648.836c-16.672 16.672-43.68 16.672-60.352 0L268.496 435.492c-26.88-26.88-7.84-72.832 30.176-72.832h426.656c38.016 0 57.056 45.952 30.176 72.832z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" id="uniframe-icon-arrow-right-2">
+			<path d="m355.092 156.952-65.627 70.065 304.559 285.264-304.523 284.636 65.554 70.131 379.479-354.694-379.443-355.402z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="uniframe-icon-arrow-right">
+			<path d="m310.627 438.627 160-160c12.497-12.496 12.497-32.758 0-45.255l-160-160c-12.497-12.496-32.758-12.496-45.255 0s-12.497 32.758 0 45.255L370.745 224H64c-17.673 0-32 14.327-32 32s14.327 32 32 32h306.745L265.372 393.373C259.124 399.621 256 407.811 256 416s3.124 16.379 9.372 22.627c12.497 12.497 32.758 12.497 45.255 0z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-blog">
+			<path fill-rule="evenodd" d="M14.5 3.5h-9v10h9v-10ZM4 2v13h12V2H4Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M4 14.247h1.5v2.25h7.504v1.5H4v-3.75ZM13 7.75H7v-1.5h6v1.5Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-buy-crypto">
+			<path fill-rule="evenodd" d="M16.5 5.5h-13v9h13v-9ZM2 4v12h16V4H2Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M18 9.25H2v-1.5h16v1.5Zm-4 3.5h-4v-1.5h4v1.5Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-c2c">
+			<path fill-rule="evenodd" d="M7.3 7a2.7 2.7 0 1 0 5.4 0 2.7 2.7 0 0 0-5.4 0ZM10 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" clip-rule="evenodd"></path>
+			<mask id="uniframe-icon-c2c_a" width="8" height="8" x="2" y="9" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+				<path fill="#D9D9D9" d="M2.705 9.704H10V17H2.705V9.704Z"></path>
+			</mask>
+			<g mask="url(#uniframe-icon-c2c_a)">
+				<path fill-rule="evenodd" d="M4.005 17a5.996 5.996 0 1 0 11.99 0 5.996 5.996 0 0 0-11.99 0ZM10 9.704a7.296 7.296 0 1 0 0 14.592 7.296 7.296 0 0 0 0-14.592Z" clip-rule="evenodd"></path>
+			</g>
+			<path fill-rule="evenodd" d="m14.223 10.162 2.213 3.036H9.941v-1.2h4.136l-.824-1.13.97-.706ZM12.14 17.455 9.99 14.42h6.457v1.2H12.31l.808 1.141-.979.694Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-copy-trading">
+			<path fill-rule="evenodd" d="M11.6 6.9H4.4v9.2h7.2V6.9ZM3 5.5v12h10v-12H3Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M7.4 3.9h7.2v9.2H13v1.4h3v-12H6v3h1.4V3.9Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M10.5 10.7h-5V9.3h5v1.4ZM9.448 13.695H5.5v-1.4h3.948v1.4Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="uniframe-icon-cross">
+			<path d="m7.999 9.06 3.923 3.936 1.062-1.059L9.06 8l3.923-3.924-1.06-1.06L8 6.936 4.078 3 3.016 4.059 6.94 7.997l-3.923 3.924 1.06 1.06L8 9.06Z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-download">
+			<path fill-rule="evenodd" d="M2.996 10h1.5v5.5h11.008V10h1.5v7H2.996v-7Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M9.25 12.736V3h1.5v9.736h-1.5Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="m10 12.062 2.803-2.803 1.06 1.06L10 14.184 6.136 10.32l1.061-1.06L10 12.061Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" id="uniframe-icon-error">
+			<path fill="currentColor" fill-rule="evenodd" d="M7.992 15a7.008 7.008 0 1 0 0-14.016 7.008 7.008 0 0 0 0 14.016ZM5.99 4.93l2 2 2-2 1.061 1.06-2 2 2 2-1.06 1.061-2-2-2 2-1.061-1.06 2-2-2-2L5.99 4.93Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" id="uniframe-icon-feed">
+			<path stroke="currentColor" stroke-width="1.5" d="M3.75 2.75h12.5v14.5H3.75zM6 11h8M6 14h8"></path>
+			<path fill="currentColor" d="M6 6h3v3H6z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-feetier">
+			<path fill-rule="evenodd" d="M14 15.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm0 1.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM6 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16.53 4.53 4.526 16.535l-1.06-1.06L15.47 3.47l1.06 1.06Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-futures-grid">
+			<path fill-rule="evenodd" d="M11.835 7.07h-3.67a3.765 3.765 0 0 0 0 7.53h3.67a3.765 3.765 0 0 0 0-7.53Zm-3.67-1.4a5.165 5.165 0 0 0 0 10.33h3.67a5.165 5.165 0 0 0 0-10.33h-3.67Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M3.503 9.335v3a1.5 1.5 0 1 1 0-3ZM8.423 9.335v3h-1.5v-3h1.5ZM12.99 9.335v3h-1.5v-3h1.5ZM16.503 9.335a1.5 1.5 0 1 1 0 3v-3ZM9.25 6V3h1.5v3h-1.5Z" clip-rule="evenodd"></path>
+			<path d="M11.5 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-futures-trade">
+			<path fill-rule="evenodd" d="M12.5 4.5h-8V14A1.5 1.5 0 0 0 6 15.5h6.5v-11ZM3 3v11a3 3 0 0 0 3 3h8V3H3Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M11 8.75H6v-1.5h5v1.5ZM9.626 12.75H6v-1.5h3.626v1.5ZM15.5 12.5h-1.48v3A1.5 1.5 0 0 0 15.5 14v-1.5ZM14.02 17h-1.5v-6H17v3a3 3 0 0 1-2.98 3Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-futures">
+			<path fill-rule="evenodd" d="M7.5 5.5h-2v5h2v-5ZM4 4v8h5V4H4ZM7.25 2v2h-1.5V2h1.5ZM7.25 12v2h-1.5v-2h1.5ZM14.25 4v2h-1.5V4h1.5ZM14.25 14v2h-1.5v-2h1.5ZM14.5 7.5h-2v5h2v-5ZM11 6v8h5V6h-5Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 44 44" id="uniframe-icon-help">
+			<path fill-rule="evenodd" d="M22 44c12.15 0 22-9.85 22-22S34.15 0 22 0 0 9.85 0 22s9.85 22 22 22Zm2.75-33.917v13.75h-5.5v-13.75h5.5Zm0 23.834v-5.5h-5.5v5.5h5.5Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-language">
+			<path fill-rule="evenodd" d="M4.4 10a5.6 5.6 0 1 0 11.2 0 5.6 5.6 0 0 0-11.2 0ZM10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M16 10.7H4V9.3h12v1.4Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M9.445 16.927a11.36 11.36 0 0 1 0-13.854l1.11.854a9.96 9.96 0 0 0 0 12.146l-1.11.854Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M10.555 16.927a11.36 11.36 0 0 0 0-13.854l-1.11.854a9.96 9.96 0 0 1 0 12.146l1.11.854Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-launchbase">
+			<path fill-rule="evenodd" d="M10 16.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Zm0 1.5a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M12.121 10 10 7.879 7.879 10 10 12.121 12.121 10ZM10 5.757 5.757 10 10 14.243 14.243 10 10 5.757Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-leaderboard">
+			<path fill-rule="evenodd" d="M2 12.421h.072c1.243-.02 2.244-1.096 2.244-2.421 0-1.325-1.001-2.401-2.244-2.421H2V3h16v4.578c-1.26 0-2.28 1.085-2.28 2.422 0 1.337 1.02 2.422 2.28 2.422V17H2v-4.579Zm1.5 1.2V15.5h13v-1.896c-1.373-.613-2.28-2.042-2.28-3.604 0-1.562.907-2.99 2.28-3.604V4.5h-13v1.88c1.392.605 2.316 2.044 2.316 3.62s-.924 3.015-2.316 3.62Z" clip-rule="evenodd"></path>
+			<path d="M7.5 12.5h5V11h-5zM7.5 9h5V7.5h-5z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" id="uniframe-icon-like">
+			<path fill="currentColor" d="M11.89 7.923h4.655c.804 0 1.455.66 1.455 1.473v1.55c0 .193-.037.383-.11.562l-2.25 5.536a.727.727 0 0 1-.673.456H2.727A.732.732 0 0 1 2 16.763V9.396c0-.407.326-.737.727-.737H5.26a.725.725 0 0 0 .594-.311L9.82 2.656a.36.36 0 0 1 .46-.117l1.319.668a1.85 1.85 0 0 1 .949 2.102l-.657 2.614ZM6.365 9.829v6.198h8.116l2.066-5.08v-1.55H11.89c-.95 0-1.644-.906-1.41-1.838l.657-2.614a.37.37 0 0 0-.19-.42l-.48-.244-3.426 4.916c-.182.261-.414.475-.678.632Zm-1.455.304H3.455v5.894h1.454v-5.894Z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" id="uniframe-icon-liked">
+			<path fill="currentColor" d="M2.727 8.427H4.91V17.5H2.727c-.401 0-.727-.338-.727-.756v-7.56c0-.418.326-.757.727-.757Zm3.85-.977 4.655-4.84a.353.353 0 0 1 .475-.034l.62.483c.352.275.511.743.402 1.187l-.838 3.425h4.655c.803 0 1.454.677 1.454 1.512v1.591c0 .198-.037.394-.11.576l-2.25 5.682a.728.728 0 0 1-.673.468H7.091c-.402 0-.727-.338-.727-.756v-8.76c0-.2.076-.392.213-.534Z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-margin-trade">
+			<path fill-rule="evenodd" d="M14 15.6a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2Zm0 1.4a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 7.6a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2ZM6 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16.53 4.53 4.526 16.535l-1.06-1.06L15.47 3.47l1.06 1.06Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M15.25 4.755H10v-1.5h6.75v6.75h-1.5v-5.25Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-market">
+			<path fill-rule="evenodd" d="M15.6 4.4H4.4v11.2h11.2V4.4ZM3 3v14h14V3H3Z" clip-rule="evenodd"></path>
+			<path d="m10.672 7 1.194 1.199-1.63 1.638-1.412-1.419L6 11.255l.941.945 1.883-1.89 1.411 1.417 2.572-2.583L14 10.343V7h-3.328Z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="uniframe-icon-menu">
+			<path fill="currentColor" fill-rule="evenodd" d="M3.328 5.625h17.344v2.25H3.328v-2.25Zm0 5.25h17.344v2.25H3.328v-2.25Zm17.344 5.25H3.328v2.25h17.344v-2.25Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-moon">
+			<path fill-rule="evenodd" d="M15.798 13.192a7.405 7.405 0 0 1-8.975-8.975 6.607 6.607 0 1 0 8.975 8.975Zm.649-1.697a6.005 6.005 0 0 1-6.925-9.48 7.979 7.979 0 0 0-1.973.37A8.007 8.007 0 1 0 18 10.492a6.01 6.01 0 0 1-1.553 1.002Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 40 39" id="uniframe-icon-notice">
+			<path fill-rule="evenodd" d="M39.25 19.25c0 10.631-8.619 19.25-19.25 19.25S.75 29.881.75 19.25 9.369 0 20 0s19.25 8.619 19.25 19.25Zm-28.983-4.182c-.258.252-.388.56-.388.923v3.291c0 .364.13.671.388.923.259.251.57.377.933.377h1.321v-5.891h-1.32a1.29 1.29 0 0 0-.934.377Zm15.924-5.43c-.489.056-1.034.37-1.635.943a8.086 8.086 0 0 1-2.013 1.373c-.74.357-1.499.65-2.275.881-.776.23-1.537.412-2.285.545-.748.133-1.419.255-2.013.367-.594.112-1.083.23-1.468.357-.384.125-.604.286-.66.482v6.562c.056.14.318.259.786.357.469.098 1.052.199 1.751.304.699.104 1.468.223 2.306.356.839.133 1.667.308 2.485.524.817.217 1.572.483 2.264.797.692.314 1.24.71 1.646 1.184.42.476.821.748 1.206.818.384.07.744-.014 1.08-.251.335-.238.639-.601.911-1.09.273-.49.51-1.06.713-1.71.203-.65.357-1.345.462-2.085.104-.741.157-1.482.157-2.223 0-.74-.042-1.52-.126-2.338-.084-.817-.21-1.6-.377-2.348a11.208 11.208 0 0 0-.65-2.034c-.266-.608-.587-1.069-.965-1.384a1.658 1.658 0 0 0-1.3-.387Zm-8.931 14.34a8.735 8.735 0 0 1-.252-.545 8.413 8.413 0 0 0-.461-.167 5.683 5.683 0 0 0-.514-.157 28.923 28.923 0 0 0-.64-.158 12.44 12.44 0 0 1-.628-.125 58.333 58.333 0 0 0-.462-.105 2.926 2.926 0 0 0-.398-.084c-.056.223-.056.489 0 .796.042.266.126.598.252.996.125.399.349.864.67 1.395.266.461.514.86.745 1.195.23.335.454.611.67.828.217.217.444.377.682.482a1.9 1.9 0 0 0 .776.157h1.195c.35 0 .549-.097.598-.293.048-.196.01-.444-.116-.744a6.249 6.249 0 0 0-.555-1.007c-.245-.37-.486-.723-.724-1.059-.195-.28-.363-.538-.503-.775a7.301 7.301 0 0 1-.335-.63Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-notification">
+			<path fill-rule="evenodd" d="M15.477 10.273v-2.8a5.472 5.472 0 1 0-10.945 0v2.8L3 13.218V15h14v-1.782l-1.523-2.945Zm-.02 3.227-1.48-2.862V7.472a3.972 3.972 0 1 0-7.945 0v3.168L4.544 13.5h10.913Z" clip-rule="evenodd"></path>
+			<path d="M6.667 16.5h6.666V18H6.666v-1.5Z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" id="uniframe-icon-outline-warning">
+			<path d="M7.25 4.516h1.5V8.5h-1.5V4.516ZM8.75 10h-1.5v1.5h1.5V10Z"></path>
+			<path fill-rule="evenodd" d="M7.992 15a7.008 7.008 0 1 0 0-14.016 7.008 7.008 0 0 0 0 14.016Zm0-1.5a5.508 5.508 0 1 0 0-11.016 5.508 5.508 0 0 0 0 11.016Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 17" id="uniframe-icon-phone">
+			<path fill="currentColor" d="M8 13a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"></path>
+			<path fill="currentColor" fill-rule="evenodd" d="M2.719 15.5v-14H13.28v14H2.72ZM4.219 3h7.562v11H4.22V3Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-profile">
+			<path fill-rule="evenodd" d="M10 16.6a6.6 6.6 0 1 0 0-13.2 6.6 6.6 0 0 0 0 13.2Zm0 1.4a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M6.204 15.4A6.565 6.565 0 0 0 10 16.6a6.565 6.565 0 0 0 3.796-1.2c-.83-1.209-2.222-2-3.796-2a4.596 4.596 0 0 0-3.796 2Zm9.36.349a6.002 6.002 0 0 0-11.127 0A7.974 7.974 0 0 0 10 18a7.973 7.973 0 0 0 5.563-2.251Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M10 11.6a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2Zm0 1.4a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-referrals">
+			<path fill-rule="evenodd" d="M13.143 12.376a4.553 4.553 0 0 0-1.194-8.943A4.553 4.553 0 0 0 7.557 6.79 6.136 6.136 0 0 0 6 6.875a6.053 6.053 0 0 1 12 1.109 6.053 6.053 0 0 1-4.942 5.949 6.083 6.083 0 0 0 .085-1.557Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M8 16.283a4.6 4.6 0 1 0 0-9.2 4.6 4.6 0 0 0 0 9.2Zm0 1.4a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" clip-rule="evenodd"></path>
+			<path d="M6.056 12.933H9.11c.153 0 .278-.14.278-.313 0-.172-.124-.312-.278-.312H6.89c-.767 0-1.389-.7-1.389-1.563 0-.862.622-1.562 1.389-1.562h.555v-1.25h1.112v1.25h1.388v1.25H6.89c-.154 0-.278.14-.278.313 0 .172.124.312.278.312H9.11c.767 0 1.389.7 1.389 1.563 0 .862-.622 1.562-1.389 1.562h-.555v1.25H7.444v-1.25H6.056v-1.25Z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-reward-center">
+			<path fill-rule="evenodd" d="M4.4 10.019h11.2V15.6H4.4v-5.581Zm12.6-1.4V17H3V8.619h14Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M3.4 7.1h13.2v1.5H3.4V7.1ZM18 5.7V10H2V5.7h16ZM13.3 5.7a1.3 1.3 0 1 0-2.6 0H9.3a2.7 2.7 0 1 1 5.4 0h-1.4Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M6.7 5.7a1.3 1.3 0 0 1 2.6 0h1.4a2.7 2.7 0 1 0-5.4 0h1.4Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-search">
+			<path fill-rule="evenodd" d="M4.5 8.5a4 4 0 1 0 8 0 4 4 0 0 0-8 0Zm4-5.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M15.005 16.066 11.47 12.53l1.06-1.06 3.536 3.535-1.06 1.06Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-security">
+			<path fill-rule="evenodd" d="m6.646 9.431 1.06-1.06 1.582 1.581 3.005-3.005 1.061 1.06-4.066 4.067L6.646 9.43Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M15 3.5H5v9.15l5 3.516 5-3.516V3.5Zm1.5 9.929L10 18l-6.5-4.571V2h13v11.429Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-spot-trade">
+			<path fill-rule="evenodd" d="M13.143 12.376a4.553 4.553 0 0 0-1.194-8.943A4.553 4.553 0 0 0 7.557 6.79 6.136 6.136 0 0 0 6 6.875a6.053 6.053 0 0 1 12 1.109 6.053 6.053 0 0 1-4.942 5.949 6.083 6.083 0 0 0 .085-1.557Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M8 16.283a4.6 4.6 0 1 0 0-9.2 4.6 4.6 0 0 0 0 9.2Zm0 1.4a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-strategy-trading">
+			<path fill-rule="evenodd" d="M15.6 7.07H4.4v7.53h11.2V7.07ZM3 5.67V16h14V5.67H3ZM13 4.506H7v-1.5h6v1.5Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M3.503 9.335v3h-1.5v-3h1.5ZM8.423 9.335v3h-1.5v-3h1.5ZM12.99 9.335v3h-1.5v-3h1.5ZM18.002 9.335v3h-1.5v-3h1.5ZM9.25 6V3h1.5v3h-1.5Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-subaccount">
+			<path d="M3 17a5.333 5.333 0 0 1 10.667 0h-1.334a4 4 0 1 0-8 0H3Zm5.333-6c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4Zm0-1.333a2.666 2.666 0 1 0 0-5.334 2.666 2.666 0 1 0 0 5.334Zm5.523 2.468A5.334 5.334 0 0 1 17 17h-1.333a4 4 0 0 0-2.358-3.649l.547-1.216Zm-.458-7.526a3.667 3.667 0 0 1-1.065 7.043V10.31a2.333 2.333 0 0 0 .694-4.406l.37-1.295Z"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-sun">
+			<path fill-rule="evenodd" d="M10 13.916a3.916 3.916 0 1 0 0-7.832 3.916 3.916 0 0 0 0 7.832Zm0 1.5a5.416 5.416 0 1 0 0-10.832 5.416 5.416 0 0 0 0 10.832ZM5.787 15.274a6.797 6.797 0 0 1-1.061-1.06l-1.62 1.62 1.06 1.06 1.62-1.62Zm3.463 1.435V19h1.5v-2.291a6.83 6.83 0 0 1-1.5 0Zm4.963-1.435 1.62 1.62 1.061-1.06-1.62-1.62c-.313.39-.67.747-1.06 1.06Zm2.496-4.524H19v-1.5h-2.291a6.83 6.83 0 0 1 0 1.5Zm-1.435-4.963 1.62-1.62-1.06-1.061-1.62 1.62c.39.313.747.67 1.06 1.06ZM10.75 3.29V1h-1.5v2.291a6.822 6.822 0 0 1 1.5 0ZM5.787 4.726l-1.62-1.62-1.061 1.06 1.62 1.62a6.79 6.79 0 0 1 1.06-1.06ZM3.29 9.25H1v1.5h2.291a6.825 6.825 0 0 1 0-1.5Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-support">
+			<path fill-rule="evenodd" d="M6.5 10.059h-2v3h2v-3ZM3 8.559v6h5v-6H3ZM15.5 10.059h-2v3h2v-3Zm-3.5-1.5v6h5v-6h-5Z" clip-rule="evenodd"></path>
+			<path fill-rule="evenodd" d="M2.994 9.016a7.009 7.009 0 1 1 14.017 0v5.23a3.753 3.753 0 0 1-3.753 3.753h-.909v-1.5h.909a2.253 2.253 0 0 0 2.253-2.253v-5.23a5.508 5.508 0 1 0-11.017 0v.987h-1.5v-.987Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 44 44" id="uniframe-icon-tick">
+			<path fill-rule="evenodd" d="M22 44c12.15 0 22-9.85 22-22S34.15 0 22 0 0 9.85 0 22s9.85 22 22 22Zm12.288-29.93-3.636-2.854-11.277 14.367-5.387-5.35-3.257 3.28 9.072 9.01L34.288 14.07Z" clip-rule="evenodd"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" id="uniframe-icon-trade">
+			<path fill-rule="evenodd" d="m12.79 2.952 4.225 5.798H2.991v-1.5h11.075l-2.489-3.414 1.213-.884ZM7.163 17.046 3.06 11.25h13.953v1.5H5.96l2.428 3.429-1.224.867Z" clip-rule="evenodd"></path>
+		</symbol>
+	</svg>
+
+	</body>
+</html>
