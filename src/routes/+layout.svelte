@@ -26,9 +26,9 @@ onMount(()=>{
 
 <div >
     <Navbar />
-    <!-- <slot></slot>
+    <slot></slot>
 
-    <Footer /> -->
+    <!-- <Footer /> -->
     
     <div class="_960f9952 w1200 font-ss3">
         <div class="_0994c341">

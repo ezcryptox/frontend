@@ -1,10 +1,10 @@
 <script>
 import { screen } from "$lib/store/screen"
-    import BuyCrypto from "./navbar-components/buy-crypto.svelte";
-    import Derivative from "./navbar-components/derivative.svelte";
-    import Explore from "./navbar-components/explore.svelte";
-    import Notification from "./navbar-components/notification.svelte";
-    import Trade from "./navbar-components/trade.svelte";
+import BuyCrypto from "./navbar-components/buy-crypto.svelte";
+import Derivative from "./navbar-components/derivative.svelte";
+import Explore from "./navbar-components/explore.svelte";
+import Notification from "./navbar-components/notification.svelte";
+import Trade from "./navbar-components/trade.svelte";
 
 
 </script>
@@ -133,9 +133,6 @@ import { screen } from "$lib/store/screen"
                 <!---->
             </div>
             {/if}
-
-         
-       
         </div>
     </header>
 </div>
