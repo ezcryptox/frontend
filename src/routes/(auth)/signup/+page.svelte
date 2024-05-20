@@ -1,5 +1,6 @@
 <script>
 import "../../../styles/login.css"
+import { screen } from "$lib/store/screen"
 </script>
 
 <div class="wc-signup">
@@ -13,7 +14,7 @@ import "../../../styles/login.css"
                 </div>
             </a>
         </div>
-        <div class="_20c1a58b _8ec5b3ca">
+        <div class="_20c1a58b {$screen > 1025 ? "_8ec5b3ca" : ""}">
             <div class="c81ae558">
                 <!---->
                 <p class="d94bb610">Create Account</p>

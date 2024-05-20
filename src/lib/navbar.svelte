@@ -1,11 +1,13 @@
 <script>
 import { screen } from "$lib/store/screen"
+    import MobileMenu from "./mobile-menu.svelte";
 import BuyCrypto from "./navbar-components/buy-crypto.svelte";
 import Derivative from "./navbar-components/derivative.svelte";
 import Explore from "./navbar-components/explore.svelte";
 import Notification from "./navbar-components/notification.svelte";
 import Trade from "./navbar-components/trade.svelte";
 
+$: is_menu = false
 
 </script>
 
@@ -127,10 +129,12 @@ import Trade from "./navbar-components/trade.svelte";
             </div>
             {:else}
             <div>
-                <button class="d5236253">
+                <button on:click={()=> is_menu =! is_menu} class="d5236253 {is_menu ? "b53872b6" : ""}">
                     <i></i><i></i><i></i>
                 </button>
-                <!---->
+                {#if is_menu}
+                    <MobileMenu />
+                {/if}
             </div>
             {/if}
         </div>

@@ -5,7 +5,7 @@ import Trending from "$lib/market/trending.svelte";
 import SpotTabs from "$lib/market/market-content/spot/spot-tabs.svelte";
 import "../../styles/market.css"
 import Spot from "$lib/market/market-content/spot/spot.market.svelte";
-
+import { screen } from "$lib/store/screen"
 
 </script>
 
@@ -14,8 +14,12 @@ import Spot from "$lib/market/market-content/spot/spot.market.svelte";
         <div class="_4b9aaf1e _1e5e2a71">
             <div class="c4f3185a">Markets</div>
             <section class="_254714c9">
-                <NewListing />
-                <TopGainer />
+                {#if $screen > 1150}
+                    <NewListing />
+                {/if}
+                {#if $screen > 750}
+                    <TopGainer />
+                {/if}
                 <Trending />
             </section>
         </div>
@@ -25,12 +29,12 @@ import Spot from "$lib/market/market-content/spot/spot.market.svelte";
                     <section class="b0c94aab _1e5e2a71">
                         <div class="c7e3414c">
                             <div class="_1891a9f4">
-                                <span class="">
+                                <!-- <span class="">
                                     <svg aria-hidden="true" class="svgicon" style="width: 16px; height: 16px; min-width: 16px;">
                                         <use xlink:href="#star"></use>
                                     </svg>
                                     Favorites
-                                </span>
+                                </span> -->
                                 <span class="b2b60cf7">
                                     <!---->
                                     Spot
@@ -40,6 +44,7 @@ import Spot from "$lib/market/market-content/spot/spot.market.svelte";
                                     Futures
                                 </span>
                             </div>
+                            {#if $screen > 500}
                             <div class="polo-input left polo-input-small polo-input-default _21d80562">
                                 <span class="c8c021df">
                                     <svg aria-hidden="true" class="svgicon" style="width: 16px; height: 16px; min-width: 16px;">
@@ -53,6 +58,7 @@ import Spot from "$lib/market/market-content/spot/spot.market.svelte";
                                     </svg>
                                 </span>
                             </div>
+                            {/if}
                         </div>
                         <SpotTabs />
                     </section>  

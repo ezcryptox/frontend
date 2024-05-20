@@ -1,13 +1,12 @@
 <script>
 import { browser } from '$app/environment';
 import { screen } from "$lib/store/screen"
+import { error_message } from "$lib/store/error-message"
 import { onMount } from "svelte";
 import "../styles/global.css"
 import "../styles/navbar.css"
 
 import Navbar from "$lib/navbar.svelte";
-import Footer from "$lib/footer.svelte";
-
 
 let ens = browser && window.innerWidth
 browser && window.addEventListener("resize", () => {
@@ -20,7 +19,6 @@ onMount(()=>{
     screen.set(ens)
 })
 
-
 </script>
 
 
@@ -28,7 +26,16 @@ onMount(()=>{
     <Navbar />
     <slot></slot>
 
-    <!-- <Footer /> -->
+    
+    {#if $error_message}
+        <div style="background-color:crimson;" class="error-message">
+            <div class="hTTvsjh">
+            <div>{$error_message}</div>
+            </div>
+        </div>
+    {/if}
+
+
     
     <div class="_960f9952 w1200 font-ss3">
         <div class="_0994c341">
@@ -65,5 +72,43 @@ onMount(()=>{
                         </svg>
                     </div>
                 </div>
-            </div>
+    </div>
 </div>
+
+<style>
+
+.error-message{
+  transition: all 1s ease-out;
+}
+.hTTvsjh{
+    color: #f5f6f7;
+}
+
+@media only screen and (max-width: 650px){
+    .error-message {
+        position: fixed;
+        background: #24262B;
+        width: 97%;
+        left: 6px;
+        top: 2%;
+        border-radius: 20px;
+        padding: 24px 15px;
+        margin: 0;
+        z-index: 910;
+    }
+}
+
+@media only screen and (min-width: 650px){
+    .error-message{
+        position: fixed;
+        background: #24262B;
+        width: 400px;
+        left: 6px;
+        bottom: 2%;
+        border-radius: 20px;
+        padding: 24px 15px;
+        margin: 10px;
+        z-index: 99999;
+    }
+}
+</style>

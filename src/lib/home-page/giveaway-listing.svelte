@@ -45,11 +45,15 @@ const handleChangeView = ((event)=>{
     <div class="_6fc74819 font-ss3">
         <a href="https://support.poloniex.com/hc/en-us/articles/22637690081175-Bulk-Asset-Delistings-April-12-2024" target="_blank" class="_303c9628">
             <div class="_1e05476f"> Bulk Asset Delistings April 12, 2024 </div>
-            <span class="ac20bdee"> 04-07 </span></a>
-        <a href="https://support.poloniex.com/hc/en-us/articles/22467997807383-Project-introduction-What-is-IXS" target="_blank" class="_303c9628">
-            <div class="_1e05476f"> Project introduction - What is IXS？ </div>
-            <span class="ac20bdee"> 04-01 </span>
+            <span class="ac20bdee"> 04-07 </span>
         </a>
+        {#if $screen > 1022}
+            <a href="https://support.poloniex.com/hc/en-us/articles/22467997807383-Project-introduction-What-is-IXS" target="_blank" class="_303c9628">
+                <div class="_1e05476f"> Project introduction - What is IXS？ </div>
+                <span class="ac20bdee"> 04-01 </span>
+            </a>
+        {/if}
+      
         <a target="_blank" href="https://support.poloniex.com/hc/en-us/categories/360002700674" class="_41acdb78"> Learn More &gt; </a>
     </div>
 </div>

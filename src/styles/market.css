@@ -7,7 +7,7 @@ body.v3-body .app-markets {
 ._9df3dcbf {
     flex: 1;
     display: flex;
-    min-width: 1200px;
+    /* min-width: 1200px; */
     flex-direction: column;
     background-color: #f2f2f2;
 }
@@ -30,10 +30,11 @@ body.v3-body .app-markets {
     gap: 24px;
     display: flex;
     margin-top: 16px;
+    justify-content: center;
 }
 ._254714c9 ._9502b055 {
     height: 193px;
-    width: calc(33.333% - 16px);
+    /* width: calc(33.333% - 16px); */
 }
 .a1fc5931 {
     display: flex;
@@ -410,6 +411,7 @@ body.v3-body .app-markets {
 }
 .el-table__body, .el-table__footer, .el-table__header {
     table-layout: fixed;
+    width: 100%;
     border-collapse: separate;
 }
 table {
@@ -610,6 +612,9 @@ table {
 .el-table .el-table__cell.is-right {
     text-align: right;
 }
+.el-table .el-table__cell.is-middle {
+    text-align: center;
+}
 ._2a39ccb4 a._189b2a6c {
     height: 36px;
     display: flex;
@@ -623,14 +628,23 @@ table {
     color: #131316;
     background-color: #f2f2f2;
 }
-._2a39ccb4 tr td:last-child .cell, ._2a39ccb4 tr th:nth-last-child(2) .cell {
+ ._2a39ccb4 tr th:nth-last-child(2) .cell {
     padding-right: 24px;
 }
-@media screen and 
-(max-width: 1440px) {
+@media screen and (max-width: 1440px) {
     ._1e5e2a71 {
         width: 1136px;
     }
 }
 
+@media screen and (max-width: 1920px) {
+    ._1e5e2a71 {
+        width: 1312px;
+    }
+}
 
+@media screen and (max-width: 1290px) {
+    ._1e5e2a71 {
+        width: 100%;
+    }
+}

@@ -1,8 +1,9 @@
 <script>
+import Footer from "$lib/footer.svelte";
 import GiveawayListing from "../lib/home-page/giveaway-listing.svelte";
-import Trending from "../lib/home-page/market-cards/trending.svelte";
 import "../styles/homepage.css"
 import { screen } from "$lib/store/screen"
+import Contents from "$lib/home-page/contents.svelte";
 
 </script>
 
@@ -54,6 +55,7 @@ import { screen } from "$lib/store/screen"
         </div>
       <GiveawayListing />
     </div>
-
-    <!-- <Trending /> -->
+    <Contents />
 </div>
+
+<Footer />
