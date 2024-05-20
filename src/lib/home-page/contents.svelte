@@ -7,9 +7,6 @@ import { screen } from "$lib/store/screen"
     <div class="_6f352640"></div>
     <div class="aefdbb77 fae21543 font-ss3">
         <Tabs />
-        <div class="ed9d297c">
-
-        </div>
     </div>
 
     <div class="_394bd770 fae21543">
@@ -164,7 +161,9 @@ import { screen } from "$lib/store/screen"
         </div>
         <div class="_08952e30">
             <div id="section2Img2" class="_13e26297">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 884 740" width="884" height="740" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                viewBox="0 0 884 740" width="884" height="740" preserveAspectRatio="xMidYMid meet" 
+                style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;">
                     <defs>
                         <clipPath id="__lottie_element_2">
                             <rect width="884" height="740" x="0" y="0"></rect>

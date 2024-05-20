@@ -1,5 +1,7 @@
 <script>
 import { screen } from "$lib/store/screen"
+import { createEventDispatcher } from "svelte";
+const dispatch = createEventDispatcher()
 
 </script>
 
@@ -7,10 +9,10 @@ import { screen } from "$lib/store/screen"
     {#if $screen < 500}
     <div style="padding: 0px 12px 12px;">
         <div class="b6d9e754 f132e3fe">
-            <a href="/signup" class="b4f29bce ce727619 f53365fb b4f29bce" data-size="small">
+            <a href="/signup" class="b4f29bce ce727619 f53365fb b4f29bce" on:click={()=> dispatch("close")} data-size="small">
                 <span>Sign Up</span>
             </a>
-            <a href="/login" class="d2c677df ce727619 fc91b736 d2c677df" data-size="small">
+            <a href="/login" on:click={()=> dispatch("close")} class="d2c677df ce727619 fc91b736 d2c677df" data-size="small">
                 <span>Log In</span>
             </a>
         </div>
@@ -59,7 +61,7 @@ import { screen } from "$lib/store/screen"
                     </div>
                 </li>
                 <li>
-                    <a class="bfe44f5e" target="_self" href="/markets">
+                    <a on:click={()=> dispatch("close")} class="bfe44f5e" target="_self" href="/markets">
                         <!---->
                         <svg fill="currentColor">
                             <use xlink:href="#uniframe-icon-market"></use>
@@ -267,7 +269,7 @@ import { screen } from "$lib/store/screen"
         {/if}
     </div>
     <ul class="df32d985">
-        <li class="b1398ab6">
+        <li  class="b1398ab6">
             <svg fill="currentColor" style="width: 24px; height: 24px;">
                 <use xlink:href="#uniframe-icon-language"></use>
             </svg>
@@ -280,7 +282,7 @@ import { screen } from "$lib/store/screen"
             <span>Light Mode</span>
         </li>
         <li>
-            <a target="_blank" rel="noopener noreferrer" href="https://support.poloniex.com" class="b1398ab6">
+            <a on:click={()=> dispatch("close")} target="_blank" rel="noopener noreferrer" href="https://support.poloniex.com" class="b1398ab6">
                 <svg fill="currentColor" style="width: 24px; height: 24px;">
                     <use xlink:href="#uniframe-icon-support"></use>
                 </svg>

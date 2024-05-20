@@ -133,7 +133,7 @@ $: is_menu = false
                     <i></i><i></i><i></i>
                 </button>
                 {#if is_menu}
-                    <MobileMenu />
+                    <MobileMenu on:close={()=> is_menu = false}/>
                 {/if}
             </div>
             {/if}

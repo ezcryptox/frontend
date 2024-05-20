@@ -294,7 +294,7 @@ body.v3-body .app-homepage {
 .aefdbb77 ._6cad0982 {
     display: flex;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 34px;
     color: #616161;
     position: relative;
@@ -306,10 +306,11 @@ body.v3-body .app-homepage {
     font-weight: 700;
 }
 .aefdbb77 ._6cad0982 ._3568d55e {
-    margin-right: 32px;
+    margin-right: 27px;
     cursor: pointer;
     white-space: nowrap;
-    font-size: 18px;
+    font-size: 14px;
+    padding: 10px;
 }
 .aefdbb77 ._6cad0982 ._769a4f15 {
     position: absolute;
@@ -949,9 +950,9 @@ svg:not(:root) {
 }
 ._4aaab2bd ._73a8d391>.polo-btn {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
     height: 48px;
-    min-width: 110px;
+    min-width: 90px;
 }
 ._4aaab2bd .fdf11cf7 .polo-btn {
     background: #131316 !important;
@@ -1323,9 +1324,7 @@ svg:not(:root) {
 .w375 ._4aaab2bd, .w375 ._4aaab2bd:before, .w768 ._4aaab2bd, .w768 ._4aaab2bd:before {
     background-image: unset;
 }
-.w375 ._4aaab2bd, .w375 ._4aaab2bd:before, .w768 ._4aaab2bd, .w768 ._4aaab2bd:before {
-    background-image: unset;
-}
+
 .w375 ._4aaab2bd .fdf11cf7 {
     flex-direction: column;
     top: unset;
@@ -1356,12 +1355,6 @@ svg:not(:root) {
     padding-bottom: 40px;
     height: auto;
 }
-.w375 ._4aaab2bd, .w375 ._4aaab2bd:before, .w768 ._4aaab2bd, .w768 ._4aaab2bd:before {
-    background-image: unset;
-}
-.w375 ._4aaab2bd, .w375 ._4aaab2bd:before, .w768 ._4aaab2bd, .w768 ._4aaab2bd:before {
-    background-image: unset;
-}
 .w768 ._4aaab2bd .fdf11cf7, .w1024 ._4aaab2bd .fdf11cf7 {
     flex-direction: column;
     top: unset;
@@ -1370,4 +1363,8 @@ svg:not(:root) {
 }
 .w375 ._4aaab2bd .fdf11cf7 ._960fdf24, .w768 ._4aaab2bd .fdf11cf7 ._960fdf24 {
     text-align: left;
+}
+.w375 .c83d7e4f ._08952e30 ._13e26297:before {
+    height: 176px;
+    width: 280px;
 }
