@@ -7,7 +7,7 @@ $: console.log(response)
 
 <div>
     {#each response as resp}
-        {#if resp.symbol === "btc" ||( resp.symbol === "eth" && $screen > 470) || (resp.symbol === "trx" && $screen > 600) || (resp.symbol === "usdc" && $screen > 900) || (resp.symbol === "doge" && $screen > 1200) || (resp.symbol === "xrp" && $screen > 1400) }
+        {#if resp.symbol === "btc" ||( resp.symbol === "eth" && $screen > 470) || (resp.symbol === "trx" && $screen > 600) || (resp.symbol === "doge" && $screen > 1200) || (resp.symbol === "xrp" && $screen > 1400) }
         <a href="/trade/{resp.symbol}_USDT}" class="_4de9c7d5">
             <div class="_951bea5f ttu">
                 <i class="_787e34f8 " style="background-image: url(&quot;{resp.image}&quot;);">
