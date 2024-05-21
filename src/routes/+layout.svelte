@@ -7,7 +7,7 @@ import "../styles/global.css"
 import "../styles/navbar.css"
 
 import Navbar from "$lib/navbar.svelte";
-    import Loader from '../lib/loader.svelte';
+import Loader from '$lib/loader.svelte';
 
 let ens = browser && window.innerWidth
 browser && window.addEventListener("resize", () => {
