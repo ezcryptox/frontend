@@ -115,7 +115,7 @@ $: is_menu = false
                     </svg>
                   <Notification />
                 </div>
-                <a href="https://support.poloniex.com" target="_blank" rel="noopener noreferrer" class="a9d0f06a">
+                <a href="?support.poloniex.com"  rel="noopener noreferrer" class="a9d0f06a">
                     <svg fill="currentColor" style="width: 20px; height: 20px;">
                         <use xlink:href="#uniframe-icon-support"></use>
                     </svg>

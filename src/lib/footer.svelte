@@ -15,7 +15,7 @@ import "../styles/footer.css"
                         </div>
                         <div class="ca0fb6d9">
                             Institutional Investor?
-                            <a href="https://support.poloniex.com/hc/en-us/articles/360041169993" target="_blank" aria-label="institutional investor" rel="noopener noreferrer nofollow">
+                            <a href="?support"  aria-label="institutional investor" rel="noopener noreferrer nofollow">
                                 Learn More
                             </a>
                         </div>
@@ -35,16 +35,16 @@ import "../styles/footer.css"
                         <div class="ba496403">About Ezcryptox</div>
                         <ul>
                             <li>
-                                <a href="/fee" aria-label="fees" target="_blank" rel="noopener noreferrer nofollow">Fees</a>
+                                <a href="?fee" aria-label="fees"  rel="noopener noreferrer nofollow">Fees</a>
                             </li>
                             <li>
-                                <a href="/leaderboard" aria-label="leaderboard" target="_blank" rel="noopener noreferrer nofollow">Campaigns</a>
+                                <a href="?leaderboard" aria-label="leaderboard"  rel="noopener noreferrer nofollow">Campaigns</a>
                             </li>
                             <li>
-                                <a href="/referral" aria-label="referral" target="_blank" rel="noopener noreferrer nofollow">Referral</a>
+                                <a href="?referral" aria-label="referral"  rel="noopener noreferrer nofollow">Referral</a>
                             </li>
                             <li>
-                                <a href="/learn/defi" aria-label="defi" target="_blank" rel="noopener noreferrer nofollow">DeFi</a>
+                                <a href="?learn/defi" aria-label="defi"  rel="noopener noreferrer nofollow">DeFi</a>
                             </li>
                         </ul>
                     </div>
@@ -52,19 +52,13 @@ import "../styles/footer.css"
                         <div class="ba496403">Futures</div>
                         <ul>
                             <li>
-                                <a href="/futures/trade/BTCUSDTPERP" aria-label="futures trade" target="_blank" rel="noopener noreferrer nofollow">Futures Trading</a>
+                                <a href="?futures/trade/BTCUSDTPERP" aria-label="futures trade"  rel="noopener noreferrer nofollow">Futures Trading</a>
                             </li>
                             <li>
-                                <a href="/learn/futures" aria-label="futures 101" target="_blank" rel="noopener noreferrer nofollow">Futures 101</a>
+                                <a href="?futures/contract/detail/BTCUSDTPERP" aria-label="contract information"  rel="noopener noreferrer nofollow">Contract Information</a>
                             </li>
                             <li>
-                                <a href="/futures/contract/history-fund" aria-label="insurance fund" target="_blank" rel="noopener noreferrer nofollow">Insurance Fund</a>
-                            </li>
-                            <li>
-                                <a href="/futures/contract/detail/BTCUSDTPERP" aria-label="contract information" target="_blank" rel="noopener noreferrer nofollow">Contract Information</a>
-                            </li>
-                            <li>
-                                <a href="https://support.poloniex.com/hc/sections/360008745934" target="_blank" rel="noopener noreferrer nofollow">Futures Guide</a>
+                                <a href="?support"  rel="noopener noreferrer nofollow">Futures Guide</a>
                             </li>
                         </ul>
                     </div>
@@ -72,13 +66,10 @@ import "../styles/footer.css"
                         <div class="ba496403">Support</div>
                         <ul>
                             <li>
-                                <a href="https://support.poloniex.com" aria-label="contact support" target="_blank" rel="noopener noreferrer nofollow">Contact Support</a>
+                                <a href="?support" aria-label="contact support" rel="noopener noreferrer nofollow">Contact Support</a>
                             </li>
                             <li>
-                                <a href="https://api-docs.poloniex.com" aria-label="api" target="_blank" rel="noopener noreferrer nofollow">API</a>
-                            </li>
-                            <li>
-                                <a href="https://support.poloniex.com/hc/en-us/articles/360040016113" aria-label="token listing" target="_blank" rel="noopener noreferrer nofollow">Token Listing</a>
+                                <a href="?support" aria-label="token listing" rel="noopener noreferrer nofollow">Token Listing</a>
                             </li>
                         </ul>
                     </div>
@@ -86,22 +77,16 @@ import "../styles/footer.css"
                         <div class="ba496403">Social</div>
                         <ul>
                             <li>
-                                <a href="https://twitter.com/Poloniex" aria-label="twitter" target="_blank" rel="noopener noreferrer nofollow">Twitter</a>
+                                <a href="?twitter" aria-label="twitter"  rel="noopener noreferrer nofollow">Twitter</a>
                             </li>
                             <li>
-                                <a href="https://twitter.com/PoloSupport" aria-label="support twitter" target="_blank" rel="noopener noreferrer nofollow">Support Twitter</a>
+                                <a href="?twitter.com/PoloSupport" aria-label="support twitter"  rel="noopener noreferrer nofollow">Support Twitter</a>
                             </li>
                             <li>
-                                <a href="https://t.me/poloniexenglish" aria-label="telegram" target="_blank" rel="noopener noreferrer nofollow">Telegram</a>
+                                <a href="?t.me" aria-label="telegram"  rel="noopener noreferrer nofollow">Telegram</a>
                             </li>
                             <li>
-                                <a href="https://www.weibo.com/u/7335432157" aria-label="weibo" target="_blank" rel="noopener noreferrer nofollow">Weibo</a>
-                            </li>
-                            <li>
-                                <a href="https://vk.com/poloniexexchange" aria-label="vk" target="_blank" rel="noopener noreferrer nofollow">VK</a>
-                            </li>
-                            <li>
-                                <a href="/blog" aria-label="blog" target="_blank" rel="noopener noreferrer nofollow">Poloniex Blog</a>
+                                <a href="?weibo" aria-label="weibo"  rel="noopener noreferrer nofollow">Weibo</a>
                             </li>
                         </ul>
                     </div>
@@ -113,10 +98,10 @@ import "../styles/footer.css"
                     <span>© Ezcryptox 2024</span>
                 </div>
                 <nav class="a174fe8c">
-                    <a href="/support/terms">User Agreement</a>
-                    <a href="/support/privacy">Privacy Policy</a>
-                    <a href="/support/cookie-policy">Cookie Policy</a>
-                    <a href="/support/e-sign-consent">E-Sign Consent</a>
+                    <a href="?support/terms">User Agreement</a>
+                    <a href="?support/privacy">Privacy Policy</a>
+                    <a href="?support/cookie-policy">Cookie Policy</a>
+                    <a href="?support/e-sign-consent">E-Sign Consent</a>
                 </nav>
             </section>
         </div>

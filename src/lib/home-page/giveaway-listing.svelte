@@ -39,22 +39,22 @@ const handleChangeView = ((event)=>{
         <button disabled={!changeView} on:click={()=>handleChangeView("prev")} class="_590fc55f _0e85c167 {!changeView ? "_7c2fb6ee" : ""}"></button>
         <button disabled={changeView === contests.length - contestView} on:click={()=>handleChangeView("next")} class="_590fc55f _09c831ac {changeView === contests.length - contestView ? "_7c2fb6ee" : ""}"></button>
         {#each contests.slice(changeView, contestView + changeView) as contest}
-            <a href="https://poloniex.com/campaign/activitycenter?tradingcontestid={contest.id}" target="_blank" class="_71522e36" style="background-image: url(&quot;{contest.image}&quot;);">'</a>   
+            <a href="?poloniex.com/campaign/activitycenter?tradingcontestid={contest.id}"  class="_71522e36" style="background-image: url(&quot;{contest.image}&quot;);">'</a>   
         {/each}
     </div>
     <div class="_6fc74819 font-ss3">
-        <a href="https://support.poloniex.com/hc/en-us/articles/22637690081175-Bulk-Asset-Delistings-April-12-2024" target="_blank" class="_303c9628">
+        <a href="?support.poloniex.com/hc/en-us/articles/22637690081175-Bulk-Asset-Delistings-April-12-2024"  class="_303c9628">
             <div class="_1e05476f"> Bulk Asset Delistings April 12, 2024 </div>
             <span class="ac20bdee"> 04-07 </span>
         </a>
         {#if $screen > 1022}
-            <a href="https://support.poloniex.com/hc/en-us/articles/22467997807383-Project-introduction-What-is-IXS" target="_blank" class="_303c9628">
+            <a href="?support.poloniex.com/hc/en-us/articles/22467997807383-Project-introduction-What-is-IXS"  class="_303c9628">
                 <div class="_1e05476f"> Project introduction - What is IXS？ </div>
                 <span class="ac20bdee"> 04-01 </span>
             </a>
         {/if}
       
-        <a target="_blank" href="https://support.poloniex.com/hc/en-us/categories/360002700674" class="_41acdb78"> Learn More &gt; </a>
+        <a  href="?support.poloniex.com/hc/en-us/categories/360002700674" class="_41acdb78"> Learn More &gt; </a>
     </div>
 </div>
 

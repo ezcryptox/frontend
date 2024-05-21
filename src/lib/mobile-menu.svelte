@@ -282,7 +282,7 @@ const dispatch = createEventDispatcher()
             <span>Light Mode</span>
         </li>
         <li>
-            <a on:click={()=> dispatch("close")} target="_blank" rel="noopener noreferrer" href="https://support.poloniex.com" class="b1398ab6">
+            <a on:click={()=> dispatch("close")}  rel="noopener noreferrer" href="?support.poloniex.com" class="b1398ab6">
                 <svg fill="currentColor" style="width: 24px; height: 24px;">
                     <use xlink:href="#uniframe-icon-support"></use>
                 </svg>
