@@ -34,7 +34,7 @@ onMount(async () => {
     {/if}
 </div>
 {#if $screen > 700}
-<div class="ed9d297c">1
+<div class="ed9d297c">
     {#if tab  === 1}
         <Trending response={respons}/>
     {/if}

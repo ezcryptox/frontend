@@ -32,7 +32,7 @@ import "../styles/footer.css"
                         </div>
                     </div>
                     <div class="d83dcb4c">
-                        <div class="ba496403">About Poloniex</div>
+                        <div class="ba496403">About Ezcryptox</div>
                         <ul>
                             <li>
                                 <a href="/fee" aria-label="fees" target="_blank" rel="noopener noreferrer nofollow">Fees</a>

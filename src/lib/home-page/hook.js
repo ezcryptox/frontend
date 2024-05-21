@@ -4,7 +4,7 @@ export const handleExchanegerate = (async()=>{
     let is_loading = true
     let error = ""
     let response = ""
-    await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd")
+    await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&price_change_percentage=hr")
     .then((res)=>{
         response = res.data
         is_loading = false
