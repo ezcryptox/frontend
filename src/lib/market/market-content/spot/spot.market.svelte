@@ -1,5 +1,9 @@
 <script>
 import { screen } from "$lib/store/screen"
+export let response;
+
+$: console.log(response)
+
 </script>
 
 <div class="d68d17a2 _1e5e2a71">
@@ -60,17 +64,18 @@ import { screen } from "$lib/store/screen"
                         </tr>
                     </thead>
                     <tbody>
+                        {#each response.slice(0, 20) as resp}
                         <tr class="el-table__row">
                             <td rowspan="1" colspan="1" class="el-table_1_column_1  _8e0516f6 el-table__cell">
                                 <div class="cell">
-                                    <div class="_9675cf33">
+                                    <div class="_9675cf33 ttu">
                                         <!-- <svg aria-hidden="true" class="svgicon" style="width: 10px; height: 10px; min-width: 10px;">
                                             <use xlink:href="#star"></use>
                                         </svg> -->
                                         <i class="_5f81b418" style="width: 20px; height: 20px; min-width: 20px; min-height: 20px;">
-                                            <img loading="lazy" alt="" src="https://www.datocms-assets.com/51952/1635193869-btc.png" class="_390cb02c">
+                                            <img loading="lazy" alt="" src="{resp.image}" class="_390cb02c">
                                         </i>
-                                        BTC/USDT
+                                        {resp.symbol}/USDT
                                         <!---->
                                         <span class="_2033d003">3X</span>
                                     </div>
@@ -79,13 +84,13 @@ import { screen } from "$lib/store/screen"
                             {#if $screen > 550}
                             <td rowspan="1" colspan="1" class="el-table_1_column_2  ba00c845 el-table__cell">
                                 <div class="cell">
-                                    <div>66,868.43</div>
+                                    <div>{(parseFloat(resp.current_price)).toLocaleString()}</div>
                                 </div>
                             </td>
                             {/if}
                             <td rowspan="1" colspan="1" class="el-table_1_column_3 is-middle _582f7adf el-table__cell">
                                 <div class="cell">
-                                    <span class="_39dd850a">+2.54%</span>
+                                    <span class="{resp.price_change_percentage_24h > 0 ? "_39dd850a" : "_34b18fae"}">{resp.price_change_percentage_24h > 0 ? "+" : ""}{(parseFloat(resp.price_change_percentage_24h)).toFixed(2)}%</span>
                                 </div>
                             </td>
                             {#if $screen > 1138}
@@ -106,10 +111,11 @@ import { screen } from "$lib/store/screen"
                             {/if}
                             <td rowspan="1" colspan="1" class="el-table_1_column_6 is-right  el-table__cell">
                                 <div class="cell">
-                                    <a href="/trade/BTC_USDT?type=spot" class="_189b2a6c">Trade</a>
+                                    <a href="/trade/{resp.symbol}_USDT?type=spot" class="_189b2a6c">Trade</a>
                                 </div>
                             </td>
                         </tr>
+                        {/each}
                     </tbody>
                 </table>
             </div>
