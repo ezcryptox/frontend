@@ -1,13 +1,43 @@
 <script>
+/** @type {import('./$types').PageLoad} */
+export let data;
+import { routes, url , handleAuthToken, tab, seaser} from "$lib/store/routes";
 import { browser } from '$app/environment';
+import { page } from '$app/stores';
 import { screen } from "$lib/store/screen"
 import { error_message } from "$lib/store/error-message"
 import { onMount } from "svelte";
 import "../styles/global.css"
 import "../styles/navbar.css"
-
 import Navbar from "$lib/navbar.svelte";
 import Loader from '$lib/loader.svelte';
+
+onMount(async()=>{
+    let auth = browser && JSON.parse(sessionStorage.getItem('user'));
+    if(auth){
+        handleAuthToken.set(auth.Token)
+    }
+})
+
+
+$: routes.set(data)
+$: url.set($page.url.pathname)
+$: urlString =  ($page.url.href);
+$: paramString = urlString.split('?')[1];
+$: queryString = new URLSearchParams(paramString);
+$: seaserEl = []
+
+$: app_isLoading = true
+$:{
+    seaserEl = []
+    if(paramString){
+        for (let pair of queryString.entries()) {
+            seaserEl.push(pair[1])
+        }
+    }
+    seaser.set(seaserEl)
+    tab.set(seaser[0]) 
+}
 
 let ens = browser && window.innerWidth
 browser && window.addEventListener("resize", () => {

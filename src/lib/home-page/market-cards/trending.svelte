@@ -1,7 +1,6 @@
 <script>
 import { screen } from "$lib/store/screen"
 export let response;
-$: console.log(response)
 
 </script>
 

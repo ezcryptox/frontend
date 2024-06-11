@@ -1,20 +1,18 @@
 <script>
 import { slide } from "svelte/transition";
+import { onMount } from "svelte";
 import { screen } from "$lib/store/screen"
+import { handleGiveAway } from "../public_api"
 $: contestView = 1
+$: contests = []
 
-const contests = [
-    {id:1, image: "https://www.datocms-assets.com/51952/1715938280-en.png"}, 
-    {id:2, image: "https://www.datocms-assets.com/51952/1715931491-en.png"}, 
-    {id:3, image: "https://www.datocms-assets.com/51952/1715758694-en.png"}, 
-    {id:4, image: "https://www.datocms-assets.com/51952/1715930453-en.png"}, 
-    {id:5, image: "https://www.datocms-assets.com/51952/1715676856-en.png"}, 
-    {id:6, image: "https://www.datocms-assets.com/51952/1715667730-en.png"}, 
-    {id:7, image: "https://www.datocms-assets.com/51952/1715247214-en.png"}, 
-    {id:8, image: "https://www.datocms-assets.com/51952/1715224739-en.png"}, 
-    {id:9, image: "https://www.datocms-assets.com/51952/1705285512-650x325_en.png"}, 
-    {id:10, image: "https://www.datocms-assets.com/51952/1705399108-en.png"}, 
-]
+onMount(async()=>{
+   let { response, error_message } =  await handleGiveAway()
+   if(response){
+        contests = response
+   }
+})
+
 
 $:{
     contestView = $screen > 1200 ? 4 : $screen > 1022 ? 3 : $screen > 770 ? 2 : 1
@@ -39,7 +37,7 @@ const handleChangeView = ((event)=>{
         <button disabled={!changeView} on:click={()=>handleChangeView("prev")} class="_590fc55f _0e85c167 {!changeView ? "_7c2fb6ee" : ""}"></button>
         <button disabled={changeView === contests.length - contestView} on:click={()=>handleChangeView("next")} class="_590fc55f _09c831ac {changeView === contests.length - contestView ? "_7c2fb6ee" : ""}"></button>
         {#each contests.slice(changeView, contestView + changeView) as contest}
-            <a href="?poloniex.com/campaign/activitycenter?tradingcontestid={contest.id}"  class="_71522e36" style="background-image: url(&quot;{contest.image}&quot;);">'</a>   
+            <a href="?poloniex.com/campaign/activitycenter?tradingcontestid={contest.id}"  class="_71522e36" style="background-image: url(&quot;{contest.image}&quot;);"></a>   
         {/each}
     </div>
     <div class="_6fc74819 font-ss3">

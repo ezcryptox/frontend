@@ -114,3 +114,13 @@ svg:not(:root) {
   top: 2px;
   right: -42px;
 }
+
+._48cc2c66:disabled.polo-btn:not(.is-loading) {
+  opacity: 0.7;
+  cursor: default;
+}
+
+._0ccbd664:disabled.polo-btn:not(.is-loading) {
+  opacity: 0.7;
+  cursor: default;
+}

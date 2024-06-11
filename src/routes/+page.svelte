@@ -1,6 +1,6 @@
 <script>
 import Footer from "$lib/footer.svelte";
-import GiveawayListing from "../lib/home-page/giveaway-listing.svelte";
+import GiveawayListing from "$lib/home-page/giveaway-listing.svelte";
 import "../styles/homepage.css"
 import { screen } from "$lib/store/screen"
 import Contents from "$lib/home-page/contents.svelte";

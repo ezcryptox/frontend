@@ -394,6 +394,109 @@ html[data-uniframe-theme=light] .ccf482a6 .df32d985 .b1398ab6 {
 .ccf482a6 .df32d985 .b1398ab6>span {
     padding-left: 16px;
 }
+
+.a7ddb18f {
+    display: flex;
+    align-items: center;
+}
+html[data-uniframe-theme=light] .a7ddb18f .ba0dfc48 {
+    color: #2b2b2e;
+}
+.a7ddb18f .ba0dfc48 {
+    font-size: 14px;
+    line-height: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: color .3s;
+    margin-right: 14px;
+    font-weight: 600;
+}
+.a7ddb18f .ba0dfc48:last-of-type {
+    margin-right: 8px;
+}
+.b87cb199 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 8px;
+    height: var(--uniframe-header-height);
+    cursor: pointer;
+    color: var(--uniframe-header-text-color);
+    transition: color .3s;
+}
+.b87cb199 .c8958f69 {
+    padding: 8px;
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    box-shadow: 0 4px 8px #00000026;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: auto;
+}
+
+.b87cb199:hover .c8958f69{
+    display: block;
+}
+
+html[data-uniframe-theme=light] .b87cb199 .c8958f69 {
+    background-color: #fafafa;
+}
+html[data-uniframe-theme=light] .b87cb199 .c8958f69 .e1027c7a {
+    color: #131316;
+}
+.b87cb199 .c8958f69 .e1027c7a {
+    min-width: 300px;
+    position: relative;
+    padding: 8px;
+    padding-left: 40px;
+    height: auto;
+    border-radius: 4px;
+    transition: all .3s;
+    display: flex;
+    flex-direction: column;
+}
+.b87cb199 .c8958f69 .e1027c7a:hover{
+    background: #f0eeee;
+}
+.b87cb199 .c8958f69 .e1027c7a svg {
+    position: absolute;
+    left: 12px;
+    top: 9px;
+}
+.b87cb199 .c8958f69 .e1027c7a .a51ab1c0 {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+}
+.b87cb199 .c8958f69 .e1027c7a .a92347ea {
+    color: #878787;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+}
+html[data-uniframe-theme=light] .b87cb199 .c8958f69 .d0ac15a4 {
+    color: #616161;
+    border-top: 1px solid #f2f2f2 !important;
+}
+.b87cb199 .c8958f69 .d0ac15a4 {
+    font-size: 14px;
+    font-weight: 600;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 4px;
+    padding: 4px 0 0;
+    transition: color .3s;
+    background-color: #0000 !important;
+    border: none !important;
+}
+
 @media screen and (max-width: 550px){
     .ccf482a6 {
         min-width: 100%;

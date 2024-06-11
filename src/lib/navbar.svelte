@@ -6,8 +6,10 @@ import Derivative from "./navbar-components/derivative.svelte";
 import Explore from "./navbar-components/explore.svelte";
 import Notification from "./navbar-components/notification.svelte";
 import Trade from "./navbar-components/trade.svelte";
+import { handleAuthToken} from "$lib/store/routes";
 
 $: is_menu = false
+$: isLoggin = false
 
 </script>
 
@@ -21,7 +23,6 @@ $: is_menu = false
                     </a>
                 </div>
             </div>
-
             <div style="margin-right: auto;">
                 {#if $screen > 950}
                 <ul class="a3107c1e">
@@ -85,9 +86,9 @@ $: is_menu = false
                 {/if}
             </div>
            
-         
-         
             <div>
+         {#if !$handleAuthToken}
+          
                 {#if $screen > 500}
                 <div class="b6d9e754">
                     <a href="/signup" class="b4f29bce ce727619 f53365fb b4f29bce" data-size="small">
@@ -99,7 +100,61 @@ $: is_menu = false
                 </div>
                 {/if}
                 <!---->
+        
+         {/if}
+         {#if $handleAuthToken}
+         <div class="a7ddb18f">
+            <a class="ba0dfc48" href="/wallet/?tab=spot">Wallet</a>
+            <!-- <a href="/activity" class="ba0dfc48">Activity</a> -->
+            <div class="b87cb199">
+                <svg fill="currentColor" style="width: 20px; height: 20px;">
+                    <use xlink:href="#uniframe-icon-profile"></use>
+                </svg>
+                <div class="c8958f69">
+                    <a href="/profile/?tab=profile" class="e1027c7a">
+                        <svg fill="currentColor" style="width: 20px; height: 20px;">
+                            <use xlink:href="#uniframe-icon-profile"></use>
+                        </svg>
+                        <div class="a51ab1c0">Profile</div>
+                        <div class="a92347ea">Important account details</div>
+                    </a>
+                    <a href="/profile/?tab=security" class="e1027c7a">
+                        <svg fill="currentColor" style="width: 20px; height: 20px;">
+                            <use xlink:href="#uniframe-icon-security"></use>
+                        </svg>
+                        <div class="a51ab1c0">Security</div>
+                        <div class="a92347ea">Setup 2FA for more security</div>
+                    </a>
+                    <a href="/?profile/subaccount/onboarding" class="e1027c7a">
+                        <svg fill="currentColor" style="width: 20px; height: 20px;">
+                            <use xlink:href="#uniframe-icon-subaccount"></use>
+                        </svg>
+                        <div class="a51ab1c0">Sub Accounts</div>
+                        <div class="a92347ea">Manage Sub Account user groups</div>
+                    </a>
+                    <a href="/?fee" class="e1027c7a">
+                        <svg fill="currentColor" style="width: 20px; height: 20px;">
+                            <use xlink:href="#uniframe-icon-feetier"></use>
+                        </svg>
+                        <div class="a51ab1c0">Fee Tier</div>
+                        <div class="a92347ea">View Trading Tier Status</div>
+                    </a>
+                    <a href="/?referral" class="e1027c7a">
+                        <svg fill="currentColor" style="width: 20px; height: 20px;">
+                            <use xlink:href="#uniframe-icon-referrals"></use>
+                        </svg>
+                        <div class="a51ab1c0">Referral</div>
+                        <div class="a92347ea">Invite friends to earn up to 60% commission</div>
+                    </a>
+                    <a href="/?logout" class="d0ac15a4 ce727619 cb6de6db d0ac15a4" data-size="medium">
+                        <span>Log Out</span>
+                    </a>
+                </div>
             </div>
+        </div>
+         {/if}
+
+        </div>
         
 
             {#if $screen > 1130}

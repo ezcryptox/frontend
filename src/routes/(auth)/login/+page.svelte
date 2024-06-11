@@ -3,13 +3,18 @@ import "../../../styles/login.css"
 const google = new URL("./google.svg", import.meta.url).href
 </script>
 
+<svelte:head>
+  <title>Ezcryptox Login</title>
+  <meta name="description" content="Login to Ezcryptox exchange " />
+</svelte:head>
+
 <div class="wc-login">
    <div class="_2b9df342 _1293a69e">
       <div class="bc498c42">
          <p class="a7ae4372"> Welcome back </p>
          <div data-v-39752d79="" class="order-form">
             <div data-key="email" class="form-item" data-v-39752d79="">
-               <label class="item-label-title">Email / Phone Number</label>
+               <div class="item-label-title">Email / Phone Number</div>
                <div class="form-item-content">
                   <div class="_634393df">
                      <div class="polo-input left polo-input-large polo-input-button" width="100%">

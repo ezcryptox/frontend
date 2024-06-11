@@ -2,8 +2,6 @@
 import { screen } from "$lib/store/screen"
 export let response;
 
-$: console.log(response)
-
 </script>
 
 <div class="d68d17a2 _1e5e2a71">
