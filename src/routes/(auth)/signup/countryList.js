@@ -1,12 +1,28 @@
 import axios from "axios"
 
 export const location = (async()=>{
-    let respose = null
-    await axios.get("http://ip-api.com/json")
-    .then((res)=>{
-        respose = res.data
-    })
-    return respose
+    // let respose = null
+    // navigator.geolocation.getCurrentPosition(
+    //     // Success callback function
+    //     (position) => {
+    //       // Get the user's latitude and longitude coordinates
+    //       const lat = position.coords.latitude;
+    //       const lng = position.coords.longitude;
+    
+    //       // Do something with the location data, e.g. display on a map
+    //       console.log(`Latitude: ${lat}, longitude: ${lng}`);
+    //     },
+    //     // Error callback function
+    //     (error) => {
+    //       // Handle errors, e.g. user denied location sharing permissions
+    //       console.error("Error getting user location:", error);
+    //     }
+    // )
+    // await axios.get("http://ip-api.com/json")
+    // .then((res)=>{
+    //     respose = res.data
+    // })
+    // return respose
 })
 
 export const allTimeZone = [ 

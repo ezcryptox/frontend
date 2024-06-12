@@ -21,14 +21,14 @@ $: isloading = false
 $: track =  !email || password.length < 3 || isloading
 $: showPassword = false
 
-onMount(async()=>{
- let respose = await location()
- allTimeZone.forEach(element => {
-    if(respose.country === element.Name){
-        currentPhone = element
-    }
- });
-})
+// onMount(async()=>{
+//  let respose = await location()
+//  allTimeZone.forEach(element => {
+//     if(respose.country === element.Name){
+//         currentPhone = element
+//     }
+//  });
+// })
 
 const handleSubmit = (async(event)=> {
     if(event.key === "Enter" && !track || event.type === "click"){

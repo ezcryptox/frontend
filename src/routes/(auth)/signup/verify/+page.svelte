@@ -4,7 +4,6 @@ import Rule from "./rule.svelte";
 import { otp } from "$lib/store/otp"
 import {handleAuthToken} from "$lib/store/routes";
 import { handleSignUpEmailAuth, handleCreateUser } from "$lib/auth/index";
-import { location } from "../countryList"
 import { browser } from '$app/environment'
 import { goto } from "$app/navigation";
 
@@ -52,8 +51,7 @@ $: trackActivator = loading || !otpCode
 
 const handleSubmit = (async()=>{
     loading = true
-    let activity = await location()
-    const response = await handleCreateUser({user:$otp, code:otpCode, time: new Date(), activity })
+    const response = await handleCreateUser({user:$otp, code:otpCode, time: new Date() })
     error = response.error
     loading = response.loading
     if(error){
