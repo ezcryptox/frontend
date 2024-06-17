@@ -10,10 +10,13 @@
   import { page } from "$app/stores";
   import SellTab from "../../../../../lib/p2p/tabs/sellTab.svelte";
   import SellTable from "../../../../../lib/p2p/sellTable.svelte";
+  import Orders from "../../../../../lib/p2p/orders.svelte";
 
   $: tab = 1;
   let respons = [];
   $: loading = false;
+
+  let showOrders = false;
   $: selectedTab = action === "buy" ? "buy" : "buy";
 
   let action;
@@ -37,13 +40,11 @@
     }
   });
 
-
   function switchAction(value) {
     selectedTab = value || "buy";
     const baseUrl = `/p2p/markets/${selectedTab}/btc-usd`;
     window.history.pushState({ tab: selectedTab }, "", baseUrl);
   }
-  
 </script>
 
 <main id="app" class="app-container" data-v-app="">
@@ -55,7 +56,13 @@
           <a href="/p2p/markets" class="_active_piyeq_44">P2P Trading</a>
         </div>
         <div class="_actionGroup_piyeq_55">
-          <div class="_item_piyeq_60 _orderItem_piyeq_94">
+          <div
+            class="_item_piyeq_60 _orderItem_piyeq_94"
+            on:mouseenter={() => (showOrders = true)}
+            on:mouseleave={() => (showOrders = false)}
+            role="button"
+            tabindex={1}
+          >
             <span class="_sp_piyeq_64"
               ><svg
                 data-v-c936a896=""
@@ -84,51 +91,13 @@
                 ></path></svg
               > Orders</span
             ><em class="_msgCount_piyeq_94" style="display: none;">0</em>
-            <div class="_quickOrder_ttr9n_9" style="display: none;">
-              <div class="_head_ttr9n_32">Orders in Progress</div>
-              <div class="_content_ttr9n_47">
-                <div class="_noData_ttr9n_52">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="80"
-                    height="80"
-                    fill="none"
-                    ><path
-                      fill="#e3e3e3"
-                      d="M64 55.26 50 69H17.818A1.818 1.818 0 0 1 16 67.182V17.818c0-1.004.814-1.818 1.818-1.818h44.364c1.004 0 1.818.814 1.818 1.818z"
-                    ></path><path
-                      fill="#b8b8b8"
-                      d="M50 55.91a.91.91 0 0 1 .91-.91H64l-7 7-7 7z"
-                    ></path><rect
-                      width="26"
-                      height="3.636"
-                      fill="#fafafa"
-                      rx=".909"
-                      transform="matrix(1 0 0 -1 28 46.547)"
-                    ></rect><rect
-                      width="22"
-                      height="3.636"
-                      fill="#fafafa"
-                      rx=".909"
-                      transform="matrix(1 0 0 -1 28 35.637)"
-                    ></rect><circle
-                      cx="20.909"
-                      cy="19.909"
-                      r="10.909"
-                      fill="#2b2b2e"
-                    ></circle><g fill="#fafafa"
-                      ><path
-                        d="M21.581 23.07h-1.806a.775.775 0 0 0-.775.775v1.806c0 .429.347.776.775.776h1.806a.775.775 0 0 0 .776-.776v-1.806a.775.775 0 0 0-.776-.775zM21.581 13h-1.806a.775.775 0 0 0-.775.775v6.841c0 .429.347.776.775.776h1.806a.775.775 0 0 0 .776-.775v-6.842A.775.775 0 0 0 21.58 13z"
-                      ></path></g
-                    ></svg
-                  >
-                  <p>No orders</p>
-                </div>
-              </div>
-              <div class="_foot_ttr9n_221">
-                <a href="/p2p/orders/" class="">View all orders</a>
-              </div>
-            </div>
+            <em
+              class="_msgCount_piyeq_94"
+              style={showOrders ? "" : "display: none;"}>0</em
+            >
+            {#if showOrders}
+              <Orders />
+            {/if}
           </div>
           <div class="_item_piyeq_60">
             <div class="el-dropdown">
