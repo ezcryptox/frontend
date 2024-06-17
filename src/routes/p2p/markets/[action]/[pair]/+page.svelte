@@ -61,7 +61,7 @@
             on:mouseenter={() => (showOrders = true)}
             on:mouseleave={() => (showOrders = false)}
             role="button"
-            tabindex={1}
+            tabindex={0}
           >
             <span class="_sp_piyeq_64"
               ><svg
