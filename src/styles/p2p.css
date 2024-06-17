@@ -1415,7 +1415,7 @@ html[data-theme=dark] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 {
     background-color: #1f1f24
 }
 
-._SideNav_1iwpl_9 ._sideBox_1iwpl_28 span {
+._SideNav_1iwpl_9 ._sideBox_1iwpl_28 button {
     height: 44px;
     color: #878787;
     cursor: pointer;
@@ -1430,42 +1430,42 @@ html[data-theme=dark] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 {
     line-height: 28px
 }
 
-._SideNav_1iwpl_9 ._sideBox_1iwpl_28 span:first-child {
+._SideNav_1iwpl_9 ._sideBox_1iwpl_28 button:first-child {
     border-radius: 4px 0 0 4px
 }
 
-._SideNav_1iwpl_9 ._sideBox_1iwpl_28 span:last-child {
+._SideNav_1iwpl_9 ._sideBox_1iwpl_28 button:last-child {
     border-radius: 0 4px 4px 0
 }
 
-html[data-theme=light] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 span {
+html[data-theme=light] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 button {
     border-color: #f2f2f2;
     background-color: #f2f2f2
 }
 
-html[data-theme=dark] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 span {
+html[data-theme=dark] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 button {
     border-color: #2b2b2e;
     background-color: #1f1f24
 }
 
-._SideNav_1iwpl_9 ._sideBox_1iwpl_28 span._active_1iwpl_71 {
+._SideNav_1iwpl_9 ._sideBox_1iwpl_28 button._active_1iwpl_71 {
     color: #fff;
     border-radius: 4px
 }
 
-html[data-theme=light] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 span._active_1iwpl_71._up_1iwpl_75 {
+html[data-theme=light] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 button._active_1iwpl_71._up_1iwpl_75 {
     background-color: #1a8f5c
 }
 
-html[data-theme=dark] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 span._active_1iwpl_71._up_1iwpl_75 {
+html[data-theme=dark] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 button._active_1iwpl_71._up_1iwpl_75 {
     background-color: #119e5f
 }
 
-html[data-theme=light] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 span._active_1iwpl_71._down_1iwpl_83 {
+html[data-theme=light] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 button._active_1iwpl_71._down_1iwpl_83 {
     background-color: #c44749
 }
 
-html[data-theme=dark] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 span._active_1iwpl_71._down_1iwpl_83 {
+html[data-theme=dark] ._SideNav_1iwpl_9 ._sideBox_1iwpl_28 button._active_1iwpl_71._down_1iwpl_83 {
     background-color: #d64d4f
 }
 
