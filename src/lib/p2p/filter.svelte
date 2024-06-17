@@ -12,6 +12,15 @@
   $: selectedNTag = "All Advertisers";
   $: selectedRefreshTag = "Do Not Refresh";
 
+  let activeCurrency = {
+    code: "USD",
+    image: "https://www.datocms-assets.com/51952/1665712815-eth-1.png",
+  };
+
+  function handleCurrencySelect(currency) {
+    activeCurrency = currency;
+    isOpen1 = false;
+  }
   function handleSelectedNTag(option) {
     isOpen3 = false;
   }
@@ -85,11 +94,13 @@
                   aria-expanded={isOpen1}
                   aria-haspopup="menu"
                 >
-                  <img
+                  <!-- <img
                     src="https://www.datocms-assets.com/51952/1665712815-eth-1.png"
                     alt=""
                   />
-                  <span class="_name_1wcwv_64">USD</span>
+                  <span class="_name_1wcwv_64">USD</span> -->
+                  <img src={activeCurrency.image} alt="" />
+                  <span class="_name_1wcwv_64">{activeCurrency.code}</span>
                   <svg
                     data-v-c936a896=""
                     width="14"
@@ -111,7 +122,10 @@
 
         <!-- append slot --><!--v-if-->
         {#if isOpen1}
-          <CurTags />
+          <CurTags
+            bind:activeCurrency
+            onCurrencySelect={handleCurrencySelect}
+          />
         {/if}
 
         {#if isOpen2}

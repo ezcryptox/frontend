@@ -1,14 +1,9 @@
 <script>
-  export let selectedOption = 'All Advertisers';
+  export let selectedOption = "All Advertisers";
   export let onOptionSelect;
   let isDropdownVisible = false;
 
-  const options = [
-    'All Advertisers',
-    'Thumbs-Up',
-    'Verified'
-  ];
-
+  const options = ["All Advertisers", "Thumbs-Up", "Verified"];
 
   function selectOption(option) {
     selectedOption = option;

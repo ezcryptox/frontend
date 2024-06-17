@@ -1,4 +1,7 @@
 <script>
+  export let onCurrencySelect = null;
+  let isDropdownVisible = false;
+
   const currencyOptions = [
     {
       code: "USD",
@@ -102,7 +105,15 @@
     },
   ];
 
-  let activeCurrency = currencyOptions[0]; 
+  export let activeCurrency = currencyOptions[0];
+
+  function selectCurrency(option) {
+    activeCurrency = option;
+    isDropdownVisible = false;
+    if (onCurrencySelect) {
+      onCurrencySelect(option);
+    }
+  }
 </script>
 
 <div
@@ -122,7 +133,14 @@
         <div class="_coinBox_1wcwv_109">
           <ul class="_coinList_1wcwv_115">
             {#each currencyOptions as option}
-              <li class={option === activeCurrency ? "_active_1wcwv_44" : ""}>
+              <li
+                class={option === activeCurrency ? "_active_1wcwv_44" : ""}
+                on:click={() => selectCurrency(option)}
+                on:keydown={() => selectCurrency(option)}
+                role="option"
+                aria-selected={option === activeCurrency}
+                tabindex="0"
+              >
                 <div class="_imgBox_1wcwv_138">
                   <img alt="" loading="lazy" src={option.image} />
                 </div>
