@@ -9,6 +9,12 @@
   let isOpen3 = false;
   let isOpen4 = false;
 
+  $: selectedNTag = "All Advertisers";
+
+  function handleSelectedNTag(option) {
+    isOpen3 = false;
+  }
+
   function toggleOpen1() {
     isOpen1 = !isOpen1;
     if (isOpen1) {
@@ -94,9 +100,7 @@
                   </svg>
                 </span>
               </div>
-
-              <!--v-if--><!--v-if--><!--v-if--><!--v-if--><!--v-if--></span
-            ></span
+            </span></span
           >
         </div>
 
@@ -110,7 +114,10 @@
         {/if}
 
         {#if isOpen3}
-          <NTags />
+          <NTags
+            bind:selectedOption={selectedNTag}
+            onOptionSelect={handleSelectedNTag}
+          />
         {/if}
         {#if isOpen4}
           <RefreshTags />
@@ -175,7 +182,7 @@
                 readonly=""
                 autocomplete="off"
                 tabindex="0"
-                placeholder="All Advertisers"
+                placeholder={selectedNTag}
                 id="el-id-345-12"
                 on:click={toggleOpen3}
               /><!-- suffix slot --><span class="el-input__suffix"

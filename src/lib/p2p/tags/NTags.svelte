@@ -1,3 +1,27 @@
+<script>
+  export let selectedOption = 'All Advertisers';
+  export let onOptionSelect;
+  let isDropdownVisible = false;
+
+  const options = [
+    'All Advertisers',
+    'Thumbs-Up',
+    'Verified'
+  ];
+
+  function toggleDropdown() {
+    isDropdownVisible = !isDropdownVisible;
+  }
+
+  function selectOption(option) {
+    selectedOption = option;
+    isDropdownVisible = false;
+    if (onOptionSelect) {
+      onOptionSelect(option);
+    }
+  }
+</script>
+
 <div
   class="el-popper is-pure is-light el-select__popper"
   tabindex="-1"
@@ -10,18 +34,25 @@
   style="z-index: 1020021; position: absolute; inset: 50px auto auto 652px;"
 >
   <div class="el-select-dropdown" style="min-width: 189px;">
-    <div class="el-scrollbar" style="">
+    <div class="el-scrollbar">
       <div
         class="el-select-dropdown__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"
       >
-        <ul class="el-scrollbar__view el-select-dropdown__list" style="">
-          <!--v-if-->
-          <li class="el-select-dropdown__item selected hover">
-            <span>All Advertisers</span>
-          </li>
-          <li class="el-select-dropdown__item"><span>Thumbs-Up</span></li>
-          <li class="el-select-dropdown__item"><span>Verified</span></li>
-          <!----><!----><!---->
+        <ul class="el-scrollbar__view el-select-dropdown__list">
+          {#each options as option}
+            <li
+              class="el-select-dropdown__item"
+              class:selected={selectedOption === option}
+              class:hover={isDropdownVisible}
+              on:click={() => selectOption(option)}
+              on:keydown={() => selectOption(option)}
+              role="option"
+              aria-selected={selectedOption === option}
+              tabindex="0"
+            >
+              <span>{option}</span>
+            </li>
+          {/each}
         </ul>
       </div>
       <div class="el-scrollbar__bar is-horizontal" style="display: none;">
@@ -37,7 +68,6 @@
         ></div>
       </div>
     </div>
-    <!--v-if-->
   </div>
   <span
     class="el-popper__arrow"
