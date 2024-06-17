@@ -9,9 +9,6 @@
     'Verified'
   ];
 
-  function toggleDropdown() {
-    isDropdownVisible = !isDropdownVisible;
-  }
 
   function selectOption(option) {
     selectedOption = option;

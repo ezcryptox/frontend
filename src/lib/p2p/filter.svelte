@@ -10,9 +10,14 @@
   let isOpen4 = false;
 
   $: selectedNTag = "All Advertisers";
+  $: selectedRefreshTag = "Do Not Refresh";
 
   function handleSelectedNTag(option) {
     isOpen3 = false;
+  }
+
+  function handleSelectedRefTag(option) {
+    isOpen4 = false;
   }
 
   function toggleOpen1() {
@@ -120,7 +125,10 @@
           />
         {/if}
         {#if isOpen4}
-          <RefreshTags />
+          <RefreshTags
+            bind:selectedOption={selectedRefreshTag}
+            onOptionSelect={handleSelectedRefTag}
+          />
         {/if}
       </div>
     </div>
@@ -249,7 +257,7 @@
                 readonly=""
                 autocomplete="off"
                 tabindex="0"
-                placeholder="Auto Refresh"
+                placeholder={selectedRefreshTag}
                 id="el-id-345-13"
                 on:click={toggleOpen4}
               /><!-- suffix slot --><span class="el-input__suffix"

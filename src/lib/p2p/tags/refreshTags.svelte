@@ -1,3 +1,19 @@
+<script>
+  export let selectedOption = "Do Not Refresh";
+  export let onOptionSelect;
+  let isDropdownVisible = false;
+
+  const options = ["Do Not Refresh", "Every 5s", "Every 10s", "Every 15s"];
+
+  function selectOption(option) {
+    selectedOption = option;
+    isDropdownVisible = false;
+    if (onOptionSelect) {
+      onOptionSelect(option);
+    }
+  }
+</script>
+
 <div
   class="el-popper is-pure is-light el-select__popper"
   tabindex="-1"
@@ -16,12 +32,20 @@
       >
         <ul class="el-scrollbar__view el-select-dropdown__list" style="">
           <!--v-if-->
-          <li class="el-select-dropdown__item hover">
-            <span>Do Not Refresh</span>
-          </li>
-          <li class="el-select-dropdown__item"><span>Every 5s </span></li>
-          <li class="el-select-dropdown__item"><span>Every 10s </span></li>
-          <li class="el-select-dropdown__item"><span>Every 15s </span></li>
+          {#each options as option}
+            <li
+              class="el-select-dropdown__item"
+              class:selected={selectedOption === option}
+              class:hover={isDropdownVisible}
+              on:click={() => selectOption(option)}
+              on:keydown={() => selectOption(option)}
+              role="option"
+              aria-selected={selectedOption === option}
+              tabindex="0"
+            >
+              <span>{option}</span>
+            </li>
+          {/each}
         </ul>
       </div>
       <div class="el-scrollbar__bar is-horizontal" style="display: none;">

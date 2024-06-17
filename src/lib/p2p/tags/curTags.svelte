@@ -102,7 +102,7 @@
     },
   ];
 
-  let activeCurrency = currencyOptions[0]; // Set the initial active currency
+  let activeCurrency = currencyOptions[0]; 
 </script>
 
 <div
@@ -133,7 +133,6 @@
         </div>
       </div>
     </div>
-    <!-- Scrollbar markup remains the same -->
   </div>
   <span
     class="el-popper__arrow"
@@ -141,6 +140,3 @@
     style="position: absolute; left: 75px;"
   ></span>
 </div>
-<!-- ///////////////////////
-    first select options end
-     //////////////////////// -->
