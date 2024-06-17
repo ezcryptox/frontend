@@ -1,18 +1,34 @@
 <script>
   import Footer from "$lib/footer.svelte";
   import Filter from "../../../../../lib/p2p/filter.svelte";
-  import Table from "../../../../../lib/p2p/buyTable.svelte";
+  import BuyTable from "../../../../../lib/p2p/buyTable.svelte";
   import "../../../../../styles/p2p.css";
 
   import { onMount } from "svelte";
   import { handleExchanegerate } from "$lib/home-page/hook";
   import BuyTab from "../../../../../lib/p2p/tabs/buyTab.svelte";
+  import { page } from "$app/stores";
+  import SellTab from "../../../../../lib/p2p/tabs/sellTab.svelte";
+  import SellTable from "../../../../../lib/p2p/sellTable.svelte";
 
   $: tab = 1;
   let respons = [];
   $: loading = false;
+  $: selectedTab = action === "buy" ? "buy" : "buy";
+
+  let action;
+  let pair;
 
   onMount(async () => {
+    const unsubscribe = page.subscribe(($page) => {
+      const { action, pair } = $page.params;
+
+      if (action !== "buy" && action !== "sell") {
+        window.location.href = "/";
+      }
+      selectedTab = action;
+    });
+
     loading = true;
     let { is_loading, response } = await handleExchanegerate();
     loading = is_loading;
@@ -20,6 +36,14 @@
       respons = response;
     }
   });
+
+
+  function switchAction(value) {
+    console.log("clicked");
+    selectedTab = value || "buy";
+    const baseUrl = `/p2p/markets/${selectedTab}/btc-usd`;
+    window.history.pushState({ tab: selectedTab }, "", baseUrl);
+  }
 </script>
 
 <main id="app" class="app-container" data-v-app="">
@@ -137,10 +161,18 @@
       </div>
     </div>
     <div class="_inner_cw6mx_14">
-      <BuyTab />
+      {#if selectedTab === "buy"}
+        <BuyTab onClick={switchAction} />
+      {:else if selectedTab === "sell"}
+        <SellTab onClick={switchAction} />
+      {/if}
 
       <Filter />
-      <Table />
+      {#if selectedTab === "buy"}
+        <BuyTable />
+      {:else if selectedTab === "sell"}
+        <SellTable />
+      {/if}
     </div>
   </section>
   <!---->

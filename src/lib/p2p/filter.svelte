@@ -268,19 +268,4 @@
       </div>
     </div>
   </div>
-  <div class="_item_1wcwv_182">
-    <label class="el-checkbox"
-      ><span class="el-checkbox__input"
-        ><input
-          class="el-checkbox__original"
-          type="checkbox"
-          aria-hidden="false"
-          value="false"
-        /><span class="el-checkbox__inner"></span></span
-      ><span class="el-checkbox__label"
-        ><span class="_tradeCheckbox_1wcwv_170">Available</span
-        ><!--v-if--></span
-      ></label
-    >
-  </div>
 </section>
