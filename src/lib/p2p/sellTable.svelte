@@ -311,7 +311,7 @@
           class="is-active number"
           aria-current="true"
           aria-label="page 1"
-          tabindex="0"
+        
         >
           1
         </li>
@@ -320,7 +320,7 @@
           class="number"
           aria-current="false"
           aria-label="page 2"
-          tabindex="0"
+        
         >
           2
         </li>
@@ -328,7 +328,7 @@
           class="number"
           aria-current="false"
           aria-label="page 3"
-          tabindex="0"
+        
         >
           3
         </li>
@@ -336,7 +336,7 @@
           class="number"
           aria-current="false"
           aria-label="page 4"
-          tabindex="0"
+        
         >
           4
         </li>
@@ -345,7 +345,7 @@
           class="number"
           aria-current="false"
           aria-label="page 5"
-          tabindex="0"
+        
         >
           5
         </li>

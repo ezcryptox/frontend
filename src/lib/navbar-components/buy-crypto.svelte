@@ -5,7 +5,7 @@
 <div class="a773e3aa">
     <ul>
         <li>
-            <a class="d3f3d2f7" target="_self" href="/cards/buy">
+            <a class="d3f3d2f7" target="_self" href="?/cards/buy">
                 <div class="d667695c"><!---->
                     <svg fill="currentColor">
                         <use xlink:href="#uniframe-icon-buy-crypto"></use>
@@ -19,7 +19,7 @@
             </a>
         </li>
         <li>
-            <a class="d3f3d2f7" target="_self" href="/p2p/markets">
+            <a class="d3f3d2f7" target="_self" href="p2p/markets/sell/btc-usd">
                 <div class="d667695c"><!----><svg fill="currentColor">
                     <use xlink:href="#uniframe-icon-c2c"></use>
                 </svg>

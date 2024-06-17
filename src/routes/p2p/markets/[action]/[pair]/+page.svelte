@@ -39,11 +39,11 @@
 
 
   function switchAction(value) {
-    console.log("clicked");
     selectedTab = value || "buy";
     const baseUrl = `/p2p/markets/${selectedTab}/btc-usd`;
     window.history.pushState({ tab: selectedTab }, "", baseUrl);
   }
+  
 </script>
 
 <main id="app" class="app-container" data-v-app="">

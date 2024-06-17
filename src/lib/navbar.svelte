@@ -11,6 +11,11 @@ import { handleAuthToken} from "$lib/store/routes";
 $: is_menu = false
 $: isLoggin = false
 
+$: showBuyCrypto = false
+$: showTrade = false
+$: showDerivative = false
+$: showExploire = false
+
 </script>
 
 <div id="uniframe-header" data-v-app>
@@ -27,15 +32,17 @@ $: isLoggin = false
                 {#if $screen > 950}
                 <ul class="a3107c1e">
                     <li>
-                    <div class="b8777ccf">
+                    <button on:mouseenter={()=> showBuyCrypto = true} on:mouseleave={()=> showBuyCrypto = false} class="b8777ccf">
                         <div class="bfe44f5e">
                             <span>Buy Crypto</span>
                             <svg fill="currentColor" style="width: 16px; height: 16px;">
                                 <use xlink:href="#uniframe-icon-arrow-down"></use>
                             </svg>
                         </div>
-                        <BuyCrypto />
-                    </div>
+                        {#if showBuyCrypto}
+                            <BuyCrypto />
+                        {/if}
+                    </button>
                 </li>
                 <li>
                     <a class="bfe44f5e" target="_self" href="/markets">
@@ -51,7 +58,9 @@ $: isLoggin = false
                                 <use xlink:href="#uniframe-icon-arrow-down"></use>
                             </svg>
                         </div>
-                     <Trade />
+                        {#if showTrade}
+                            <Trade />
+                        {/if}
                     </div>
                 </li>
                 <li>
@@ -62,7 +71,9 @@ $: isLoggin = false
                                 <use xlink:href="#uniframe-icon-arrow-down"></use>
                             </svg>
                         </div>
-                        <Derivative />
+                        {#if showDerivative}
+                            <Derivative />
+                        {/if}
                     </div>
                 </li>
                 <li>
@@ -79,7 +90,9 @@ $: isLoggin = false
                                 <use xlink:href="#uniframe-icon-arrow-down"></use>
                             </svg>
                         </div>
-                     <Explore />
+                        {#if showExploire}
+                            <Explore />
+                        {/if}
                     </div>
                 </li>
                 </ul>

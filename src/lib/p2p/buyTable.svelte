@@ -223,7 +223,7 @@
           class="is-active number"
           aria-current="true"
           aria-label="page 1"
-          tabindex="0"
+    
         >
           1
         </li>
@@ -232,15 +232,15 @@
           class="number"
           aria-current="false"
           aria-label="page 2"
-          tabindex="0"
+      
         >
           2
         </li>
         <li
           class="number"
-          aria-current="false"
+       
           aria-label="page 3"
-          tabindex="0"
+        
         >
           3
         </li>
@@ -248,7 +248,7 @@
           class="number"
           aria-current="false"
           aria-label="page 4"
-          tabindex="0"
+        
         >
           4
         </li>
@@ -256,7 +256,7 @@
           class="number"
           aria-current="false"
           aria-label="page 5"
-          tabindex="0"
+        
         >
           5
         </li>
@@ -264,13 +264,13 @@
           class="number"
           aria-current="false"
           aria-label="page 6"
-          tabindex="0"
+        
         >
           6
         </li>
         <li
           class="more btn-quicknext el-icon"
-          tabindex="0"
+        
           aria-label="Next 5 pages"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"
@@ -284,7 +284,7 @@
           class="number"
           aria-current="false"
           aria-label="page 8"
-          tabindex="0"
+        
         >
           8
         </li>

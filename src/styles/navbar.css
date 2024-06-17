@@ -75,8 +75,8 @@ html[data-uniframe-theme=light] .a3107c1e .bfe44f5e {
 }
 
 .a3107c1e .a773e3aa {
-    display: none;
     padding: 8px;
+    display: block;
     position: absolute;
     top: 50px;
     left: 0;
@@ -85,8 +85,14 @@ html[data-uniframe-theme=light] .a3107c1e .bfe44f5e {
     border-bottom-right-radius: 8px;
     width: auto;
 }
+.a3107c1e .a773e3aa:hover{
+    display: block;
+}
 html[data-uniframe-theme=light] .a3107c1e .a773e3aa .d3f3d2f7 {
     color: #131316;
+}
+html[data-uniframe-theme=light] .a3107c1e .a773e3aa {
+    background-color: #fafafa;
 }
 .a3107c1e .a773e3aa .d3f3d2f7 {
     position: relative;

@@ -20,7 +20,7 @@
              <ul class="_coinList_1wcwv_115">
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1665712815-eth-1.png"
                    />
@@ -29,7 +29,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1680057413-sgd.png"
                    />
@@ -38,7 +38,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678352873-inr.png"
                    />
@@ -47,7 +47,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678699221-vnd.png"
                    />
@@ -56,7 +56,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678696472-cad.png"
                    />
@@ -65,7 +65,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678696622-aud.png"
                    />
@@ -74,7 +74,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678441536-twd.png"
                    />
@@ -83,7 +83,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678441485-rub.png"
                    />
@@ -92,7 +92,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678699269-gbp.png"
                    />
@@ -101,7 +101,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678699172-hkd.png"
                    />
@@ -110,7 +110,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678255416-eur.png"
                    />
@@ -119,7 +119,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678441266-ngn.png"
                    />
@@ -128,7 +128,7 @@
                </li>
                <li class="_active_1wcwv_44">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678696767-idr.png"
                    />
@@ -137,7 +137,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678441360-php.png"
                    />
@@ -146,7 +146,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1679999614-khr.png"
                    />
@@ -155,7 +155,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678358220-brl.png"
                    />
@@ -164,7 +164,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678696426-aed.png"
                    />
@@ -173,7 +173,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1680056429-myr.png"
                    />
@@ -182,7 +182,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678696052-try.png"
                    />
@@ -191,7 +191,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678695923-thb.png"
                    />
@@ -200,7 +200,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678441441-uah.png"
                    />
@@ -209,7 +209,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1679998384-gel.png"
                    />
@@ -218,7 +218,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678442008-kzt.png"
                    />
@@ -227,7 +227,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1678695962-pkr.png"
                    />
@@ -236,7 +236,7 @@
                </li>
                <li class="">
                  <div class="_imgBox_1wcwv_138">
-                   <img
+                   <img alt=""
                      loading="lazy"
                      src="https://www.datocms-assets.com/51952/1680056179-mop.png"
                    />
