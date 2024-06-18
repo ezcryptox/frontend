@@ -35,11 +35,16 @@
     isOpen2 = false;
 
     if (displaySearch.length < 3) {
-      displaySearch = [...displaySearch, option.value];
+      if (!displaySearch.includes(option.value)) {
+        displaySearch = [...displaySearch, option.value];
+      }
     } else {
-      displaySearch = [option.value];
+      if (!displaySearch.includes(option.value)) {
+        displaySearch = [option.value];
+      }
     }
   }
+
   function handleSelectedNTag(option) {
     isOpen3 = false;
   }
