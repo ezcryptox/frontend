@@ -19,18 +19,25 @@
   let showOrders = false;
   $: selectedTab = action === "buy" ? "buy" : "buy";
   $: selectedCoin = "btc-usdt";
+  $: fromCurr = "usdt";
+  // $: toCurr = "btc";
+  $: toCurr = "rub";
 
   let action;
-  let pair;
 
   onMount(async () => {
     const unsubscribe = page.subscribe(($page) => {
       const { action, pair } = $page.params;
 
+      let fromTo = pair.toLowerCase().split("-");
+
       if (action !== "buy" && action !== "sell") {
         window.location.href = "/";
       }
       selectedTab = action;
+
+      fromCurr = fromTo[0];
+      toCurr = fromTo[1];
     });
 
     loading = true;
@@ -47,9 +54,14 @@
     window.history.pushState({ tab: selectedTab }, "", baseUrl);
   }
 
-  function switchPair(from, to) {
-    const baseUrl = `/p2p/markets/${selectedTab}/${from}-${to}`;
-    selectedCoin = `${from}-${to}`;
+  function switchPairFrom(from) {
+    const baseUrl = `/p2p/markets/${selectedTab}/${from}-${toCurr}`;
+    selectedCoin = `${from}-${toCurr}`;
+    window.history.pushState({ tab: selectedTab }, "", baseUrl);
+  }
+  function switchPairTo(to) {
+    const baseUrl = `/p2p/markets/${selectedTab}/${fromCurr}-${to}`;
+    selectedCoin = `${fromCurr}-${to}`;
     window.history.pushState({ tab: selectedTab }, "", baseUrl);
   }
 </script>
@@ -138,12 +150,12 @@
     </div>
     <div class="_inner_cw6mx_14">
       {#if selectedTab === "buy"}
-        <BuyTab onClick={switchAction} {switchPair} />
+        <BuyTab onClick={switchAction} {switchPairFrom} />
       {:else if selectedTab === "sell"}
-        <SellTab onClick={switchAction} {switchPair} />
+        <SellTab onClick={switchAction} {switchPairFrom} />
       {/if}
 
-      <Filter />
+      <Filter onUpdate={switchPairTo}/>
       {#if selectedTab === "buy"}
         <BuyTable />
       {:else if selectedTab === "sell"}

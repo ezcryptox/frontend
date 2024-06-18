@@ -9,6 +9,8 @@
   let isOpen3 = false;
   let isOpen4 = false;
 
+  export let onUpdate;
+
   $: selectedNTag = "All Advertisers";
   $: selectedRefreshTag = "Do Not Refresh";
   let selectedSearch;
@@ -21,6 +23,9 @@
 
   function handleCurrencySelect(currency) {
     activeCurrency = currency;
+    if (onUpdate) {
+      onUpdate(currency.code.toLowerCase());
+    }
     isOpen1 = false;
   }
   function handleSelectSearch(option) {

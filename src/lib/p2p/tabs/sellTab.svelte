@@ -1,6 +1,6 @@
 <script>
   export let onClick = null;
-  export let switchPair = null;
+  export let switchPairFrom = null;
 
   let activeCoin = "USDT";
 
@@ -10,13 +10,13 @@
     }
   }
 
-  function handleSwitchPair(from, to) {
-    if (switchPair) switchPair(from, to);
+  function handleSwitchPair(from) {
+    if (switchPairFrom) switchPairFrom(from);
   }
 
   function handleCoinFocus(event, coin) {
     activeCoin = event.target.textContent;
-    handleSwitchPair(coin === "btc" ? "usdt" : "btc", coin);
+    handleSwitchPair(coin === "btc" ? "usdt" : "btc");
   }
 </script>
 
