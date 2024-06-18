@@ -1,3 +1,11 @@
+<script>
+  export let openSetupModal = null;
+
+  const onOpenModal = () => {
+    if (openSetupModal) openSetupModal(true);
+  };
+</script>
+
 <section class="_tableList_2ean6_9">
   <div
     class="el-table--fit el-table--enable-row-hover el-table--enable-row-transition el-table el-table--layout-fixed _tableLayout_f1c54_9 is-scrolling-none"
@@ -39,8 +47,7 @@
               ><th
                 class="el-table_1_column_2 is-leaf el-table__cell"
                 colspan="1"
-                rowspan="1"
-                ><div class="cell">Price<!----><!----></div></th
+                rowspan="1"><div class="cell">Price<!----><!----></div></th
               ><th
                 class="el-table_1_column_3 is-leaf el-table__cell"
                 colspan="1"
@@ -73,9 +80,7 @@
       </div>
       <div class="el-table__body-wrapper">
         <div class="el-scrollbar">
-          <div
-            class="el-scrollbar__wrap el-scrollbar__wrap--hidden-default"
-          >
+          <div class="el-scrollbar__wrap el-scrollbar__wrap--hidden-default">
             <div
               class="el-scrollbar__view"
               style="display: inline-block; vertical-align: middle;"
@@ -94,10 +99,7 @@
                   /><col name="el-table_1_column_3" width="283" /><col
                     name="el-table_1_column_4"
                     width="283"
-                  /><col
-                    name="el-table_1_column_5"
-                    width="180"
-                  /></colgroup
+                  /><col name="el-table_1_column_5" width="180" /></colgroup
                 ><!--v-if--><tbody
                   ><tr class="el-table__row"
                     ><td
@@ -183,9 +185,7 @@
                                 ><!----></span
                               >
                             </div>
-                            <div class="_trade_2ean6_189">
-                              Trades: 2 | 25%
-                            </div>
+                            <div class="_trade_2ean6_189">Trades: 2 | 25%</div>
                           </div>
                         </div>
                       </div></td
@@ -205,12 +205,12 @@
                         <!---->
                         <div class="_record_2ean6_205">
                           <div class="_line_2ean6_211">
-                            <span class="_label_2ean6_215">Available</span
-                            ><span class="_label_2ean6_215">Limits</span>
+                            <span class="_label_2ean6_215">Available</span><span
+                              class="_label_2ean6_215">Limits</span
+                            >
                           </div>
                           <div class="_line_2ean6_211">
-                            <span class="_value_2ean6_227"
-                              >50.000000 BTC</span
+                            <span class="_value_2ean6_227">50.000000 BTC</span
                             ><span class="_value_2ean6_227"
                               >100.00 - 1400000.00 USD</span
                             >
@@ -225,16 +225,13 @@
                         <!---->
                         <div class="_method_2ean6_239">
                           <span style="color: rgb(1, 33, 105);"
-                            ><em
-                              style="background-color: rgb(1, 33, 105);"
+                            ><em style="background-color: rgb(1, 33, 105);"
                             ></em> Bank of America</span
                           ><span style="color: rgb(99, 49, 204);"
-                            ><em
-                              style="background-color: rgb(99, 49, 204);"
+                            ><em style="background-color: rgb(99, 49, 204);"
                             ></em> Zelle</span
                           ><span style="color: rgb(0, 213, 75);"
-                            ><em
-                              style="background-color: rgb(0, 213, 75);"
+                            ><em style="background-color: rgb(0, 213, 75);"
                             ></em> Cash app</span
                           >
                         </div>
@@ -250,8 +247,8 @@
                             class="el-button el-button--danger"
                             aria-disabled="false"
                             type="button"
-                            ><!--v-if--><span class="">Sell BTC</span
-                            ></button
+                            on:click={onOpenModal}
+                            ><!--v-if--><span class="">Sell BTC</span></button
                           >
                         </div>
                       </div></td
@@ -262,19 +259,13 @@
               <!--v-if--><!--v-if-->
             </div>
           </div>
-          <div
-            class="el-scrollbar__bar is-horizontal"
-            style="display: none;"
-          >
+          <div class="el-scrollbar__bar is-horizontal" style="display: none;">
             <div
               class="el-scrollbar__thumb"
               style="transform: translateX(0%);"
             ></div>
           </div>
-          <div
-            class="el-scrollbar__bar is-vertical"
-            style="display: none;"
-          >
+          <div class="el-scrollbar__bar is-vertical" style="display: none;">
             <div
               class="el-scrollbar__thumb"
               style="transform: translateY(0%);"
@@ -284,10 +275,7 @@
       </div>
       <!--v-if--><!--v-if-->
     </div>
-    <div
-      class="el-table__column-resize-proxy"
-      style="display: none;"
-    ></div>
+    <div class="el-table__column-resize-proxy" style="display: none;"></div>
   </div>
   <div class="_pagination_2ean6_258">
     <div class="el-pagination el-pagination--small">
@@ -307,48 +295,15 @@
         ></button
       >
       <ul class="el-pager">
-        <li
-          class="is-active number"
-          aria-current="true"
-          aria-label="page 1"
-        
-        >
+        <li class="is-active number" aria-current="true" aria-label="page 1">
           1
         </li>
         <!--v-if-->
-        <li
-          class="number"
-          aria-current="false"
-          aria-label="page 2"
-        
-        >
-          2
-        </li>
-        <li
-          class="number"
-          aria-current="false"
-          aria-label="page 3"
-        
-        >
-          3
-        </li>
-        <li
-          class="number"
-          aria-current="false"
-          aria-label="page 4"
-        
-        >
-          4
-        </li>
+        <li class="number" aria-current="false" aria-label="page 2">2</li>
+        <li class="number" aria-current="false" aria-label="page 3">3</li>
+        <li class="number" aria-current="false" aria-label="page 4">4</li>
         <!--v-if-->
-        <li
-          class="number"
-          aria-current="false"
-          aria-label="page 5"
-        
-        >
-          5
-        </li>
+        <li class="number" aria-current="false" aria-label="page 5">5</li>
       </ul>
       <button
         type="button"

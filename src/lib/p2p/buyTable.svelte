@@ -1,3 +1,11 @@
+<script>
+  export let openSetupModal = null;
+
+  const onOpenModal = () => {
+    if (openSetupModal) openSetupModal(true);
+  };
+</script>
+
 <section class="_tableList_2ean6_9">
   <div
     class="el-table--fit el-table--enable-row-hover el-table--enable-row-transition el-table el-table--layout-fixed _tableLayout_f1c54_9 is-scrolling-none"
@@ -172,6 +180,7 @@
                             class="el-button el-button--success"
                             aria-disabled="false"
                             type="button"
+                            on:click={onOpenModal}
                             ><!--v-if--><span class="">Buy USDT</span></button
                           >
                         </div>
@@ -219,60 +228,16 @@
         ></button
       >
       <ul class="el-pager">
-        <li
-          class="is-active number"
-          aria-current="true"
-          aria-label="page 1"
-    
-        >
+        <li class="is-active number" aria-current="true" aria-label="page 1">
           1
         </li>
         <!--v-if-->
-        <li
-          class="number"
-          aria-current="false"
-          aria-label="page 2"
-      
-        >
-          2
-        </li>
-        <li
-          class="number"
-       
-          aria-label="page 3"
-        
-        >
-          3
-        </li>
-        <li
-          class="number"
-          aria-current="false"
-          aria-label="page 4"
-        
-        >
-          4
-        </li>
-        <li
-          class="number"
-          aria-current="false"
-          aria-label="page 5"
-        
-        >
-          5
-        </li>
-        <li
-          class="number"
-          aria-current="false"
-          aria-label="page 6"
-        
-        >
-          6
-        </li>
-        <li
-          class="more btn-quicknext el-icon"
-        
-          aria-label="Next 5 pages"
-        >
+        <li class="number" aria-current="false" aria-label="page 2">2</li>
+        <li class="number" aria-label="page 3">3</li>
+        <li class="number" aria-current="false" aria-label="page 4">4</li>
+        <li class="number" aria-current="false" aria-label="page 5">5</li>
+        <li class="number" aria-current="false" aria-label="page 6">6</li>
+        <li class="more btn-quicknext el-icon" aria-label="Next 5 pages">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"
             ><path
               fill="currentColor"
@@ -280,14 +245,7 @@
             ></path></svg
           >
         </li>
-        <li
-          class="number"
-          aria-current="false"
-          aria-label="page 8"
-        
-        >
-          8
-        </li>
+        <li class="number" aria-current="false" aria-label="page 8">8</li>
       </ul>
       <button
         type="button"
