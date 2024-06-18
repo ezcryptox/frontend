@@ -18,6 +18,7 @@
 
   let showOrders = false;
   $: selectedTab = action === "buy" ? "buy" : "buy";
+  $: selectedCoin = "btc-usdt";
 
   let action;
   let pair;
@@ -42,12 +43,13 @@
 
   function switchAction(value) {
     selectedTab = value || "buy";
-    const baseUrl = `/p2p/markets/${selectedTab}/btc-usd`;
+    const baseUrl = `/p2p/markets/${selectedTab}/${selectedCoin}`;
     window.history.pushState({ tab: selectedTab }, "", baseUrl);
   }
 
   function switchPair(from, to) {
     const baseUrl = `/p2p/markets/${selectedTab}/${from}-${to}`;
+    selectedCoin = `${from}-${to}`;
     window.history.pushState({ tab: selectedTab }, "", baseUrl);
   }
 </script>
