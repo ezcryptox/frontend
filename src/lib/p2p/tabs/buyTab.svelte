@@ -1,7 +1,8 @@
 <script>
   export let onClick = null;
+  export let switchPair = null;
 
-  let activeCoin = "USDT"; // Initial active coin
+  let activeCoin = "USDT";
 
   function handleClick(value) {
     if (onClick) {
@@ -9,8 +10,13 @@
     }
   }
 
-  function handleCoinFocus(event) {
+  function handleSwitchPair(from, to) {
+    if (switchPair) switchPair(from, to);
+  }
+
+  function handleCoinFocus(event, coin) {
     activeCoin = event.target.textContent;
+    handleSwitchPair(coin === "btc" ? "usdt" : "btc", coin);
   }
 </script>
 
@@ -30,7 +36,7 @@
   <div class="_coinBox_1iwpl_91">
     <span
       class={activeCoin === "USDT" ? "_active_1iwpl_71" : ""}
-      on:click={handleCoinFocus}
+      on:click={() => handleCoinFocus(event, "btc")}
       role="button"
       tabindex={0}
       on:keypress={(event) => {
@@ -43,7 +49,7 @@
     </span>
     <span
       class={activeCoin === "BTC" ? "_active_1iwpl_71" : ""}
-      on:click={handleCoinFocus}
+      on:click={() => handleCoinFocus(event, "usdt")}
       role="button"
       tabindex={0}
       on:keypress={(event) => {

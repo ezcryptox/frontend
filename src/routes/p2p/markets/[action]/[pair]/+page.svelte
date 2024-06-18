@@ -45,6 +45,11 @@
     const baseUrl = `/p2p/markets/${selectedTab}/btc-usd`;
     window.history.pushState({ tab: selectedTab }, "", baseUrl);
   }
+
+  function switchPair(from, to) {
+    const baseUrl = `/p2p/markets/${selectedTab}/${from}-${to}`;
+    window.history.pushState({ tab: selectedTab }, "", baseUrl);
+  }
 </script>
 
 <main id="app" class="app-container" data-v-app="">
@@ -131,9 +136,9 @@
     </div>
     <div class="_inner_cw6mx_14">
       {#if selectedTab === "buy"}
-        <BuyTab onClick={switchAction} />
+        <BuyTab onClick={switchAction} {switchPair} />
       {:else if selectedTab === "sell"}
-        <SellTab onClick={switchAction} />
+        <SellTab onClick={switchAction} {switchPair} />
       {/if}
 
       <Filter />
