@@ -12,6 +12,7 @@
   $: selectedNTag = "All Advertisers";
   $: selectedRefreshTag = "Do Not Refresh";
   let selectedSearch;
+  $: displaySearch = ["picked", "second"];
 
   let activeCurrency = {
     code: "USD",
@@ -23,9 +24,21 @@
     isOpen1 = false;
   }
   function handleSelectSearch(option) {
+    const containsHTML = /<\/?[a-z][\s\S]*>/i.test(option.value);
+
+    if (containsHTML) {
+      const plainTextValue = option.value.replace(/<\/?[^>]+(>|$)/g, "");
+      option.value = plainTextValue;
+    }
+
     selectedSearch = option;
-    console.log("::::: selectedOpeiont");
-    isOpen2 = false
+    isOpen2 = false;
+
+    if (displaySearch.length < 3) {
+      displaySearch = [...displaySearch, option.value];
+    } else {
+      displaySearch = [option.value];
+    }
   }
   function handleSelectedNTag(option) {
     isOpen3 = false;
@@ -171,6 +184,7 @@
               autocomplete="off"
               tabindex="0"
               placeholder="Select a maximum of 3 methods"
+              value={displaySearch}
               id="el-id-345-6"
               on:click={toggleOpen2}
             /><!-- suffix slot --><span class="el-input__suffix"
