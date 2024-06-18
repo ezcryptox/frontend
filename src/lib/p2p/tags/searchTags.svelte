@@ -1,3 +1,144 @@
+<script>
+  export let onOptionSelect;
+  let isDropdownVisible = false;
+
+  const options = [
+    { class: "_payItem_1wcwv_211", value: "All Methods" },
+    {
+      class: "_payItem_1wcwv_211",
+      value:
+        '<em style="background-color: rgb(240, 185, 11);"></em> Bank Transfer',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(0, 95, 175);"></em> BCA Mobile',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(19, 142, 233);"></em> DANA',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(76, 52, 148);"></em> OVO',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(2, 175, 217);"></em> GoPay',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(13, 43, 91);"></em> Mandiri Pay',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(232, 37, 41);"></em> LinkAja',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value:
+        '<em style="background-color: rgb(13, 43, 91);"></em> Jenius PayMe',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(240, 82, 35);"></em> Yap! (BNI)',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(239, 32, 40);"></em> Sinarmas',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(255, 206, 4);"></em> Maybank',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(113, 0, 28);"></em> CIMB Niaga',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(186, 58, 47);"></em> Permata Me',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(253, 175, 39);"></em> Bank Jago',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(234, 95, 0);"></em> SEA Bank',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value:
+        '<em style="background-color: rgb(169, 17, 207);"></em> Transfers with specific bank',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(255, 190, 0);"></em> NEO',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(253, 101, 66);"></em> Flip',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(0, 185, 0);"></em> LINE Pay',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(230, 32, 32);"></em> OCBC NISP',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(99, 138, 198);"></em> Oy!',
+    },
+    { class: "_payItem_1wcwv_211", value: "ShopeePay" },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(0, 198, 255);"></em> wise',
+    },
+    { class: "_payItem_1wcwv_211", value: "" },
+    {
+      class: "_payItem_1wcwv_211",
+      value:
+        '<em style="background-color: rgb(54, 85, 120);"></em> Western Union',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value:
+        '<em style="background-color: rgb(218, 127, 80);"></em> SWIFT international remittance',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value: '<em style="background-color: rgb(255, 140, 0);"></em> QIWI',
+    },
+    {
+      class: "_payItem_1wcwv_211 _active_1wcwv_44",
+      value:
+        '<em style="background-color: rgb(129, 30, 104);"></em> Skrill (Moneybookers)',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value:
+        '<em style="background-color: rgb(66, 133, 244);"></em> Google Pay (GPay)',
+    },
+    {
+      class: "_payItem_1wcwv_211",
+      value:
+        '<em style="background-color: rgb(226, 161, 0);"></em> Interac e-transfer',
+    },
+    { class: "_payItem_1wcwv_211", value: "Cash Deposit" },
+  ];
+  let selectedOption = null;
+
+  function selectOption(option) {
+    selectedOption = option;
+    isDropdownVisible = false;
+    if (onOptionSelect) {
+      onOptionSelect(option);
+    }
+  }
+</script>
+
 <div
   class="el-popper is-pure is-light el-dropdown__popper e-dropdown"
   tabindex="-1"
@@ -48,99 +189,20 @@
               <!-- append slot --><!--v-if-->
             </div>
             <ul>
-              <li class="_payItem_1wcwv_211">
-                <em class="_firstEm_1wcwv_235"></em> All Methods
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(240, 185, 11);"></em> Bank Transfer
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(0, 95, 175);"></em> BCA Mobile
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(19, 142, 233);"></em> DANA
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(76, 52, 148);"></em> OVO
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(2, 175, 217);"></em> GoPay
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(13, 43, 91);"></em> Mandiri Pay
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(232, 37, 41);"></em> LinkAja
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(13, 43, 91);"></em> Jenius PayMe
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(240, 82, 35);"></em> Yap! (BNI)
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(239, 32, 40);"></em> Sinarmas
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(255, 206, 4);"></em> Maybank
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(113, 0, 28);"></em> CIMB Niaga
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(186, 58, 47);"></em> Permata Me
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(253, 175, 39);"></em> Bank Jago
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(234, 95, 0);"></em> SEA Bank
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(169, 17, 207);"></em> Transfers
-                with specific bank
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(255, 190, 0);"></em> NEO
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(253, 101, 66);"></em> Flip
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(0, 185, 0);"></em> LINE Pay
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(230, 32, 32);"></em> OCBC NISP
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(99, 138, 198);"></em> Oy!
-              </li>
-              <li class="_payItem_1wcwv_211"><em></em> ShopeePay</li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(0, 198, 255);"></em> wise
-              </li>
-              <li class="_payItem_1wcwv_211"><em></em></li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(54, 85, 120);"></em> Western Union
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(218, 127, 80);"></em> SWIFT international
-                remittance
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(255, 140, 0);"></em> QIWI
-              </li>
-              <li class="_payItem_1wcwv_211 _active_1wcwv_44">
-                <em style="background-color: rgb(129, 30, 104);"></em> Skrill (Moneybookers)
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(66, 133, 244);"></em> Google Pay
-                (GPay)
-              </li>
-              <li class="_payItem_1wcwv_211">
-                <em style="background-color: rgb(226, 161, 0);"></em> Interac e-transfer
-              </li>
-              <li class="_payItem_1wcwv_211"><em></em> Cash Deposit</li>
+              {#each options as option}
+                <li
+                  class={option.class}
+                  class:selected={selectedOption === option}
+                  class:hover={isDropdownVisible}
+                  on:click={() => selectOption(option)}
+                  on:keydown={() => selectOption(option)}
+                  role="option"
+                  aria-selected={selectedOption === option}
+                  tabindex="0"
+                >
+                  {@html option.value}
+                </li>
+              {/each}
             </ul>
           </div>
         </div>
