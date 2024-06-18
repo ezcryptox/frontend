@@ -11,6 +11,7 @@
 
   $: selectedNTag = "All Advertisers";
   $: selectedRefreshTag = "Do Not Refresh";
+  let selectedSearch;
 
   let activeCurrency = {
     code: "USD",
@@ -20,6 +21,11 @@
   function handleCurrencySelect(currency) {
     activeCurrency = currency;
     isOpen1 = false;
+  }
+  function handleSelectSearch(option) {
+    selectedSearch = option;
+    console.log("::::: selectedOpeiont");
+    isOpen2 = false
   }
   function handleSelectedNTag(option) {
     isOpen3 = false;
@@ -94,11 +100,6 @@
                   aria-expanded={isOpen1}
                   aria-haspopup="menu"
                 >
-                  <!-- <img
-                    src="https://www.datocms-assets.com/51952/1665712815-eth-1.png"
-                    alt=""
-                  />
-                  <span class="_name_1wcwv_64">USD</span> -->
                   <img src={activeCurrency.image} alt="" />
                   <span class="_name_1wcwv_64">{activeCurrency.code}</span>
                   <svg
@@ -129,7 +130,10 @@
         {/if}
 
         {#if isOpen2}
-          <SearchTags />
+          <SearchTags
+            onOptionSelect={handleSelectSearch}
+            bind:selectedOption={selectedSearch}
+          />
         {/if}
 
         {#if isOpen3}
