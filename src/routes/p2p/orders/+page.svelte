@@ -15,6 +15,11 @@
   let tab;
 
   $: tab = $page.url.searchParams.get("tab") || "progress";
+  $: modalIsOpen = false;
+
+  function openModal() {
+    modalIsOpen = !modalIsOpen;
+  }
 
   function setTab(newTab) {
     const url = new URL(window.location);
@@ -44,22 +49,39 @@
       <dl class="_spaceBetween_dh5q2_9">
         <dt>
           <ul class="_nalWraper_dh5q2_128">
-            <li class={tab === 'progress' ? '_active_dh5q2_147' : ''} on:click={() => setTab('progress')}>
+            <li
+              class={tab === "progress" ? "_active_dh5q2_147" : ""}
+              on:click={() => setTab("progress")}
+            >
               In progress
             </li>
-            <li class={tab === 'complete' ? '_active_dh5q2_147' : ''} on:click={() => setTab('complete')}>
+            <li
+              class={tab === "complete" ? "_active_dh5q2_147" : ""}
+              on:click={() => setTab("complete")}
+            >
               Complete
             </li>
-            <li class={tab === 'other' ? '_active_dh5q2_147' : ''} on:click={() => setTab('other')}>
+            <li
+              class={tab === "other" ? "_active_dh5q2_147" : ""}
+              on:click={() => setTab("other")}
+            >
               Other
             </li>
-            <li class={tab === 'all' ? '_active_dh5q2_147' : ''} on:click={() => setTab('all')}>
+            <li
+              class={tab === "all" ? "_active_dh5q2_147" : ""}
+              on:click={() => setTab("all")}
+            >
               All
             </li>
           </ul>
         </dt>
         <dd>
-          <div class="el-dropdown">
+          <div
+            class="el-dropdown"
+            on:click={openModal}
+            role="button"
+            tabindex={0}
+          >
             <dl
               class="_searchWraper_dh5q2_43 el-tooltip__trigger el-tooltip__trigger"
               id="el-id-7746-19"
@@ -302,5 +324,6 @@
   </section>
   <!---->
 </main>
-
-<DateTime />
+{#if modalIsOpen}
+  <DateTime />
+{/if}
