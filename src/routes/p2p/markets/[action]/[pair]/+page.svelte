@@ -4,6 +4,7 @@
   import BuyTable from "../../../../../lib/p2p/buyTable.svelte";
   import "../../../../../styles/p2p.css";
 
+  import { screen } from "$lib/store/screen";
   import { onMount } from "svelte";
   import { handleExchanegerate } from "$lib/home-page/hook";
   import BuyTab from "../../../../../lib/p2p/tabs/buyTab.svelte";
@@ -87,9 +88,11 @@
     <div class="_header_piyeq_16">
       <div class="_inner_piyeq_21">
         <div class="_navBox_piyeq_26">
-          <a href="/p2p/markets" class="_active_piyeq_44">P2P Trading</a>
+          <a href="/p2p/markets" class="_active_piyeq_44"
+            >P2P Trading {$screen}px</a
+          >
         </div>
-        
+
         <OrdersSettings />
       </div>
     </div>
@@ -100,18 +103,18 @@
         <SellTab onClick={switchAction} {switchPairFrom} />
       {/if}
 
-      <Filter onUpdate={switchPairTo} />
+      <!-- <Filter onUpdate={switchPairTo} />
       {#if selectedTab === "buy"}
         <BuyTable {openSetupModal} />
       {:else if selectedTab === "sell"}
         <SellTable {openSetupModal} />
-      {/if}
+      {/if} -->
     </div>
   </section>
   <!---->
 </main>
 
-<Footer />
+<!-- <Footer /> -->
 
 <style>
 </style>

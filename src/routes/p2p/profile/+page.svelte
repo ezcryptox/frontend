@@ -1,5 +1,6 @@
 <script>
   import Setup from "../../../lib/p2p/modals/setup.svelte";
+  import { screen } from "$lib/store/screen";
   import "../../../styles/p2p_profile.css";
 
   $: setUpModalIsOPen = false;
@@ -74,38 +75,35 @@
     </dl>
     <div class="mainWraper">
       <div class="mainContain">
-        <dl class="_title_2pao0_9">
-          <dt>
-            <h3 class="mainTitle">Payment Method</h3>
-            “For security reasons, please use accounts verified with your own identity.
-            You can enable a maximum of 3 payment methods, and all enabled methods
-            will be visible to your buyers.
-          </dt>
-          <dd>
-            <button
-              class="el-button el-button--success is-plain _elbutton_2pao0_62"
-              aria-disabled="false"
-              type="button"
-              on:click={OpenSetupModal}
-              ><!--v-if--><span class=""
-                ><svg
+        <dl class="_title_2pao0_9 {$screen < 500? 'flex_column' : ''}">
+            <dt>
+              <h3 class="mainTitle">Payment Method {$screen}px</h3>
+              For security reasons, please use accounts verified with your own identity.
+              You can enable a maximum of 3 payment methods, and all enabled methods
+              will be visible to your buyers.
+            </dt>
+            <dd>
+              <button class="el-button el-button--success is-plain _elbutton_2pao0_62"
+                      aria-disabled="false"
+                      type="button"
+                      on:click={OpenSetupModal}>
+                <span><!--v-if--><svg
                   data-v-c936a896=""
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  class="svg-icon"
-                  ><path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M7.25 8.75V13H8.75V8.75H13V7.25H8.75V3H7.25V7.25H3V8.75H7.25Z"
-                  ></path></svg
-                > Add a payment method</span
-              ></button
-            >
-          </dd>
-        </dl>
+                  class="svg-icon">
+                  <path fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M7.25 8.75V13H8.75V8.75H13V7.25H8.75V3H7.25V7.25H3V8.75H7.25Z"></path>
+                </svg> Add a payment method</span>
+              </button>
+            </dd>
+          </dl>
+          
+          
         <section class="_tableEmpty_102ze_9 _frameWraper_2pao0_107">
           <svg
             xmlns="http://www.w3.org/2000/svg"

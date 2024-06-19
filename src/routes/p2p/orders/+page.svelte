@@ -4,6 +4,7 @@
   import "../../../styles/orders.css";
 
   import { page } from "$app/stores";
+  import { screen } from "$lib/store/screen";
   import { onMount } from "svelte";
 
   import Progress from "./progress.svelte";
@@ -34,7 +35,7 @@
     <div class="_header_piyeq_16">
       <div class="_inner_piyeq_21">
         <div class="_navBox_piyeq_26">
-          <a href="/p2p/markets" class="">P2P Trading</a>
+          <a href="/p2p/markets" class="">P2P Trading{$screen}px</a>
         </div>
         <OrdersSettings />
       </div>
