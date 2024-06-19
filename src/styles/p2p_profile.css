@@ -1765,6 +1765,247 @@ html[data-theme=dark] ._payMethodBox_1wcwv_186 ._boxContent_1wcwv_195 ._payItem_
 ._payMethodBox_1wcwv_186 ._btnGroup_1wcwv_243 {
     padding: 12px
 }
+
+._frameWraper_7ba52_9 {
+    margin-top: 24px;
+    border-radius: 8px;
+    overflow: hidden
+}
+
+html[data-theme=light] ._frameWraper_7ba52_9 {
+    border: 1px solid #e3e3e3
+}
+
+html[data-theme=dark] ._frameWraper_7ba52_9 {
+    border-bottom: 1px solid #2b2b2e
+}
+
+._frameHeader_7ba52_22 {
+    border-radius: 8px;
+    height: 40px;
+    padding: 0 16px
+}
+
+html[data-theme=light] ._frameHeader_7ba52_22 {
+    background-color: #fafafa
+}
+
+html[data-theme=dark] ._frameHeader_7ba52_22 {
+    background-color: #131316
+}
+
+._frameHeader_7ba52_22 dt {
+    font-weight: 400;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start
+}
+
+html[data-theme=light] ._frameHeader_7ba52_22 dt {
+    color: #131316
+}
+
+html[data-theme=dark] ._frameHeader_7ba52_22 dt {
+    color: #fff
+}
+
+._frameHeader_7ba52_22 dt svg {
+    margin-right: 8px
+}
+
+._frameMain_7ba52_54 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 0 0 24px 16px
+}
+
+._frameMain_7ba52_54 li {
+    width: 33.3%;
+    padding-right: 70px;
+    box-sizing: border-box;
+    margin-top: 24px
+}
+
+._frameMain_7ba52_54 li p {
+    color: #878787;
+    font-size: 12px;
+    line-height: 17px;
+    padding-bottom: 8px
+}
+
+._frameMain_7ba52_54 li strong {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: 8px
+}
+
+html[data-theme=light] ._frameMain_7ba52_54 li strong {
+    color: #131316
+}
+
+html[data-theme=dark] ._frameMain_7ba52_54 li strong {
+    color: #fff
+}
+
+._imgbox_rv2ql_9 {
+    width: 100%;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+._imgbox_rv2ql_9 img {
+    max-width: 384px;
+    max-height: 344px
+}
+
+._qrCode_1gktz_9 {
+    border-radius: 2px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex
+}
+
+html[data-theme=light] ._qrCode_1gktz_9 {
+    border: 1px solid #e3e3e3
+}
+
+html[data-theme=dark] ._qrCode_1gktz_9 {
+    border: 1px solid #2b2b2e
+}
+
+html[data-theme=light] ._qrCode_1gktz_9 svg {
+    color: #1a8f5c!important
+}
+
+html[data-theme=dark] ._qrCode_1gktz_9 svg {
+    color: #119e5f!important
+}
+
+._title_2pao0_9 {
+    padding-top: 48px
+}
+
+._title_2pao0_9 dt {
+    font-size: 16px;
+    line-height: 23px;
+    color: #878787
+}
+
+._title_2pao0_9 dt h3 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 34px
+}
+
+html[data-theme=light] ._title_2pao0_9 dt h3 {
+    color: #131316
+}
+
+html[data-theme=dark] ._title_2pao0_9 dt h3 {
+    color: #fff
+}
+
+._headerSuffix_2pao0_30 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 12px
+}
+
+._headerSuffix_2pao0_30 a {
+    margin-left: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start
+}
+
+html[data-theme=light] ._headerSuffix_2pao0_30 a:hover {
+    color: #1a8f5c!important
+}
+
+html[data-theme=dark] ._headerSuffix_2pao0_30 a:hover {
+    color: #119e5f!important
+}
+
+._headerSuffix_2pao0_30>div {
+    margin-left: 24px;
+    margin-right: 8px
+}
+
+html[data-theme=light] ._headerSuffix_2pao0_30 ._del_2pao0_54,html[data-theme=dark] ._headerSuffix_2pao0_30 ._del_2pao0_54 {
+    color: #878787
+}
+
+._elbutton_2pao0_62 {
+    font-weight: 400;
+    padding: 8px
+}
+
+html[data-theme=light] ._elbutton_2pao0_62 {
+    border-color: #1a8f5c
+}
+
+html[data-theme=dark] ._elbutton_2pao0_62 {
+    border-color: #119e5f
+}
+
+._elbutton_2pao0_62 svg {
+    margin-right: 8px
+}
+
+._settingMenu_2pao0_78 {
+    width: 200px
+}
+
+._settingMenu_2pao0_78 .el-dropdown-menu__item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 48px;
+    cursor: pointer
+}
+
+html[data-theme=light] ._settingMenu_2pao0_78 .el-dropdown-menu__item {
+    color: #131316
+}
+
+html[data-theme=dark] ._settingMenu_2pao0_78 .el-dropdown-menu__item {
+    color: #2b2b2e
+}
+
+._settingMenu_2pao0_78 .el-dropdown-menu__item svg {
+    margin-right: 6px
+}
+
+html[data-theme=light] ._settingMenu_2pao0_78 .el-dropdown-menu__item:hover {
+    background: #f2f2f2
+}
+
+html[data-theme=dark] ._settingMenu_2pao0_78 .el-dropdown-menu__item:hover {
+    background: #2b2b2e
+}
+
+._frameWraper_2pao0_107 {
+    margin-top: 24px;
+    border-radius: 8px;
+    overflow: hidden
+}
+
+html[data-theme=light] ._frameWraper_2pao0_107 {
+    border: 1px solid #e3e3e3
+}
+
+html[data-theme=dark] ._frameWraper_2pao0_107 {
+    border-bottom: 1px solid #2b2b2e
+}
 ._countdown_1rllw_9 {
     width: 51px;
     height: 28px;
@@ -3626,6 +3867,222 @@ html[data-theme=dark] ._boxContent_dh5q2_158 ._btnGroup_dh5q2_186 {
 
 .order-dropdown .el-date-editor.el-input__wrapper {
     width: 210px
+}
+.userCenterWraper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column
+}
+
+.userCenterWraper .bj {
+    height: 235px;
+    width: auto;
+    position: absolute;
+    top: 0;
+    z-index: 1
+}
+
+.userCenterWraper .bj.left {
+    left: 0
+}
+
+.userCenterWraper .bj.right {
+    right: 0;
+    transform: rotateY(180deg)
+}
+
+html[data-theme=light] .userCenterWraper {
+    background-color: #fafafa
+}
+
+html[data-theme=dark] .userCenterWraper {
+    background-color: #131316
+}
+
+.userCenterWraper dl {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+html[data-theme=light] .userCenterWraper .green {
+    color: #1a8f5c!important
+}
+
+html[data-theme=dark] .userCenterWraper .green {
+    color: #119e5f!important
+}
+
+html[data-theme=light] .userCenterWraper .greenBj {
+    background-color: #1a8f5c!important
+}
+
+html[data-theme=dark] .userCenterWraper .greenBj {
+    background-color: #119e5f!important
+}
+
+html[data-theme=light] .userCenterWraper .red {
+    color: #c44749!important
+}
+
+html[data-theme=dark] .userCenterWraper .red {
+    color: #d64d4f!important
+}
+
+html[data-theme=light] .userCenterWraper .redBj {
+    background-color: #c44749!important
+}
+
+html[data-theme=dark] .userCenterWraper .redBj {
+    background-color: #d64d4f!important
+}
+
+.userCenterWraper .topWraper,.userCenterWraper .mainWraper {
+    position: relative
+}
+
+.userCenterWraper .topWraper,.userCenterWraper .mainContain {
+    width: 1312px;
+    margin: 0 auto
+}
+
+.userCenterWraper .topWraper {
+    z-index: 2;
+    height: 235px;
+    padding-bottom: 16px
+}
+
+.userCenterWraper .topWraper .userInfo {
+    align-items: flex-start
+}
+
+.userCenterWraper .topWraper .userInfo .headerPicture {
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+    position: relative;
+    margin-right: 23px;
+    margin-top: 8px;
+    font-size: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff
+}
+
+.userCenterWraper .topWraper .userInfo .headerPicture span {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 10px;
+    background: #e59940;
+    border: 1px solid #fafafa
+}
+
+.userCenterWraper .topWraper .userInfo h3 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start
+}
+
+.userCenterWraper .topWraper .userInfo h3 strong {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 46px
+}
+
+html[data-theme=light] .userCenterWraper .topWraper .userInfo h3 strong {
+    color: #131316
+}
+
+html[data-theme=dark] .userCenterWraper .topWraper .userInfo h3 strong {
+    color: #fff
+}
+
+.userCenterWraper .topWraper .userInfo h3 svg+svg {
+    margin-left: 16px!important
+}
+
+.userCenterWraper .topWraper .userInfo h3 .merchantLevel {
+    transform: scale(1.5);
+    margin-left: 12px
+}
+
+.userCenterWraper .topWraper .userInfo h3 .el-button:not(.is-link) {
+    border-color: #878787!important;
+    margin-left: 18px
+}
+
+.userCenterWraper .topWraper .userInfo h3 .el-button:not(.is-link) svg {
+    margin-right: 4px
+}
+
+.userCenterWraper .topWraper .userInfo h3 .el-button--primary svg {
+    color: #878787
+}
+
+.userCenterWraper .topWraper .userInfo h3 button+button {
+    margin-left: 12px!important
+}
+
+.userCenterWraper .topWraper .userInfo p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #878787;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start
+}
+
+.userCenterWraper .topWraper .userInfo p span.line {
+    width: 1px;
+    height: 12px;
+    margin: 0 12px
+}
+
+html[data-theme=light] .userCenterWraper .topWraper .userInfo p span.line {
+    background-color: #b8b8b8
+}
+
+html[data-theme=dark] .userCenterWraper .topWraper .userInfo p span.line {
+    background-color: #616161
+}
+
+.userCenterWraper .topWraper .userInfo p strong {
+    font-weight: 700;
+    margin: 2px
+}
+
+.userCenterWraper .topWraper .userInfo p i {
+    margin-left: 8px
+}
+
+html[data-theme=light] .userCenterWraper .topWraper .userInfo p i {
+    color: #131316
+}
+
+html[data-theme=dark] .userCenterWraper .topWraper .userInfo p i {
+    color: #fff
+}
+
+.userCenterWraper .mainWraper {
+    z-index: 2;
+    margin-top: -16px;
+    padding-bottom: 60px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    flex: 1
+}
+
+html[data-theme=light] .userCenterWraper .mainWraper {
+    background-color: #fff
+}
+
+html[data-theme=dark] .userCenterWraper .mainWraper {
+    background-color: #000
 }
 ._flex_xvdld_9 {
     display: flex;
