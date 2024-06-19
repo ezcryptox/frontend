@@ -103,12 +103,12 @@
         <SellTab onClick={switchAction} {switchPairFrom} />
       {/if}
 
-      <!-- <Filter onUpdate={switchPairTo} />
+      <Filter onUpdate={switchPairTo} />
       {#if selectedTab === "buy"}
         <BuyTable {openSetupModal} />
       {:else if selectedTab === "sell"}
         <SellTable {openSetupModal} />
-      {/if} -->
+      {/if}
     </div>
   </section>
   <!---->
