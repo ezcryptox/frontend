@@ -1,7 +1,32 @@
 <script>
   import OrdersSettings from "../../../lib/p2p/OrdersSettings.svelte";
+  import DateTime from "../../../lib/p2p/modals/dateTime.svelte";
   import "../../../styles/orders.css";
 
+  import { page } from "$app/stores";
+  import { onMount } from "svelte";
+
+  import Progress from "./progress.svelte";
+  import Completed from "./complete.svelte";
+  import All from "./all.svelte";
+  import Other from "./other.svelte";
+
+  let tab;
+
+  $: tab = $page.url.searchParams.get("tab") || "progress";
+
+  function setTab(newTab) {
+    const url = new URL(window.location);
+    url.searchParams.set("tab", newTab);
+    history.pushState({}, "", url);
+    tab = newTab;
+  }
+
+  onMount(() => {
+    if (!["progress", "complete", "other", "all"].includes(tab)) {
+      setTab("progress");
+    }
+  });
 </script>
 
 <main id="app" class="app-container" data-v-app="">
@@ -18,10 +43,18 @@
       <dl class="_spaceBetween_dh5q2_9">
         <dt>
           <ul class="_nalWraper_dh5q2_128">
-            <li class="_active_dh5q2_147">In progress</li>
-            <li class="">Complete</li>
-            <li class="">Other</li>
-            <li class="">All</li>
+            <li class={tab === 'progress' ? '_active_dh5q2_147' : ''} on:click={() => setTab('progress')}>
+              In progress
+            </li>
+            <li class={tab === 'complete' ? '_active_dh5q2_147' : ''} on:click={() => setTab('complete')}>
+              Complete
+            </li>
+            <li class={tab === 'other' ? '_active_dh5q2_147' : ''} on:click={() => setTab('other')}>
+              Other
+            </li>
+            <li class={tab === 'all' ? '_active_dh5q2_147' : ''} on:click={() => setTab('all')}>
+              All
+            </li>
           </ul>
         </dt>
         <dd>
@@ -72,29 +105,6 @@
             </dl>
             <!--v-if-->
           </div>
-          <button
-            class="el-button el-button--info el-button--default is-plain"
-            aria-disabled="false"
-            type="button"
-            style="margin-left: 16px;"
-            ><!--v-if--><span class=""
-              ><svg
-                data-v-c936a896=""
-                width="16"
-                height="16"
-                viewBox="0 0 14 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                class="svg-icon"
-                style="margin-right: 4px;"
-                ><path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M6.99888 10.5439L3.91668 7.46166L4.84476 6.53358L6.32901 8.01784L6.32901 1.3125L7.64151 1.3125L7.64151 8.04508L9.15301 6.53358L10.0811 7.46166L6.99888 10.5439ZM3.25391 6.5642H1.94141V12.6875H12.0586V6.56249H10.7461V6.99999V11.375H3.25391V6.99999V6.5642Z"
-                ></path></svg
-              > Export</span
-            ></button
-          >
         </dd>
       </dl>
       <div class="content" style="min-height: 360px;">
@@ -291,3 +301,5 @@
   </section>
   <!---->
 </main>
+
+<DateTime />
