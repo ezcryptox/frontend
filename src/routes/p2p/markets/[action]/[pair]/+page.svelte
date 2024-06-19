@@ -114,7 +114,7 @@
   <!---->
 </main>
 
-<!-- <Footer /> -->
+<Footer />
 
 <style>
 </style>
