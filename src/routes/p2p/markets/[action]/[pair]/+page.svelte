@@ -1,19 +1,19 @@
 <script>
   import Footer from "$lib/footer.svelte";
-  import Filter from "../../../../../lib/p2p/filter.svelte";
-  import BuyTable from "../../../../../lib/p2p/buyTable.svelte";
+  import Filter from "$lib/p2p/filter.svelte";
+  import BuyTable from "$lib/p2p/buyTable.svelte";
   import "../../../../../styles/p2p.css";
 
   import { screen } from "$lib/store/screen";
   import { onMount } from "svelte";
   import { handleExchanegerate } from "$lib/home-page/hook";
-  import BuyTab from "../../../../../lib/p2p/tabs/buyTab.svelte";
+  import BuyTab from "$lib/p2p/tabs/buyTab.svelte";
   import { page } from "$app/stores";
-  import SellTab from "../../../../../lib/p2p/tabs/sellTab.svelte";
-  import SellTable from "../../../../../lib/p2p/sellTable.svelte";
-  import Orders from "../../../../../lib/p2p/orders.svelte";
-  import Setup from "../../../../../lib/p2p/modals/setup.svelte";
-  import OrdersSettings from "../../../../../lib/p2p/OrdersSettings.svelte";
+  import SellTab from "$lib/p2p/tabs/sellTab.svelte";
+  import SellTable from "$lib/p2p/sellTable.svelte";
+  import Orders from "$lib/p2p/orders.svelte";
+  import Setup from "$lib/p2p/modals/setup.svelte";
+  import OrdersSettings from "$lib/p2p/OrdersSettings.svelte";
 
   $: tab = 1;
   let respons = [];
@@ -88,9 +88,7 @@
     <div class="_header_piyeq_16">
       <div class="_inner_piyeq_21">
         <div class="_navBox_piyeq_26">
-          <a href="/p2p/markets" class="_active_piyeq_44"
-            >P2P Trading {$screen}px</a
-          >
+          <a href="/p2p/markets/buy/btc-usdt" class="_active_piyeq_44">P2P Trading </a>
         </div>
 
         <OrdersSettings />

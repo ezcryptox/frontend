@@ -368,7 +368,7 @@ html[data-theme="dark"] ._quickOrder_ttr9n_9 ._foot_ttr9n_221 {
 }
 
 ._header_piyeq_16 ._navBox_piyeq_26 a {
-  font-size: 24px;
+  font-size: 18px;
   line-height: 34px;
   padding-bottom: 16px;
   border-bottom: 3px solid transparent;
@@ -412,7 +412,7 @@ html[data-theme="dark"] ._header_piyeq_16 ._navBox_piyeq_26 a:hover {
   cursor: pointer;
   outline: none;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 32px;
   align-items: center;
   transition: all 0.3s;
@@ -2792,7 +2792,7 @@ html[data-theme="light"] ._green_d4ofj_27 {
 html[data-theme="dark"] ._green_d4ofj_27 {
   color: #119e5f !important;
 }
-@charset "UTF-8";
+
 ._componentBox_1n9eh_9 {
   display: flex;
 }
@@ -4678,7 +4678,7 @@ html[data-theme="dark"] .userCenterWraper .mainWraper {
 .vfm-swipe-banner-forward {
   right: 0;
 }
-@charset "UTF-8";
+
 :root {
   --el-color-white: #ffffff;
   --el-color-black: #000000;

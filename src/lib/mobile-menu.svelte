@@ -3,6 +3,11 @@ import { screen } from "$lib/store/screen"
 import { createEventDispatcher } from "svelte";
 const dispatch = createEventDispatcher()
 
+$: showBuyCrypto = false
+$: showTrades = false
+$: showDerivative = false
+$: showExploire = false
+
 </script>
 
 <div class="ccf482a6">
@@ -24,7 +29,7 @@ const dispatch = createEventDispatcher()
             <ul class="acab24db">
                 <li>
                     <div class="b8777ccf">
-                        <div class="bfe44f5e">
+                        <button on:click={()=> showBuyCrypto =! showBuyCrypto} class="bfe44f5e">
                             <!---->
                             <svg fill="currentColor">
                                 <use xlink:href="#uniframe-icon-buy-crypto"></use>
@@ -33,11 +38,12 @@ const dispatch = createEventDispatcher()
                             <svg fill="currentColor" class="b9c912c9" style="width: 16px; height: 16px;">
                                 <use xlink:href="#uniframe-icon-arrow-down"></use>
                             </svg>
-                        </div>
+                        </button>
+                        {#if showBuyCrypto}
                         <div class="a773e3aa">
                             <ul>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/cards/buy">
+                                    <a on:click={()=> dispatch("close")} class="d3f3d2f7" target="_self" href="?/cards/buy">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Buy Crypto</span>
@@ -47,7 +53,7 @@ const dispatch = createEventDispatcher()
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/p2p/markets">
+                                    <a on:click={()=> dispatch("close")} class="d3f3d2f7" target="_self" href="/p2p/markets/buy/btc-usdt">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>P2P</span>
@@ -58,6 +64,7 @@ const dispatch = createEventDispatcher()
                                 </li>
                             </ul>
                         </div>
+                        {/if}
                     </div>
                 </li>
                 <li>
@@ -71,7 +78,7 @@ const dispatch = createEventDispatcher()
                 </li>
                 <li>
                     <div class="b8777ccf">
-                        <div class="bfe44f5e">
+                        <button on:click={()=> showTrades =! showTrades} class="bfe44f5e">
                             <!---->
                             <svg fill="currentColor">
                                 <use xlink:href="#uniframe-icon-trade"></use>
@@ -80,11 +87,12 @@ const dispatch = createEventDispatcher()
                             <svg fill="currentColor" class="b9c912c9" style="width: 16px; height: 16px;">
                                 <use xlink:href="#uniframe-icon-arrow-down"></use>
                             </svg>
-                        </div>
+                        </button>
+                        {#if showTrades}
                         <div class="a773e3aa">
                             <ul>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/trade?type=spot">
+                                    <a class="d3f3d2f7" target="_self" href="?/trade?type=spot">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Spot</span>
@@ -94,7 +102,7 @@ const dispatch = createEventDispatcher()
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/trade?type=margin">
+                                    <a class="d3f3d2f7" target="_self" href="?/trade?type=margin">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Margin</span>
@@ -103,7 +111,7 @@ const dispatch = createEventDispatcher()
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/strategy/spot-grid/BTC_USDT">
+                                    <a class="d3f3d2f7" target="_self" href="?/strategy/spot-grid/BTC_USDT">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Strategy Trading</span>
@@ -114,11 +122,12 @@ const dispatch = createEventDispatcher()
                                 </li>
                             </ul>
                         </div>
+                        {/if}
                     </div>
                 </li>
                 <li>
                     <div class="b8777ccf">
-                        <div class="bfe44f5e">
+                        <button on:click={()=> showDerivative =! showDerivative} class="bfe44f5e">
                             <!---->
                             <svg fill="currentColor">
                                 <use xlink:href="#uniframe-icon-futures"></use>
@@ -127,11 +136,12 @@ const dispatch = createEventDispatcher()
                             <svg fill="currentColor" class="b9c912c9" style="width: 16px; height: 16px;">
                                 <use xlink:href="#uniframe-icon-arrow-down"></use>
                             </svg>
-                        </div>
+                        </button>
+                        {#if showDerivative}
                         <div class="a773e3aa">
                             <ul>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/futures/trade">
+                                    <a class="d3f3d2f7" target="_self" href="?/futures/trade">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Futures Trading</span>
@@ -141,7 +151,7 @@ const dispatch = createEventDispatcher()
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/strategy/futures-grid">
+                                    <a class="d3f3d2f7" target="_self" href="?/strategy/futures-grid">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Grid Trading</span>
@@ -151,7 +161,7 @@ const dispatch = createEventDispatcher()
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/strategy/copytrading">
+                                    <a class="d3f3d2f7" target="_self" href="?/strategy/copytrading">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Copy Trading</span>
@@ -162,12 +172,14 @@ const dispatch = createEventDispatcher()
                                 </li>
                             </ul>
                         </div>
+                        {/if}
+                      
                     </div>
                 </li>
                 <!---->
                 <li>
                     <div class="b8777ccf">
-                        <div class="bfe44f5e">
+                        <button on:click={()=> showExploire =! showExploire} class="bfe44f5e">
                             <!---->
                             <svg fill="currentColor">
                                 <use xlink:href="#uniframe-icon-search"></use>
@@ -176,11 +188,12 @@ const dispatch = createEventDispatcher()
                             <svg fill="currentColor" class="b9c912c9" style="width: 16px; height: 16px;">
                                 <use xlink:href="#uniframe-icon-arrow-down"></use>
                             </svg>
-                        </div>
+                        </button>
+                        {#if showExploire}
                         <div class="a773e3aa">
                             <ul>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/topic/airdrop-token?utm_source=navbar">
+                                    <a class="d3f3d2f7" target="_self" href="?/topic/airdrop-token?utm_source=navbar">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Epic Airdrop</span>
@@ -190,7 +203,7 @@ const dispatch = createEventDispatcher()
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/referral">
+                                    <a class="d3f3d2f7" target="_self" href="?/referral">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Referral</span>
@@ -200,7 +213,7 @@ const dispatch = createEventDispatcher()
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/reward-center">
+                                    <a class="d3f3d2f7" target="_self" href="?/reward-center">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Reward Center</span>
@@ -211,7 +224,7 @@ const dispatch = createEventDispatcher()
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/leaderboard">
+                                    <a class="d3f3d2f7" target="_self" href="?/leaderboard">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Campaigns</span>
@@ -221,7 +234,7 @@ const dispatch = createEventDispatcher()
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/launchbase">
+                                    <a class="d3f3d2f7" target="_self" href="?/launchbase">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>LaunchBase</span>
@@ -231,7 +244,7 @@ const dispatch = createEventDispatcher()
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/feed">
+                                    <a class="d3f3d2f7" target="_self" href="?/feed">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>News</span>
@@ -241,7 +254,7 @@ const dispatch = createEventDispatcher()
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="/blog">
+                                    <a class="d3f3d2f7" target="_self" href="?/blog">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Poloniex Blog</span>
@@ -250,18 +263,9 @@ const dispatch = createEventDispatcher()
                                         <!---->
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="d3f3d2f7" target="_blank" href="https://sunswap.com">
-                                        <!---->
-                                        <div class="d4ef16dd">
-                                            <span>SunSwap</span>
-                                            <!----><!---->
-                                        </div>
-                                        <!---->
-                                    </a>
-                                </li>
                             </ul>
                         </div>
+                        {/if}
                     </div>
                 </li>
                 <!---->

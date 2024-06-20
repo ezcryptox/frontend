@@ -25,10 +25,9 @@
           border="0"
           cellpadding="0"
           cellspacing="0"
-          style="width: 1312px;"
         >
           <colgroup
-            ><col name="el-table_1_column_1" width="283" /><col
+            ><col name="el-table_1_column_1"  /><col
               name="el-table_1_column_2"
               width="283"
             /><col name="el-table_1_column_3" width="283" /><col
