@@ -1,9 +1,9 @@
 <script>
-/** @type {import('./$types').PageLoad} */
-export let data;
 import { routes, url , handleAuthToken, tab, seaser} from "$lib/store/routes";
 import { browser } from '$app/environment';
 import { page } from '$app/stores';
+import { goto } from "$app/navigation";
+import { isLogin } from "$lib/store/profile";
 import { screen } from "$lib/store/screen"
 import { error_message } from "$lib/store/error-message"
 import { onMount } from "svelte";
@@ -12,16 +12,7 @@ import "../styles/navbar.css"
 import Navbar from "$lib/navbar.svelte";
 import Loader from '$lib/loader.svelte';
 
-onMount(async()=>{
-    let auth = browser && JSON.parse(sessionStorage.getItem('user'));
-    if(auth){
-        handleAuthToken.set(auth.Token)
-        
-    }
-})
 
-
-$: routes.set(data)
 $: url.set($page.url.pathname)
 $: urlString =  ($page.url.href);
 $: paramString = urlString.split('?')[1];
@@ -50,6 +41,13 @@ onMount(()=>{
     ens = browser && window.innerWidth
     screen.set(ens)
 })
+
+$:{
+    if(!$isLogin && $routes === "/profile"){
+        goto("/login")
+    }
+}
+
 
 </script>
 

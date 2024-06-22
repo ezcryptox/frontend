@@ -1,6 +1,7 @@
 import axios from "axios"
 import { ServerURl } from "$lib/backendUrl";
-import { error } from "$lib/store/error-message"
+import { isLogin } from "$lib/store/profile";
+import { error , loading} from "$lib/store/error-message"
 const URL = ServerURl()
 
 export const handleError = ((err)=>{
@@ -12,8 +13,7 @@ export const handleError = ((err)=>{
 
 
 export const handleUserProfile = async (auth) => {
-  let is_loading = true
-  let error = null
+  loading.set(true)
   let response = null
   await axios.get(`${URL}/api/profile`,{
     headers: {
@@ -22,14 +22,15 @@ export const handleUserProfile = async (auth) => {
       }
   })
   .then((res)=>{
+     isLogin.set(true)
       response = res.data
-      is_loading = false
+       loading.set(false)
   })
   .catch((err)=>{
-      error = err.message
-      is_loading = false
+    handleError(err.response?.data)
+    loading.set(false)
   })
-  return { is_loading, error, response }
+  return response 
 };
 
 export const handleProfileSecurity = async (auth) => {

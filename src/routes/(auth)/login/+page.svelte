@@ -6,6 +6,7 @@
   import {handleAuthToken} from "$lib/store/routes";
   import { browser } from '$app/environment'
   import { goto } from "$app/navigation";
+  import { isLogin } from "$lib/store/profile";
 
   let email = ""
   let password = ""
@@ -15,9 +16,10 @@
   const handleSubmit = (async()=>{
     const response = await handleLoginUser({email, password})
     if(response){
-      browser && sessionStorage.setItem('user', JSON.stringify(response));
-      console.log()
-      // goto("/")
+      handleAuthToken.set(response?.Token)
+      browser && sessionStorage.setItem('user', JSON.stringify(response?.Token));
+      isLogin.set(true)
+      goto("/")
     }
   })
 

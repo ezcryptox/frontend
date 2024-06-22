@@ -1,13 +1,10 @@
 <script>
-    import { routes, url , handleAuthToken, tab, seaser} from "$lib/store/routes";
+    import {  seaser} from "$lib/store/routes";
     import Fa from "./security/_2fa.svelte";
     import ChangePassword from "./security/change-password.svelte";
     import Index from "./security/index.svelte";
     import Phone from "./security/phone.svelte";
 
-    $: console.log($seaser[1])
-
-  
 </script>
 
 

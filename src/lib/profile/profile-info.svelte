@@ -1,22 +1,15 @@
 <script>
   import { handleAuthToken } from "$lib/store/routes";
   import { onMount } from "svelte";
+  import { loading, error } from "$lib/store/error-message";
   import { handleUserProfile } from "$lib/index";
   import Loader from "$lib/loader.svelte";
-  $: isLoading = true;
   $: data = null;
-  $: errorEl = null;
 
   onMount(async () => {
-    const { is_loading, error, response } =
-      await handleUserProfile($handleAuthToken);
+    const  response = await handleUserProfile($handleAuthToken);
     if (response) {
       data = response;
-      isLoading = is_loading;
-    }
-    if (error) {
-      errorEl = error;
-      isLoading = is_loading;
     }
   });
 </script>
@@ -219,13 +212,13 @@
       located in a restricted region territory.
     </p>
   </div>
-{:else if errorEl}
+{:else if $error}
   <div
     style="height: 60vh; display: flex; justify-content: center; align-items: center;"
   >
-    <h2>Something went wrong</h2>
+    <h2>{$error}</h2>
   </div>
-{:else if isLoading}
+{:else if $loading}
   <div style="height: 60vh;">
     <Loader />
   </div>

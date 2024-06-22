@@ -1,8 +1,8 @@
 <script>
 import { slide } from "svelte/transition";
 import { onMount } from "svelte";
-import { screen } from "$lib/store/screen"
-import { handleGiveAway } from "../public_api"
+import { screen } from "$lib/store/screen";
+import { handleGiveAway } from "../public_api";
 $: contestView = 1
 $: contests = []
 

@@ -1,6 +1,7 @@
 
 <script>
-import "../../styles/withdraw.css"
+import "../../styles/withdraw.css";
+
 
 </script>
 

@@ -5578,11 +5578,8 @@
               </p>
             </li>
           </ol>
-          <a
-            href="https://support.poloniex.com/hc/en-us/articles/6571052590999"
-            target="_blank"
-            class="_9dc1def7"
-          >
+          <a href="https://support.poloniex.com/hc/en-us/articles/6571052590999"
+            target="_blank" class="_9dc1def7">
             View more
           </a>
         </div>
