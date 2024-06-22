@@ -3,7 +3,7 @@
   let isDropdownVisible = false;
 
   const options = [
-    { class: "_payItem_1wcwv_211", value: "All Methods" },
+    { class: "_payItem_1wcwv_211", value: '<em style="background-color: rgb(13, 43, 91);"></em>All Methods' },
     {
       class: "_payItem_1wcwv_211",
       value:
@@ -137,6 +137,7 @@
       onOptionSelect(option);
     }
   }
+  
 </script>
 
 <div
@@ -148,7 +149,7 @@
   data-popper-reference-hidden="false"
   data-popper-escaped="false"
   data-popper-placement="bottom"
-  style="z-index: 1020019; position: absolute; inset: 50px auto auto 275px;"
+  style="z-index: 1020019; position: absolute;"
 >
   <div class="el-scrollbar">
     <div class="el-scrollbar__wrap el-scrollbar__wrap--hidden-default">

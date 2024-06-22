@@ -53,7 +53,7 @@ $: showExploire = false
                                     </a>
                                 </li>
                                 <li>
-                                    <a on:click={()=> dispatch("close")} class="d3f3d2f7" target="_self" href="/p2p/markets/buy/btc-usdt">
+                                    <a on:click={()=> dispatch("close")} class="d3f3d2f7" target="_self" href="/p2p/markets?tab=buy&cur=usdt&local=usd">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>P2P</span>

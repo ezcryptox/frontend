@@ -1,6 +1,6 @@
 <script>
 import { screen } from "$lib/store/screen"
-    import MobileMenu from "./mobile-menu.svelte";
+import MobileMenu from "./mobile-menu.svelte";
 import BuyCrypto from "./navbar-components/buy-crypto.svelte";
 import Derivative from "./navbar-components/derivative.svelte";
 import Explore from "./navbar-components/explore.svelte";
@@ -9,7 +9,7 @@ import Trade from "./navbar-components/trade.svelte";
 import { handleAuthToken} from "$lib/store/routes";
 
 $: is_menu = false
-$: isLoggin = false
+
 
 $: showBuyCrypto = false
 $: showTrade = false

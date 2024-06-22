@@ -6,7 +6,7 @@
   import { page } from "$app/stores";
   import { screen } from "$lib/store/screen";
   import { onMount } from "svelte";
-
+  import "../../../../../styles/p2p.css";
   import Progress from "./progress.svelte";
   import Completed from "./complete.svelte";
   import All from "./all.svelte";

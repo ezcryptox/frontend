@@ -1,7 +1,7 @@
 <script>
   import Setup from "../../../lib/p2p/modals/setup.svelte";
   import { screen } from "$lib/store/screen";
-  import "../../../styles/p2p_profile.css";
+  import "../../../../../styles/p2p.css";
 
   $: setUpModalIsOPen = false;
 
@@ -21,10 +21,10 @@
   <div class="userCenterWraper">
     <img
       src="https://v3.polo-static.com/otc-web/static/png/topbj-0ec54305.png"
-      class="bj left"
+      class="bj left" alt=""
     /><img
       src="https://v3.polo-static.com/otc-web/static/png/topbj-0ec54305.png"
-      class="bj right"
+      class="bj right" alt=""
     />
     <dl class="topWraper">
       <dt>
