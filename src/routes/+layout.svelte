@@ -16,6 +16,7 @@ onMount(async()=>{
     let auth = browser && JSON.parse(sessionStorage.getItem('user'));
     if(auth){
         handleAuthToken.set(auth.Token)
+        
     }
 })
 

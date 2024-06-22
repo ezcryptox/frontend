@@ -192,7 +192,7 @@
                       d="M14.0007 7.9974C14.0007 11.3129 11.3129 14.0007 7.9974 14.0007C4.68189 14.0007 1.99414 11.3129 1.99414 7.9974C1.99414 4.68189 4.68189 1.99414 7.9974 1.99414C11.3129 1.99414 14.0007 4.68189 14.0007 7.9974ZM7.9966 11.598C7.55807 11.598 7.12725 11.5197 6.74297 11.4126C6.114 11.2372 5.79952 11.1495 5.61216 10.7034C5.42481 10.2574 5.58775 9.96164 5.91362 9.37019C6.24493 8.76889 6.69434 8.18153 7.22476 8.06153C7.61068 7.97421 8.38253 7.97421 8.76845 8.06153C9.29887 8.18153 9.74828 8.76889 10.0796 9.37019C10.4055 9.96164 10.5684 10.2574 10.381 10.7034C10.1937 11.1495 9.87921 11.2372 9.25024 11.4126C8.86595 11.5197 8.43514 11.598 7.9966 11.598ZM7.99691 7.39616C8.82578 7.39616 9.49772 6.72422 9.49772 5.89535C9.49772 5.06647 8.82578 4.39453 7.99691 4.39453C7.16803 4.39453 6.49609 5.06647 6.49609 5.89535C6.49609 6.72422 7.16803 7.39616 7.99691 7.39616Z"
                       fill="#B8B8B8"
                     ></path></svg
-                  ><a href="javascript:;">Referral Center&gt;</a></span
+                  ><a href="/?javascript">Referral Center&gt;</a></span
                 >
               </div>
               <div class="_288b3943">
@@ -208,7 +208,7 @@
               </div>
               <div class="_5370c68a">
                 <div class="_830a66f5">
-                  <label class="_27004f09">Referral code</label>
+                  <div class="_27004f09">Referral code</div>
                   <div class="a7a784a5"><span>EBMJA7QE</span></div>
                 </div>
                 <div class="bb8d5c1d">
@@ -232,7 +232,7 @@
               </div>
               <div class="_5370c68a">
                 <div class="_830a66f5">
-                  <label class="_27004f09">Referral link&ZeroWidthSpace;</label>
+                  <div class="_27004f09">Referral link&ZeroWidthSpace;</div>
                   <div class="a7a784a5 _21bf3f75">
                     <span
                       >https://poloniex.com/signup?c=EBMJA7QE&amp;r=%2Freferral%2Ftasks</span
@@ -5109,7 +5109,7 @@
         <div data-v-1ed24750="" class="bba24740">
           <div class="flex bad7fa93">
             <div class="_6fb0d8c5">
-              <img
+              <img alt=""
                 src="https://v3.polo-static.com/spot-web/static/img/step_1.a1297cce.svg"
               />
               <div class="bc59fbae">
@@ -5121,7 +5121,7 @@
               </div>
             </div>
             <div class="_6fb0d8c5">
-              <img
+              <img alt=""
                 src="https://v3.polo-static.com/spot-web/static/img/step_2.cbd2c2be.svg"
               />
               <div class="bc59fbae">
@@ -5136,7 +5136,7 @@
               </div>
             </div>
             <div class="_6fb0d8c5">
-              <img
+              <img alt=""
                 src="https://v3.polo-static.com/spot-web/static/img/step_3.cb2a1857.svg"
               />
               <div class="bc59fbae">

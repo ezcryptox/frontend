@@ -1,6 +1,15 @@
 import axios from "axios"
-import { ServerURl } from "$lib/backendUrl"
+import { ServerURl } from "$lib/backendUrl";
+import { error } from "$lib/store/error-message"
 const URL = ServerURl()
+
+export const handleError = ((err)=>{
+  error.set(err)
+  setTimeout(()=>{
+    error.set(null)
+  },4000)
+})
+
 
 export const handleUserProfile = async (auth) => {
   let is_loading = true
