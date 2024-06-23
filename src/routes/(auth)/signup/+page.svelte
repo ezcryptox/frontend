@@ -22,7 +22,7 @@
   $: track = !email || password.length < 3 || isloading;
   $: showPassword = false;
   $: showRefCode = false;
-  $: refCode = $page.url.searchParams.get("c") || null;
+  $: refCode = $page.url.searchParams.get("c") || "";
 
   // onMount(async()=>{
   //  let respose = await location()
@@ -250,7 +250,7 @@
                 <input
                   type="text"
                   placeholder="10% off trading fee with a code! "
-                  value={refCode}
+                  bind:value={refCode}
                   maxlength="9"
                 />
                 <!---->

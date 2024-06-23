@@ -5,3 +5,6 @@ export let profile = writable(_profile)
 
 let _islogin = null
 export let isLogin = writable(_islogin)
+
+let _user = []
+export let user = writable(_user)
