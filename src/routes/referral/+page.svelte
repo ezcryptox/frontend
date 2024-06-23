@@ -23,7 +23,7 @@
     }
   });
 </script>
-
+<!--  -->
 <div class="wc-referral">
   <div data-v-1ed24750="" class="home">
     {#if isSigned}
