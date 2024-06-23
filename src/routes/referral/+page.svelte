@@ -37,7 +37,7 @@
         <div data-v-1ed24750="" class="bba24740">
           <div class="flex bad7fa93">
             <div class="_6fb0d8c5">
-              <img
+              <img alt=""
                 src="https://v3.polo-static.com/spot-web/static/img/step_1.a1297cce.svg"
               />
               <div class="bc59fbae">
@@ -49,7 +49,7 @@
               </div>
             </div>
             <div class="_6fb0d8c5">
-              <img
+              <img alt=""
                 src="https://v3.polo-static.com/spot-web/static/img/step_2.cbd2c2be.svg"
               />
               <div class="bc59fbae">
@@ -64,7 +64,7 @@
               </div>
             </div>
             <div class="_6fb0d8c5">
-              <img
+              <img alt=""
                 src="https://v3.polo-static.com/spot-web/static/img/step_3.cb2a1857.svg"
               />
               <div class="bc59fbae">
@@ -506,11 +506,8 @@
               </p>
             </li>
           </ol>
-          <a
-            href="https://support.poloniex.com/hc/en-us/articles/6571052590999"
-            target="_blank"
-            class="_9dc1def7"
-          >
+          <a href="https://support.poloniex.com/hc/en-us/articles/6571052590999"
+            target="_blank" class="_9dc1def7">
             View more
           </a>
         </div>

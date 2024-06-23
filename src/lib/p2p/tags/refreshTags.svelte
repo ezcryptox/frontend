@@ -12,6 +12,7 @@
       onOptionSelect(option);
     }
   }
+  
 </script>
 
 <div
@@ -23,7 +24,7 @@
   data-popper-reference-hidden="false"
   data-popper-escaped="false"
   data-popper-placement="bottom-start"
-  style="z-index: 1020031; position: absolute; inset: 50px auto auto 858px;"
+  style="z-index: 1020031; position: absolute;"
 >
   <div class="el-select-dropdown" style="min-width: 190px;">
     <div class="el-scrollbar" style="">

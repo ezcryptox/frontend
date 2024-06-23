@@ -1,6 +1,7 @@
 
 <script>
-import "../../styles/withdraw.css"
+import "../../styles/withdraw.css";
+
 
 </script>
 
@@ -12,7 +13,7 @@ import "../../styles/withdraw.css"
                 <div class="b14bb9d6">Transfer From</div>
                 <div class="f3564e86">
                     <div class="caf7723c">account</div>
-                    <div class="c6df21d0" aria-is-swapped="false">
+                    <div class="c6df21d0" >
                         <div class="e1d7e7fd">
                             <p>from</p>
                             <p>to</p>

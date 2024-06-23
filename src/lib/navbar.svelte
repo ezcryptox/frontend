@@ -1,16 +1,14 @@
 <script>
 import { screen } from "$lib/store/screen"
-    import MobileMenu from "./mobile-menu.svelte";
+import MobileMenu from "./mobile-menu.svelte";
 import BuyCrypto from "./navbar-components/buy-crypto.svelte";
 import Derivative from "./navbar-components/derivative.svelte";
 import Explore from "./navbar-components/explore.svelte";
 import Notification from "./navbar-components/notification.svelte";
 import Trade from "./navbar-components/trade.svelte";
-import { handleAuthToken} from "$lib/store/routes";
+import { isLogin } from "$lib/store/profile";
 
 $: is_menu = false
-$: isLoggin = false
-
 $: showBuyCrypto = false
 $: showTrade = false
 $: showDerivative = false
@@ -100,7 +98,7 @@ $: showExploire = false
             </div>
            
             <div>
-         {#if !$handleAuthToken}
+         {#if !$isLogin}
           
                 {#if $screen > 500}
                 <div class="b6d9e754">
@@ -115,7 +113,7 @@ $: showExploire = false
                 <!---->
         
          {/if}
-         {#if $handleAuthToken}
+         {#if $isLogin}
          <div class="a7ddb18f">
             <a class="ba0dfc48" href="/wallet/?tab=spot">Wallet</a>
             <!-- <a href="/activity" class="ba0dfc48">Activity</a> -->

@@ -89,7 +89,7 @@
 
 <section class="_FilterNav_1wcwv_9">
   <div class="_inner_1wcwv_23">
-    <div>
+    <div style=" width: 100%;">
       <div
         class="el-input el-input--default el-input--suffix _coinInput_1wcwv_40"
       >

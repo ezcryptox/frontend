@@ -1,17 +1,16 @@
 <script>
-  export let selectedOption = "All Advertisers";
-  export let onOptionSelect;
-  let isDropdownVisible = false;
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher()
+  export let selectedOption;
+  let isDropdownVisible = true;
 
   const options = ["All Advertisers", "Thumbs-Up", "Verified"];
 
   function selectOption(option) {
     selectedOption = option;
-    isDropdownVisible = false;
-    if (onOptionSelect) {
-      onOptionSelect(option);
-    }
+    dispatch("close", option)
   }
+  
 </script>
 
 <div
@@ -23,7 +22,7 @@
   data-popper-reference-hidden="false"
   data-popper-escaped="false"
   data-popper-placement="bottom-start"
-  style="z-index: 1020021; position: absolute; inset: 50px auto auto 652px;"
+  style="z-index: 1020021; position: absolute; "
 >
   <div class="el-select-dropdown" style="min-width: 189px;">
     <div class="el-scrollbar">

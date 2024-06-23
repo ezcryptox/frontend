@@ -187,21 +187,7 @@
     .vfm--absolute {
         position: absolute;
     }
-    .uniframe-root.vfm__content>.icon-close {
-        position: absolute;
-        right: 24px;
-        top: 24px;
-        cursor: pointer;
-        -webkit-appearance: none;
-        outline: none;
-        border: none;
-        -webkit-user-select: none;
-        user-select: none;
-        background-color: #0000;
-        width: 24px;
-        height: 24px;
-        transition: opacity .3s;
-    }
+
     
     </style>
     
