@@ -6,8 +6,6 @@
   $: fiatIsOpen = false;
   $: typeIsOpen = false;
 
- 
-
   function openCalendar() {
     calendarOpen = !calendarOpen;
     coinIsOpen = fiatIsOpen = typeIsOpen = false;
