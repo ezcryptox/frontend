@@ -40,18 +40,15 @@
   });
 </script>
 
-<!-- ////////////// -->
 {#if QrCode_src && refCodeModalIsOpen}
   <QrCode {refCode} {QrCode_src} {handleRefModal} />
 {/if}
-<!-- //////////// -->
-<!--  -->
 <div class="wc-referral">
   <div data-v-1ed24750="" class="home">
-    {#if isLogin}
+    {#if $isLogin}
       <SignedBanner {handleRefModal} />
     {/if}
-    {#if !isLogin}
+    {#if !$isLogin}
       <UnsignedBanner />
     {/if}
     <div data-v-1ed24750="" class="widget commission">

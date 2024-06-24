@@ -160,6 +160,9 @@
           ><span
             ><strong>$</strong> commissions have been refunded to users</span
           ><span class="_5e79b267"
+            on:click={updateModalOpen}
+            role="button"
+            tabindex={0}
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
