@@ -2,7 +2,24 @@
   import { onMount } from "svelte";
   import { user } from "$lib/store/profile";
 
+  export let _handleRefModal = null;
+
+  function handleRefModal() {
+    if (_handleRefModal) _handleRefModal();
+  }
+
   $: refCode = "";
+
+  function copyToClipboard(text) {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        console.log("Text " + text + " to clipboard");
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  }
 
   onMount(() => {
     const storedData = sessionStorage.getItem("user");
@@ -66,10 +83,17 @@
       </div>
     </div>
     <div class="_5370c68a">
-      <div class="_830a66f5">
+      <div
+        class="_830a66f5"
+        on:click={copyToClipboard("refCode")}
+        tabindex={0}
+        role="button"
+      >
         <label class="_27004f09">Referral link&ZeroWidthSpace;</label>
         <div class="a7a784a5 _21bf3f75">
-          <span>{`https://poloniex.com/signup?c=${refCode}`}</span><span>{refCode}</span>
+          <span>{`https://poloniex.com/signup?c=${refCode}`}</span><span
+            >{refCode}</span
+          >
         </div>
       </div>
       <div class="bb8d5c1d">
@@ -90,8 +114,16 @@
       </div>
     </div>
     <div class="flex justify-between e8611f99">
-      <button class="_1a0f7f35"> Invite Friends Now </button>
-      <div class="_99bda4e8 qrcode-button flex">
+      <button class="_1a0f7f35" on:click={handleRefModal}>
+        Invite Friends Now
+      </button>
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <div
+        class="_99bda4e8 qrcode-button flex"
+        on:click={handleRefModal}
+        role="button"
+        tabindex="0"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="26"

@@ -17,6 +17,12 @@
   $: loading = false;
   $: shareCodeModalIsOpen = true;
 
+  export let handleRefModal = null;
+  
+  function _handleRefModal() {
+    if (handleRefModal) handleRefModal();
+  }
+
   function updateModalOpen() {
     HModalOpen = !HModalOpen;
   }
@@ -35,8 +41,6 @@
 {#if HModalOpen}
   <HModal {updateModalOpen} />
 {/if}
-
-
 
 <div data-v-1ed24750="" class="banner">
   <div data-v-1ed24750="" class="_8ca0ec16 _1c553aba">
@@ -192,7 +196,7 @@
         </div>
       </div>
       {#if shareCodeModalIsOpen}
-        <ShareCode />
+        <ShareCode {_handleRefModal} />
       {/if}
     </div>
     <div data-v-567406fe="" class="polo-notice-list-wrapper b8c2c2df">

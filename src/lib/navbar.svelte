@@ -17,7 +17,7 @@
 
   // removeme (remove the onMount)
   onMount(() => {
-    isLogin.set(true);
+    if (sessionStorage.get("user")) isLogin.set(true);
   });
 </script>
 
@@ -212,7 +212,7 @@
               <use xlink:href="#uniframe-icon-support"></use>
             </svg>
           </a>
-          
+
           <button class="eb58c575">
             <span>EN/USD</span>
             <svg fill="currentColor" style="width: 16px; height: 16px;">

@@ -8,11 +8,20 @@
   import { handleExchanegerate } from "$lib/home-page/hook";
   import SignedBanner from "../../lib/referrals/signedBanner.svelte";
   import UnsignedBanner from "../../lib/referrals/unsignedBanner.svelte";
+  import QrCode from "../../lib/referrals/Modals/qrCode.svelte";
 
   $: tab = 1;
   let respons = [];
   $: loading = false;
   $: isSigned = true;
+
+  $: refCode = "";
+  $: QrCode_src = "";
+  $: refCodeModalIsOpen = false;
+
+  function handleRefModal() {
+    refCodeModalIsOpen = !refCodeModalIsOpen;
+  }
 
   onMount(async () => {
     loading = true;
@@ -21,14 +30,25 @@
     if (response) {
       respons = response;
     }
+    const storedData = sessionStorage.getItem("user");
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      refCode = parsedData?.user?.refCode;
+      QrCode_src = parsedData?.user?.QrCode_src;
+    }
   });
 </script>
 
+<!-- ////////////// -->
+{#if QrCode_src && refCodeModalIsOpen}
+  <QrCode {refCode} {QrCode_src} {handleRefModal} />
+{/if}
+<!-- //////////// -->
 <!--  -->
 <div class="wc-referral">
   <div data-v-1ed24750="" class="home">
     {#if isSigned}
-      <SignedBanner />
+      <SignedBanner {handleRefModal} />
     {/if}
     {#if !isSigned}
       <UnsignedBanner />
