@@ -17,7 +17,7 @@
 
   // removeme (remove the onMount)
   onMount(() => {
-    if (sessionStorage.get("user")) isLogin.set(true);
+    if (sessionStorage.getItem("user")) isLogin.set(true);
   });
 </script>
 
