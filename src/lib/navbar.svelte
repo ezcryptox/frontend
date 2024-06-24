@@ -168,7 +168,7 @@
                   <div class="a51ab1c0">Fee Tier</div>
                   <div class="a92347ea">View Trading Tier Status</div>
                 </a>
-                <a href="/?referral" class="e1027c7a">
+                <a href="/referral" class="e1027c7a">
                   <svg fill="currentColor" style="width: 20px; height: 20px;">
                     <use xlink:href="#uniframe-icon-referrals"></use>
                   </svg>
