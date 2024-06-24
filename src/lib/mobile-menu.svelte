@@ -203,7 +203,7 @@ $: showExploire = false
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="?/referral">
+                                    <a class="d3f3d2f7" target="_self" href="/referral">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Referral</span>
