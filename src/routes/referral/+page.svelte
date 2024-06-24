@@ -9,6 +9,7 @@
   import SignedBanner from "../../lib/referrals/signedBanner.svelte";
   import UnsignedBanner from "../../lib/referrals/unsignedBanner.svelte";
   import QrCode from "../../lib/referrals/Modals/qrCode.svelte";
+  import { isLogin } from "$lib/store/profile";
 
   $: tab = 1;
   let respons = [];
@@ -47,10 +48,10 @@
 <!--  -->
 <div class="wc-referral">
   <div data-v-1ed24750="" class="home">
-    {#if isSigned}
+    {#if isLogin}
       <SignedBanner {handleRefModal} />
     {/if}
-    {#if !isSigned}
+    {#if !isLogin}
       <UnsignedBanner />
     {/if}
     <div data-v-1ed24750="" class="widget commission">
