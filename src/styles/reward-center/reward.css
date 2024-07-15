@@ -1192,9 +1192,6 @@
     color: #000
 }
 
-[data-theme=dark] .modal-box {
-    color: #fff
-}
 
 .modal-box .close {
     top: 31px;
@@ -1220,9 +1217,7 @@
     transform: rotate(-45deg)
 }
 
-[data-theme=dark] .modal-box .close>.icon-close:after,[data-theme=dark] .modal-box .close>.icon-close:before {
-    background-color: #e3e3e3
-}
+
 
 .modal-box .close>.icon-close:after {
     transform: rotate(45deg)
@@ -1284,9 +1279,6 @@
     overflow: auto
 }
 
-[data-theme=dark] .vm--modal {
-    box-shadow: 0 6px 16px rgba(0,0,0,.6)
-}
 
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -1419,19 +1411,10 @@
     background-color: #131316
 }
 
-[data-theme=dark] .polo-btn-button.polo-btn-primary {
-    color: #000;
-    background-color: #fff
-}
 
 .polo-btn-button.polo-btn-primary:hover {
     color: #fff;
     background-color: #2b2b2e
-}
-
-[data-theme=dark] .polo-btn-button.polo-btn-primary:hover {
-    color: #000;
-    background-color: #fafafa
 }
 
 .polo-btn-button.polo-btn-primary:active {
@@ -1439,41 +1422,22 @@
     background-color: #2b2b2e
 }
 
-[data-theme=dark] .polo-btn-button.polo-btn-primary:active {
-    color: #000;
-    background-color: #fafafa
+.polo-btn-button.polo-btn-positive:active {
+    color: #fff;
+    background-color: #106f44
 }
-
-[data-theme=dark] .polo-btn-button.polo-btn-primary .icon-loading {
-    border-color: #000
-}
-
 .polo-btn-button.polo-btn-positive {
     color: #fff;
     background-color: #1a8f5c
 }
 
-.polo-btn-button.polo-btn-positive:hover,[data-theme=dark] .polo-btn-button.polo-btn-positive {
+.polo-btn-button.polo-btn-positive:hover {
     color: #fff;
     background-color: #106f44
 }
 
-[data-theme=dark] .polo-btn-button.polo-btn-positive:hover {
-    color: #fff;
-    background-color: #119e5f
-}
 
-.polo-btn-button.polo-btn-positive:active {
-    color: #fff;
-    background-color: #106f44
-}
-
-[data-theme=dark] .polo-btn-button.polo-btn-positive:active {
-    color: #fff;
-    background-color: #119e5f
-}
-
-.polo-btn-button.polo-btn-positive .icon-loading,[data-theme=dark] .polo-btn-button.polo-btn-positive .icon-loading {
+.polo-btn-button.polo-btn-positive .icon-loading {
     border-color: #fff
 }
 
@@ -1482,27 +1446,20 @@
     background-color: #c44749
 }
 
-.polo-btn-button.polo-btn-negative:hover,[data-theme=dark] .polo-btn-button.polo-btn-negative {
+.polo-btn-button.polo-btn-negative:hover {
     color: #fff;
     background-color: #9a2c2e
 }
 
-[data-theme=dark] .polo-btn-button.polo-btn-negative:hover {
-    color: #fff;
-    background-color: #d64d4f
-}
 
 .polo-btn-button.polo-btn-negative:active {
     color: #fff;
     background-color: #9a2c2e
 }
 
-[data-theme=dark] .polo-btn-button.polo-btn-negative:active {
-    color: #fff;
-    background-color: #d64d4f
-}
 
-.polo-btn-button.polo-btn-negative .icon-loading,[data-theme=dark] .polo-btn-button.polo-btn-negative .icon-loading {
+
+.polo-btn-button.polo-btn-negative .icon-loading {
     border-color: #fff
 }
 
@@ -1511,38 +1468,24 @@
     background-color: #f2f2f2
 }
 
-[data-theme=dark] .polo-btn-button.polo-btn-secondary {
-    color: #fff;
-    background-color: #2b2b2e
-}
-
 .polo-btn-button.polo-btn-secondary:hover {
     color: #000;
     background-color: #e3e3e3
 }
 
-[data-theme=dark] .polo-btn-button.polo-btn-secondary:hover {
-    color: #fff;
-    background-color: #616161
-}
 
 .polo-btn-button.polo-btn-secondary:active {
     color: #000;
     background-color: #e3e3e3
 }
 
-[data-theme=dark] .polo-btn-button.polo-btn-secondary:active {
-    color: #fff;
-    background-color: #616161
-}
+
 
 .polo-btn-button.polo-btn-secondary .icon-loading {
     border-color: #000
 }
 
-[data-theme=dark] .polo-btn-button.polo-btn-secondary .icon-loading {
-    border-color: #fff
-}
+
 
 .polo-btn-button.is-disabled:disabled {
     cursor: not-allowed;
@@ -1552,70 +1495,48 @@
     border-color: transparent
 }
 
-[data-theme=dark] .polo-btn-button.is-disabled:disabled {
-    color: #878787;
-    background-color: #616161
-}
+
 
 .polo-btn-text.polo-btn-primary {
     color: #131316
 }
 
-[data-theme=dark] .polo-btn-text.polo-btn-primary {
-    color: #fff
-}
 
 .polo-btn-text.polo-btn-primary:hover {
     color: #2b2b2e
-}
-
-[data-theme=dark] .polo-btn-text.polo-btn-primary:hover {
-    color: #fafafa
 }
 
 .polo-btn-text.polo-btn-primary:active {
     color: #2b2b2e
 }
 
-[data-theme=dark] .polo-btn-text.polo-btn-primary:active {
-    color: #fafafa
-}
 
 .polo-btn-text.polo-btn-primary .icon-loading {
     border-color: #131316
 }
 
-[data-theme=dark] .polo-btn-text.polo-btn-primary .icon-loading {
-    border-color: #fff
-}
+
 
 .polo-btn-text.polo-btn-positive {
     color: #1a8f5c
 }
 
-.polo-btn-text.polo-btn-positive:hover,[data-theme=dark] .polo-btn-text.polo-btn-positive {
+
+
+.polo-btn-text.polo-btn-positive:hover {
     color: #106f44
 }
 
-[data-theme=dark] .polo-btn-text.polo-btn-positive:hover {
-    color: #119e5f
-}
 
 .polo-btn-text.polo-btn-positive:active {
     color: #106f44
 }
 
-[data-theme=dark] .polo-btn-text.polo-btn-positive:active {
-    color: #119e5f
-}
 
 .polo-btn-text.polo-btn-positive .icon-loading {
     border-color: #1a8f5c
 }
 
-[data-theme=dark] .polo-btn-text.polo-btn-positive .icon-loading {
-    border-color: #106f44
-}
 
 .polo-btn-text.polo-btn-negative {
     color: #c44749
@@ -1625,16 +1546,8 @@
     color: #9a2c2e
 }
 
-[data-theme=dark] .polo-btn-text.polo-btn-negative:hover {
-    color: #d64d4f
-}
-
 .polo-btn-text.polo-btn-negative:active {
     color: #9a2c2e
-}
-
-[data-theme=dark] .polo-btn-text.polo-btn-negative:active {
-    color: #d64d4f
 }
 
 .polo-btn-text.polo-btn-negative .icon-loading {
@@ -1645,29 +1558,24 @@
     color: #878787
 }
 
-.polo-btn-text.polo-btn-secondary:hover,[data-theme=dark] .polo-btn-text.polo-btn-secondary {
+
+
+.polo-btn-text.polo-btn-secondary:hover{
     color: #616161
 }
 
-[data-theme=dark] .polo-btn-text.polo-btn-secondary:hover {
-    color: #878787
-}
 
 .polo-btn-text.polo-btn-secondary:active {
     color: #616161
 }
 
-[data-theme=dark] .polo-btn-text.polo-btn-secondary:active {
-    color: #878787
-}
+
 
 .polo-btn-text.polo-btn-secondary .icon-loading {
     border-color: #000
 }
 
-[data-theme=dark] .polo-btn-text.polo-btn-secondary .icon-loading {
-    border-color: #fff
-}
+
 
 .polo-btn-text.is-disabled:disabled {
     cursor: not-allowed;
@@ -1677,18 +1585,11 @@
     border-color: transparent
 }
 
-[data-theme=dark] .polo-btn-text.is-disabled:disabled {
-    color: #b8b8b8
-}
+
 
 .polo-btn-outline.polo-btn-primary {
     color: #131316;
     border-color: #131316
-}
-
-[data-theme=dark] .polo-btn-outline.polo-btn-primary {
-    color: #fff;
-    border-color: #fff
 }
 
 .polo-btn-outline.polo-btn-primary:hover {
@@ -1696,89 +1597,58 @@
     border-color: #2b2b2e
 }
 
-[data-theme=dark] .polo-btn-outline.polo-btn-primary:hover {
-    color: #fafafa;
-    border-color: #fafafa
-}
+
 
 .polo-btn-outline.polo-btn-primary:active {
     color: #2b2b2e;
     border-color: #2b2b2e
 }
 
-[data-theme=dark] .polo-btn-outline.polo-btn-primary:active {
-    color: #fafafa;
-    border-color: #fafafa
-}
+
 
 .polo-btn-outline.polo-btn-primary .icon-loading {
     border-color: #131316
 }
 
-[data-theme=dark] .polo-btn-outline.polo-btn-primary .icon-loading {
-    border-color: #fff
-}
 
 .polo-btn-outline.polo-btn-positive {
     color: #1a8f5c;
     border-color: #1a8f5c
 }
 
-.polo-btn-outline.polo-btn-positive:hover,[data-theme=dark] .polo-btn-outline.polo-btn-positive {
+
+
+.polo-btn-outline.polo-btn-positive:hover {
     color: #106f44;
     border-color: #106f44
 }
 
-[data-theme=dark] .polo-btn-outline.polo-btn-positive:hover {
-    color: #119e5f;
-    border-color: #119e5f
-}
 
 .polo-btn-outline.polo-btn-positive:active {
     color: #106f44;
     border-color: #106f44
 }
 
-[data-theme=dark] .polo-btn-outline.polo-btn-positive:active {
-    color: #119e5f;
-    border-color: #119e5f
-}
-
 .polo-btn-outline.polo-btn-positive .icon-loading {
     border-color: #1a8f5c
 }
 
-[data-theme=dark] .polo-btn-outline.polo-btn-positive .icon-loading {
-    border-color: #106f44
-}
 
 .polo-btn-outline.polo-btn-negative {
     color: #c44749;
     border-color: #c44749
 }
 
-[data-theme=dark] .polo-btn-outline.polo-btn-negative {
-    border-color: #9a2c2e
-}
 
 .polo-btn-outline.polo-btn-negative:hover {
     color: #9a2c2e;
     border-color: #9a2c2e
 }
 
-[data-theme=dark] .polo-btn-outline.polo-btn-negative:hover {
-    color: #d64d4f;
-    border-color: #d64d4f
-}
 
 .polo-btn-outline.polo-btn-negative:active {
     color: #9a2c2e;
     border-color: #9a2c2e
-}
-
-[data-theme=dark] .polo-btn-outline.polo-btn-negative:active {
-    color: #d64d4f;
-    border-color: #d64d4f
 }
 
 .polo-btn-outline.polo-btn-negative .icon-loading {
@@ -1790,38 +1660,24 @@
     border-color: #f2f2f2
 }
 
-[data-theme=dark] .polo-btn-outline.polo-btn-secondary {
-    color: #fff;
-    border-color: #2b2b2e
-}
-
 .polo-btn-outline.polo-btn-secondary:hover {
     color: #000;
     border-color: #e3e3e3
 }
 
-[data-theme=dark] .polo-btn-outline.polo-btn-secondary:hover {
-    color: #fff;
-    border-color: #616161
-}
 
 .polo-btn-outline.polo-btn-secondary:active {
     color: #000;
     border-color: #e3e3e3
 }
 
-[data-theme=dark] .polo-btn-outline.polo-btn-secondary:active {
-    color: #fff;
-    border-color: #616161
-}
+
 
 .polo-btn-outline.polo-btn-secondary .icon-loading {
     border-color: #000
 }
 
-[data-theme=dark] .polo-btn-outline.polo-btn-secondary .icon-loading {
-    border-color: #fff
-}
+
 
 .polo-btn-outline.is-disabled:disabled {
     cursor: not-allowed;
@@ -1831,10 +1687,6 @@
     border-color: #e3e3e3
 }
 
-[data-theme=dark] .polo-btn-outline.is-disabled:disabled {
-    color: #616161;
-    border-color: #616161
-}
 
 @-webkit-keyframes ani-loading {
     0% {
@@ -2742,41 +2594,6 @@
     width: 20px
 }
 
-.ant-tabs-nav .ant-tabs-tab {
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 34px;
-    color: #878787
-}
-
-[data-theme=dark] .ant-tabs-nav .ant-tabs-tab {
-    color: #b8b8b8
-}
-
-.ant-tabs-nav .ant-tabs-tab.ant-tabs-tab-active {
-    color: #131316
-}
-
-[data-theme=dark] .ant-tabs-nav .ant-tabs-tab.ant-tabs-tab-active {
-    color: #fff
-}
-
-.ant-tabs-bar {
-    border-color: #f2f2f2
-}
-
-[data-theme=dark] .ant-tabs-bar {
-    border-color: #2b2b2e
-}
-
-.ant-tabs-ink-bar {
-    height: 4px!important;
-    background: #1a8f5c
-}
-
-[data-theme=dark] .ant-tabs-ink-bar {
-    background: #119e5f
-}
 
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome

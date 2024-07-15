@@ -985,7 +985,8 @@ html[data-uniframe-theme=dark] .a7c0fc49 .eb25c4fd {
 .a7c0fc49 .a1089035 {
     white-space: normal;
     position: relative;
-    display: inline-block;
+    display: block;
+    text-align: left;
     margin: 7px 0;
     font-size: 14px;
     line-height: 22px;

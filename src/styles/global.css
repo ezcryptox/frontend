@@ -530,3 +530,240 @@ table {
 li, ol, ul {
     list-style-type: none;
 }
+
+
+
+
+.ant-tabs-nav .ant-tabs-tab {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+    color: #878787
+}
+
+[data-theme=dark] .ant-tabs-nav .ant-tabs-tab {
+    color: #b8b8b8
+}
+
+.ant-tabs-nav .ant-tabs-tab.ant-tabs-tab-active {
+    color: #131316
+}
+
+[data-theme=dark] .ant-tabs-nav .ant-tabs-tab.ant-tabs-tab-active {
+    color: #fff
+}
+
+.ant-tabs-bar {
+    border-color: #f2f2f2
+}
+
+[data-theme=dark] .ant-tabs-bar {
+    border-color: #2b2b2e
+}
+
+.ant-tabs-ink-bar {
+    height: 4px!important;
+    background: #1a8f5c
+}
+
+[data-theme=dark] .ant-tabs-ink-bar {
+    background: #119e5f
+}
+
+/* DARK THEME */
+
+[data-theme=dark] .modal-box {
+    color: #fff
+}
+[data-theme=dark] .modal-box .close>.icon-close:after,[data-theme=dark] .modal-box .close>.icon-close:before {
+    background-color: #e3e3e3
+}
+
+[data-theme=dark] .vm--modal {
+    box-shadow: 0 6px 16px rgba(0,0,0,.6)
+}
+[data-theme=dark] .polo-btn-button.polo-btn-primary {
+    color: #000;
+    background-color: #fff
+}
+
+[data-theme=dark] .polo-btn-button.polo-btn-primary:hover {
+    color: #000;
+    background-color: #fafafa
+}
+[data-theme=dark] .polo-btn-button.polo-btn-primary:active {
+    color: #000;
+    background-color: #fafafa
+}
+
+[data-theme=dark] .polo-btn-button.polo-btn-primary .icon-loading {
+    border-color: #000
+}
+
+
+[data-theme=dark] .polo-btn-button.polo-btn-positive:hover {
+    color: #fff;
+    background-color: #119e5f
+}
+
+[data-theme=dark] .polo-btn-button.polo-btn-positive:active {
+    color: #fff;
+    background-color: #119e5f
+}
+[data-theme=dark] .polo-btn-button.polo-btn-positive {
+    color: #fff;
+    background-color: #106f44
+}
+[data-theme=dark] .polo-btn-button.polo-btn-positive .icon-loading {
+    border-color: #fff
+}
+[data-theme=dark] .polo-btn-button.polo-btn-negative {
+    color: #fff;
+    background-color: #9a2c2e
+}
+[data-theme=dark] .polo-btn-button.polo-btn-negative:hover {
+    color: #fff;
+    background-color: #d64d4f
+}
+[data-theme=dark] .polo-btn-button.polo-btn-negative:active {
+    color: #fff;
+    background-color: #d64d4f
+}
+[data-theme=dark] .polo-btn-button.polo-btn-negative .icon-loading {
+    border-color: #fff
+}
+
+[data-theme=dark] .polo-btn-button.polo-btn-secondary {
+    color: #fff;
+    background-color: #2b2b2e
+}
+[data-theme=dark] .polo-btn-button.polo-btn-secondary:hover {
+    color: #fff;
+    background-color: #616161
+}
+[data-theme=dark] .polo-btn-button.polo-btn-secondary:active {
+    color: #fff;
+    background-color: #616161
+}
+[data-theme=dark] .polo-btn-button.polo-btn-secondary .icon-loading {
+    border-color: #fff
+}
+[data-theme=dark] .polo-btn-button.is-disabled:disabled {
+    color: #878787;
+    background-color: #616161
+}
+[data-theme=dark] .polo-btn-text.polo-btn-primary {
+    color: #fff
+}
+
+[data-theme=dark] .polo-btn-text.polo-btn-primary:hover {
+    color: #fafafa
+}
+[data-theme=dark] .polo-btn-text.polo-btn-primary:active {
+    color: #fafafa
+}
+[data-theme=dark] .polo-btn-text.polo-btn-primary .icon-loading {
+    border-color: #fff
+}
+[data-theme=dark] .polo-btn-text.polo-btn-positive:hover {
+    color: #119e5f
+}
+
+[data-theme=dark] .polo-btn-text.polo-btn-positive:active {
+    color: #119e5f
+}
+
+[data-theme=dark] .polo-btn-text.polo-btn-positive .icon-loading {
+    border-color: #106f44
+}
+[data-theme=dark] .polo-btn-text.polo-btn-secondary:active {
+    color: #878787
+}
+[data-theme=dark] .polo-btn-text.polo-btn-secondary .icon-loading {
+    border-color: #fff
+}
+[data-theme=dark] .polo-btn-outline.polo-btn-primary:active {
+    color: #fafafa;
+    border-color: #fafafa
+}
+[data-theme=dark] .polo-btn-outline.polo-btn-primary:hover {
+    color: #fafafa;
+    border-color: #fafafa
+}
+[data-theme=dark] .polo-btn-outline.polo-btn-primary {
+    color: #fff;
+    border-color: #fff
+}
+[data-theme=dark] .polo-btn-text.is-disabled:disabled {
+    color: #b8b8b8
+}
+[data-theme=dark] .polo-btn-outline.polo-btn-primary .icon-loading {
+    border-color: #fff
+}
+
+[data-theme=dark] .polo-btn-outline.polo-btn-positive:hover {
+    color: #119e5f;
+    border-color: #119e5f
+}
+[data-theme=dark] .polo-btn-text.polo-btn-negative:active {
+    color: #d64d4f
+}
+
+[data-theme=dark] .polo-btn-text.polo-btn-negative:hover {
+    color: #d64d4f
+}
+
+[data-theme=dark] .polo-btn-text.polo-btn-secondary:hover {
+    color: #878787
+}
+[data-theme=dark] .polo-btn-text.polo-btn-positive {
+    color: #106f44
+}
+[data-theme=dark] .polo-btn-text.polo-btn-secondary {
+    color: #616161
+}
+
+[data-theme=dark] .polo-btn-outline.polo-btn-secondary {
+    color: #fff;
+    border-color: #2b2b2e
+}
+[data-theme=dark] .polo-btn-outline.polo-btn-positive {
+    color: #106f44;
+    border-color: #106f44
+}
+
+[data-theme=dark] .polo-btn-outline.polo-btn-positive .icon-loading {
+    border-color: #106f44
+}
+[data-theme=dark] .polo-btn-outline.polo-btn-positive:active {
+    color: #119e5f;
+    border-color: #119e5f
+}
+[data-theme=dark] .polo-btn-outline.polo-btn-negative {
+    border-color: #9a2c2e
+}
+[data-theme=dark] .polo-btn-outline.polo-btn-negative:hover {
+    color: #d64d4f;
+    border-color: #d64d4f
+}
+
+[data-theme=dark] .polo-btn-outline.polo-btn-negative:active {
+    color: #d64d4f;
+    border-color: #d64d4f
+}
+[data-theme=dark] .polo-btn-outline.polo-btn-secondary:hover {
+    color: #fff;
+    border-color: #616161
+}
+[data-theme=dark] .polo-btn-outline.polo-btn-secondary:active {
+    color: #fff;
+    border-color: #616161
+}
+[data-theme=dark] .polo-btn-outline.polo-btn-secondary .icon-loading {
+    border-color: #fff
+}
+
+[data-theme=dark] .polo-btn-outline.is-disabled:disabled {
+    color: #616161;
+    border-color: #616161
+}

@@ -19,7 +19,7 @@
   $: showNotification = false;
   $: showLanguageModal = false;
   $: darkMode = getCookie("theme","light") === "dark"
-
+  $: unreadnotifications = "0"
   // removeme (remove the onMount)
   onMount(() => {
     if (sessionStorage.getItem("user")) isLogin.set(true);
@@ -235,6 +235,7 @@
 
           <button
             class="dd8dbce9"
+            aria-account-unread="{unreadnotifications}"
             on:mouseenter={() => (showNotification = true)}
             on:mouseleave={() => (showNotification = false)}
           >
