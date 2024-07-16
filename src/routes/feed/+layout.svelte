@@ -3,11 +3,13 @@
      import "../../styles/feed/in-depth.css";
     import "../../styles/feed/flash.css";
     import Footer from "$lib/footer.svelte";
-    document.documentElement.setAttribute("data-entry", "feed");
+    import { browser } from '$app/environment'
     import { page } from "$app/stores";
 
     import { onMount } from "svelte";
-
+    if (browser) {
+        document.documentElement.setAttribute("data-entry", "feed");
+    }
     onMount(() => {
         const targetElement = document.querySelector(".C7jTF");
         const handleScroll = () => {

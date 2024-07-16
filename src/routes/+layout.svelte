@@ -1,66 +1,15 @@
-<script>
-import { routes, url , handleAuthToken, tab, seaser} from "$lib/store/routes";
-import { browser } from '$app/environment';
-import { page } from '$app/stores';
-import { goto } from "$app/navigation";
-import { isLogin } from "$lib/store/profile";
-import { screen } from "$lib/store/screen"
-import { error_message } from "$lib/store/error-message"
-import { onMount } from "svelte";
-import "../styles/global.css"
-import "../styles/navbar.css"
-import Navbar from "$lib/navbar.svelte";
-import Loader from '$lib/loader.svelte';
 
 
-$: url.set($page.url.pathname)
-$: urlString =  ($page.url.href);
-$: paramString = urlString.split('?')[1];
-$: queryString = new URLSearchParams(paramString);
-$: seaserEl = []
 
-$: app_isLoading = true
-$:{
-    seaserEl = []
-    if(paramString){
-        for (let pair of queryString.entries()) {
-            seaserEl.push(pair[1])
-        }
-    }
-    seaser.set(seaserEl)
-    tab.set(seaser[0]) 
-}
-
-let ens = browser && window.innerWidth
-browser && window.addEventListener("resize", () => {
-    ens = (window.innerWidth)
-    screen.set(ens)
-})
-
-onMount(()=>{
-    ens = browser && window.innerWidth
-    screen.set(ens)
-})
-
-$:{
-    if(!$isLogin && $routes === "/profile"){
-        goto("/login")
-    }
-}
-
-
-</script>
-
-
-<div >
+<div>
     {#if !$screen}
         <div class="preload">
             <div class="prewsUBw">
-                <Loader />
+                <Loader></Loader>
             </div>
         </div>
     {:else}
-        <Navbar />
+        <Navbar></Navbar>
         <slot></slot>
 
         {#if $error_message}
@@ -118,7 +67,70 @@ $:{
   
 </div>
 
-<style>
+<slot></slot><script>import "../app.css";
+import { routes, url, handleAuthToken, tab, seaser } from "$lib/store/routes";
+import { browser } from "$app/environment";
+import { page } from "$app/stores";
+import { goto } from "$app/navigation";
+import { isLogin } from "$lib/store/profile";
+import { screen } from "$lib/store/screen";
+import { error_message } from "$lib/store/error-message";
+import { onMount } from "svelte";
+import "../styles/global.css";
+import "../styles/navbar.css";
+import Navbar from "$lib/navbar.svelte";
+import Loader from "$lib/loader.svelte";
+
+$:
+url.set($page.url.pathname);
+
+$:
+urlString = ($page.url.href);
+
+$:
+paramString = urlString.split("?")[1];
+
+$:
+queryString = new URLSearchParams(paramString);
+
+$:
+seaserEl = [];
+
+$:
+app_isLoading = true;
+
+$:
+{
+    seaserEl = [];
+
+    if (paramString) {
+        for (let pair of queryString.entries()) {
+            seaserEl.push(pair[1]);
+        }
+    }
+
+    seaser.set(seaserEl);
+    tab.set(seaser[0]);
+}
+
+let ens = browser && window.innerWidth;
+
+browser && window.addEventListener("resize", () => {
+    ens = (window.innerWidth);
+    screen.set(ens);
+});
+
+onMount(() => {
+    ens = browser && window.innerWidth;
+    screen.set(ens);
+});
+
+$:
+{
+    if (!$isLogin && $routes === "/profile") {
+        goto("/login");
+    }
+}</script><style>
 
 .preload{
     position: fixed;

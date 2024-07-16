@@ -5,52 +5,43 @@ const URL = ServerURl()
 export const fetchUserNotifications = async (auth) => {
   isLoadingUN.set(true)
   let response = null
-  await axios.get(`${URL}/api/notifications/user`, {
-    headers: {
-      "Content-type": "application/json",
-      "Authorization": `Bearer ${auth}`
-    }
-  })
-    .then((res) => {
-      response = res.data
-    }).finally(() => {
-      isLoadingUN.set(false)
-    })
-    .catch((err) => {
-    })
+  try {
+    response = (await axios.get(`${URL}/api/notifications/user`, {
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${auth}`
+      }
+    })).data
+  } catch (_) { /* empty */ } finally {
+    isLoadingUN.set(false)
+  }
   return response
 };
 
 export const fetchUnreadCount = async (auth) => {
   let response = null
-  await axios.get(`${URL}/api/notifications/unread-count`, {
-    headers: {
-      "Content-type": "application/json",
-      "Authorization": `Bearer ${auth}`
-    }
-  })
-    .then((res) => {
-      response = res.data
-    })
-    .catch((err) => {}).finally(() => {
-    })
+  try {
+    response = (await axios.get(`${URL}/api/notifications/unread-count`, {
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${auth}`
+      }
+    })).data
+  } catch (_) { /* empty */ } finally { /* empty */ }
   return response
 };
 
 export const fetchPlatformNotifications = async () => {
   isLoadingPN.set(true)
   let response = null
-  await axios.get(`${URL}/api/notifications/platform`, {
-    headers: {
-      "Content-type": "application/json",
-    }
-  })
-    .then((res) => {
-      response = res.data
-    })
-    .catch((err) => {
-    }).finally(() => {
-      isLoadingPN.set(false)
-    })
+  try {
+    response = (await axios.get(`${URL}/api/notifications/platform`, {
+      headers: {
+        "Content-type": "application/json",
+      }
+    })).data
+  } catch (_) { /* empty */ } finally {
+    isLoadingPN.set(false)
+  }
   return response
 };
