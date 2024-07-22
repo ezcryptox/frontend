@@ -6,7 +6,7 @@ export let routes = writable(route)
 let authToken = null
 export let handleAuthToken = writable(authToken)
 
-let _url = null
+let _url = ""
 export let url = writable(_url)
 
 let _tab = null

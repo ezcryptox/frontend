@@ -1,5 +1,5 @@
 <script>
-	// import '../app.css';
+	import '../app.css';
 	import { routes, url, handleAuthToken, tab, seaser } from '$lib/store/routes';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
@@ -48,7 +48,7 @@
 
 	onMount(() => {
 		ens = browser && window.innerWidth;
-		screen.set(ens);
+		screen.set(ens || 0);
 	});
 
 	$: {
@@ -115,8 +115,6 @@
         </div> -->
 	{/if}
 </div>
-
-<slot></slot>
 
 <style>
 	.preload {
