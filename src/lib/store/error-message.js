@@ -1,10 +1,10 @@
 import { writable } from "svelte/store";
 
-let errorEL = 0
+let errorEL = null
 export let error_message = writable(errorEL)
 
-let _error = 0
+let _error = null
 export let error = writable(_error)
 
-let _loading = 0
+let _loading = false
 export let loading = writable(_loading)

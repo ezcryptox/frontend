@@ -1,0 +1,244 @@
+@charset "UTF-8";.Drdk9 {
+    display: flex;
+    gap: 24px
+}
+
+@media screen and (max-width: 700px) {
+    .Drdk9 {
+        flex-direction:column
+    }
+}
+
+.Drdk9 .Dijsp {
+    flex: 1;
+    margin-top: 28px;
+    margin-bottom: 20px
+}
+
+.Drdk9 .Dijsp .gQRQT {
+    margin-bottom: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-weight: 600;
+    font-size: 26px;
+    color: #000
+}
+
+html[data-theme=dark] .Drdk9 .Dijsp .gQRQT {
+    color: #fff
+}
+
+.Drdk9 .Dijsp ._3JRhx {
+    display: flex;
+    gap: 40px;
+    margin-top: 24px;
+    margin-bottom: 28px;
+    color: #818181;
+    font-size: 16px;
+    line-height: 16px
+}
+
+.Drdk9 .Dijsp ._3JRhx svg {
+    margin-right: 4px
+}
+
+.Drdk9 .Dijsp p {
+    margin: 18px 0;
+    line-height: 1.5;
+    font-size: 18px;
+    color: #131316
+}
+
+.Drdk9 .Dijsp h1,.Drdk9 .Dijsp h2,.Drdk9 .Dijsp h3 {
+    padding: 14px 0
+}
+
+.Drdk9 .Dijsp h2 {
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 30px;
+    color: #000
+}
+
+.Drdk9 .Dijsp a {
+    color: #1a8f5c
+}
+
+.Drdk9 .Dijsp li,.Drdk9 .Dijsp ul,.Drdk9 .Dijsp ol {
+    list-style-position: inside
+}
+
+.Drdk9 .Dijsp li p,.Drdk9 .Dijsp ul p,.Drdk9 .Dijsp ol p {
+    display: inline-block;
+    margin-bottom: 0
+}
+
+.Drdk9 .Dijsp li:first-child>p,.Drdk9 .Dijsp ul:first-child>p,.Drdk9 .Dijsp ol:first-child>p {
+    margin-top: 0
+}
+
+.Drdk9 .Dijsp ul {
+    list-style-type: disc
+}
+
+.Drdk9 .Dijsp ol {
+    list-style-type: decimal
+}
+
+html[data-theme=dark] .Drdk9 .Dijsp h1,html[data-theme=dark] .Drdk9 .Dijsp h2,html[data-theme=dark] .Drdk9 .Dijsp h3 {
+    color: #fff
+}
+
+html[data-theme=dark] .Drdk9 .Dijsp p {
+    color: #b8b8b8
+}
+
+html[data-theme=dark] .Drdk9 .Dijsp hr {
+    height: 0;
+    border: none;
+    border-top: 1px solid #2b2b2e
+}
+
+.Drdk9 .Nl8X5 {
+    padding-left: 24px;
+    padding-top: 182px;
+    min-width: 206px;
+    border-left: 1px solid #b8b8b8
+}
+
+@media screen and (max-width: 700px) {
+    .Drdk9 .Nl8X5 {
+        padding-left:0;
+        padding-top: 0;
+        border-left: none
+    }
+}
+
+html[data-theme=dark] .Drdk9 .Nl8X5 {
+    border-left-color: #2b2b2e
+}
+
+.Drdk9 .Nl8X5 ._698nD {
+    margin-bottom: 12px;
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px
+}
+
+html[data-theme=dark] .Drdk9 .Nl8X5 ._698nD {
+    color: #fff
+}
+
+@media screen and (max-width: 700px) {
+    .Drdk9 .Nl8X5 ._698nD {
+        font-size:18px;
+        line-height: 22px;
+        margin-bottom: 11px
+    }
+}
+
+.Drdk9 .Nl8X5 .NYG1G {
+    margin-bottom: 23px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #000
+}
+
+html[data-theme=dark] .Drdk9 .Nl8X5 .NYG1G {
+    color: #fff
+}
+
+@media screen and (max-width: 700px) {
+    .Drdk9 .Nl8X5 .NYG1G {
+        font-size:18px;
+        line-height: 22px;
+        margin-bottom: 13px
+    }
+}
+
+.Drdk9 .Nl8X5 .UTyNK {
+    display: flex;
+    margin-bottom: 48px;
+    justify-content: space-between
+}
+
+.Drdk9 .Nl8X5 .UTyNK a {
+    color: #1a8f5c
+}
+
+.Drdk9 ._7w3M- {
+    display: flex;
+    margin-bottom: 25px;
+    padding-bottom: 18px;
+    flex-direction: column;
+    width: 180px;
+    max-width: 304px;
+    transition: all .3s ease-in-out
+}
+
+@media screen and (max-width: 700px) {
+    .Drdk9 ._7w3M- {
+        width:100%;
+        max-width: unset
+    }
+}
+
+.Drdk9 ._7w3M-:hover {
+    box-shadow: 0 0 15px #00000040
+}
+
+.Drdk9 ._7w3M- .mzcB0 {
+    margin-top: 8px;
+    padding: 0 9px
+}
+
+.Drdk9 ._7w3M- .gQRQT {
+    display: -webkit-box;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical
+}
+
+html[data-theme=dark] .Drdk9 ._7w3M- .gQRQT {
+    color: #fff
+}
+
+@media screen and (max-width: 700px) {
+    .Drdk9 ._7w3M- .gQRQT {
+        font-size:16px;
+        line-height: 19px;
+        margin-bottom: 12px;
+        -webkit-line-clamp: 2
+    }
+}
+
+.Drdk9 ._7w3M- ._40R0l {
+    display: -webkit-box;
+    font-size: 12px;
+    line-height: 14px;
+    color: #616161;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical
+}
+
+html[data-theme=dark] .Drdk9 ._7w3M- ._40R0l {
+    color: #b8b8b8
+}
+
+@media screen and (max-width: 700px) {
+    .Drdk9 ._7w3M- ._40R0l {
+        font-size:12px;
+        line-height: 15px;
+        -webkit-line-clamp: 2
+    }
+}

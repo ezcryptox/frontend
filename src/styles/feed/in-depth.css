@@ -1,0 +1,95 @@
+ 
+
+.LvoTJ {
+    width: 860px;
+    max-width: 860px;
+    padding: 32px 0 120px
+}
+
+.LvoTJ .-WWtz {
+    margin-bottom: 32px; 
+    -webkit-user-select: none;
+    user-select: none
+}
+
+.LvoTJ .c9gZ- {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px
+}
+
+html[data-theme=light] .LvoTJ .c9gZ- {
+    color: #131316
+}
+
+html[data-theme=dark] .LvoTJ .c9gZ- {
+    color: #fff
+}
+
+.LvoTJ ._91wW6 {
+    display: flex;
+    gap: 8px;
+    margin: 24px 0
+}
+
+.LvoTJ ._91wW6 .X6XSs,.LvoTJ ._91wW6 .F-UQ3 {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400
+}
+
+html[data-theme=light] .LvoTJ ._91wW6 .F-UQ3,html[data-theme=light] .LvoTJ ._91wW6 .X6XSs {
+    color: #616161
+}
+
+html[data-theme=dark] .LvoTJ ._91wW6 .F-UQ3,html[data-theme=dark] .LvoTJ ._91wW6 .X6XSs {
+    color: #b8b8b8
+}
+
+.LvoTJ .XKCgG {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    margin-bottom: 24px
+}
+
+html[data-theme=light] .LvoTJ .XKCgG {
+    color: #2b2b2e
+}
+
+html[data-theme=dark] .LvoTJ .XKCgG {
+    color: #e3e3e3
+}
+
+.LvoTJ .XKCgG img {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    margin: 24px 0
+}
+
+.LvoTJ .XKCgG h1,.LvoTJ .XKCgG h2,.LvoTJ .XKCgG h3,.LvoTJ .XKCgG h4,.LvoTJ .XKCgG h5,.LvoTJ .XKCgG h6 {
+    margin: 4px 0;
+    font-weight: 500
+}
+
+.LvoTJ .XKCgG p {
+    margin: 24px 0
+}
+
+html[data-theme=light] .LvoTJ .XKCgG a {
+    color: #1a8f5c
+}
+
+html[data-theme=dark] .LvoTJ .XKCgG a {
+    color: #119e5f
+}
+
+.LvoTJ ._2Taof,.LvoTJ .bdHg6 {
+    margin-top: 12px
+}
+
+.LvoTJ .h0eZF {
+    margin-top: 68px
+}

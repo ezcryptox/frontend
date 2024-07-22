@@ -1,0 +1,53 @@
+.DSAsd .sW0tO {
+    color: #616161;
+    font-size: 26px;
+    line-height: 30px;
+    margin: 28px 0 12px;
+}
+
+.DSAsd .sW0tO span {
+    font-weight: 600;
+    color: #1a8f5c;
+    text-transform: uppercase;
+}
+
+.DSAsd .fCCy- {
+    display: flex;
+    margin-bottom: 24px;
+    align-items: center;
+}
+
+.DSAsd .fCCy- ._6Z4ph {
+    width: 283px;
+}
+
+.DSAsd .fCCy- .iUgvV {
+    display: flex;
+    flex: 1;
+    padding-left: 14px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.DSAsd .fCCy- .iUgvV .ks3PO {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000;
+    margin-bottom: 12px;
+}
+
+.DSAsd .fCCy- .iUgvV .XBvrm {
+    color: #818181;
+    line-height: 1.5;
+}
+
+.DSAsd .fCCy- .iUgvV .w1glc {
+    display: flex;
+    gap: 40px;
+    padding-top: 20px;
+    color: #818181;
+}
+html[data-theme=dark] .DSAsd .fCCy- .iUgvV .ks3PO {
+    color: #fff;
+}

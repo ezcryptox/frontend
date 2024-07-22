@@ -5,7 +5,7 @@
 <div class="a773e3aa">
     <ul>
         <li>
-            <a class="d3f3d2f7" target="_self" href="/?cards/buy">
+            <a class="d3f3d2f7" target="_self" href="/cards/buy">
                 <div class="d667695c"><!---->
                     <svg fill="currentColor">
                         <use xlink:href="#uniframe-icon-buy-crypto"></use>
@@ -15,7 +15,7 @@
                     <span>Buy Crypto</span>
                     <!----><!---->
                 </div>
-                <div class="ddfb18d1">Simplex,Mercuryo</div>
+                <div class="ddfb18d1">MoonPay</div>
             </a>
         </li>
         <li>

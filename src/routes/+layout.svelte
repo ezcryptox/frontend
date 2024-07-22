@@ -1,77 +1,83 @@
 <script>
-import { routes, url , handleAuthToken, tab, seaser} from "$lib/store/routes";
-import { browser } from '$app/environment';
-import { page } from '$app/stores';
-import { goto } from "$app/navigation";
-import { isLogin } from "$lib/store/profile";
-import { screen } from "$lib/store/screen"
-import { error_message } from "$lib/store/error-message"
-import { onMount } from "svelte";
-import "../styles/global.css"
-import "../styles/navbar.css"
-import Navbar from "$lib/navbar.svelte";
-import Loader from '$lib/loader.svelte';
+	import '../app.css';
+	import { routes, url, handleAuthToken, tab, seaser } from '$lib/store/routes';
+	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
+	import { isLogin } from '$lib/store/profile';
+	import { screen } from '$lib/store/screen';
+	import { error_message } from '$lib/store/error-message';
+	import { onMount } from 'svelte';
+	import '../styles/global.css';
+	import '../styles/navbar.css';
+	import Navbar from '$lib/navbar.svelte';
+	import Loader from '$lib/loader.svelte';
 
+	$: url.set($page.url.pathname);
 
-$: url.set($page.url.pathname)
-$: urlString =  ($page.url.href);
-$: paramString = urlString.split('?')[1];
-$: queryString = new URLSearchParams(paramString);
-$: seaserEl = []
+	$: urlString = $page.url.href;
 
-$: app_isLoading = true
-$:{
-    seaserEl = []
-    if(paramString){
-        for (let pair of queryString.entries()) {
-            seaserEl.push(pair[1])
-        }
-    }
-    seaser.set(seaserEl)
-    tab.set(seaser[0]) 
-}
+	$: paramString = urlString.split('?')[1];
 
-let ens = browser && window.innerWidth
-browser && window.addEventListener("resize", () => {
-    ens = (window.innerWidth)
-    screen.set(ens)
-})
+	$: queryString = new URLSearchParams(paramString);
 
-onMount(()=>{
-    ens = browser && window.innerWidth
-    screen.set(ens)
-})
+	$: seaserEl = [];
 
-$:{
-    if(!$isLogin && $routes === "/profile"){
-        goto("/login")
-    }
-}
+	$: app_isLoading = true;
 
+	$: {
+		seaserEl = [];
 
+		if (paramString) {
+			for (let pair of queryString.entries()) {
+				seaserEl.push(pair[1]);
+			}
+		}
+
+		seaser.set(seaserEl);
+		tab.set(seaser[0]);
+	}
+
+	let ens = browser && window.innerWidth;
+
+	browser &&
+		window.addEventListener('resize', () => {
+			ens = window.innerWidth;
+			screen.set(ens);
+		});
+
+	onMount(() => {
+		ens = browser && window.innerWidth;
+		screen.set(ens || 0);
+	});
+
+	$: {
+		if (!$isLogin && $routes === '/profile') {
+			goto('/login');
+		}
+	}
 </script>
 
+<div>
+	{#if !$screen}
+		<div class="preload">
+			<div class="prewsUBw">
+				<Loader></Loader>
+			</div>
+		</div>
+	{:else}
+		<Navbar></Navbar>
+		<slot></slot>
 
-<div >
-    {#if !$screen}
-        <div class="preload">
-            <div class="prewsUBw">
-                <Loader />
-            </div>
-        </div>
-    {:else}
-        <Navbar />
-        <slot></slot>
+		{#if $error_message}
+			<div style="background-color:crimson;" class="error-message">
+				<div class="hTTvsjh">
+					<div>{$error_message}</div>
+				</div>
+			</div>
+		{/if}
 
-        {#if $error_message}
-            <div style="background-color:crimson;" class="error-message">
-                <div class="hTTvsjh">
-                <div>{$error_message}</div>
-                </div>
-            </div>
-        {/if}
-
-        <!-- <div class="_960f9952 w1200 font-ss3">
+		<!-- <div class="_960f9952 w1200 font-ss3">
             <div class="_0994c341">
                 <svg width="50" height="74" viewBox="0 0 50 74" fill="none" xmlns="http://www.w3.org/2000/svg" class="_31e7789f">
                     <mask id="mask0_4032_48294" maskUnits="userSpaceOnUse" x="0" y="0" width="50" height="74" style="mask-type: alpha;">
@@ -107,65 +113,56 @@ $:{
                         </div>
                     </div>
         </div> -->
-    {/if}
-
-
-
-    
-
-
-    
-  
+	{/if}
 </div>
-
+<!-- 
 <style>
+	.preload {
+		position: fixed;
+		top: 0;
+		z-index: 10000000;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: white;
+	}
+	.prewsUBw {
+		width: 100%;
+		height: 100vh;
+	}
 
-.preload{
-    position: fixed;
-    top: 0;
-    z-index: 10000000;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-}
-.prewsUBw{
-    width: 100%;
-    height: 100vh;
-}
+	.error-message {
+		transition: all 1s ease-out;
+	}
+	.hTTvsjh {
+		color: #f5f6f7;
+	}
 
-.error-message{
-  transition: all 1s ease-out;
-}
-.hTTvsjh{
-    color: #f5f6f7;
-}
+	@media only screen and (max-width: 650px) {
+		.error-message {
+			position: fixed;
+			background: #24262b;
+			width: 97%;
+			left: 6px;
+			top: 2%;
+			border-radius: 20px;
+			padding: 24px 15px;
+			margin: 0;
+			z-index: 10000000;
+		}
+	}
 
-@media only screen and (max-width: 650px){
-    .error-message {
-        position: fixed;
-        background: #24262B;
-        width: 97%;
-        left: 6px;
-        top: 2%;
-        border-radius: 20px;
-        padding: 24px 15px;
-        margin: 0;
-        z-index: 10000000;
-    }
-}
-
-@media only screen and (min-width: 650px){
-    .error-message{
-        position: fixed;
-        background: #24262B;
-        width: 400px;
-        left: 6px;
-        bottom: 2%;
-        border-radius: 20px;
-        padding: 24px 15px;
-        margin: 10px;
-        z-index: 10000000;
-    }
-}
-</style>
+	@media only screen and (min-width: 650px) {
+		.error-message {
+			position: fixed;
+			background: #24262b;
+			width: 400px;
+			left: 6px;
+			bottom: 2%;
+			border-radius: 20px;
+			padding: 24px 15px;
+			margin: 10px;
+			z-index: 10000000;
+		}
+	}
+</style> -->

@@ -8,19 +8,43 @@
   import Notification from "./navbar-components/notification.svelte";
   import Trade from "./navbar-components/trade.svelte";
   import { isLogin } from "$lib/store/profile";
+  import Language from "./navbar-components/language.svelte";
+  import {getCookie,setCookie} from "$lib/store/cookies";
 
   $: is_menu = false;
   $: showBuyCrypto = false;
   $: showTrade = false;
   $: showDerivative = false;
-  $: showExploire = false;
-
+  $: showExplore = false;
+  $: showNotification = false;
+  $: showLanguageModal = false;
+  $: darkMode = getCookie("theme","light") === "dark"
+  $: unreadnotifications = "0"
   // removeme (remove the onMount)
   onMount(() => {
     if (sessionStorage.getItem("user")) isLogin.set(true);
+    checkTheme()
   });
+
+  const checkTheme = () => {
+    const theme = darkMode ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-uniframe-theme", theme);
+    
+  }
+
+  const toggleDarkMode = () => {
+    const mode = !darkMode;
+    const theme = mode ? "dark" : "light";
+    setCookie("theme",theme)
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-uniframe-theme", theme);
+    darkMode = mode
+  };
+
 </script>
 
+<Language {showLanguageModal} on:click={() => (showLanguageModal = false)} />
 <div id="uniframe-header" data-v-app>
   <header class="cdd74806 uniframe-root uniframe-header">
     <div class="d576b507">
@@ -92,18 +116,23 @@
                 <span>Earn</span>
               </a>
             </li>
+
             <li>
-              <div class="b8777ccf">
+              <button
+                on:mouseenter={() => (showExplore = true)}
+                on:mouseleave={() => (showExplore = false)}
+                class="b8777ccf"
+              >
                 <div class="bfe44f5e">
                   <span>Explore</span>
                   <svg fill="currentColor" style="width: 16px; height: 16px;">
                     <use xlink:href="#uniframe-icon-arrow-down"></use>
                   </svg>
                 </div>
-                {#if showExploire}
+                {#if showExplore}
                   <Explore />
                 {/if}
-              </div>
+              </button>
             </li>
           </ul>
         {/if}
@@ -192,17 +221,31 @@
 
       {#if $screen > 1130}
         <div>
-          <div class="c9759bc4">
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <!-- svelte-ignore a11y-no-static-element-interactions -->
+          <div class="c9759bc4" on:click={() => toggleDarkMode()}>
             <svg fill="currentColor" style="width: 20px; height: 20px;">
-              <use xlink:href="#uniframe-icon-sun"></use>
+              <use
+                xlink:href={darkMode
+                  ? "#uniframe-icon-moon"
+                  : "#uniframe-icon-sun"}
+              ></use>
             </svg>
           </div>
-          <div class="dd8dbce9">
+
+          <button
+            class="dd8dbce9"
+            aria-account-unread="{unreadnotifications}"
+            on:mouseenter={() => (showNotification = true)}
+            on:mouseleave={() => (showNotification = false)}
+          >
             <svg fill="currentColor" style="width: 20px; height: 20px;">
               <use xlink:href="#uniframe-icon-notification"></use>
             </svg>
-            <Notification />
-          </div>
+            {#if showNotification}
+              <Notification />
+            {/if}
+          </button>
           <a
             href="?support.poloniex.com"
             rel="noopener noreferrer"
@@ -213,7 +256,7 @@
             </svg>
           </a>
 
-          <button class="eb58c575">
+          <button class="eb58c575" on:click={() => (showLanguageModal = true)}>
             <span>EN/USD</span>
             <svg fill="currentColor" style="width: 16px; height: 16px;">
               <use xlink:href="#uniframe-icon-arrow-down"></use>

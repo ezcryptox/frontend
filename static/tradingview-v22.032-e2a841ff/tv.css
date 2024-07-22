@@ -1,0 +1,30 @@
+/* æ•°æ®ä¸ºç©ºæ—¶çš„æç¤ºå®¹å™¨ */
+.errorCardRendererContainer-1ZTLibqo {
+  display: none;
+}
+
+/* å·¥å…·æ å³è¾¹æ¡† */
+#drawing-toolbar {
+  border-right: 1px solid transparent;
+}
+#drawing-toolbar.isHidden-2_so5thS {
+  border-right: none;
+}
+
+.theme-dark:root {
+  --tv-color-platform-background: #131316;
+  --tv-color-pane-background: #131316;
+}
+
+.theme-dark:root #drawing-toolbar {
+  border-right-color: #2b2b2e;
+}
+
+:root:not(.theme-dark) {
+  --tv-color-platform-background: #fff;
+  --tv-color-pane-background: #fff;
+}
+
+:root:not(.theme-dark) #drawing-toolbar {
+  border-right-color: #e3e3e3;
+}
