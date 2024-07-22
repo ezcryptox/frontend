@@ -79,7 +79,7 @@
         </a>
     </li>
     <li>
-        <a class="d3f3d2f7" target="_self" href="/feed">
+        <a class="d3f3d2f7" target="_self" href="/feed/news/1">
             <div class="d667695c">
                 <!---->
                 <svg fill="currentColor">
