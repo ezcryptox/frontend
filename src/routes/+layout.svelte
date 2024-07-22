@@ -115,7 +115,7 @@
         </div> -->
 	{/if}
 </div>
-
+<!-- 
 <style>
 	.preload {
 		position: fixed;
@@ -165,4 +165,4 @@
 			z-index: 10000000;
 		}
 	}
-</style>
+</style> -->

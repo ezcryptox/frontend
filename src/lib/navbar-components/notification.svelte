@@ -8,7 +8,7 @@
 		fetchPlatformNotifications
 	} from './notifications.js';
 	import { isLogin } from '$lib/store/profile';
-	import { Skeleton } from '$lib/components/ui/skeleton/index';
+	import Skeleton from '$lib/components/ui/skeleton/skeleton.svelte';
 	import { isLoadingUN, isLoadingPN } from '$lib/store/notifications';
 	import { handleAuthToken } from '$lib/store/routes';
 	let selectedTab = 1;
