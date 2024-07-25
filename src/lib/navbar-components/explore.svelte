@@ -102,7 +102,7 @@
                 </svg>
             </div>
             <div class="d4ef16dd">
-                <span>Poloniex Blog</span>
+                <span>Ezcryptox Blog</span>
                 <!----><!---->
             </div>
             <div class="ddfb18d1">Learn and stay up-to-date on all things crypto!</div>

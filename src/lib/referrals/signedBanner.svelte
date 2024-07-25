@@ -1,46 +1,11 @@
 <script>
   import Footer from "$lib/footer.svelte";
   import "../../styles/referral.css";
-  import Spot from "$lib/market/market-content/spot/spot.market.svelte";
-  import { screen } from "$lib/store/screen";
-
-  import { onMount } from "svelte";
-  import { handleExchanegerate } from "$lib/home-page/hook";
-  import Loader from "$lib/loader.svelte";
   import HModal from "../../lib/referrals/hModal.svelte";
   import ShareCode from "../../lib/referrals/Modals/shareCode.svelte";
-  import SignedBanner from "../../lib/referrals/signedBanner.svelte";
-
-  $: HModalOpen = false;
-  $: tab = 1;
-  let respons = [];
-  $: loading = false;
   $: shareCodeModalIsOpen = true;
-
-  export let handleRefModal = null;
-  
-  function _handleRefModal() {
-    if (handleRefModal) handleRefModal();
-  }
-
-  function updateModalOpen() {
-    HModalOpen = !HModalOpen;
-  }
-
-  onMount(async () => {
-    loading = true;
-    let { is_loading, response } = await handleExchanegerate();
-    loading = is_loading;
-    if (response) {
-      respons = response;
-    }
-  });
 </script>
 
-<!-- ///// -->
-{#if HModalOpen}
-  <HModal {updateModalOpen} />
-{/if}
 
 <div data-v-1ed24750="" class="banner">
   <div data-v-1ed24750="" class="_8ca0ec16 _1c553aba">
@@ -195,7 +160,7 @@
         </div>
       </div>
       {#if shareCodeModalIsOpen}
-        <ShareCode {_handleRefModal} />
+        <ShareCode/>
       {/if}
     </div>
     <div data-v-567406fe="" class="polo-notice-list-wrapper b8c2c2df">

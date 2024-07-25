@@ -1,5 +1,47 @@
-<script>
-  	import '../../../../styles/activity.css';
+<script lang="ts">
+	import '../../../../styles/activity.css';
+	import ChevronsUpDown from 'lucide-svelte/icons/chevrons-up-down';
+	import { tick } from 'svelte';
+	import * as Command from '$lib/components/ui/command/index';
+	import * as Popover from '$lib/components/ui/popover/index';
+	import { RangeCalendar } from '$lib/components/ui/range-calendar/index';
+	import { Button } from '$lib/components/ui/button/index';
+	import CalendarIcon from 'lucide-svelte/icons/calendar';
+	import type { DateRange } from 'bits-ui';
+	import {
+		DateFormatter,
+		type DateValue,
+		getLocalTimeZone,
+		today
+	} from '@internationalized/date';
+	import { cn } from '$lib/utils.js';
+	import {selectedFilter} from './store';
+	import DataTable from './data-table.svelte';
+	let fiatOpen = false;
+	let cryptoOpen = false;
+	let statusOpen = false;
+
+	const df = new DateFormatter('en-US', {
+		dateStyle: 'medium'
+	});
+
+	let value: DateRange | undefined = {
+		start: today(getLocalTimeZone()),
+		end: today(getLocalTimeZone()).add({ days: 7 })
+	};
+
+	let startValue: DateValue | undefined = undefined;
+
+	function closeAndFocusTrigger(triggerId: string) {
+		fiatOpen = false;
+		cryptoOpen = false;
+		statusOpen = false;
+		tick().then(() => {
+			document.getElementById(triggerId)?.focus();
+		});
+	}
+
+	
 </script>
 
 <div id="root" data-v-app="" style="margin-top: 50px;">
@@ -162,1184 +204,167 @@
 									<div class="iL5vR">
 										<div>
 											<div class="field-header"><label>Fiat Currency</label><!----></div>
-											<div class="_3Johe Bte5E">
-												<span class="z6d5D v1WVj" data-size="medium"
-													><span class="KwkiX">All</span><span class="NiKDB"
-														><svg fill="currentColor" style="width: 16px; height: 16px;"
-															><use xlink:href="#web-core-icon-reverse-close"></use></svg
-														></span
-													><svg fill="currentColor" class="imI90" style="width: 16px; height: 16px;"
-														><use xlink:href="#web-core-icon-arrow-down"></use></svg
-													></span
-												><!---->
-											</div>
+											<Popover.Root bind:open={fiatOpen} let:ids>
+												<Popover.Trigger asChild let:builder>
+													<Button
+														builders={[builder]}
+														variant="outline"
+														role="combobox"
+														aria-expanded={fiatOpen}
+														class="w-[200px] justify-between"
+													>
+														{$selectedFilter.fiat}
+														<ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+													</Button>
+												</Popover.Trigger>
+												<Popover.Content class="w-[200px] p-0">
+													<Command.Root>
+														<Command.Input placeholder="" />
+														<Command.Empty>No currency found.</Command.Empty>
+														<Command.Group class="max-h-80 overflow-y-auto">
+															{#each ['All', 'AUD', 'BGN', 'BRL', 'CAD', 'CHF', 'COP', 'CZK', 'DKK', 'DOP', 'EGP', 'EUR', 'GBP', 'HKD', 'IDR', 'ILS', 'JOD', 'KES', 'KWD', 'LKR', 'MXN', 'NGN', 'NOK', 'NZD', 'OMR', 'PEN', 'PLN', 'RON', 'SEK', 'THB', 'TRY', 'TWD', 'USD', 'VND', 'ZAR'] as fiat}
+																<Command.Item
+																	value={fiat}
+																	onSelect={(currentValue) => {
+																		selectedFilter.set({ ...($selectedFilter), fiat: currentValue });
+																		closeAndFocusTrigger(ids.trigger);
+																	}}
+																>
+																	{fiat}
+																</Command.Item>
+															{/each}
+														</Command.Group>
+													</Command.Root>
+												</Popover.Content>
+											</Popover.Root>
 										</div>
 										<div>
 											<div class="field-header"><label>Cryptocurrency</label><!----></div>
-											<div class="_3Johe Bte5E">
-												<span class="z6d5D v1WVj" data-size="medium"
-													><span class="KwkiX">All</span><span class="NiKDB"
-														><svg fill="currentColor" style="width: 16px; height: 16px;"
-															><use xlink:href="#web-core-icon-reverse-close"></use></svg
-														></span
-													><svg fill="currentColor" class="imI90" style="width: 16px; height: 16px;"
-														><use xlink:href="#web-core-icon-arrow-down"></use></svg
-													></span
-												><!---->
-											</div>
+											<Popover.Root bind:open={cryptoOpen} let:ids>
+												<Popover.Trigger asChild let:builder>
+													<Button
+														builders={[builder]}
+														variant="outline"
+														role="combobox"
+														aria-expanded={cryptoOpen}
+														class="w-[200px] justify-between"
+													>
+														{$selectedFilter.crypto}
+														<ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+													</Button>
+												</Popover.Trigger>
+												<Popover.Content class="w-[200px] p-0">
+													<Command.Root>
+														<Command.Input placeholder="" />
+														<Command.Empty>No crypto found.</Command.Empty>
+														<Command.Group>
+															{#each ['All', 'BTC', 'ETH', 'LTC', 'TRX', 'USDC', 'USDT', 'XRP'] as crypto}
+																<Command.Item
+																	value={crypto}
+																	onSelect={(currentValue) => {
+																		selectedFilter.set({ ...($selectedFilter), crypto: currentValue });
+																		closeAndFocusTrigger(ids.trigger);
+																	}}
+																>
+																	{crypto}
+																</Command.Item>
+															{/each}
+														</Command.Group>
+													</Command.Root>
+												</Popover.Content>
+											</Popover.Root>
 										</div>
 										<div>
 											<div class="field-header"><label>Status</label><!----></div>
-											<div class="_3Johe Bte5E">
-												<span class="z6d5D v1WVj" data-size="medium"
-													><span class="KwkiX">All</span><span class="NiKDB"
-														><svg fill="currentColor" style="width: 16px; height: 16px;"
-															><use xlink:href="#web-core-icon-reverse-close"></use></svg
-														></span
-													><svg fill="currentColor" class="imI90" style="width: 16px; height: 16px;"
-														><use xlink:href="#web-core-icon-arrow-down"></use></svg
-													></span
-												><!---->
-											</div>
+											<Popover.Root bind:open={statusOpen} let:ids>
+												<Popover.Trigger asChild let:builder>
+													<Button
+														builders={[builder]}
+														variant="outline"
+														role="combobox"
+														aria-expanded={statusOpen}
+														class="w-[200px] justify-between"
+													>
+														{$selectedFilter.status}
+														<ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+													</Button>
+
+												</Popover.Trigger>
+												<Popover.Content class="w-[200px] p-0">
+													<Command.Root>
+														<Command.Group>
+															{#each ['All', 'Processing', 'Failed', 'Completed'] as status}
+																<Command.Item
+																	value={status}
+																	onSelect={(currentValue) => {
+																		selectedFilter.set({ ...($selectedFilter), status: currentValue });
+																		closeAndFocusTrigger(ids.trigger);
+																	}}
+																>
+																	{status}
+																</Command.Item>
+															{/each}
+														</Command.Group>
+													</Command.Root>
+												</Popover.Content>
+											</Popover.Root>
 										</div>
 										<div>
 											<div class="field-header"><label>Time</label><!----></div>
-											<div
-												class="el-date-editor el-date-editor--daterange el-input__wrapper el-range-editor is-active-text el-tooltip__trigger el-tooltip__trigger"
-												aria-controls="el-id-6773-0"
-												aria-expanded="false"
-												aria-haspopup="dialog"
-											>
-												<i class="el-icon el-input__icon el-range__icon"
-													><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"
-														><path
-															fill="currentColor"
-															d="M128 384v512h768V192H768v32a32 32 0 1 1-64 0v-32H320v32a32 32 0 0 1-64 0v-32H128v128h768v64zm192-256h384V96a32 32 0 1 1 64 0v32h160a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32h160V96a32 32 0 0 1 64 0zm-32 384h64a32 32 0 0 1 0 64h-64a32 32 0 0 1 0-64m0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64m192-192h64a32 32 0 0 1 0 64h-64a32 32 0 0 1 0-64m0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64m192-192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64m0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64"
-														></path></svg
-													></i
-												><input
-													autocomplete="off"
-													name=""
-													placeholder="Start Date"
-													readonly=""
-													class="el-range-input"
-												/><span class="el-range-separator">-</span><input
-													autocomplete="off"
-													name=""
-													placeholder="End Date"
-													readonly=""
-													class="el-range-input"
-												/><i
-													class="el-icon el-input__icon el-range__close-icon el-range__close-icon--hidden"
-													><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"
-														><path
-															fill="currentColor"
-															d="m466.752 512-90.496-90.496a32 32 0 0 1 45.248-45.248L512 466.752l90.496-90.496a32 32 0 1 1 45.248 45.248L557.248 512l90.496 90.496a32 32 0 1 1-45.248 45.248L512 557.248l-90.496 90.496a32 32 0 0 1-45.248-45.248z"
-														></path><path
-															fill="currentColor"
-															d="M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"
-														></path></svg
-													></i
-												>
-											</div>
+											<Popover.Root openFocus>
+												<Popover.Trigger asChild let:builder>
+													<Button
+														variant="outline"
+														class={cn(
+															'w-[300px] justify-start text-left font-normal',
+															!value && 'text-muted-foreground'
+														)}
+														builders={[builder]}
+													>
+														<CalendarIcon class="mr-2 h-4 w-4" />
+														{#if value && value.start}
+															{#if value.end}
+																{df.format(value.start.toDate(getLocalTimeZone()))} - {df.format(
+																	value.end.toDate(getLocalTimeZone())
+																)}
+															{:else}
+																{df.format(value.start.toDate(getLocalTimeZone()))}
+															{/if}
+														{:else if startValue}
+															{df.format(startValue.toDate(getLocalTimeZone()))}
+														{:else}
+															Pick a date
+														{/if}
+													</Button>
+												</Popover.Trigger>
+												<Popover.Content class="w-auto p-0" align="start">
+													<RangeCalendar
+														bind:value
+														bind:startValue
+														placeholder={value?.start}
+														initialFocus
+														onValueChange={(ev) => {
+															selectedFilter.set({
+																...($selectedFilter),
+																time: {
+																	start: ev.start?.toDate(getLocalTimeZone()).getTime() || 0,
+																	end: ev.end?.toDate(getLocalTimeZone()).getTime() || 0
+																}
+															});
+														}}
+														numberOfMonths={2}
+													/>
+												</Popover.Content>
+											</Popover.Root>
 										</div>
 									</div>
 									<div class="REwGV"><div></div></div>
 								</div>
 							</div>
 							<div class="ag-theme-alpine po-ag-table">
-								<div
-									class="ag-root-wrapper ag-layout-auto-height ag-ltr"
-									role="presentation"
-									grid-id="1"
-								>
-									<div
-										class="ag-root-wrapper-body ag-layout-auto-height ag-focus-managed"
-										ref="rootWrapperBody"
-										role="presentation"
-									>
-										<div
-											class="ag-tab-guard ag-tab-guard-top"
-											role="presentation"
-											tabindex="0"
-										></div>
-										<!--AG-GRID-BODY-->
-										<div
-											class="ag-root ag-unselectable ag-layout-auto-height"
-											role="treegrid"
-											ref="gridBody"
-											aria-colcount="7"
-											aria-rowcount="1"
-										>
-											<!--AG-HEADER-ROOT-->
-											<div
-												class="ag-header ag-focus-managed ag-pivot-off ag-header-allow-overflow"
-												role="presentation"
-												ref="gridHeader"
-												style="height: 33px; min-height: 33px;"
-											>
-												<div
-													class="ag-pinned-left-header ag-hidden"
-													role="presentation"
-													aria-hidden="true"
-													style="width: 0px; max-width: 0px; min-width: 0px;"
-												></div>
-												<div class="ag-header-viewport" role="presentation">
-													<div
-														class="ag-header-container"
-														ref="eCenterContainer"
-														role="rowgroup"
-														style="width: 1548px;"
-													>
-														<div
-															class="ag-header-row ag-header-row-column"
-															role="row"
-															aria-rowindex="1"
-															style="top: 0px; height: 32px; width: 1548px;"
-														>
-															<div
-																class="ag-header-cell ag-column-first ag-focus-managed"
-																role="columnheader"
-																tabindex="-1"
-																col-id="createTime"
-																aria-colindex="1"
-																style="top: 0px; height: 32px; width: 222px; left: 0px;"
-															>
-																<div
-																	ref="eResize"
-																	class="ag-header-cell-resize ag-hidden"
-																	role="presentation"
-																	aria-hidden="true"
-																></div>
-																<div
-																	role="presentation"
-																	class="ag-labeled ag-label-align-right ag-checkbox ag-input-field ag-header-select-all ag-hidden"
-																	aria-hidden="true"
-																>
-																	<div
-																		ref="eLabel"
-																		class="ag-input-field-label ag-label ag-hidden ag-checkbox-label"
-																		aria-hidden="true"
-																		role="presentation"
-																		id="ag-29-label"
-																	></div>
-																	<div
-																		ref="eWrapper"
-																		class="ag-wrapper ag-input-wrapper ag-checkbox-input-wrapper"
-																		role="presentation"
-																	>
-																		<input
-																			ref="eInput"
-																			class="ag-input-field-input ag-checkbox-input"
-																			type="checkbox"
-																			id="ag-29-input"
-																			tabindex="-1"
-																			aria-label="Press Space to toggle all rows selection (unchecked)"
-																		/>
-																	</div>
-																</div>
-																<div
-																	ref="eHeaderCompWrapper"
-																	class="ag-header-cell-comp-wrapper"
-																	role="presentation"
-																>
-																	<div class="ag-cell-label-container" role="presentation">
-																		<div
-																			ref="eLabel"
-																			class="ag-header-cell-label"
-																			role="presentation"
-																		>
-																			<span ref="eText" class="ag-header-cell-text">Time</span>
-																			<span
-																				ref="eFilter"
-																				class="ag-header-icon ag-header-label-icon ag-filter-icon ag-hidden"
-																				aria-hidden="true"
-																				><span
-																					class="ag-icon ag-icon-filter"
-																					unselectable="on"
-																					role="presentation"
-																				></span></span
-																			>
-																			<!--AG-SORT-INDICATOR--><span
-																				class="ag-sort-indicator-container"
-																				ref="eSortIndicator"
-																			>
-																				<span
-																					ref="eSortOrder"
-																					class="ag-sort-indicator-icon ag-sort-order ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortAsc"
-																					class="ag-sort-indicator-icon ag-sort-ascending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortDesc"
-																					class="ag-sort-indicator-icon ag-sort-descending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortMixed"
-																					class="ag-sort-indicator-icon ag-sort-mixed-icon ag-hidden"
-																					aria-hidden="true"
-																					><span class="po-ag-icon-none"></span></span
-																				>
-																				<span
-																					ref="eSortNone"
-																					class="ag-sort-indicator-icon ag-sort-none-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div
-																class="ag-header-cell ag-focus-managed"
-																role="columnheader"
-																tabindex="-1"
-																col-id="0"
-																aria-colindex="2"
-																style="top: 0px; height: 32px; width: 221px; left: 222px;"
-															>
-																<div
-																	ref="eResize"
-																	class="ag-header-cell-resize ag-hidden"
-																	role="presentation"
-																	aria-hidden="true"
-																></div>
-																<div
-																	role="presentation"
-																	class="ag-labeled ag-label-align-right ag-checkbox ag-input-field ag-header-select-all ag-hidden"
-																	aria-hidden="true"
-																>
-																	<div
-																		ref="eLabel"
-																		class="ag-input-field-label ag-label ag-hidden ag-checkbox-label"
-																		aria-hidden="true"
-																		role="presentation"
-																		id="ag-33-label"
-																	></div>
-																	<div
-																		ref="eWrapper"
-																		class="ag-wrapper ag-input-wrapper ag-checkbox-input-wrapper"
-																		role="presentation"
-																	>
-																		<input
-																			ref="eInput"
-																			class="ag-input-field-input ag-checkbox-input"
-																			type="checkbox"
-																			id="ag-33-input"
-																			tabindex="-1"
-																			aria-label="Press Space to toggle all rows selection (unchecked)"
-																		/>
-																	</div>
-																</div>
-																<div
-																	ref="eHeaderCompWrapper"
-																	class="ag-header-cell-comp-wrapper"
-																	role="presentation"
-																>
-																	<div class="ag-cell-label-container" role="presentation">
-																		<div
-																			ref="eLabel"
-																			class="ag-header-cell-label"
-																			role="presentation"
-																		>
-																			<span ref="eText" class="ag-header-cell-text"
-																				>Fiat Currency</span
-																			>
-																			<span
-																				ref="eFilter"
-																				class="ag-header-icon ag-header-label-icon ag-filter-icon ag-hidden"
-																				aria-hidden="true"
-																				><span
-																					class="ag-icon ag-icon-filter"
-																					unselectable="on"
-																					role="presentation"
-																				></span></span
-																			>
-																			<!--AG-SORT-INDICATOR--><span
-																				class="ag-sort-indicator-container"
-																				ref="eSortIndicator"
-																			>
-																				<span
-																					ref="eSortOrder"
-																					class="ag-sort-indicator-icon ag-sort-order ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortAsc"
-																					class="ag-sort-indicator-icon ag-sort-ascending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortDesc"
-																					class="ag-sort-indicator-icon ag-sort-descending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortMixed"
-																					class="ag-sort-indicator-icon ag-sort-mixed-icon ag-hidden"
-																					aria-hidden="true"
-																					><span class="po-ag-icon-none"></span></span
-																				>
-																				<span
-																					ref="eSortNone"
-																					class="ag-sort-indicator-icon ag-sort-none-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div
-																class="ag-header-cell ag-focus-managed"
-																role="columnheader"
-																tabindex="-1"
-																col-id="1"
-																aria-colindex="3"
-																style="top: 0px; height: 32px; width: 221px; left: 443px;"
-															>
-																<div
-																	ref="eResize"
-																	class="ag-header-cell-resize ag-hidden"
-																	role="presentation"
-																	aria-hidden="true"
-																></div>
-																<div
-																	role="presentation"
-																	class="ag-labeled ag-label-align-right ag-checkbox ag-input-field ag-header-select-all ag-hidden"
-																	aria-hidden="true"
-																>
-																	<div
-																		ref="eLabel"
-																		class="ag-input-field-label ag-label ag-hidden ag-checkbox-label"
-																		aria-hidden="true"
-																		role="presentation"
-																		id="ag-37-label"
-																	></div>
-																	<div
-																		ref="eWrapper"
-																		class="ag-wrapper ag-input-wrapper ag-checkbox-input-wrapper"
-																		role="presentation"
-																	>
-																		<input
-																			ref="eInput"
-																			class="ag-input-field-input ag-checkbox-input"
-																			type="checkbox"
-																			id="ag-37-input"
-																			tabindex="-1"
-																			aria-label="Press Space to toggle all rows selection (unchecked)"
-																		/>
-																	</div>
-																</div>
-																<div
-																	ref="eHeaderCompWrapper"
-																	class="ag-header-cell-comp-wrapper"
-																	role="presentation"
-																>
-																	<div class="ag-cell-label-container" role="presentation">
-																		<div
-																			ref="eLabel"
-																			class="ag-header-cell-label"
-																			role="presentation"
-																		>
-																			<span ref="eText" class="ag-header-cell-text"
-																				>Cryptocurrency</span
-																			>
-																			<span
-																				ref="eFilter"
-																				class="ag-header-icon ag-header-label-icon ag-filter-icon ag-hidden"
-																				aria-hidden="true"
-																				><span
-																					class="ag-icon ag-icon-filter"
-																					unselectable="on"
-																					role="presentation"
-																				></span></span
-																			>
-																			<!--AG-SORT-INDICATOR--><span
-																				class="ag-sort-indicator-container"
-																				ref="eSortIndicator"
-																			>
-																				<span
-																					ref="eSortOrder"
-																					class="ag-sort-indicator-icon ag-sort-order ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortAsc"
-																					class="ag-sort-indicator-icon ag-sort-ascending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortDesc"
-																					class="ag-sort-indicator-icon ag-sort-descending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortMixed"
-																					class="ag-sort-indicator-icon ag-sort-mixed-icon ag-hidden"
-																					aria-hidden="true"
-																					><span class="po-ag-icon-none"></span></span
-																				>
-																				<span
-																					ref="eSortNone"
-																					class="ag-sort-indicator-icon ag-sort-none-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div
-																class="ag-header-cell ag-focus-managed"
-																role="columnheader"
-																tabindex="-1"
-																col-id="feeRate"
-																aria-colindex="4"
-																style="top: 0px; height: 32px; width: 221px; left: 664px;"
-															>
-																<div
-																	ref="eResize"
-																	class="ag-header-cell-resize ag-hidden"
-																	role="presentation"
-																	aria-hidden="true"
-																></div>
-																<div
-																	role="presentation"
-																	class="ag-labeled ag-label-align-right ag-checkbox ag-input-field ag-header-select-all ag-hidden"
-																	aria-hidden="true"
-																>
-																	<div
-																		ref="eLabel"
-																		class="ag-input-field-label ag-label ag-hidden ag-checkbox-label"
-																		aria-hidden="true"
-																		role="presentation"
-																		id="ag-41-label"
-																	></div>
-																	<div
-																		ref="eWrapper"
-																		class="ag-wrapper ag-input-wrapper ag-checkbox-input-wrapper"
-																		role="presentation"
-																	>
-																		<input
-																			ref="eInput"
-																			class="ag-input-field-input ag-checkbox-input"
-																			type="checkbox"
-																			id="ag-41-input"
-																			tabindex="-1"
-																			aria-label="Press Space to toggle all rows selection (unchecked)"
-																		/>
-																	</div>
-																</div>
-																<div
-																	ref="eHeaderCompWrapper"
-																	class="ag-header-cell-comp-wrapper"
-																	role="presentation"
-																>
-																	<div class="ag-cell-label-container" role="presentation">
-																		<div
-																			ref="eLabel"
-																			class="ag-header-cell-label"
-																			role="presentation"
-																		>
-																			<span ref="eText" class="ag-header-cell-text">Fee Rate</span>
-																			<span
-																				ref="eFilter"
-																				class="ag-header-icon ag-header-label-icon ag-filter-icon ag-hidden"
-																				aria-hidden="true"
-																				><span
-																					class="ag-icon ag-icon-filter"
-																					unselectable="on"
-																					role="presentation"
-																				></span></span
-																			>
-																			<!--AG-SORT-INDICATOR--><span
-																				class="ag-sort-indicator-container"
-																				ref="eSortIndicator"
-																			>
-																				<span
-																					ref="eSortOrder"
-																					class="ag-sort-indicator-icon ag-sort-order ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortAsc"
-																					class="ag-sort-indicator-icon ag-sort-ascending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortDesc"
-																					class="ag-sort-indicator-icon ag-sort-descending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortMixed"
-																					class="ag-sort-indicator-icon ag-sort-mixed-icon ag-hidden"
-																					aria-hidden="true"
-																					><span class="po-ag-icon-none"></span></span
-																				>
-																				<span
-																					ref="eSortNone"
-																					class="ag-sort-indicator-icon ag-sort-none-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div
-																class="ag-header-cell ag-focus-managed"
-																role="columnheader"
-																tabindex="-1"
-																col-id="feeAmount"
-																aria-colindex="5"
-																style="top: 0px; height: 32px; width: 221px; left: 885px;"
-															>
-																<div
-																	ref="eResize"
-																	class="ag-header-cell-resize ag-hidden"
-																	role="presentation"
-																	aria-hidden="true"
-																></div>
-																<div
-																	role="presentation"
-																	class="ag-labeled ag-label-align-right ag-checkbox ag-input-field ag-header-select-all ag-hidden"
-																	aria-hidden="true"
-																>
-																	<div
-																		ref="eLabel"
-																		class="ag-input-field-label ag-label ag-hidden ag-checkbox-label"
-																		aria-hidden="true"
-																		role="presentation"
-																		id="ag-45-label"
-																	></div>
-																	<div
-																		ref="eWrapper"
-																		class="ag-wrapper ag-input-wrapper ag-checkbox-input-wrapper"
-																		role="presentation"
-																	>
-																		<input
-																			ref="eInput"
-																			class="ag-input-field-input ag-checkbox-input"
-																			type="checkbox"
-																			id="ag-45-input"
-																			tabindex="-1"
-																			aria-label="Press Space to toggle all rows selection (unchecked)"
-																		/>
-																	</div>
-																</div>
-																<div
-																	ref="eHeaderCompWrapper"
-																	class="ag-header-cell-comp-wrapper"
-																	role="presentation"
-																>
-																	<div class="ag-cell-label-container" role="presentation">
-																		<div
-																			ref="eLabel"
-																			class="ag-header-cell-label"
-																			role="presentation"
-																		>
-																			<span ref="eText" class="ag-header-cell-text">Fee</span>
-																			<span
-																				ref="eFilter"
-																				class="ag-header-icon ag-header-label-icon ag-filter-icon ag-hidden"
-																				aria-hidden="true"
-																				><span
-																					class="ag-icon ag-icon-filter"
-																					unselectable="on"
-																					role="presentation"
-																				></span></span
-																			>
-																			<!--AG-SORT-INDICATOR--><span
-																				class="ag-sort-indicator-container"
-																				ref="eSortIndicator"
-																			>
-																				<span
-																					ref="eSortOrder"
-																					class="ag-sort-indicator-icon ag-sort-order ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortAsc"
-																					class="ag-sort-indicator-icon ag-sort-ascending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortDesc"
-																					class="ag-sort-indicator-icon ag-sort-descending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortMixed"
-																					class="ag-sort-indicator-icon ag-sort-mixed-icon ag-hidden"
-																					aria-hidden="true"
-																					><span class="po-ag-icon-none"></span></span
-																				>
-																				<span
-																					ref="eSortNone"
-																					class="ag-sort-indicator-icon ag-sort-none-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div
-																class="ag-header-cell ag-focus-managed"
-																role="columnheader"
-																tabindex="-1"
-																col-id="channelType"
-																aria-colindex="6"
-																style="top: 0px; height: 32px; width: 221px; left: 1106px;"
-															>
-																<div
-																	ref="eResize"
-																	class="ag-header-cell-resize ag-hidden"
-																	role="presentation"
-																	aria-hidden="true"
-																></div>
-																<div
-																	role="presentation"
-																	class="ag-labeled ag-label-align-right ag-checkbox ag-input-field ag-header-select-all ag-hidden"
-																	aria-hidden="true"
-																>
-																	<div
-																		ref="eLabel"
-																		class="ag-input-field-label ag-label ag-hidden ag-checkbox-label"
-																		aria-hidden="true"
-																		role="presentation"
-																		id="ag-49-label"
-																	></div>
-																	<div
-																		ref="eWrapper"
-																		class="ag-wrapper ag-input-wrapper ag-checkbox-input-wrapper"
-																		role="presentation"
-																	>
-																		<input
-																			ref="eInput"
-																			class="ag-input-field-input ag-checkbox-input"
-																			type="checkbox"
-																			id="ag-49-input"
-																			tabindex="-1"
-																			aria-label="Press Space to toggle all rows selection (unchecked)"
-																		/>
-																	</div>
-																</div>
-																<div
-																	ref="eHeaderCompWrapper"
-																	class="ag-header-cell-comp-wrapper"
-																	role="presentation"
-																>
-																	<div class="ag-cell-label-container" role="presentation">
-																		<div
-																			ref="eLabel"
-																			class="ag-header-cell-label"
-																			role="presentation"
-																		>
-																			<span ref="eText" class="ag-header-cell-text"
-																				>Payment Method</span
-																			>
-																			<span
-																				ref="eFilter"
-																				class="ag-header-icon ag-header-label-icon ag-filter-icon ag-hidden"
-																				aria-hidden="true"
-																				><span
-																					class="ag-icon ag-icon-filter"
-																					unselectable="on"
-																					role="presentation"
-																				></span></span
-																			>
-																			<!--AG-SORT-INDICATOR--><span
-																				class="ag-sort-indicator-container"
-																				ref="eSortIndicator"
-																			>
-																				<span
-																					ref="eSortOrder"
-																					class="ag-sort-indicator-icon ag-sort-order ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortAsc"
-																					class="ag-sort-indicator-icon ag-sort-ascending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortDesc"
-																					class="ag-sort-indicator-icon ag-sort-descending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortMixed"
-																					class="ag-sort-indicator-icon ag-sort-mixed-icon ag-hidden"
-																					aria-hidden="true"
-																					><span class="po-ag-icon-none"></span></span
-																				>
-																				<span
-																					ref="eSortNone"
-																					class="ag-sort-indicator-icon ag-sort-none-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div
-																class="ag-header-cell ag-column-last ag-focus-managed"
-																role="columnheader"
-																tabindex="-1"
-																col-id="state"
-																aria-colindex="7"
-																style="top: 0px; height: 32px; width: 221px; left: 1327px;"
-															>
-																<div
-																	ref="eResize"
-																	class="ag-header-cell-resize ag-hidden"
-																	role="presentation"
-																	aria-hidden="true"
-																></div>
-																<div
-																	role="presentation"
-																	class="ag-labeled ag-label-align-right ag-checkbox ag-input-field ag-header-select-all ag-hidden"
-																	aria-hidden="true"
-																>
-																	<div
-																		ref="eLabel"
-																		class="ag-input-field-label ag-label ag-hidden ag-checkbox-label"
-																		aria-hidden="true"
-																		role="presentation"
-																		id="ag-53-label"
-																	></div>
-																	<div
-																		ref="eWrapper"
-																		class="ag-wrapper ag-input-wrapper ag-checkbox-input-wrapper"
-																		role="presentation"
-																	>
-																		<input
-																			ref="eInput"
-																			class="ag-input-field-input ag-checkbox-input"
-																			type="checkbox"
-																			id="ag-53-input"
-																			tabindex="-1"
-																			aria-label="Press Space to toggle all rows selection (unchecked)"
-																		/>
-																	</div>
-																</div>
-																<div
-																	ref="eHeaderCompWrapper"
-																	class="ag-header-cell-comp-wrapper"
-																	role="presentation"
-																>
-																	<div class="ag-cell-label-container" role="presentation">
-																		<div
-																			ref="eLabel"
-																			class="ag-header-cell-label"
-																			role="presentation"
-																		>
-																			<span ref="eText" class="ag-header-cell-text">Status</span>
-																			<span
-																				ref="eFilter"
-																				class="ag-header-icon ag-header-label-icon ag-filter-icon ag-hidden"
-																				aria-hidden="true"
-																				><span
-																					class="ag-icon ag-icon-filter"
-																					unselectable="on"
-																					role="presentation"
-																				></span></span
-																			>
-																			<!--AG-SORT-INDICATOR--><span
-																				class="ag-sort-indicator-container"
-																				ref="eSortIndicator"
-																			>
-																				<span
-																					ref="eSortOrder"
-																					class="ag-sort-indicator-icon ag-sort-order ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortAsc"
-																					class="ag-sort-indicator-icon ag-sort-ascending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortDesc"
-																					class="ag-sort-indicator-icon ag-sort-descending-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																				<span
-																					ref="eSortMixed"
-																					class="ag-sort-indicator-icon ag-sort-mixed-icon ag-hidden"
-																					aria-hidden="true"
-																					><span class="po-ag-icon-none"></span></span
-																				>
-																				<span
-																					ref="eSortNone"
-																					class="ag-sort-indicator-icon ag-sort-none-icon ag-hidden"
-																					aria-hidden="true"
-																				></span>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div
-													class="ag-pinned-right-header ag-hidden"
-													role="presentation"
-													aria-hidden="true"
-													style="width: 0px; max-width: 0px; min-width: 0px;"
-												></div>
-											</div>
-											<div
-												class="ag-floating-top"
-												ref="eTop"
-												role="presentation"
-												style="min-height: 0px; height: 0px; display: none; overflow-y: hidden;"
-											>
-												<!--AG-ROW-CONTAINER-->
-												<div
-													class="ag-pinned-left-floating-top ag-hidden"
-													ref="topLeftContainer"
-													name="topLeft"
-													role="presentation"
-													aria-hidden="true"
-													style="width: 0px; max-width: 0px; min-width: 0px;"
-												></div>
-												<!--AG-ROW-CONTAINER-->
-												<div
-													class="ag-floating-top-viewport"
-													ref="topCenterContainer"
-													role="presentation"
-													name="topCenter"
-												>
-													<div
-														class="ag-floating-top-container"
-														ref="eContainer"
-														role="presentation"
-														style="width: 1548px; transform: translateX(0px);"
-													></div>
-												</div>
-												<!--AG-ROW-CONTAINER-->
-												<div
-													class="ag-pinned-right-floating-top ag-hidden"
-													ref="topRightContainer"
-													name="topRight"
-													role="presentation"
-													aria-hidden="true"
-													style="width: 0px; max-width: 0px; min-width: 0px;"
-												></div>
-												<!--AG-ROW-CONTAINER-->
-												<div
-													class="ag-floating-top-full-width-container"
-													ref="topFullWidthContainer"
-													name="topFullWidth"
-													role="presentation"
-												></div>
-											</div>
-											<div class="ag-body ag-layout-auto-height" ref="eBody" role="presentation">
-												<div
-													class="ag-body-viewport ag-layout-auto-height ag-row-no-animation"
-													ref="eBodyViewport"
-													role="presentation"
-													style="width: calc(100% + 0px);"
-												>
-													<!--AG-ROW-CONTAINER-->
-													<div
-														class="ag-pinned-left-cols-container ag-hidden"
-														ref="leftContainer"
-														name="left"
-														role="presentation"
-														aria-hidden="true"
-														style="height: 1px; width: 0px; max-width: 0px; min-width: 0px;"
-													></div>
-													<!--AG-ROW-CONTAINER-->
-													<div
-														class="ag-center-cols-viewport"
-														ref="centerContainer"
-														role="presentation"
-														name="center"
-														style="height: 1px;"
-													>
-														<div
-															class="ag-center-cols-container"
-															ref="eContainer"
-															role="presentation"
-															style="width: 1548px; height: 1px;"
-														></div>
-													</div>
-													<!--AG-ROW-CONTAINER-->
-													<div
-														class="ag-pinned-right-cols-container ag-hidden"
-														ref="rightContainer"
-														name="right"
-														role="presentation"
-														aria-hidden="true"
-														style="height: 1px; width: 0px; max-width: 0px; min-width: 0px;"
-													></div>
-													<!--AG-ROW-CONTAINER-->
-													<div
-														class="ag-full-width-container"
-														ref="fullWidthContainer"
-														name="fullWidth"
-														role="presentation"
-														style="height: 1px;"
-													></div>
-												</div>
-												<!--AG-FAKE-VERTICAL-SCROLL-->
-												<div
-													class="ag-body-vertical-scroll ag-hidden"
-													aria-hidden="true"
-													style="width: 0px; max-width: 0px; min-width: 0px;"
-												>
-													<div
-														class="ag-body-vertical-scroll-viewport"
-														ref="eViewport"
-														style="width: 0px; max-width: 0px; min-width: 0px;"
-													>
-														<div
-															class="ag-body-vertical-scroll-container"
-															ref="eContainer"
-															style="height: 1px; width: 0px; max-width: 0px; min-width: 0px;"
-														></div>
-													</div>
-												</div>
-											</div>
-											<div
-												class="ag-sticky-top"
-												ref="eStickyTop"
-												role="presentation"
-												style="top: 33px; width: 100%;"
-											>
-												<!--AG-ROW-CONTAINER-->
-												<div
-													class="ag-pinned-left-sticky-top ag-hidden"
-													ref="stickyTopLeftContainer"
-													name="stickyTopLeft"
-													role="presentation"
-													aria-hidden="true"
-													style="width: 0px; max-width: 0px; min-width: 0px;"
-												></div>
-												<!--AG-ROW-CONTAINER-->
-												<div
-													class="ag-sticky-top-viewport"
-													ref="stickyTopCenterContainer"
-													role="presentation"
-													name="stickyTopCenter"
-												>
-													<div
-														class="ag-sticky-top-container"
-														ref="eContainer"
-														role="presentation"
-														style="width: 1548px; transform: translateX(0px);"
-													></div>
-												</div>
-												<!--AG-ROW-CONTAINER-->
-												<div
-													class="ag-pinned-right-sticky-top ag-hidden"
-													ref="stickyTopRightContainer"
-													name="stickyTopRight"
-													role="presentation"
-													aria-hidden="true"
-													style="width: 0px; max-width: 0px; min-width: 0px;"
-												></div>
-												<!--AG-ROW-CONTAINER-->
-												<div
-													class="ag-sticky-top-full-width-container"
-													ref="stickyTopFullWidthContainer"
-													name="stickyTopFullWidth"
-													role="presentation"
-												></div>
-											</div>
-											<div
-												class="ag-floating-bottom"
-												ref="eBottom"
-												role="presentation"
-												style="min-height: 0px; height: 0px; display: none; overflow-y: hidden;"
-											>
-												<!--AG-ROW-CONTAINER-->
-												<div
-													class="ag-pinned-left-floating-bottom ag-hidden"
-													ref="bottomLeftContainer"
-													name="bottomLeft"
-													role="presentation"
-													aria-hidden="true"
-													style="width: 0px; max-width: 0px; min-width: 0px;"
-												></div>
-												<!--AG-ROW-CONTAINER-->
-												<div
-													class="ag-floating-bottom-viewport"
-													ref="bottomCenterContainer"
-													role="presentation"
-													name="bottomCenter"
-												>
-													<div
-														class="ag-floating-bottom-container"
-														ref="eContainer"
-														role="presentation"
-														style="width: 1548px; transform: translateX(0px);"
-													></div>
-												</div>
-												<!--AG-ROW-CONTAINER-->
-												<div
-													class="ag-pinned-right-floating-bottom ag-hidden"
-													ref="bottomRightContainer"
-													name="bottomRight"
-													role="presentation"
-													aria-hidden="true"
-													style="width: 0px; max-width: 0px; min-width: 0px;"
-												></div>
-												<!--AG-ROW-CONTAINER-->
-												<div
-													class="ag-floating-bottom-full-width-container"
-													ref="bottomFullWidthContainer"
-													name="bottomFullWidth"
-													role="presentation"
-												></div>
-											</div>
-											<!--AG-FAKE-HORIZONTAL-SCROLL-->
-											<div
-												class="ag-body-horizontal-scroll ag-hidden"
-												aria-hidden="true"
-												style="height: 0px; max-height: 0px; min-height: 0px;"
-											>
-												<div
-													class="ag-horizontal-left-spacer ag-scroller-corner"
-													ref="eLeftSpacer"
-													style="width: 0px; max-width: 0px; min-width: 0px;"
-												></div>
-												<div
-													class="ag-body-horizontal-scroll-viewport"
-													ref="eViewport"
-													style="height: 0px; max-height: 0px; min-height: 0px;"
-												>
-													<div
-														class="ag-body-horizontal-scroll-container"
-														ref="eContainer"
-														style="width: 1548px; height: 0px; max-height: 0px; min-height: 0px;"
-													></div>
-												</div>
-												<div
-													class="ag-horizontal-right-spacer ag-scroller-corner"
-													ref="eRightSpacer"
-													style="width: 0px; max-width: 0px; min-width: 0px;"
-												></div>
-											</div>
-											<!--AG-OVERLAY-WRAPPER-->
-											<div class="ag-overlay" aria-hidden="true">
-												<div class="ag-overlay-panel">
-													<div
-														class="ag-overlay-wrapper ag-layout-auto-height ag-overlay-no-rows-wrapper"
-														ref="eOverlayWrapper"
-													>
-														<div class="qqWi0">
-															<div class="YSmmf">
-																<div>No records</div>
-																<!---->
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div
-											class="ag-tab-guard ag-tab-guard-bottom"
-											role="presentation"
-											tabindex="0"
-										></div>
-									</div>
-
-									<!--AG-PAGINATION-->
-									<div
-										class="ag-paging-panel ag-unselectable ag-hidden"
-										id="ag-25"
-										aria-hidden="true"
-									>
-										<!--AG-PAGE-SIZE-SELECTOR--><span class="ag-paging-page-size" ref="pageSizeComp"
-										></span>
-										<span class="ag-paging-row-summary-panel" role="status">
-											<span
-												id="ag-25-first-row"
-												ref="lbFirstRowOnPage"
-												class="ag-paging-row-summary-panel-number"
-											></span>
-											<span id="ag-25-to">to</span>
-											<span
-												id="ag-25-last-row"
-												ref="lbLastRowOnPage"
-												class="ag-paging-row-summary-panel-number"
-											></span>
-											<span id="ag-25-of">of</span>
-											<span
-												id="ag-25-row-count"
-												ref="lbRecordCount"
-												class="ag-paging-row-summary-panel-number"
-											></span>
-										</span>
-										<span class="ag-paging-page-summary-panel" role="presentation">
-											<div
-												ref="btFirst"
-												class="ag-button ag-paging-button"
-												role="button"
-												aria-label="First Page"
-												tabindex="0"
-											>
-												<span class="ag-icon ag-icon-first" unselectable="on" role="presentation"
-												></span>
-											</div>
-											<div
-												ref="btPrevious"
-												class="ag-button ag-paging-button"
-												role="button"
-												aria-label="Previous Page"
-												tabindex="0"
-											>
-												<span class="ag-icon ag-icon-previous" unselectable="on" role="presentation"
-												></span>
-											</div>
-											<span class="ag-paging-description" role="status">
-												<span id="ag-25-start-page">Page</span>
-												<span id="ag-25-start-page-number" ref="lbCurrent" class="ag-paging-number"
-												></span>
-												<span id="ag-25-of-page">of</span>
-												<span id="ag-25-of-page-number" ref="lbTotal" class="ag-paging-number"
-												></span>
-											</span>
-											<div
-												ref="btNext"
-												class="ag-button ag-paging-button"
-												role="button"
-												aria-label="Next Page"
-												tabindex="0"
-											>
-												<span class="ag-icon ag-icon-next" unselectable="on" role="presentation"
-												></span>
-											</div>
-											<div
-												ref="btLast"
-												class="ag-button ag-paging-button"
-												role="button"
-												aria-label="Last Page"
-												tabindex="0"
-											>
-												<span class="ag-icon ag-icon-last" unselectable="on" role="presentation"
-												></span>
-											</div>
-										</span>
-									</div>
-								</div>
+								<DataTable/>
 							</div>
 						</div>
-						<!---->
 					</div>
 				</div>
 			</div>

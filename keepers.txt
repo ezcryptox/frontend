@@ -6,7 +6,7 @@
  <div id="polo-header" data-v-app="" style="z-index: 1000000;">
     <header class="cdd74806 uniframe-root uniframe-header">
       <div class="d576b507">
-        <div><div class="c0f4158f"><a href="/">Poloniex</a></div></div>
+        <div><div class="c0f4158f"><a href="/">Ezcryptox</a></div></div>
         <div style="margin-right: auto;">
           <ul class="a3107c1e">
             <li>
@@ -331,7 +331,7 @@
                           >
                         </div>
                         <div class="d4ef16dd">
-                          <span>Poloniex Blog</span><!----><!---->
+                          <span>Ezcryptox Blog</span><!----><!---->
                         </div>
                         <div class="ddfb18d1">
                           Learn and stay up-to-date on all things crypto!

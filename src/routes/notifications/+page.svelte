@@ -30,7 +30,7 @@
                       "Referral Program, Campaigns, Polo Earn and Airdrops",
                       "Getting Started",
                       "Using Your Account",
-                      "Trading on Poloniex",
+                      "Trading on Ezcryptox",
                   ];
     };
 
