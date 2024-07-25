@@ -1,15 +1,16 @@
 <script>
   import { onMount } from "svelte";
-  import { user } from "$lib/store/profile";
-
-  export let _handleRefModal = null;
-
-  function handleRefModal() {
-    if (_handleRefModal) _handleRefModal();
-  }
+	import { handleUserProfile } from "$lib";
+	import { handleAuthToken } from "$lib/store/routes";
+	import QrCode from "./qrCode.svelte";
 
   $: refCode = "";
+  $: QrCode_src = '';
+	$: refCodeModalIsOpen = false;
 
+	function handleRefModal() {
+		refCodeModalIsOpen = !refCodeModalIsOpen;
+	}
   function copyToClipboard(text) {
     navigator.clipboard
       .writeText(text)
@@ -21,15 +22,19 @@
       });
   }
 
-  onMount(() => {
-    const storedData = sessionStorage.getItem("user");
-    if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      refCode = parsedData?.user?.refCode;
-    }
+  onMount(async () => {
+    const {referral} = await handleUserProfile($handleAuthToken);
+		if (referral) {
+			// @ts-ignore
+      refCode = referral.refCode;
+			// @ts-ignore
+			QrCode_src = referral.QrCode_src;
+		}
   });
 </script>
-
+{#if QrCode_src && refCodeModalIsOpen}
+	<QrCode {refCode} {QrCode_src} {handleRefModal} />
+{/if}
 <div>
   <div class="fef54d3a">
     <div class="flex justify-between _893633d3">
@@ -63,7 +68,7 @@
     <div class="_5370c68a">
       <div class="_830a66f5">
         <label class="_27004f09">Referral code</label>
-        <div class="a7a784a5"><span>{refCode}</span></div>
+        <div class="a7a784a5"><span>{refCode || "--"}</span></div>
       </div>
       <div class="bb8d5c1d">
         <svg
@@ -91,7 +96,7 @@
       >
         <label class="_27004f09">Referral link&ZeroWidthSpace;</label>
         <div class="a7a784a5 _21bf3f75">
-          <span>{`https://poloniex.com/signup?c=${refCode}`}</span><span
+          <span>{`https://ezcryptox.com/signup?c=${refCode || ""}`}</span><span
             >{refCode}</span
           >
         </div>

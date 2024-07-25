@@ -1,40 +1,11 @@
 <script>
   import Footer from "$lib/footer.svelte";
   import "../../styles/referral.css";
-  import Spot from "$lib/market/market-content/spot/spot.market.svelte";
-  import { screen } from "$lib/store/screen";
 
-  import { onMount } from "svelte";
-  import { handleExchanegerate } from "$lib/home-page/hook";
-  import Loader from "$lib/loader.svelte";
-  import HModal from "../../lib/referrals/hModal.svelte";
-  import ShareCode from "../../lib/referrals/Modals/shareCode.svelte";
-  import SignedBanner from "../../lib/referrals/signedBanner.svelte";
-
-  $: HModalOpen = false;
-  $: tab = 1;
-  let respons = [];
-  $: loading = false;
-  $: shareCodeModalIsOpen = true;
-
-  function updateModalOpen() {
-    HModalOpen = !HModalOpen;
-  }
-
-  onMount(async () => {
-    loading = true;
-    let { is_loading, response } = await handleExchanegerate();
-    loading = is_loading;
-    if (response) {
-      respons = response;
-    }
-  });
+  export let showLeaderboard;
 </script>
 
-<!-- ///// -->
-{#if HModalOpen}
-  <HModal {updateModalOpen} />
-{/if}
+
 
 <div data-v-1ed24750="" class="banner">
   <div data-v-1ed24750="" class="_8ca0ec16 fe217ee2">
@@ -160,7 +131,7 @@
           ><span
             ><strong>$</strong> commissions have been refunded to users</span
           ><span class="_5e79b267"
-            on:click={updateModalOpen}
+            on:click={showLeaderboard}
             role="button"
             tabindex={0}
             ><svg

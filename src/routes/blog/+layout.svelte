@@ -3,11 +3,20 @@
 	import { page } from '$app/stores';
     import { browser } from '$app/environment';
 	import '../../styles/blog/blog.css';
+		import pkg from 'lodash';
+	import { searchQuery } from './store';
+	import { goto } from '$app/navigation';
+	const { debounce } = pkg;
 	if (browser) {
-		document.documentElement.setAttribute('data-theme', 'light');
-		document.documentElement.setAttribute('data-uniframe-theme', 'light');
-		document.documentElement.setAttribute('data-entry', 'blog');
+				document.documentElement.setAttribute('data-entry', 'blog');
 	}
+
+	async function handleInputChange(ev) {
+		const value = ev.target.value?.trim()
+		searchQuery.set(value)
+		if (value) goto(`/blog/search/${encodeURIComponent(value)}`)
+	}
+	const debouncedHandleInputChange = debounce(handleInputChange, 300); // 300ms debounce
 </script>
 
 <div id="root" data-v-app="">
@@ -36,6 +45,7 @@
 									><!--v-if--></span
 								></span
 							><input
+							on:input={debouncedHandleInputChange}
 								class="el-input__inner"
 								type="text"
 								autocomplete="off"

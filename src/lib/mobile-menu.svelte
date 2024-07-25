@@ -257,7 +257,7 @@ $: showExploire = false
                                     <a class="d3f3d2f7" target="_self" href="?/blog">
                                         <!---->
                                         <div class="d4ef16dd">
-                                            <span>Poloniex Blog</span>
+                                            <span>Ezcryptox Blog</span>
                                             <!----><!---->
                                         </div>
                                         <!---->

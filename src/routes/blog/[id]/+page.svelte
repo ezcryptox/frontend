@@ -1,299 +1,52 @@
 <script>
     import "../../../styles/blog/detail.css";
+    import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import { blogDetail } from '../blog';
+	import { marked } from 'marked';
+
+	// Get the article ID from the URL
+	const blogId = $page.params.id;
+
+	let blog;
+	let loading = false;
+	onMount(() => {
+		loading = true;
+		blogDetail(blogId)
+			.then((detail) => {
+				blog = detail.details;
+			})
+			.finally(() => (loading = false));
+	});
 </script>
 
 <div class="Drdk9 IsyAl">
-    <div class="Dijsp">
-        <p class="gQRQT">What is DAW</p>
+    {#if blog}
+        <div class="Dijsp">
+        <p class="gQRQT">{blog.title}</p>
         <p class="_3JRhx">
-            <span>October 31, 2023</span><span
+            <span>{new Date(blog.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span><span
                 ><svg fill="currentColor" style="width: 10px; height: 10px;"
                     ><use xlink:href="#web-core-icon-clock"></use></svg
-                > 5 min</span
+                > {blog.minutesToRead} min</span
             >
         </p>
         <div style="display: block; overflow: hidden; position: relative;">
             <img
-                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAwIiBoZWlnaHQ9IjEwMDAiPjwvc3ZnPg=="
+                src="{blog.coverImage}"
                 role="presentation"
                 style="display: block; width: 100%;"
             />
-            <div
-                aria-hidden="true"
-                style="background-image: url(&quot;data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx0sHR4mJh0tKysvHiUtKSUiJDUlKC0vMjIyJSI4PTcwPCsxMi8BCgsLDg0OHBAQHC8oIig7Ozs7Oy87Oy8vOzs7Ly81OzU1NTsvLy81Lzs7Ly8vLzsvLy8vLy8vLy81Ly8vLy8vL//AABEIAAwAGAMBIgACEQEDEQH/xAAXAAEAAwAAAAAAAAAAAAAAAAAGAAQF/8QAHxAAAQQCAgMAAAAAAAAAAAAAAQACAwQFBhGREhNR/8QAFgEBAQEAAAAAAAAAAAAAAAAAAwIB/8QAGhEAAgIDAAAAAAAAAAAAAAAAAQMAEQIxQv/aAAwDAQACEQMRAD8AEQYGsMe4l4WpqmpULcrnSSA8fShrL9kUHN9pVvX8ncgnc2OZwHCrAGCzFlbivZdZxtZ/DXjtREMxk7c1g+cxKi0g3ACmnqf/2Q==&quot;); background-color: rgb(3, 234, 123); background-size: cover; opacity: 0; transition: opacity 500ms ease 500ms; position: absolute; left: -5%; top: -5%; width: 110%; height: 110%;"
-            ></div>
-            <picture
-                ><source
-                    srcset="https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?dpr=0.25&amp;fit=crop&amp;fm=webp&amp;h=1000&amp;w=2000 500w,https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?dpr=0.5&amp;fit=crop&amp;fm=webp&amp;h=1000&amp;w=2000 1000w,https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?dpr=0.75&amp;fit=crop&amp;fm=webp&amp;h=1000&amp;w=2000 1500w,https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?fit=crop&amp;fm=webp&amp;h=1000&amp;w=2000 2000w"
-                    sizes="(max-width: 2000px) 100vw, 2000px"
-                    type="image/webp"
-                /><source
-                    srcset="https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?dpr=0.25&amp;fit=crop&amp;fm=jpg&amp;h=1000&amp;w=2000 500w,https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?dpr=0.5&amp;fit=crop&amp;fm=jpg&amp;h=1000&amp;w=2000 1000w,https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?dpr=0.75&amp;fit=crop&amp;fm=jpg&amp;h=1000&amp;w=2000 1500w,https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?fit=crop&amp;fm=jpg&amp;h=1000&amp;w=2000 2000w"
-                    sizes="(max-width: 2000px) 100vw, 2000px"
-                /><img
-                    src="https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?fit=crop&amp;fm=jpg&amp;h=1000&amp;w=2000"
-                    style="opacity: 1; transition: opacity 500ms ease 500ms; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"
-                /></picture
-            ><noscript
-                ><picture
-                    ><source
-                        srcset="https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?dpr=0.25&amp;fit=crop&amp;fm=webp&amp;h=1000&amp;w=2000 500w,https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?dpr=0.5&amp;fit=crop&amp;fm=webp&amp;h=1000&amp;w=2000 1000w,https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?dpr=0.75&amp;fit=crop&amp;fm=webp&amp;h=1000&amp;w=2000 1500w,https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?fit=crop&amp;fm=webp&amp;h=1000&amp;w=2000 2000w"
-                        sizes="(max-width: 2000px) 100vw, 2000px"
-                        type="image/webp"
-                    /><source
-                        srcset="https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?dpr=0.25&amp;fit=crop&amp;fm=jpg&amp;h=1000&amp;w=2000 500w,https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?dpr=0.5&amp;fit=crop&amp;fm=jpg&amp;h=1000&amp;w=2000 1000w,https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?dpr=0.75&amp;fit=crop&amp;fm=jpg&amp;h=1000&amp;w=2000 1500w,https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?fit=crop&amp;fm=jpg&amp;h=1000&amp;w=2000 2000w"
-                        sizes="(max-width: 2000px) 100vw, 2000px"
-                    /><img
-                        src="https://www.datocms-assets.com/51952/1698738763-what-is-daw.png?fit=crop&amp;fm=jpg&amp;h=1000&amp;w=2000"
-                        style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; "
-                        loading="lazy"
-                    /></picture
-                ></noscript
-            >
         </div>
         <div>
-            <p><strong>Abstract</strong></p>
-            <p>
-                DAW belongs to the subset of fully on-chain games, characterized
-                by being entirely on-chain, open-ended, and having no pre-set
-                gameplay.
-            </p>
-            <p>
-                DAW is in the early stages of its development, and OPcraft
-                stands out as one of its significant milestones.
-            </p>
-            <p>
-                The primary technological bottleneck lies in on-chain game
-                engines. Currently, there are four prominent DAW game engines:
-                MUD, Dojo, World Engine, and Keystone.
-            </p>
-            <p>
-                Major Challenges facing DAW Development include the absence of
-                standardized game development frameworks, difficulties in code
-                reusability, and a shortage of data composability.
-            </p>
-            <p>
-                In the upcoming bullish market cycle, a surge of popular
-                applications is poised to emerge, capitalizing on the unique
-                attributes of blockchain technology. Both SocialFi and GameFi
-                exhibit promising potential.
-            </p>
-            <p><strong>What is DAW?</strong></p>
-            <p>
-                DAW (Decentralized Autonomous Worlds) belongs to the subset of
-                fully on-chain games, characterized by being entirely on-chain,
-                open-ended, and having no pre-set gameplay. By providing
-                publicly accessible programmable interfaces, DAW empowers
-                players to freely create, enhance, and expand their gaming
-                experiences within the realm of this digital-physical reality,
-                thereby extending the boundaries of the game's narrative.
-            </p>
-            <p>
-                Within the domain of Web2 gaming, there are two primary
-                categories: Web2 non-autonomous world games and Web2 Autonomous
-                World games (CAW). Web2 non-autonomous world games include
-                popular titles like "Honor of Kings" and "League of Legends",
-                which feature structured in-game objectives, such as "rankings".
-                A prime example of CAW is "Minecraft." In this game, players are
-                not constrained by a predefined ultimate game goal. It
-                encourages creative freedom, opening up diverse gameplay
-                possibilities. Within the Minecraft universe, players can do
-                more than simply construct structures and manage virtual
-                animals. They can explore advanced gameplay modes, including
-                "survival mode," "adventure mode," "multiplayer" mode, and more.
-            </p>
-            <p>
-                The primary distinction between Web3's DAW and Web2's CAW lies
-                in the degree of decentralization. DAW stores every aspect of
-                the game, including game assets, all elements related to
-                gameplay, and the game's logic, on a blockchain network. In
-                comparison to other fully on-chain games, DAW offers a richer
-                array of features and gameplay, granting players greater
-                autonomy within this decentralized world and enhancing the
-                overall level of playability.
-            </p>
-            <p>
-                Note: "Digital-physical reality" refers to the fundamental laws
-                and systems that exist within a computational world. Each world
-                in this context has its own set of governing rules, which
-                determine all occurrences within it. These rules define the
-                physics of that specific world. Moreover, in this context,
-                "physics" is a term that encompasses the fundamental laws and
-                systems present in any "world".
-            </p>
-            <p><strong>Milestones in DAW's Development</strong></p>
-            <p>
-                DAW is in the early stages of its development, and OPcraft
-                stands out as one of its significant milestones.
-            </p>
-            <p>
-                In October 2022, the Lattice team launched OPcraft, a fully
-                on-chain 3D game inspired by Minecraft.
-            </p>
-            <p>
-                OPCraft has established a set of simple game rules. Players can
-                perform only four in-game actions: block destruction, block
-                synthesis, block placement, and claiming a 16 x 16 land area
-                (becoming the largest diamond pledger of that block).
-                Furthermore, players can customize the frontend using the
-                officially provided open plugin system to deploy custom
-                components and systems. Within just two weeks of its launch,
-                OPCraft attracted over 1,500 players, producing more than 3.5
-                million on-chain records. It has also sparked various
-                user-generated pixel art, player-made plugins, and a series of
-                spontaneously formed competitions, games, and collective
-                governance activities, including both malicious and friendly
-                player behaviors.
-            </p>
-            <p>
-                On October 29th, just two days before the conclusion of the
-                OPcraft testing phase, a player named SupremeLeaderOP made an
-                announcement on Discord and Twitter, declaring the establishment
-                of a world government within the game. According to the OPcraft
-                game settings, players could stake their diamonds to claim land.
-                As per the official announcement, SupremeLeaderOP staked 135,200
-                diamonds to establish ownership over a significant portion of
-                the area around the spawn, effectively preventing others from
-                building or mining on it.
-            </p>
-            <p>
-                In DAW games, boundless possibilities unfold, where events occur
-                and evolve beyond anyone's control. This unparalleled freedom
-                unleashes captivating gameplay experiences. DAW represents a
-                significant gameplay advancement compared to early GameFi models
-                that primarily focused on "Play to Earn" mechanics. It also
-                competes alongside Web2 games in many aspects. Since OPcraft
-                debut, a wave of DAW games has emerged, featuring notable titles
-                like the Loot Realms series, ISAAC, and Topology.
-            </p>
-            <p><strong>Underlying Technical Principles of DAW</strong></p>
-            <p>
-                Unlike traditional off-chain games or hybrid on-chain/off-chain
-                games, every action, transaction, and progression in on-chain
-                games is recorded on the blockchain. This fundamental
-                distinction sets them apart from Web2 games and represents a
-                revolutionary game-changing paradigm. In DAW games, players have
-                true ownership of their in-game assets, which can be traded,
-                sold, or used as NFTs across various games. The game rules and
-                mechanics are transparent and verifiable, enabling third-party
-                developers to create unique experiences on top of the core game.
-                Assets and progress can be seamlessly utilized across multiple
-                games and platforms. Players can engage in the "Play to Earn"
-                model, and these games are no longer under the control of a
-                single entity. With the advancement of Layer 2 solutions,
-                blockchain performance has made significant progress. However,
-                when it comes to implementing the features mentioned above, the
-                primary technological bottleneck lies in on-chain game engines,
-                which differ from those used in Web2 games.
-            </p>
-            <p>
-                The game engine is essentially a modularized code library and a
-                set of tools. By utilizing the engine's various interfaces, game
-                developers can accomplish tasks such as graphics rendering,
-                physics simulation, and network communication without delving
-                into low-level programming. This significantly saves time and
-                allows developers to focus on game design and content creation.
-                In the realm of commercial game engines, Unity and Unreal are
-                the most commonly used options. On the other hand, on-chain game
-                engines prioritize areas such as state synchronization, game
-                security, enhancing gas cost efficiency, and ensuring maximum
-                composability and interoperability. Currently, there are four
-                prominent DAW game engines: MUD, Dojo, World Engine, and
-                Keystone.
-            </p>
-            <p>
-                MUD, developed by the Lattice team, is an open-source framework
-                designed for creating on-chain apps. It has found extensive use
-                not only in the gaming sector but also in various other fields.
-                Many of the most popular on-chain games, such as OPCraft,
-                Skystrife, Kamigotchi, and more, are built using the MUD
-                framework.
-            </p>
-            <p>
-                Dojo: Dojo is a Cairo-based on-chain game engine and technology
-                stack optimized for autonomous world games on Starknet. Cairo is
-                a Rust-like smart contract language that empowers developers to
-                create verifiable applications, fully leveraging the scalability
-                provided by Starknet. By using Cairo, Dojo enables Starknet's
-                game developers to provide complexity and transparency in their
-                games. Noteworthy games developed with Dojo include "Roll Your
-                Own" and "Influence".
-            </p>
-            <p>
-                World Engine: World Engine, developed by Argus, is designed to
-                be a sharded rollup technology stack specifically created to
-                support and enhance on-chain games.
-            </p>
-            <p>
-                Keystone: Keystone, developed by the Curio team, is a rollup
-                framework constructed on the OP stack. Its primary aim is to
-                empower high-performance on-chain games, with a particular focus
-                on real-time strategy games like "Age of Empires". Keystone is
-                designed to support multiple Data Availability (DA) layers,
-                beginning with Celestia. Prominent games built on Keystone
-                include "Treaty" and others.
-            </p>
-            <p>DAW's Dilemma and Future Prospects</p>
-            <p>
-                During the early stages of GameFi, these games often suffered
-                relatively poor gameplay, with users primarily driven by the
-                "Play To Earn" aspect. However, as game tokens were heavily
-                mined and their value declined, this resulted in a significant
-                decrease in the player base, creating a vicious cycle that
-                challenged the sustainability of GameFi projects. Therefore, DAW
-                games must prioritize enhancing gameplay and establishing a
-                stable in-game economic cycle. They also need to introduce
-                diversified and sustainable resources through external business
-                expansion to ensure the game's longevity. In addition, from a
-                technical standpoint, to truly achieve DAW, several core issues
-                in the on-chain games must be tackled:
-            </p>
-            <p>
-                1. Absence of Game Development Frameworks: Many development
-                teams often resort to a do-it-yourself approach, which results
-                in inefficiencies. This approach hinders them from fully
-                capitalizing on shared system knowledge to tackle common issues
-                and fails to seize the opportunity for continuous optimization
-                of the best solutions.
-            </p>
-            <p>
-                2. Challenges with Code Reusability: Examining many of the
-                currently developed blockchain games, it becomes evident that
-                only a small portion of game code is reusable for creating
-                different games. The lack of clear differentiation between
-                layers and components across various games restricts the ability
-                to employ shared code libraries for developing the next
-                generation of games.
-            </p>
-            <p>
-                3. Lack of data composability: The challenge of sharing
-                blockchain state between different blockchain games remains
-                unresolved. Finding effective solutions for managing
-                interoperability and data sharing among different blockchain
-                games continues to be an ongoing problem.
-            </p>
-            <p><strong>Summary</strong></p>
-            <p>
-                With the advancement of Layer 2 solutions, such as Op and
-                Starknet, remarkable performance has been demonstrated,
-                effectively mitigating the technological bottlenecks that had
-                previously hindered blockchain progress. In the upcoming bullish
-                market cycle, a surge of popular applications is poised to
-                emerge, capitalizing on the unique attributes of blockchain
-                technology. Alongside the recent surge in SocialFi's popularity,
-                GameFi is also emerging as a highly promising sector. The rise
-                of OPCraft has catapulted the DAW sector into the spotlight, and
-                as game engines continue to advance, Web3 games are ready to
-                compete with Web2 games, propelling the blockchain industry into
-                traditional markets.
-            </p>
-            <p>&nbsp;</p>
+            {@html marked(blog.content)}
         </div>
     </div>
+    {/if}
     <div class="Nl8X5">
-        <p class="_698nD">Follow Poloniex On</p>
+        <p class="_698nD">Follow Ezcryptox On</p>
         <div class="UTyNK">
-            <a href="https://twitter.com/Poloniex" target="_blank"
+            <a href="https://twitter.com/Ezcryptox" target="_blank"
                 ><svg
                     version="1.1"
                     fill="currentColor"

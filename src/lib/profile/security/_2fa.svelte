@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li>Step two: <b>Set up your Poloniex account in Google Authenticator.</b> In Google Authenticator, tap "+" to add a new account. You may scan the QR code or enter a setup key to add your account to Google Authenticator.</li>
+                        <li>Step two: <b>Set up your Ezcryptox account in Google Authenticator.</b> In Google Authenticator, tap "+" to add a new account. You may scan the QR code or enter a setup key to add your account to Google Authenticator.</li>
                         <li>Step three: Click "Continue" on the website to complete security verification.</li>
                     </ul>
                     <ul class="HCPmX">

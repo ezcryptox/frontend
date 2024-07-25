@@ -94,7 +94,7 @@
             >
             <div>
                 <h3>Futures Trial Fund Coupon</h3>
-                 If you received the coupon code from Poloniex, please redeem it
+                 If you received the coupon code from Ezcryptox, please redeem it
                 here.
             </div>
         </dt>

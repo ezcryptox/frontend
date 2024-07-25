@@ -9,16 +9,19 @@
 	import { Button } from '$lib/components/ui/button/index';
 	import { goto } from '$app/navigation';
 	import { loadMoonPay } from '@moonpay/moonpay-js';
-	import { isLogin } from "$lib/store/profile";
+	import { isLogin } from '$lib/store/profile';
 	import { onMount } from 'svelte';
 	import { ServerURl } from '$lib/backendUrl';
 	import { handleAuthToken } from '$lib/store/routes';
+	import { handleUserProfile } from '$lib/index';
 	import { Checkbox } from '$lib/components/ui/checkbox/index';
+	import { browser } from '$app/environment'
 
-	import Label from '$lib/components/ui/label/label.svelte';
+	import {Label} from '$lib/components/ui/label/index';
 	let termsChecked = false;
 
 	let moonPay: any = null;
+	if (browser) loadMoonPay().then(mp => (moonPay = mp));
 	let currencyData: any[] = [];
 	let cryptoData: any[] = [];
 
@@ -27,12 +30,24 @@
 	let _selectedCurrency = 'USD';
 	let _selectedCrypto = 'USDT';
 
+	let user_id = '';
+	$: if ($isLogin) {
+		const getUserID = async () => {
+			const response = await handleUserProfile($handleAuthToken);
+			if (response) {
+				//@ts-ignore
+				user_id = response.user_id;
+			}
+		};
+		getUserID();
+	}
+
 	$: initializingOnrampFlow = false;
-	$: selectedCurrency = currencyData.find((f) => f.label === _selectedCurrency) ?? {
+	$: selectedCurrency = currencyData.find((f) => f.code === _selectedCurrency) ?? {
 		label: 'USD',
 		icon: 'https://www.datocms-assets.com/51952/1665712815-eth-1.png'
 	};
-	$: selectedCrypto = cryptoData.find((f) => f.label === _selectedCrypto) ?? {
+	$: selectedCrypto = cryptoData.find((f) => f.code === _selectedCrypto) ?? {
 		label: 'USDT',
 		icon: 'https://www.datocms-assets.com/51952/1638913308-usdt.png'
 	};
@@ -54,7 +69,7 @@
 	function closeAndFocusTrigger(triggerId: string) {
 		currencyOpen = false;
 		cryptoOpen = false;
-		debouncedHandleInputChange({target: {value: inputAmount}})
+		debouncedHandleInputChange({ target: { value: inputAmount } });
 		tick().then(() => {
 			document.getElementById(triggerId)?.focus();
 		});
@@ -69,9 +84,9 @@
 		if (gateway === 'moonPay') {
 			try {
 				initializingOnrampFlow = true;
-				const { address } = (
+				const { address, tag: addressTag } = (
 					await axios.get(
-						`${ServerURl()}/api/assets/wallet-address?crypto=${selectedCrypto.label}`,
+						`${ServerURl()}/api/assets/wallet-address?crypto=${selectedCrypto.code}`,
 						{
 							headers: {
 								'Content-type': 'application/json',
@@ -87,8 +102,13 @@
 					flow: 'buy',
 					environment: 'sandbox', // TODO: change to production
 					params: {
-						apiKey: 'pk_test_oxQY1qdAGKlItZrVIRQ9qpNwpfAPHjQ', //TODO: Change to Live PUBlic KEY
-						walletAddress: address
+						apiKey: 'pk_test_cEHJDpoesWksBA3txcJvn58qSqyOvOl', //TODO: Change to Live PUBlic KEY
+						walletAddress: address,
+						...(addressTag ? { walletAddressTag: addressTag } : {}),
+						baseCurrencyCode: selectedCurrency.code.toLowerCase(),
+						baseCurrencyAmount: inputAmount,
+						defaultCurrencyCode: selectedCrypto.code.toLowerCase(),
+						externalCustomerId: user_id
 					},
 					variant: 'overlay',
 					handlers: {
@@ -133,20 +153,20 @@
 		) {
 			ev.target.value = inputAmount; // Reset to previous valid input
 		}
-		debouncedHandleInputChange(ev)
+		debouncedHandleInputChange(ev);
 	}
 	async function handleInputChange(ev: any) {
 		const value = parseFloat(ev.target.value);
-		if (!isNaN(value)) {
+		if (value && !isNaN(value)) {
 			inputAmount = Math.max(
 				selectedCurrency.minBuyAmount,
 				Math.min(selectedCurrency.maxBuyAmount, value)
 			).toString();
 			try {
 				loadingQuote = true;
-				const {data} = (
+				const { data } = (
 					await axios.get(
-						`${ServerURl()}/api/transactions/get-rates?crypto=${selectedCrypto.label}&fiat=${selectedCurrency.label}&amount=${inputAmount}`,
+						`${ServerURl()}/api/transactions/get-rates?crypto=${selectedCrypto.code}&fiat=${selectedCurrency.code}&amount=${inputAmount}`,
 						{
 							headers: {
 								'Content-type': 'application/json',
@@ -167,7 +187,7 @@
 	const debouncedHandleInputChange = debounce(handleInputChange, 300); // 300ms debounce
 </script>
 
-<div class="contentWraper cardsWraper">
+<div class="contentWraper cardsWraper mt-[64px]">
 	<dl class="navWaper">
 		<dt>
 			<a href="/cards/buy" class="router-link-exact-active router-link-active" aria-current="page">
@@ -252,7 +272,7 @@
 													<input
 														style="background-color: transparent !important; font-size: 24px; line-height: 34px; font-family: source-sans3-semibold; padding-left: 8px; min-width: 80px; color: #131316;"
 														readonly={true}
-														value={selectedCurrency.label}
+														value={selectedCurrency.code}
 														type="text"
 														class="_44765a39"
 													/>
@@ -280,7 +300,7 @@
 														<div style="top: 45px" class="f066ab20 c053e25d polo-select">
 															{#each currencyData as currency}
 																<Command.Item
-																	value={currency.label}
+																	value={currency.code}
 																	onSelect={(currentValue) => {
 																		_selectedCurrency = currentValue;
 																		closeAndFocusTrigger(ids.trigger);
@@ -289,14 +309,14 @@
 																	<div
 																		style="width: 100%"
 																		class="_43ec205b _00af2d11 _1701d8b1 polo-option {_selectedCurrency ===
-																		currency.label
+																		currency.code
 																			? 'polo-option__is-selected'
 																			: ''}"
 																	>
 																		<dl>
 																			<dt>
 																				<img src={currency.icon} alt="" class="imgICon" /><strong>
-																					{currency.label}</strong
+																					{currency.code}</strong
 																				>
 																			</dt>
 																			<!---->
@@ -384,7 +404,7 @@
 											<input
 												style="background-color: transparent !important; font-size: 24px; line-height: 34px; font-family: source-sans3-semibold; padding-left: 8px; min-width: 80px; color: #131316;"
 												readonly={true}
-												value={selectedCrypto.label}
+												value={selectedCrypto.code}
 												type="text"
 												class="_44765a39"
 											/>
@@ -412,7 +432,7 @@
 												<div style="top: 45px" class="f066ab20 c053e25d polo-select">
 													{#each cryptoData as crypto}
 														<Command.Item
-															value={crypto.label}
+															value={crypto.code}
 															onSelect={(currentValue) => {
 																_selectedCrypto = currentValue;
 																closeAndFocusTrigger(ids.trigger);
@@ -421,14 +441,14 @@
 															<div
 																style="width: 100%"
 																class="_43ec205b _00af2d11 _1701d8b1 polo-option {_selectedCrypto ===
-																crypto.label
+																crypto.code
 																	? 'polo-option__is-selected'
 																	: ''}"
 															>
 																<dl>
 																	<dt>
 																		<img src={crypto.icon} alt="" class="imgICon" /><strong>
-																			{crypto.label}</strong
+																			{crypto.code}</strong
 																		>
 																	</dt>
 																	<!---->
@@ -950,16 +970,16 @@
 						<div class="ant-spin-nested-loading">
 							{#if loadingQuote}
 								<div>
-								<div class="ant-spin ant-spin-spinning">
-									<span class="ant-spin-dot ant-spin-dot-spin"
-										><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i><i
-											class="ant-spin-dot-item"
-										></i><i class="ant-spin-dot-item"></i></span
-									>
+									<div class="ant-spin ant-spin-spinning">
+										<span class="ant-spin-dot ant-spin-dot-spin"
+											><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i><i
+												class="ant-spin-dot-item"
+											></i><i class="ant-spin-dot-item"></i></span
+										>
+									</div>
 								</div>
-							</div>
 							{/if}
-							<div class="ant-spin-container {loadingQuote ? "ant-spin-blur" : ''}">
+							<div class="ant-spin-container {loadingQuote ? 'ant-spin-blur' : ''}">
 								<div class="display">
 									<dl>
 										<dt>Payment method</dt>
@@ -987,11 +1007,16 @@
 									</dl>
 									<dl>
 										<dt>Price</dt>
-										<dd><strong>1 {buyQuote.cryptoCurrency} ≈ {buyQuote.price} {buyQuote.fiatCurrency}</strong></dd>
+										<dd>
+											<strong
+												>1 {buyQuote.cryptoCurrency.toUpperCase()} ≈ {buyQuote.price.toFixed(4)}
+												{buyQuote.fiatCurrency.toUpperCase()}</strong
+											>
+										</dd>
 									</dl>
 									<dl>
 										<dt><span class="tooltip">Total (fee included)</span></dt>
-										<dd>{buyQuote.fiatAmount} {buyQuote.fiatCurrency}</dd>
+										<dd>{inputAmount} {buyQuote.fiatCurrency.toUpperCase()}</dd>
 									</dl>
 								</div>
 							</div>
@@ -1057,15 +1082,16 @@
 								You are leaving Ezcryptox and will be redirected to MoonPay, a licensed financial
 								institution that provides credit/debit card payment service as a third party. Any
 								risk that occurs during the use of the service shall be borne by MoonPay. Please
-								read and agree to the <a href="https://www.moonpay.com/legal/terms_of_use_usa" target="_blank"
+								read and agree to the <a
+									href="https://www.moonpay.com/legal/terms_of_use_usa"
+									target="_blank"
 									>Terms of Use
 								</a>before proceeding.
 							</p>
 							<p>
 								If you have any questions or suggestions on credit card margin payment, please
-								contact <a
-									href="https://support.moonpay.com/"
-									target="_blank">MoonPay customer support</a
+								contact <a href="https://support.moonpay.com/" target="_blank"
+									>MoonPay customer support</a
 								>
 							</p>
 						</div>
@@ -1084,7 +1110,11 @@
 						</p>
 					</div>
 					<dl class="topborder marginTop16">
-						<dt><p>You will get <strong>{buyQuote?.cryptoAmount || "--"} {selectedCrypto.label}</strong></p></dt>
+						<dt>
+							<p>
+								You will get <strong>{buyQuote?.cryptoAmount || '--'} {selectedCrypto.code}</strong>
+							</p>
+						</dt>
 						<dd>
 							<button
 								on:click={() => buyCrypto('moonPay')}
@@ -1097,7 +1127,9 @@
 									: ''}"
 								style="width: 145px;"
 								><!---->
-								<div aria-disabled={initializingOnrampFlow} class="btn-sp">{initializingOnrampFlow ? "Please Wait" : "Submit"}</div></button
+								<div aria-disabled={initializingOnrampFlow} class="btn-sp">
+									{initializingOnrampFlow ? 'Please Wait' : 'Submit'}
+								</div></button
 							>
 						</dd>
 					</dl>
