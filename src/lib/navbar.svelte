@@ -11,7 +11,6 @@
   import Language from "./navbar-components/language.svelte";
   import { toggleMode } from "mode-watcher";
   
-
   $: is_menu = false;
   $: showBuyCrypto = false;
   $: showTrade = false;
