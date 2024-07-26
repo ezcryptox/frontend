@@ -43,11 +43,11 @@
 
 	$: initializingOnrampFlow = false;
 	$: selectedCurrency = currencyData.find((f) => f.code === _selectedCurrency) ?? {
-		label: 'USD',
+		code: 'USD',
 		icon: 'https://www.datocms-assets.com/51952/1665712815-eth-1.png'
 	};
 	$: selectedCrypto = cryptoData.find((f) => f.code === _selectedCrypto) ?? {
-		label: 'USDT',
+		code: 'USDT',
 		icon: 'https://www.datocms-assets.com/51952/1638913308-usdt.png'
 	};
 
