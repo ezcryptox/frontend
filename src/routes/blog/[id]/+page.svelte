@@ -32,7 +32,7 @@
             >
         </p>
         <div style="display: block; overflow: hidden; position: relative;">
-            <img
+            <img alt=""
                 src="{blog.coverImage}"
                 role="presentation"
                 style="display: block; width: 100%;"

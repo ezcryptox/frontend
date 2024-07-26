@@ -11,7 +11,6 @@
   import Language from "./navbar-components/language.svelte";
   import { toggleMode } from "mode-watcher";
   
-
   $: is_menu = false;
   $: showBuyCrypto = false;
   $: showTrade = false;
@@ -20,6 +19,7 @@
   $: showNotification = false;
   $: showLanguageModal = false;
   $: unreadnotifications = "0"
+  $: logo = "https://res.cloudinary.com/dxwhz3r81/image/upload/v1715942424/ezcryptox.ioo-01_y2dny9.png"
   // removeme (remove the onMount)
   onMount(() => {
     if (sessionStorage.getItem("user")) isLogin.set(true);
@@ -32,25 +32,22 @@
 <div id="uniframe-header" data-v-app>
   <header class="cdd74806 uniframe-root uniframe-header">
     <div class="d576b507">
+
       <div>
         <div class="c0f4158f">
           <a href="/">
-            <img
-              src="https://res.cloudinary.com/dxwhz3r81/image/upload/v1715942424/ezcryptox.ioo-01_y2dny9.png"
-              alt=""
-            />
+            <img src="{logo}"  alt="" />
           </a>
         </div>
       </div>
+
       <div style="margin-right: auto;">
         {#if $screen > 950}
           <ul class="a3107c1e">
             <li>
-              <button
-                on:mouseenter={() => (showBuyCrypto = true)}
+              <button  on:mouseenter={() => (showBuyCrypto = true)}
                 on:mouseleave={() => (showBuyCrypto = false)}
-                class="b8777ccf"
-              >
+                class="b8777ccf">
                 <div class="bfe44f5e">
                   <span>Buy Crypto</span>
                   <svg fill="currentColor" style="width: 16px; height: 16px;">
@@ -58,7 +55,7 @@
                   </svg>
                 </div>
                 {#if showBuyCrypto}
-                  <BuyCrypto />
+                    <BuyCrypto />
                 {/if}
               </button>
             </li>
@@ -219,10 +216,9 @@
               ></use>
             </svg>
           </div>
-
           <button
-            class="dd8dbce9"
-            aria-account-unread="{unreadnotifications}"
+            class="dd8dbce9" 
+            aria-account-unread="{1}"
             on:mouseenter={() => (showNotification = true)}
             on:mouseleave={() => (showNotification = false)}
           >
@@ -267,5 +263,3 @@
   </header>
 </div>
 
-<style>
-</style>

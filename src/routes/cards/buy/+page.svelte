@@ -16,7 +16,6 @@
 	import { handleUserProfile } from '$lib/index';
 	import { Checkbox } from '$lib/components/ui/checkbox/index';
 	import { browser } from '$app/environment'
-
 	import {Label} from '$lib/components/ui/label/index';
 	let termsChecked = false;
 
