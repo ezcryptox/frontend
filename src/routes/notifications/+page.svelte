@@ -153,7 +153,7 @@
                                     Platform Notices</span
                                 >
                             </div>
-                            {#if isLogin}
+                            {#if $isLogin}
                             <div class="_2114c9f2">
                                 <span
                                     ><span

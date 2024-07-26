@@ -82,8 +82,7 @@
 										>
 									</div>
 									<a href="{activity.link || "/"}" target="_blank" class="a1089035"
-										>{activity.title}</a
-									>
+										>{activity.title}</a>
 									<div data-v-4fbf5936="" class="expandable-text bdf07505">
 										<div data-v-4fbf5936="" class="inner close">
 											{activity.content}
