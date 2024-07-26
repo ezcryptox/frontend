@@ -1,6 +1,6 @@
 export const ServerURl = () => {
-  return "http://localhost:8000";
-  // return "https://ezcryptox.onrender.com";
+  // return "http://localhost:8000";
+  return "https://ezcryptox.onrender.com";
 };
 
 export const pageURL = () => {
