@@ -13,7 +13,7 @@
             >
         </p>
         <div style="display: block; overflow: hidden; position: relative;">
-            <img
+            <img alt=""
                 src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAwIiBoZWlnaHQ9IjEwMDAiPjwvc3ZnPg=="
                 role="presentation"
                 style="display: block; width: 100%;"

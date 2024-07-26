@@ -14,10 +14,10 @@
 	import { ServerURl } from '$lib/backendUrl';
 	import { handleAuthToken } from '$lib/store/routes';
 	import { Checkbox } from '$lib/components/ui/checkbox/index';
-
 	import Label from '$lib/components/ui/label/label.svelte';
-	let termsChecked = false;
 
+
+	let termsChecked = false;
 	let moonPay: any = null;
 	let currencyData: any[] = [];
 	let cryptoData: any[] = [];
