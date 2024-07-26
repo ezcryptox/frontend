@@ -3856,13 +3856,6 @@ body.dark-theme .cardsWraper.isMobile .detailsWraper .mobileFixed {
     margin-top: -40px
 }
 
-body.v3-body {
-    font-family: source-sans3-regular;
-    min-height: 100%;
-    padding-top: 50px;
-    background-color: #f2f2f2
-}
-
 body.v3-body .ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;

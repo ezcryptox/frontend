@@ -1672,18 +1672,6 @@ html[data-uniframe-theme=dark] .ccf482a6 .df32d985 .b1398ab6:hover {
     transform: rotate(-45deg) translate(4px,-4px)
 }
 
-.cdd74806 {
-    -webkit-user-select: none;
-    user-select: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000000;
-    min-width: 320px;
-    width: 100%;
-    --uniframe-header-height: 50px
-}
 
 html[data-uniframe-theme=light] .cdd74806 {
     --uniframe-header-bg-color: #fafafa;

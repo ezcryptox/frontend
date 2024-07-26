@@ -494,7 +494,7 @@
               <div class="a7135efb text-strong font-bold">Q&amp;A</div>
               <div class="text-gray">
                 <p>
-                  Frequently asked questions about the Poloniex Reward Center
+                  Frequently asked questions about the Ezcryptox Reward Center
                   are as follows:
                 </p>
                 <p>&nbsp;</p>
@@ -523,7 +523,7 @@
                 <p><strong>4. How does the Futures Trial Fund work?</strong></p>
                 <p>
                   A: The purpose of the Futures Trial Fund Voucher is to allow
-                  new users to experience Poloniex's futures products in a real
+                  new users to experience Ezcryptox's futures products in a real
                   trading environment and without risk. After the voucher has
                   been successfully redeemed and activated, the trial fund will
                   be distributed to your futures account and you can use it for
@@ -559,14 +559,14 @@
             <div class="d0ca3dbc">
               <div class="a7135efb text-strong font-bold">Rules</div>
               <div class="text-gray">
-                <p>The rules of Poloniex Center Center are as follows:</p>
+                <p>The rules of Ezcryptox Center Center are as follows:</p>
                 <p>&nbsp;</p>
                 <ol>
                   <li>
                     10% rebate of handling fee: "Users who register through the
                     invitation code can enjoy a 10% rebate for Spot, Margin, and
                     Futures transactions. The rebate is valid within 60 days
-                    from the registration of the Poloniex account, and the
+                    from the registration of the Ezcryptox account, and the
                     rebate will be issued to the spot account. Records can be
                     viewed in [Activity-Wallet-Other], transaction rebate reward
                     = net handling fee * rebate ratio".
@@ -605,14 +605,14 @@
                     futures trading," the display delay may be even longer.
                   </li>
                   <li>
-                    Poloniex reserves the right to revoke any user trial funds
+                    Ezcryptox reserves the right to revoke any user trial funds
                     or coupons claimed by users who are found to be cheating,
-                    suspected of cheating, or in violation of any Poloniex rules
+                    suspected of cheating, or in violation of any Ezcryptox rules
                     and regulations. Any attempt to fraudulently in trial funds
                     or coupons may result in a ban on the account.
                   </li>
                   <li>
-                    Poloniex reserves the right to have the final decision and
+                    Ezcryptox reserves the right to have the final decision and
                     interpretation of the event rules, and to modify the event
                     rules or rewards at any time without prior notice.
                   </li>

@@ -19,7 +19,7 @@
     <div data-v-3399c889="" class="_8948516f">
       <div class="content _5d2808b8">
         <div class="left">
-          <h1>Poloniex Referral Center</h1>
+          <h1>Ezcryptox Referral Center</h1>
           <p>Earn commissions from your invitees' trades</p>
           <div class="f73f9ec3">
             <!----><a
@@ -288,7 +288,7 @@
                                       ><span class="ant-table-header-column"
                                         ><div>
                                           <span class="ant-table-column-title"
-                                            >Joined Poloniex</span
+                                            >Joined Ezcryptox</span
                                           ><span class="ant-table-column-sorter"
                                           ></span>
                                         </div></span
@@ -938,11 +938,11 @@
             <li>
               <p class="c81146a0">
                 What kind of rewards can I receive by inviting friends to sign
-                up on Poloniex?
+                up on Ezcryptox?
               </p>
               <p class="_8857ec87">
-                Poloniex Referral Program has undergone a major update! Each
-                time you invite a friend to register and log in to the Poloniex
+                Ezcryptox Referral Program has undergone a major update! Each
+                time you invite a friend to register and log in to the Ezcryptox
                 App, you will receive a Mystery Box worth up to <strong
                   >10,000 USDT</strong
                 >. When your invitee achieves a spot trading volume of

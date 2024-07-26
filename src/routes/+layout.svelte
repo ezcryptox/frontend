@@ -12,7 +12,7 @@
 	import '../styles/navbar.css';
 	import Navbar from '$lib/navbar.svelte';
 	import Loader from '$lib/loader.svelte';
-
+	import { ModeWatcher, mode } from 'mode-watcher';
 	$: url.set($page.url.pathname);
 
 	$: urlString = $page.url.href;
@@ -25,7 +25,18 @@
 
 	$: app_isLoading = true;
 
+	function checkTheme(theme) {
+		if (browser) {
+				document.documentElement.setAttribute('data-theme', theme || "light");
+				document.documentElement.setAttribute('data-uniframe-theme', theme|| "light");
+			}
+	}
+	mode.subscribe(theme => {
+		checkTheme(theme)
+	})
+	checkTheme($mode);
 	$: {
+	
 		seaserEl = [];
 
 		if (paramString) {
@@ -58,6 +69,7 @@
 	}
 </script>
 
+<ModeWatcher />
 <div>
 	{#if !$screen}
 		<div class="preload">
@@ -100,7 +112,7 @@
                             </g>
                         </svg>
                         <div>
-                            <div class="_88bac86c">Sign up for Poloniex , Win Up to 
+                            <div class="_88bac86c">Sign up for Ezcryptox , Win Up to 
                                 <strong>$1,000</strong>
                             </div>
                         </div>

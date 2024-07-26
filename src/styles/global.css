@@ -51,7 +51,12 @@ svg:not(:root) {
 .uniframe-root [type=button], .uniframe-root [type=reset], .uniframe-root [type=submit], .uniframe-root button {
   -webkit-appearance: button;
 }
-
+.dark a.router-link-active {
+    color: white;
+}
+html[data-theme=dark] a.router-link-active {
+    color: white;
+}
 ._960f9952 {
   width: 100%;
   height: 50px;

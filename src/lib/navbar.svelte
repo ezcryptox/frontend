@@ -9,7 +9,8 @@
   import Trade from "./navbar-components/trade.svelte";
   import { isLogin } from "$lib/store/profile";
   import Language from "./navbar-components/language.svelte";
-  import {getCookie,setCookie} from "$lib/store/cookies";
+  import { toggleMode } from "mode-watcher";
+  
 
   $: is_menu = false;
   $: showBuyCrypto = false;
@@ -18,29 +19,13 @@
   $: showExplore = false;
   $: showNotification = false;
   $: showLanguageModal = false;
-  $: darkMode = getCookie("theme","light") === "dark"
   $: unreadnotifications = "0"
   $: logo = "https://res.cloudinary.com/dxwhz3r81/image/upload/v1715942424/ezcryptox.ioo-01_y2dny9.png"
   // removeme (remove the onMount)
   onMount(() => {
     if (sessionStorage.getItem("user")) isLogin.set(true);
-    checkTheme()
   });
 
-  const checkTheme = () => {
-    const theme = darkMode ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", theme);
-    document.documentElement.setAttribute("data-uniframe-theme", theme);
-  }
-
-  const toggleDarkMode = () => {
-    const mode = !darkMode;
-    const theme = mode ? "dark" : "light";
-    setCookie("theme",theme)
-    document.documentElement.setAttribute("data-theme", theme);
-    document.documentElement.setAttribute("data-uniframe-theme", theme);
-    darkMode = mode
-  };
 
 </script>
 
@@ -220,12 +205,15 @@
         <div>
           <!-- svelte-ignore a11y-click-events-have-key-events -->
           <!-- svelte-ignore a11y-no-static-element-interactions -->
-          <div class="c9759bc4" on:click={() => toggleDarkMode()}>
-            <svg fill="currentColor" style="width: 20px; height: 20px;">
+          <div class="c9759bc4 relative" on:click={() => toggleMode()}>
+            <svg fill="currentColor" style="width: 20px; height: 20px;" class="absolute scale-100 transition-all dark:scale-0">
               <use
-                xlink:href={darkMode
-                  ? "#uniframe-icon-moon"
-                  : "#uniframe-icon-sun"}
+                xlink:href="#uniframe-icon-sun"
+              ></use>
+            </svg>
+            <svg fill="currentColor" style="width: 20px; height: 20px;" class="absolute scale-0 transition-all dark:scale-100">
+              <use
+                xlink:href="#uniframe-icon-moon"
               ></use>
             </svg>
           </div>
