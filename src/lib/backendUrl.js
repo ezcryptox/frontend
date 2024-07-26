@@ -1,5 +1,12 @@
+import { browser } from '$app/environment'
 export const ServerURl = () => {
-  // return "http://localhost:8000";
+  if (browser) {
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+      return "http://localhost:8000";
+    } else {
+      return "https://ezcryptox.onrender.com";
+    }
+  }
   return "https://ezcryptox.onrender.com";
 };
 
