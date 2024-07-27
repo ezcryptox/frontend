@@ -12,7 +12,7 @@ export async function load({ route }) {
   let auth = browser && JSON.parse(sessionStorage.getItem('user'));
   if(auth){
       handleAuthToken.set(auth.token)
-     await handleUserProfile(auth)
+     await handleUserProfile(auth.token)
   }
   otp.set(fach)
   routes.set(route.id)
