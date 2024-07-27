@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../../../styles/buy2.css';
+	import '../../../styles/buy.css';
 	import axios from 'axios';
 	import pkg from 'lodash';
 	const { debounce } = pkg;
