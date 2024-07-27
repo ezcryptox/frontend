@@ -54,7 +54,7 @@
 	let inputAmount = '';
 
 	let buyQuote: any = null;
-	let loadingQuote = false;
+	$: loadingQuote = false;
 	onMount(async () => {
 		try {
 			const response = await axios.get(ServerURl() + '/api/transactions/list-currencies');
@@ -74,7 +74,7 @@
 		});
 	}
 
-	async function buyCrypto(gateway: 'moonPay' | 'onramper' = 'moonPay') {
+	async function buyCrypto(gateway: 'moonPay' | 'onramper' = 'moonPay', token) {
 		if (!$isLogin) {
 			goto('/login');
 			return;
@@ -89,7 +89,7 @@
 						{
 							headers: {
 								'Content-type': 'application/json',
-								Authorization: `Bearer ${$handleAuthToken}`
+								Authorization: `Bearer ${token}`
 							}
 						}
 					)
@@ -1116,7 +1116,7 @@
 						</dt>
 						<dd>
 							<button
-								on:click={() => buyCrypto('moonPay')}
+								on:click={() => buyCrypto('moonPay', $handleAuthToken)}
 								disabled={initializingOnrampFlow || !termsChecked || !inputAmount}
 								type="button"
 								class="polo-btn polo-btn-button polo-btn-primary polo-btn-huge {initializingOnrampFlow ||
