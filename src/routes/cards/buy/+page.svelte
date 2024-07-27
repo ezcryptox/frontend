@@ -1,12 +1,12 @@
 <script lang="ts">
-	import '../../../styles/buy.css';
+	import '../../../styles/buy2.css';
 	import axios from 'axios';
 	import pkg from 'lodash';
 	const { debounce } = pkg;
 	import { tick } from 'svelte';
-	import * as Command from '$lib/components/ui/command/index';
-	import * as Popover from '$lib/components/ui/popover/index';
-	import { Button } from '$lib/components/ui/button/index';
+	import * as Command from '$lib/components/ui/command';
+	import * as Popover from '$lib/components/ui/popover';
+	import { Button } from '$lib/components/ui/button';
 	import { goto } from '$app/navigation';
 	import { loadMoonPay } from '@moonpay/moonpay-js';
 	import { isLogin } from '$lib/store/profile';
@@ -14,13 +14,18 @@
 	import { ServerURl } from '$lib/backendUrl';
 	import { handleAuthToken } from '$lib/store/routes';
 	import { handleUserProfile } from '$lib/index';
-	import { Checkbox } from '$lib/components/ui/checkbox/index';
-	import { browser } from '$app/environment'
-	import {Label} from '$lib/components/ui/label/index';
+	import { Checkbox } from '$lib/components/ui/checkbox';
+	import { browser } from '$app/environment';
+	import { Label } from '$lib/components/ui/label';
+	import * as Tooltip from '$lib/components/ui/tooltip';
+	import { screen } from '$lib/store/screen';
+	import { toast } from 'svelte-sonner';
+	import Footer from '$lib/footer.svelte';
 	let termsChecked = false;
 
+	$: responsiveClass = $screen <= 767 ? 'isMobile' : $screen <= 860 ? 'isSmall' : '';
 	let moonPay: any = null;
-	if (browser) loadMoonPay().then(mp => (moonPay = mp));
+	if (browser) loadMoonPay().then((mp) => (moonPay = mp));
 	let currencyData: any[] = [];
 	let cryptoData: any[] = [];
 
@@ -113,7 +118,14 @@
 					handlers: {
 						async onTransactionCompleted(props) {
 							console.log('onTransactionCompleted', props);
-							goto('/activity/cards/buy');
+							toast.success('Purchased', {
+								description: 'Monitor the status of the transaction on the activity page',
+								position: 'top-center',
+								action: {
+									label: 'View',
+									onClick: () => goto('/activity/cards/buy')
+								}
+							});
 						}
 					}
 				});
@@ -186,7 +198,7 @@
 	const debouncedHandleInputChange = debounce(handleInputChange, 300); // 300ms debounce
 </script>
 
-<div class="contentWraper cardsWraper mt-[64px]">
+<div class="contentWraper cardsWraper mt-[64px] {responsiveClass}">
 	<dl class="navWaper">
 		<dt>
 			<a href="/cards/buy" class="router-link-exact-active router-link-active" aria-current="page">
@@ -263,13 +275,13 @@
 													variant="ghost"
 													role="combobox"
 													aria-expanded={currencyOpen}
-													class="relative flex w-[126px] items-center p-0 "
+													class="relative flex w-[126px]  items-center p-0 hover:bg-transparent"
 												>
 													<div class="a4af882f">
 														<img src={selectedCurrency.icon} alt="" class="imgICon" />
 													</div>
 													<input
-														style="background-color: transparent !important; font-size: 24px; line-height: 34px; font-family: source-sans3-semibold; padding-left: 8px; min-width: 80px; color: #131316;"
+														style="background-color: transparent !important; font-size: 24px; line-height: 34px; font-family: source-sans3-semibold; padding-left: 8px; min-width: 80px;"
 														readonly={true}
 														value={selectedCurrency.code}
 														type="text"
@@ -313,7 +325,7 @@
 																			: ''}"
 																	>
 																		<dl>
-																			<dt>
+																			<dt style="width: 100%;display: flex; padding: 10px; align-items: center; gap: 10px">
 																				<img src={currency.icon} alt="" class="imgICon" /><strong>
 																					{currency.code}</strong
 																				>
@@ -329,7 +341,7 @@
 											</Popover.Content>
 										</Popover.Root>
 										<div>
-											<div class="polo-input right polo-input-medium polo-input-default">
+											<div class="polo-input right polo-input-medium polo-input-default {responsiveClass === 'isMobile' ? 'min-w-56' : ''}">
 												<!----><input
 													type="text"
 													readonly={initializingOnrampFlow}
@@ -395,13 +407,13 @@
 											variant="ghost"
 											role="combobox"
 											aria-expanded={cryptoOpen}
-											class="relative flex w-[126px] items-center p-0 "
+											class="relative flex w-[126px] flex-auto items-center p-0 hover:bg-transparent"
 										>
 											<div class="a4af882f">
 												<img src={selectedCrypto.icon} alt="" class="imgICon" />
 											</div>
 											<input
-												style="background-color: transparent !important; font-size: 24px; line-height: 34px; font-family: source-sans3-semibold; padding-left: 8px; min-width: 80px; color: #131316;"
+												style="background-color: transparent !important; font-size: 24px; line-height: 34px; font-family: source-sans3-semibold; padding-left: 8px; min-width: 80px;"
 												readonly={true}
 												value={selectedCrypto.code}
 												type="text"
@@ -445,7 +457,7 @@
 																	: ''}"
 															>
 																<dl>
-																	<dt>
+																	<dt style="width: 100%;display: flex; padding: 10px; align-items: center; gap: 10px">
 																		<img src={crypto.icon} alt="" class="imgICon" /><strong>
 																			{crypto.code}</strong
 																		>
@@ -1003,6 +1015,7 @@
 												>Learn more
 											</a>
 										</dd>
+										
 									</dl>
 									<dl>
 										<dt>Price</dt>
@@ -1014,15 +1027,33 @@
 										</dd>
 									</dl>
 									<dl>
-										<dt><span class="tooltip">Total (fee included)</span></dt>
+										<Tooltip.Root>
+											<Tooltip.Trigger>
+												<dt><span class="tooltip">Total (fee included)</span></dt>
+											</Tooltip.Trigger>
+											<Tooltip.Content>
+												<p>
+													Fee: {(
+														((parseFloat(inputAmount || '0') - buyQuote.fiatAmount) /
+															parseFloat(inputAmount || '0')) *
+														100
+													).toFixed(2)}%
+												</p>
+											</Tooltip.Content>
+										</Tooltip.Root>
+
 										<dd>{inputAmount} {buyQuote.fiatCurrency.toUpperCase()}</dd>
 									</dl>
+									<dl class="test-mode">
+											<strong>TEST MODE: </strong> You can only purchase ETH on sepolia testnet
+										</dl>
 								</div>
 							</div>
 						</div>
 					{:else}
 						<div class="empty">
 							<svg
+								style="margin: 0 auto"
 								width="80"
 								height="80"
 								viewBox="0 0 80 80"
@@ -1138,3 +1169,4 @@
 		</dl>
 	</div>
 </div>
+<Footer />

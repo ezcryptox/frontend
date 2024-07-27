@@ -1,0 +1,748 @@
+.test-mode {
+  padding: 10px;
+    font-size: 12px;
+    color: white;
+    background: #890000;
+    border-radius: 8px;
+}
+.cardsWraper .navWaper {
+    font-size: 24px;
+    line-height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 32px;
+}
+.cardsWraper {
+    margin-bottom: 60px;
+}
+ ul {
+    list-style: none;
+    margin-bottom: 0;
+    -webkit-margin-after: 0;
+    margin-block-end: 0;
+    -webkit-margin-before: 0;
+    margin-block-start: 0;
+    -webkit-padding-start: 0;
+    padding-inline-start: 0;
+}
+
+.cardsWraper .navWaper a.router-link-active {
+    font-family: source-sans3-semibold;
+    color: #131316;
+}
+
+.cardsWraper .navWaper a {
+    font-size: 24px;
+    line-height: 34px;
+    color: #878787;
+    font-family: source-sans3-semibold;
+    margin-right: 32px;
+    text-decoration: none;
+}
+.cardsWraper .navWaper p.btn {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    color: #616161;
+    border-color: #e3e3e3;
+    border-radius: 100px;
+    border-width: 1px;
+    border-style: solid;
+}
+.cardsWraper .navWaper p.btn span {
+    cursor: pointer;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cardsWraper .navWaper svg {
+    color: #878787;
+    margin-right: 4px;
+}
+body.v3-body i {
+    font-style: normal;
+}
+.cardsWraper .navWaper p.btn span.lan {
+    cursor: default;
+    margin: 0 6px;
+    width: 1px;
+    height: 14px;
+    background-color: #616161;
+}
+body.v3-body .marginTop16 {
+    margin-top: 16px;
+}
+.cardsWraper .topLayer {
+    border-radius: 12px;
+    color: #616161;
+    background-color: #fff;
+    padding: 32px;
+}
+.cardsWraper .topLayer .leftSlide {
+    width: 561px;
+}
+
+dt {
+    font-weight: 500;
+}
+.cardsWraper .topLayer .leftSlideMain {
+    width: 418px;
+}
+.cardsWraper .topLayer .leftSlideMain p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #878787;
+}
+body.v3-body .marginTop8 {
+    margin-top: 8px;
+}
+.cardsWraper .topLayer .cardsSelectWraper {
+    height: 64px;
+}
+.imgICon {
+    width: 24px;
+    height: 24px;
+}
+.cardsWraper .topLayer .leftSelectWraper {
+    width: 362px;
+    margin-right: 15px;
+}
+._83857b91 {
+    position: relative;
+    display: inline-block;
+}
+
+.cardsWraper .topLayer .cardsSelectWraper>span {
+    border: none;
+    background-color: #f2f2f2;
+    height: 100%;
+    padding: 4px 4px 4px 2px;
+    border-radius: 8px;
+}
+
+._83857b91 ._9f048623 {
+    display: flex;
+    position: relative;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: all .35s;
+}
+._83857b91 ._9f048623 .a4af882f {
+    padding-left: 14px;
+}
+.cardsWraper .topLayer .cardsSelectWraper>span>input {
+    background-color: transparent !important;
+    font-size: 24px;
+    line-height: 34px;
+    font-family: source-sans3-semibold;
+    padding-left: 8px;
+    min-width: 80px;
+    color: #131316;
+}
+
+._83857b91 ._9f048623 ._44765a39 {
+    flex: 1;
+    height: 30px;
+    padding: 0 24px 0 10px;
+    min-height: 28px;
+    min-width: 120px;
+    line-height: 28px;
+    color: #2a2a2a;
+    cursor: pointer;
+    outline: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 4px;
+}
+.cardsWraper .topLayer .cardsSelectWraper>span span {
+    border-width: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.cardsWraper .topLayer .leftSelectWraper>span>span {
+    right: 240px;
+}
+._83857b91 ._9f048623 ._9089f0db {
+    position: absolute;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    transition: all .35s;
+    border-bottom: none;
+    border-top-color: #616161;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+.cardsWraper .topLayer .cardsSelectWraper .polo-input.polo-input-default {
+    border: none;
+    border-radius: 8px;
+}
+.cardsWraper .topLayer .cardsSelectWraper .polo-input.polo-input-default {
+    background-color: #fff;
+    height: 56px;
+}
+
+.cardsWraper .topLayer .cardsSelectWraper .polo-input {
+    width: 229px;
+}
+.cardsWraper .topLayer .cardsSelectWraper .polo-input>input {
+    font-size: 24px;
+    line-height: 34px;
+    font-family: source-sans3-semibold;
+    color: #131316;
+}
+.be43f020 {
+    top: 0;
+    transition: all .35s;
+}
+.e7a93a8c {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    padding: 10px;
+    height: 50px;
+    top: calc(100% + 4px);
+    background: #fff;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .15);
+}
+.e7a93a8c ._8498420a {
+    display: inline-block;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 18px;
+    top: 18px;
+}
+.anticon {
+    display: inline-block;
+    color: inherit;
+    font-style: normal;
+    line-height: 0;
+    text-align: center;
+    text-transform: none;
+    vertical-align: -.125em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.anticon svg {
+    display: inline-block;
+}
+.e7a93a8c ._8c863660 {
+    width: 100%;
+    height: 30px;
+    padding: 0 30px;
+    outline: 0;
+    color: #878787;
+    box-shadow: none;
+    text-transform: uppercase;
+    border-radius: 4px;
+    border: 1px solid #1a8f5c;
+}
+.f066ab20.c053e25d {
+    top: calc(100% + 54px);
+}
+
+.f066ab20 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);
+    max-height: 200px;
+    border-radius: 4px;
+    z-index: 10;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+._43ec205b._1701d8b1 {
+    padding-right: 20px;
+    color: #1a8f5c;
+    overflow: hidden;
+    white-space: nowrap;
+    background: #f2f2f2;
+    text-overflow: ellipsis;
+}
+
+._43ec205b._00af2d11 {
+    display: block;
+}
+._43ec205b {
+    position: relative;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 30px;
+    cursor: pointer;
+    display: none;
+    transition: all .35s;
+}
+.cardsWraper .topLayer .rightSlideMain {
+    width: 143px;
+}
+
+.cardsWraper .topLayer .rightSelectWraper {
+    width: 143px;
+}
+.cardsWraper .topLayer dd .position {
+    position: absolute;
+    top: -136px;
+    right: -10px;
+}
+.cardsWraper .topLayer dd {
+    width: 200px;
+    position: relative;
+}
+
+.cardsWraper .detailsWraper {
+    background-color: #fff;
+    align-items: stretch;
+    border-radius: 12px;
+}
+.cardsWraper .detailsWraper .leftSider {
+    width: 47.5%;
+    background-color: #fafafa;
+    padding: 32px;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.cardsWraper .detailsWraper .title svg {
+    margin-right: 12px;
+    color: #1a8f5c;
+}
+.cardsWraper .detailsWraper .title {
+    font-family: source-sans3-semibold;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #131316;
+    padding-bottom: 34px;
+}
+.cardsWraper .detailsWraper .methodWraper li.active {
+    box-shadow: none;
+    border-color: #1a8f5c;
+}
+
+.cardsWraper .detailsWraper .methodWraper li {
+    margin-bottom: 14px;
+    width: 100%;
+    transition: all .3s;
+    min-height: 95px;
+    padding: 18px 16px;
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+    border-radius: 12px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+}
+.cardsWraper .detailsWraper .methodWraper li dl {
+    align-items: flex-start;
+}
+.cardsWraper .detailsWraper .methodWraper li dl dt {
+    color: #616161;
+    font-size: 16px;
+    line-height: 23px;
+}
+.cardsWraper .flex-start {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.cardsWraper .detailsWraper .methodWraper li dl dt svg {
+    margin-right: 8px;
+    color: #131316;
+}
+.cardsWraper .detailsWraper .methodWraper li dl dt strong {
+    font-size: 20px;
+    line-height: 28px;
+    font-family: source-sans3-semibold;
+    color: #131316;
+}
+.cardsWraper .detailsWraper .methodWraper li dl dd {
+    font-size: 16px;
+    line-height: 23px;
+    color: #131316;
+}
+.cardsWraper .detailsWraper .methodWraper li dl dd span.payWraper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    width: 200px;
+}
+.cardsWraper .detailsWraper .methodWraper li dl dd span.item {
+    background-color: #f2f2f2;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+}
+body.v3-body .marginTop12 {
+    margin-top: 12px;
+}
+.cardsWraper .tooltip {
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #878787;
+    cursor: help;
+}
+.cardsWraper .detailsWraper .methodWraper li dl dt {
+    color: #616161;
+    font-size: 16px;
+    line-height: 23px;
+}
+.cardsWraper .emphasize_green {
+    color: #1a8f5c;
+}
+.cardsWraper .detailsWraper .rightSider {
+    width: 52.5%;
+    padding: 32px;
+}
+.cardsWraper .detailsWraper .rightSider .display dl {
+    margin-top: 12px;
+}
+.cardsWraper .detailsWraper .rightSider .display dl dd .polo-link {
+    font-size: 16px;
+}
+.cardsWraper .detailsWraper .rightSider .display dl dd svg {
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+}
+.cardsWraper .detailsWraper .rightSider .empty {
+    text-align: center;
+}
+.cardsWraper .detailsWraper .rightSider .empty svg, body.dark-theme .cardsWraper .detailsWraper .rightSider .empty p strong {
+    color: #fff;
+}
+.cardsWraper .detailsWraper .rightSider .empty p, body.dark-theme .cardsWraper .detailsWraper .rightSider .empty p {
+    color: #878787;
+}
+.cardsWraper .detailsWraper .rightSider .agreenWraper {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #616161;
+}
+
+body.v3-body .marginTop40 {
+    margin-top: 40px;
+}
+.cardsWraper .detailsWraper .rightSider .agreenWraper .small {
+    color: #878787;
+    line-height: 20px;
+}
+.cardsWraper .detailsWraper .rightSider .agreenWraper .small p {
+    margin-top: 8px;
+}
+.cardsWraper .detailsWraper .rightSider .agreenWraper a {
+    color: #1a8f5c;
+}
+body.v3-body .marginTop32 {
+    margin-top: 32px;
+}
+.cardsWraper .detailsWraper .rightSider .topborder {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-color: #e3e3e3;
+    padding-top: 24px;
+}
+.cardsWraper .detailsWraper .rightSider .topborder p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #131316;
+}
+.cardsWraper .detailsWraper .rightSider .topborder p strong {
+    display: block;
+    font-size: 28px;
+    font-family: source-sans3-semibold;
+    line-height: 40px;
+}
+
+
+
+/* Responsiveness */
+.cardsWraper.isSmall .topLayer dd .position, .cardsWraper.isMobile .topLayer dd .position {
+    display: none;
+}
+.cardsWraper.isMobile .navWaper {
+    position: relative;
+    padding: 16px 16px 0;
+}
+
+.cardsWraper.isMobile dl {
+    flex-wrap: wrap;
+}
+.cardsWraper.isMobile .navWaper .btn {
+    position: absolute;
+    right: 16px;
+    border: none;
+    padding: 0;
+    top: 23px;
+}
+.cardsWraper.isMobile .navWaper .btn i, .cardsWraper.isMobile .navWaper .btn span.lan {
+    display: none;
+}
+.cardsWraper.isMobile .topLayer {
+    padding: 0 16px;
+}
+.cardsWraper.isMobile .topLayer .leftSelectWraper, .cardsWraper.isMobile .topLayer .leftSlide, .cardsWraper.isMobile .topLayer .leftSlideMain, .cardsWraper.isMobile .topLayer .rightSelectWraper, .cardsWraper.isMobile .topLayer .rightSlideMain {
+    width: 100%;
+}
+.cardsWraper.isMobile .topLayer .leftSlideMain p {
+    font-size: 12px;
+}
+.cardsWraper.isMobile .topLayer .leftSlideMain dl {
+    display: block;
+}
+.cardsWraper.isMobile .topLayer .leftSelectWraper {
+    margin-right: 0;
+}
+
+.cardsWraper.isMobile .topLayer .cardsSelectWraper {
+    height: 56px;
+}
+.cardsWraper.isMobile .topLayer .cardsSelectWraper>span {
+    padding-right: 3px;
+}
+.cardsWraper.isMobile .topLayer .cardsSelectWraper>span>div {
+    padding-left: 6px;
+}
+.cardsWraper.isMobile .topLayer .cardsSelectWraper>span>input {
+    padding-left: 4px;
+    font-size: 22px;
+}
+.cardsWraper.isMobile .topLayer .cardsSelectWraper .polo-input.polo-input-default {
+    height: 50px;
+    max-width: 229px;
+    width: auto;
+}
+.cardsWraper.isMobile .topLayer .leftSlideMain .Toicon {
+    width: 100%;
+    text-align: right;
+    margin-top: 6px;
+}
+.cardsWraper.isMobile .topLayer .leftSlideMain p {
+    font-size: 12px;
+}
+.cardsWraper.isMobile .topLayer .leftSlideMain .Toicon svg {
+    transform: rotate(90deg);
+}
+.cardsWraper.isMobile .detailsWraper .leftSider .methodWraper, .cardsWraper.isMobile .detailsWraper .leftSider .title {
+    padding-left: 0;
+    margin-top: 12px;
+}
+.cardsWraper.isMobile .detailsWraper .leftSider .methodWraper li.active, .cardsWraper.isMobile .detailsWraper .leftSider .methodWraper li:hover, .cardsWraper.isMobile .detailsWraper .leftSider .title li.active, .cardsWraper.isMobile .detailsWraper .leftSider .title li:hover {
+    box-shadow: none;
+    width: 100%;
+}
+.cardsWraper.isMobile .detailsWraper .leftSider, .cardsWraper.isMobile .detailsWraper .rightSider {
+    width: 100%;
+    padding: 16px;
+}
+.cardsWraper.isMobile .detailsWraper .leftSider .title, .cardsWraper.isMobile .detailsWraper .rightSider .title {
+    height: 26px;
+    font-size: 18px;
+    padding-bottom: 8px;
+}
+.cardsWraper.isMobile .detailsWraper .orderDetailsWraper {
+    border-radius: 8px;
+    background-color: #fafafa;
+    margin-top: 8px;
+    padding: 12px;
+}
+.cardsWraper.isMobile .detailsWraper .orderDetailsWraper .agreenWraper {
+    font-size: 12px;
+}
+.cardsWraper.isMobile .detailsWraper .mobileFixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #fff;
+    padding: 16px;
+}
+.cardsWraper.isMobile .detailsWraper .mobileFixed .marginTop32 {
+    margin-top: 0;
+}
+.cardsWraper.isMobile .detailsWraper .mobileFixed .topborder.marginTop16 {
+    margin-top: 0;
+}
+.cardsWraper.isMobile .detailsWraper .mobileFixed .topborder p {
+    font-size: 12px;
+    line-height: 17px;
+}
+.cardsWraper.isMobile .detailsWraper .mobileFixed .topborder p strong {
+    font-size: 22px;
+    color: #1a8f5c !important;
+}
+
+
+
+/* DARK THEME */
+body.dark-theme .cardsWraper .navWaper a.router-link-active {
+    color: #fff;
+}
+body.dark-theme .cardsWraper .navWaper a {
+    color: #878787;
+}
+body.dark-theme .cardsWraper .navWaper p.btn {
+    color: #b8b8b8;
+    border-color: #2b2b2e;
+}
+body.dark-theme .cardsWraper .navWaper svg {
+    color: #878787;
+}
+body.dark-theme .cardsWraper .navWaper p.btn span.lan {
+    background-color: #616161;
+}
+body.dark-theme .cardsWraper .topLayer {
+    color: #b8b8b8;
+    background-color: #1f1f24;
+}
+body.dark-theme .cardsWraper .topLayer .leftSlideMain p {
+    color: #878787;
+}
+body.dark-theme .cardsWraper .topLayer .cardsSelectWraper>span {
+    background-color: #2b2b2e;
+}
+
+body.dark-theme ._83857b91 ._9f048623, body.dark-theme ._83857b91.cd5a5a9d ._9f048623:hover {
+    border-color: #555;
+}
+body.dark-theme .cardsWraper .topLayer .cardsSelectWraper>span>input {
+    color: #fff;
+}
+
+body.dark-theme ._83857b91 ._9f048623 input {
+    color: #fafafa;
+    background: #1f1f24;
+}
+body.dark-theme .cardsWraper .topLayer .cardsSelectWraper .polo-input.polo-input-default {
+    background-color: #131316;
+}
+body.dark-theme .cardsWraper .topLayer .cardsSelectWraper .polo-input>input {
+    color: #fff;
+}
+body.dark-theme .e7a93a8c {
+    background: #1f1f24;
+}
+body.dark-theme .e7a93a8c ._8498420a {
+    color: #b8b8b8;
+}
+body.dark-theme .f066ab20 {
+    color: #fafafa;
+    background: #1f1f24;
+}
+
+body.dark-theme ._43ec205b._1701d8b1 {
+    color: #1a8f5c;
+    background: #2b2b2e;
+}
+
+._43ec205b._1701d8b1 {
+    padding-right: 20px;
+    color: #1a8f5c;
+    overflow: hidden;
+    white-space: nowrap;
+    background: #f2f2f2;
+    text-overflow: ellipsis;
+}
+._43ec205b._00af2d11 {
+    display: block;
+}
+._43ec205b {
+    position: relative;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 30px;
+    cursor: pointer;
+    display: none;
+    transition: all .35s;
+}
+body.dark-theme .cardsWraper .detailsWraper {
+    background-color: #1f1f24;
+}
+body.dark-theme .cardsWraper .detailsWraper .leftSider {
+    background-color: #131316;
+}
+body.dark-theme .cardsWraper .detailsWraper .title {
+    color: #fff;
+}
+body.dark-theme .cardsWraper .detailsWraper .methodWraper li.active {
+    border-color: #119e5f;
+}
+
+body.dark-theme .cardsWraper .detailsWraper .methodWraper li {
+    background-color: #1f1f24;
+}
+body.dark-theme .cardsWraper .detailsWraper .methodWraper li dl dt {
+    color: #b8b8b8;
+}
+body.dark-theme .cardsWraper .detailsWraper .methodWraper li dl dt svg {
+    color: #fff;
+}
+body.dark-theme .cardsWraper .detailsWraper .methodWraper li dl dt strong {
+    color: #fff;
+}
+body.dark-theme .cardsWraper .detailsWraper .methodWraper li dl dd {
+    color: #fff;
+}
+body.dark-theme .cardsWraper .detailsWraper .methodWraper li dl dd span.item {
+    background-color: #2b2b2e;
+}
+body.dark-theme .cardsWraper .emphasize_green {
+    color: #119e5f;
+}
+body.dark-theme .cardsWraper .detailsWraper .rightSider .empty svg {
+    color: #131316;
+}
+.cardsWraper .detailsWraper .rightSider .empty p, body.dark-theme .cardsWraper .detailsWraper .rightSider .empty p {
+    color: #878787;
+}
+body.dark-theme .cardsWraper .detailsWraper .rightSider .agreenWraper {
+    color: #b8b8b8;
+}
+body.dark-theme .cardsWraper .detailsWraper .rightSider .agreenWraper .small {
+    color: #878787;
+}
+body.dark-theme .cardsWraper .detailsWraper .rightSider .agreenWraper a {
+    color: #119e5f;
+}
+body.dark-theme .cardsWraper .detailsWraper .rightSider .topborder {
+    border-color: #2b2b2e;
+}
+body.dark-theme .cardsWraper .detailsWraper .rightSider .topborder p {
+    color: #fff;
+}
+body.dark-theme .cardsWraper.isMobile .detailsWraper .orderDetailsWraper {
+    background-color: #131316;
+}
+body.dark-theme .cardsWraper.isMobile .detailsWraper .mobileFixed {
+    background-color: #1f1f24;
+}
+.cardsWraper.isMobile .detailsWraper .mobileFixed .topborder {
+    border-top: none;
+    padding-top: 12px;
+}

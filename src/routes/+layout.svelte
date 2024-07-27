@@ -27,16 +27,24 @@
 
 	function checkTheme(theme) {
 		if (browser) {
-				document.documentElement.setAttribute('data-theme', theme || "light");
-				document.documentElement.setAttribute('data-uniframe-theme', theme|| "light");
-			}
+			document.documentElement.setAttribute('data-theme', theme || 'light');
+			document.documentElement.setAttribute('data-uniframe-theme', theme || 'light');
+			if (theme === 'dark') document.body.classList.add('dark-theme');
+			else document.body.classList.remove('dark-theme');
+		}
 	}
-	mode.subscribe(theme => {
-		checkTheme(theme)
-	})
+	mode.subscribe((theme) => {
+		checkTheme(theme);
+	});
+	screen.subscribe((size) => {
+		if (browser) {
+			if (size <= 768) {
+				document.body.classList.add('ui-is-w768');
+			} else document.body.classList.remove('ui-is-w768');
+		}
+	});
 	checkTheme($mode);
 	$: {
-	
 		seaserEl = [];
 
 		if (paramString) {

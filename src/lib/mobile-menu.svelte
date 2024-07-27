@@ -1,6 +1,7 @@
 <script>
 import { screen } from "$lib/store/screen"
 import { createEventDispatcher } from "svelte";
+  import { toggleMode } from "mode-watcher";
 const dispatch = createEventDispatcher()
 
 $: showBuyCrypto = false
@@ -43,7 +44,7 @@ $: showExploire = false
                         <div class="a773e3aa">
                             <ul>
                                 <li>
-                                    <a on:click={()=> dispatch("close")} class="d3f3d2f7" target="_self" href="?/cards/buy">
+                                    <a on:click={()=> dispatch("close")} class="d3f3d2f7" target="_self" href="/cards/buy">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Buy Crypto</span>
@@ -141,7 +142,7 @@ $: showExploire = false
                         <div class="a773e3aa">
                             <ul>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="?/futures/trade">
+                                    <a class="d3f3d2f7" target="_self" href="/futures/trade">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Futures Trading</span>
@@ -151,7 +152,7 @@ $: showExploire = false
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="?/strategy/futures-grid">
+                                    <a class="d3f3d2f7" target="_self" href="/strategy/futures-grid">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Grid Trading</span>
@@ -161,7 +162,7 @@ $: showExploire = false
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="?/strategy/copytrading">
+                                    <a class="d3f3d2f7" target="_self" href="/strategy/copytrading">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Copy Trading</span>
@@ -193,7 +194,7 @@ $: showExploire = false
                         <div class="a773e3aa">
                             <ul>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="?/topic/airdrop-token?utm_source=navbar">
+                                    <a class="d3f3d2f7" target="_self" href="/topic/airdrop-token?utm_source=navbar">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Epic Airdrop</span>
@@ -213,7 +214,7 @@ $: showExploire = false
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="?/reward-center">
+                                    <a class="d3f3d2f7" target="_self" href="/reward-center">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Reward Center</span>
@@ -224,7 +225,7 @@ $: showExploire = false
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="?/leaderboard">
+                                    <a class="d3f3d2f7" target="_self" href="/leaderboard">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Campaigns</span>
@@ -234,7 +235,7 @@ $: showExploire = false
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="?/launchbase">
+                                    <a class="d3f3d2f7" target="_self" href="/launchbase">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>LaunchBase</span>
@@ -244,7 +245,7 @@ $: showExploire = false
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="?/feed">
+                                    <a class="d3f3d2f7" target="_self" href="/feed">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>News</span>
@@ -254,7 +255,7 @@ $: showExploire = false
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="d3f3d2f7" target="_self" href="?/blog">
+                                    <a class="d3f3d2f7" target="_self" href="/blog">
                                         <!---->
                                         <div class="d4ef16dd">
                                             <span>Ezcryptox Blog</span>
@@ -279,11 +280,18 @@ $: showExploire = false
             </svg>
             <span>EN/USD</span>
         </li>
-        <li class="b1398ab6">
-            <svg fill="currentColor" style="width: 24px; height: 24px;">
-                <use xlink:href="#uniframe-icon-sun"></use>
+        <li class="b1398ab6 relative" on:click={() => {dispatch("close");toggleMode()}}>
+            <svg fill="currentColor" style="width: 20px; height: 20px;" class="absolute scale-100 transition-all dark:scale-0">
+              <use
+                xlink:href="#uniframe-icon-sun"
+              ></use>
             </svg>
-            <span>Light Mode</span>
+            <svg fill="currentColor" style="width: 20px; height: 20px;" class="absolute scale-0 transition-all dark:scale-100">
+              <use
+                xlink:href="#uniframe-icon-moon"
+              ></use>
+            </svg>
+            <span style="padding-left: 40px">Light Mode</span>
         </li>
         <li>
             <a on:click={()=> dispatch("close")}  rel="noopener noreferrer" href="?support.poloniex.com" class="b1398ab6">

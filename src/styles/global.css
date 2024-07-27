@@ -141,7 +141,42 @@ button, html input[type=button], input[type=reset], input[type=submit] {
     -webkit-appearance: button;
     cursor: pointer;
 }
-
+body.v3-body dl {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+dt {
+    font-weight: 500;
+}
+@media screen and (min-width: 1201px) and (max-width: 1440px) {
+    body.v3-body .contentWraper {
+        width: 1136px;
+    }
+}
+@media screen and (min-width: 1441px) {
+    body.v3-body .contentWraper {
+        width: 1312px;
+    }
+}
+@media screen and (max-width: 768px) {
+    body.v3-body .contentWraper {
+        width: 100%;
+    }
+}
+body.v3-body .contentWraper {
+    margin-right: auto;
+    margin-left: auto;
+}
+.cardsWraper {
+    margin-bottom: 60px;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+body.v3-body.dark-theme.ui-is-w768 {
+    background: #1f1f24;
+}
 /* ---------INPUT STYLES-------- */
 .polo-btn-button.polo-btn-positive {
     color: #fff;
@@ -153,7 +188,12 @@ button, html input[type=button], input[type=reset], input[type=submit] {
     font-size: 16px;
     line-height: 23px;
 }
-
+.polo-btn-huge {
+    height: 48px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+}
 .polo-btn {
     outline: none;
     cursor: pointer;
@@ -350,6 +390,22 @@ input[type=checkbox], input[type=radio] {
     filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, .7));
     transition: visibility 0s .15s;
 }
+
+body.v3-body .polo-link {
+    white-space: nowrap;
+    margin-left: 2px;
+}
+
+.polo-link-default {
+    color: #1a8f5c;
+}
+.polo-link {
+    cursor: pointer;
+    font-size: 14px;
+    transition: all .3s cubic-bezier(.4,.4,.25,1.35);
+    font-family: source-sans3-regular;
+}
+
 /* ---------ELEMENT UI Styles-------- */
 .el-tooltip.tips-text, .el-tooltip .tips-text {
     cursor: pointer;
@@ -806,7 +862,9 @@ li, ol, ul {
 }
 
 /* DARK THEME */
-
+body.dark-theme .polo-link-default {
+    color: #119e5f;
+}
 [data-theme=dark] .modal-box {
     color: #fff
 }
@@ -1001,4 +1059,10 @@ li, ol, ul {
 [data-theme=dark] .polo-btn-outline.is-disabled:disabled {
     color: #616161;
     border-color: #616161
+}
+body.dark-theme .polo-select .polo-option dt {
+    color: #878787;
+}
+body.dark-theme .polo-select .polo-option dt strong {
+    color: #fff;
 }
