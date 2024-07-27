@@ -68,7 +68,7 @@
       browser &&
         sessionStorage.setItem("user", JSON.stringify(response?.response));
       browser && sessionStorage.removeItem("token");
-      handleAuthToken.set(response?.response.Token);
+      handleAuthToken.set(response?.response.token);
 
       //   save to store by preciousKen
       user.set(response?.response);

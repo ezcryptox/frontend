@@ -16,9 +16,9 @@
   const handleSubmit = async () => {
     const response = await handleLoginUser({ email, password });
     if (response) {
-      handleAuthToken.set(response?.Token);
+      handleAuthToken.set(response?.token);
       browser &&
-        sessionStorage.setItem("user", JSON.stringify(response?.Token));
+        sessionStorage.setItem("user", JSON.stringify(response?.token));
       isLogin.set(true);
       browser && goto("/");
     }

@@ -74,7 +74,7 @@
 		});
 	}
 
-	async function buyCrypto(gateway: 'moonPay' | 'onramper' = 'moonPay', token) {
+	async function buyCrypto(gateway: 'moonPay' | 'onramper' = 'moonPay') {
 		if (!$isLogin) {
 			goto('/login');
 			return;
@@ -89,7 +89,7 @@
 						{
 							headers: {
 								'Content-type': 'application/json',
-								Authorization: `Bearer ${token}`
+								Authorization: `Bearer ${$handleAuthToken}`
 							}
 						}
 					)
@@ -1116,7 +1116,7 @@
 						</dt>
 						<dd>
 							<button
-								on:click={() => buyCrypto('moonPay', $handleAuthToken)}
+								on:click={() => buyCrypto('moonPay')}
 								disabled={initializingOnrampFlow || !termsChecked || !inputAmount}
 								type="button"
 								class="polo-btn polo-btn-button polo-btn-primary polo-btn-huge {initializingOnrampFlow ||
