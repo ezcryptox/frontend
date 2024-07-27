@@ -188,7 +188,7 @@
                   </div>
                 </a>
                 <a
-                  href="/?logout"
+                  href="/logout"
                   class="d0ac15a4 ce727619 cb6de6db d0ac15a4"
                   data-size="medium"
                 >
