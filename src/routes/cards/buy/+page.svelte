@@ -106,7 +106,7 @@
 					flow: 'buy',
 					environment: 'sandbox', // TODO: change to production
 					params: {
-						apiKey: 'pk_test_cEHJDpoesWksBA3txcJvn58qSqyOvOl', //TODO: Change to Live PUBlic KEY
+						apiKey: 'pk_test_zN6fst3pHTfKPewrR9gmoZL3eD8NfA', //TODO: Change to Live PUBlic KEY
 						walletAddress: address,
 						...(addressTag ? { walletAddressTag: addressTag } : {}),
 						baseCurrencyCode: selectedCurrency.code.toLowerCase(),
