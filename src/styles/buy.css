@@ -503,6 +503,9 @@ body.v3-body .marginTop32 {
 .cardsWraper.isMobile .navWaper .btn i, .cardsWraper.isMobile .navWaper .btn span.lan {
     display: none;
 }
+.cardsWraper.isMobile .topLayer dd {
+    width: 100%;
+}
 .cardsWraper.isMobile .topLayer {
     padding: 0 16px;
 }
@@ -541,6 +544,9 @@ body.v3-body .marginTop32 {
     width: 100%;
     text-align: right;
     margin-top: 6px;
+}
+.cardsWraper.isMobile .topLayer .leftSlideMain .Toicon svg {
+    display: inline;
 }
 .cardsWraper.isMobile .topLayer .leftSlideMain p {
     font-size: 12px;

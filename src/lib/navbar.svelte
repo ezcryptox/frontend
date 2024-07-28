@@ -10,6 +10,10 @@
   import { isLogin } from "$lib/store/profile";
   import Language from "./navbar-components/language.svelte";
   import { toggleMode } from "mode-watcher";
+  import {
+		fetchUnreadCount,
+	} from '$lib/navbar-components/notifications';
+	import { handleAuthToken } from "./store/routes";
   
   $: is_menu = false;
   $: showBuyCrypto = false;
@@ -19,6 +23,11 @@
   $: showNotification = false;
   $: showLanguageModal = false;
   $: unreadnotifications = "0"
+  $: if ($isLogin) {
+    fetchUnreadCount($handleAuthToken).then(data => {
+      unreadnotifications = data.unreadCount || 0;
+    })
+  }
   $: logo = "https://res.cloudinary.com/dxwhz3r81/image/upload/v1715942424/ezcryptox.ioo-01_y2dny9.png"
   // removeme (remove the onMount)
   onMount(() => {
@@ -66,7 +75,8 @@
               </a>
             </li>
             <li>
-              <div class="b8777ccf">
+              <button class="b8777ccf" on:mouseenter={() => (showTrade = true)}
+                on:mouseleave={() => (showTrade = false)}>
                 <div class="bfe44f5e">
                   <span>Trade</span>
                   <svg fill="currentColor" style="width: 16px; height: 16px;">
@@ -76,10 +86,11 @@
                 {#if showTrade}
                   <Trade />
                 {/if}
-              </div>
+              </button>
             </li>
             <li>
-              <div class="b8777ccf">
+              <button class="b8777ccf" on:mouseenter={() => (showDerivative = true)}
+                on:mouseleave={() => (showDerivative = false)}>
                 <div class="bfe44f5e">
                   <span>Derivatives</span>
                   <svg fill="currentColor" style="width: 16px; height: 16px;">
@@ -89,7 +100,7 @@
                 {#if showDerivative}
                   <Derivative />
                 {/if}
-              </div>
+              </button>
             </li>
             <li>
               <a class="bfe44f5e" target="_self" href="/earn">
@@ -218,7 +229,7 @@
           </div>
           <button
             class="dd8dbce9" 
-            aria-account-unread="{1}"
+            aria-account-unread="{unreadnotifications}"
             on:mouseenter={() => (showNotification = true)}
             on:mouseleave={() => (showNotification = false)}
           >

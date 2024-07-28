@@ -57,6 +57,7 @@
 	};
 
 	let inputAmount = '';
+	let inputInvalid = false;
 
 	let buyQuote: any = null;
 	$: loadingQuote = false;
@@ -155,6 +156,7 @@
 	}
 	function validateNumberInput(ev: any) {
 		const value = ev.target.value;
+		if (value?.trim() === '') return;
 		const numericValue = parseFloat(value);
 		if (
 			isNaN(numericValue) ||
@@ -163,12 +165,13 @@
 			/[^0-9.]/.test(value)
 		) {
 			ev.target.value = inputAmount; // Reset to previous valid input
-		}
-		debouncedHandleInputChange(ev);
+		} else debouncedHandleInputChange(ev);
 	}
 	async function handleInputChange(ev: any) {
 		const value = parseFloat(ev.target.value);
 		if (value && !isNaN(value)) {
+			inputInvalid = value < selectedCurrency.minBuyAmount || value > selectedCurrency.maxBuyAmount;
+			if (inputInvalid) return;
 			inputAmount = Math.max(
 				selectedCurrency.minBuyAmount,
 				Math.min(selectedCurrency.maxBuyAmount, value)
@@ -209,6 +212,7 @@
 		<dd>
 			<p class="btn">
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<span on:click={() => goto('/activity/cards/buy')}
 					><svg
 						width="22"
@@ -275,6 +279,7 @@
 													variant="ghost"
 													role="combobox"
 													aria-expanded={currencyOpen}
+													style="{responsiveClass === "isMobile" ? "flex: 1 1 60%": ""}"
 													class="relative flex w-[126px]  items-center p-0 hover:bg-transparent"
 												>
 													<div class="a4af882f">
@@ -303,7 +308,7 @@
 													>
 												</Button>
 											</Popover.Trigger>
-											<Popover.Content class="w-[200px] p-0">
+											<Popover.Content class="{responsiveClass === "isMobile" ? "w-[96%]": "w-[200px]"} p-0">
 												<Command.Root style="border: none">
 													<Command.Input style="border: none" placeholder="" />
 													<Command.Empty>No Currency found.</Command.Empty>
@@ -340,13 +345,13 @@
 												</Command.Root>
 											</Popover.Content>
 										</Popover.Root>
-										<div>
-											<div class="polo-input right polo-input-medium polo-input-default {responsiveClass === 'isMobile' ? 'min-w-56' : ''}">
+										<div style="{responsiveClass === "isMobile" ? "flex: 1 1 40%": ""}">
+											<div style="{responsiveClass === "isMobile" ? "max-width: unset": ""}" class="polo-input right polo-input-medium polo-input-default {responsiveClass === 'isMobile' ? 'min-w-56' : ''}">
 												<!----><input
 													type="text"
 													readonly={initializingOnrampFlow}
 													on:input={validateNumberInput}
-													bind:value={inputAmount}
+													style={inputInvalid ? "border: 1px solid red; border-radius: 3px" : ""}
 													placeholder="{selectedCurrency.minBuyAmount ||
 														''}-{selectedCurrency.maxBuyAmount || ''}"
 												/><!---->
@@ -435,7 +440,7 @@
 											>
 										</Button>
 									</Popover.Trigger>
-									<Popover.Content class="w-[200px] p-0">
+									<Popover.Content class="{responsiveClass === "isMobile" ? "w-[96%]": "w-[200px]"} p-0">
 										<Command.Root style="border: none">
 											<Command.Input style="border: none" placeholder="" />
 											<Command.Empty>No Crypto found.</Command.Empty>

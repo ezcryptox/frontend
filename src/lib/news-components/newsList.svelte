@@ -2,6 +2,7 @@
 <script>
 	import { onMount } from "svelte";
     import {articleList} from "$lib/news-components/article"
+	import Empty from "$lib/components/empty";
     export let category;
     let articleGroup = [];
     let loading = false;
@@ -64,6 +65,9 @@
         >
         <div class="ZW-t5">Loading</div>
     </div>
+    {/if}
+    {#if !loading && !articleGroup?.length}
+         <Empty/>
     {/if}
 </div>
  

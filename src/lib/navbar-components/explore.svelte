@@ -1,8 +1,10 @@
 <script>
+	import { slideFade } from "$lib/transitions";
+
   
 </script>
 
-<div class="a773e3aa">
+<div class="a773e3aa" transition:slideFade={{ duration: 200 }}>
     <ul>
     <li>
         <a class="d3f3d2f7" target="_self" href="/topic/airdrop-token?utm_source=navbar">

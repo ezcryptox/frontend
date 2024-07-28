@@ -51,6 +51,9 @@
     background-position: 50%;
     font-size: 0;
 }
+body.dark-theme .c0f4158f img {
+    filter: invert(1) hue-rotate(187deg);
+}
 .c0f4158f img {
     width: 140px;
     height: 22px;
