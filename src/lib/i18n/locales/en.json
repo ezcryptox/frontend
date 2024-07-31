@@ -887,5 +887,21 @@
   "polo-earn-coupons-uses": "Polo Earn coupons can be used when subscribing to specific Polo Earn products to help users obtain additional benefits. For details of applicable conditions, please refer to the description on the coupon.",
   "ezcryptox-rules": "The rules of Ezcryptox Center Center are as follows:",
   "earn-spot-trading-rewards": "Spot trading task: To earn spot trading rewards, you must fulfill the relevant spot trading tasks, with the exclusion of trading volume using spot coupons, exclude Maker transactions, and zero transaction fee trading pairs.",
-  "futures-task-requirements": "Futures task: Users need to register and open futures to receive the trial fund or coupon reward. The part of the transaction amount offset by using the futures trial fund is not counted in the futures trading task count."
+  "futures-task-requirements": "Futures task: Users need to register and open futures to receive the trial fund or coupon reward. The part of the transaction amount offset by using the futures trial fund is not counted in the futures trading task count.",
+  "match-best-price": "Match the best price with zero fees",
+  "grab-rewards": "Come and grab your rewards",
+  "leaving-ezcryptox-full": "You are leaving Ezcryptox and will be redirected to MoonPay, a licensed financial institution that provides credit/debit card payment service as a third party. Any risk that occurs during the use of the service shall be borne by MoonPay. Please read and agree to the",
+  "auto-borrow-repay": "A: Enabling \"Auto-Borrow and Repay\" for margin trading allows you to use margin coupons to offset the interest on borrowed cryptos, with the interest refunded directly to your account.",
+  "futures-coupon": "A: The futures coupon can be used to offset the cost of trading futures contracts. The coupon will be refunded in the form of a \"first deducted, then refunded\" fee when the transaction fee is deducted. You can check the amount of credit you have received on the \"Wallet-Futures\" page or on the futures trading page, and your futures account will display information about the \"actual amount available\".",
+  "rebate-handling-fee": "10% rebate of handling fee: \"Users who register through the invitation code can enjoy a 10% rebate for Spot, Margin, and Futures transactions. The rebate is valid within 60 days from the registration of the Ezcryptox account, and the rebate will be issued to the spot account. Records can be viewed in [Activity-Wallet-Other], transaction rebate reward = net handling fee * rebate ratio\".",
+  "reward-center": "Each task needs to be collected in the reward center before completion, in order to be effectively counted by the system. For tasks such as \"cumulative futures account transfer\" or \"cumulative spot/margin/futures trading volume,\" there may be some delay in displaying the progress of task completion. For the task of \"cumulative active futures trading,\" the display delay may be even longer.",
+  "revoking-funds": "Ezcryptox reserves the right to revoke any user trial funds or coupons claimed by users who are found to be cheating, suspected of cheating, or in violation of any Ezcryptox rules and regulations. Any attempt to fraudulently in trial funds or coupons may result in a ban on the account.",
+  "limit-market-count": "Limit | Market(0)",
+  "tp-sl-count": "TP/SL(0)",
+  "trailing-stop-count": "Trailing Stop(0)",
+  "or-lc": "or",
+  "network": "Network",
+  "deposit-problems": "Have you had problems with your Deposit? Please click to view Deposit related questions.",
+  "amount": "amount",
+  "withdraw-problems": "Have you had problems with your Withdraw? Please click to view Withdraw related questions."
 }
