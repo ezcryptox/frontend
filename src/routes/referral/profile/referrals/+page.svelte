@@ -83,7 +83,7 @@
             </div>
             <div class="_5370c68a">
               <div class="_830a66f5">
-                <label class="_27004f09">Referral link&ZeroWidthSpace;</label>
+                <label class="_27004f09">Referral link</label>
                 <div class="a7a784a5 _21bf3f75">
                   <span
                     >https://poloniex.com/signup?c=EBMJA7QE&amp;r=%2Freferral%2Ftasks</span

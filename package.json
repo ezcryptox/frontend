@@ -73,6 +73,7 @@
 		"rxfire": "^6.0.4",
 		"rxjs": "^7.8.1",
 		"socket.io-client": "^4.7.2",
+		"svelte-i18n": "^4.0.0",
 		"svelte-icons-pack": "^2.1.1",
 		"svelte-kit-cookie-session": "^4.0.0",
 		"svelte-konva": "^0.3.1",

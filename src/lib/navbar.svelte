@@ -4,6 +4,7 @@
   import MobileMenu from "./mobile-menu.svelte";
   import BuyCrypto from "./navbar-components/buy-crypto.svelte";
   import Derivative from "./navbar-components/derivative.svelte";
+  import { _ } from 'svelte-i18n';
   import Explore from "./navbar-components/explore.svelte";
   import Notification from "./navbar-components/notification.svelte";
   import Trade from "./navbar-components/trade.svelte";
@@ -36,7 +37,6 @@
 
 
 </script>
-
 <Language {showLanguageModal} on:click={() => (showLanguageModal = false)} />
 <div id="uniframe-header" data-v-app>
   <header class="cdd74806 uniframe-root uniframe-header">
@@ -58,7 +58,7 @@
                 on:mouseleave={() => (showBuyCrypto = false)}
                 class="b8777ccf">
                 <div class="bfe44f5e">
-                  <span>Buy Crypto</span>
+                  <span>{$_('g-buy-crypto')}</span>
                   <svg fill="currentColor" style="width: 16px; height: 16px;">
                     <use xlink:href="#uniframe-icon-arrow-down"></use>
                   </svg>
@@ -71,14 +71,14 @@
             <li>
               <a class="bfe44f5e" target="_self" href="/markets">
                 <!----><!---->
-                <span>Markets</span>
+                <span>{$_('g-markets')}</span>
               </a>
             </li>
             <li>
               <button class="b8777ccf" on:mouseenter={() => (showTrade = true)}
                 on:mouseleave={() => (showTrade = false)}>
                 <div class="bfe44f5e">
-                  <span>Trade</span>
+                  <span>{$_('footer-futures-trade')}</span>
                   <svg fill="currentColor" style="width: 16px; height: 16px;">
                     <use xlink:href="#uniframe-icon-arrow-down"></use>
                   </svg>
@@ -92,7 +92,7 @@
               <button class="b8777ccf" on:mouseenter={() => (showDerivative = true)}
                 on:mouseleave={() => (showDerivative = false)}>
                 <div class="bfe44f5e">
-                  <span>Derivatives</span>
+                  <span>{$_('g-derivatives')}</span>
                   <svg fill="currentColor" style="width: 16px; height: 16px;">
                     <use xlink:href="#uniframe-icon-arrow-down"></use>
                   </svg>
@@ -105,7 +105,7 @@
             <li>
               <a class="bfe44f5e" target="_self" href="/earn">
                 <!----><!---->
-                <span>Earn</span>
+                <span>{$_('g-earn')}</span>
               </a>
             </li>
 
@@ -116,7 +116,7 @@
                 class="b8777ccf"
               >
                 <div class="bfe44f5e">
-                  <span>Explore</span>
+                  <span>{$_('explore')}</span>
                   <svg fill="currentColor" style="width: 16px; height: 16px;">
                     <use xlink:href="#uniframe-icon-arrow-down"></use>
                   </svg>
@@ -139,14 +139,14 @@
                 class="b4f29bce ce727619 f53365fb b4f29bce"
                 data-size="small"
               >
-                <span>Sign Up</span>
+                <span>{$_('sign-up')}</span>
               </a>
               <a
                 href="/login"
                 class="d2c677df ce727619 fc91b736 d2c677df"
                 data-size="small"
               >
-                <span>Log In</span>
+                <span>{$_('log-in')}</span>
               </a>
             </div>
           {/if}
@@ -154,8 +154,8 @@
         {/if}
         {#if $isLogin}
           <div class="a7ddb18f">
-            <a class="ba0dfc48" href="/wallet/?tab=spot">Wallet</a>
-            <!-- <a href="/activity" class="ba0dfc48">Activity</a> -->
+            <a class="ba0dfc48" href="/wallet/?tab=spot">{$_('g-wallet')}</a>
+            <!-- <a href="/activity" class="ba0dfc48">{$_('activity')}</a> -->
             <div class="b87cb199">
               <svg fill="currentColor" style="width: 20px; height: 20px;">
                 <use xlink:href="#uniframe-icon-profile"></use>
@@ -165,37 +165,37 @@
                   <svg fill="currentColor" style="width: 20px; height: 20px;">
                     <use xlink:href="#uniframe-icon-profile"></use>
                   </svg>
-                  <div class="a51ab1c0">Profile</div>
-                  <div class="a92347ea">Important account details</div>
+                  <div class="a51ab1c0">{$_('profile')}</div>
+                  <div class="a92347ea">{$_('profile-subtitle')}</div>
                 </a>
                 <a href="/profile/?tab=security" class="e1027c7a">
                   <svg fill="currentColor" style="width: 20px; height: 20px;">
                     <use xlink:href="#uniframe-icon-security"></use>
                   </svg>
-                  <div class="a51ab1c0">Security</div>
-                  <div class="a92347ea">Setup 2FA for more security</div>
+                  <div class="a51ab1c0">{$_('g-security')}</div>
+                  <div class="a92347ea">{$_('2fa-subtitle')}</div>
                 </a>
                 <a href="/?profile/subaccount/onboarding" class="e1027c7a">
                   <svg fill="currentColor" style="width: 20px; height: 20px;">
                     <use xlink:href="#uniframe-icon-subaccount"></use>
                   </svg>
-                  <div class="a51ab1c0">Sub Accounts</div>
-                  <div class="a92347ea">Manage Sub Account user groups</div>
+                   <div class="a51ab1c0">{ $_("g-subaccount") }</div>
+                  <div class="a92347ea">{ $_("subaccount-subtitle") }</div>
                 </a>
                 <a href="/?fee" class="e1027c7a">
                   <svg fill="currentColor" style="width: 20px; height: 20px;">
                     <use xlink:href="#uniframe-icon-feetier"></use>
                   </svg>
-                  <div class="a51ab1c0">Fee Tier</div>
-                  <div class="a92347ea">View Trading Tier Status</div>
+                  <div class="a51ab1c0">{ $_("more-settings") }</div>
+                  <div class="a92347ea">{ $_("more-settings-subtitle") }</div>
                 </a>
                 <a href="/referral" class="e1027c7a">
                   <svg fill="currentColor" style="width: 20px; height: 20px;">
                     <use xlink:href="#uniframe-icon-referrals"></use>
                   </svg>
-                  <div class="a51ab1c0">Referral</div>
+                  <div class="a51ab1c0">{ $_("g-referrals") }</div>
                   <div class="a92347ea">
-                    Invite friends to earn up to 60% commission
+                    { $_("referrals-subtitle") }
                   </div>
                 </a>
                 <a
@@ -203,7 +203,7 @@
                   class="d0ac15a4 ce727619 cb6de6db d0ac15a4"
                   data-size="medium"
                 >
-                  <span>Log Out</span>
+                  <span>{ $_("log-out") }</span>
                 </a>
               </div>
             </div>
@@ -251,7 +251,7 @@
           </a>
 
           <button class="eb58c575" on:click={() => (showLanguageModal = true)}>
-            <span>EN/USD</span>
+            <span>EN</span>
             <svg fill="currentColor" style="width: 16px; height: 16px;">
               <use xlink:href="#uniframe-icon-arrow-down"></use>
             </svg>
@@ -273,4 +273,3 @@
     </div>
   </header>
 </div>
-

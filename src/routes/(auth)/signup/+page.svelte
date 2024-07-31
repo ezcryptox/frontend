@@ -95,7 +95,7 @@
             Welcome Bonus Up to $1000
           </p>
           <p class="b5fa3c38" style="color: rgb(255, 255, 255);">
-            Connecting you to thepower of crypto
+            Connecting you to the power of crypto
           </p>
           <div
             class="cf24226d"

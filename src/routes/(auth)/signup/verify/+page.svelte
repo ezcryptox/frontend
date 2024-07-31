@@ -129,7 +129,7 @@
       </button>
     </div>
     <p class="_5100ec47">
-      Didn’t receive email code?
+      Didn't receive email code?
       <button on:click={() => (isRule = true)} class="cfcce75a">
         Learn More
       </button>

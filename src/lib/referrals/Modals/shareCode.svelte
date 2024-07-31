@@ -94,7 +94,7 @@
         tabindex={0}
         role="button"
       >
-        <label class="_27004f09">Referral link&ZeroWidthSpace;</label>
+        <label class="_27004f09">Referral link</label>
         <div class="a7a784a5 _21bf3f75">
           <span>{`https://ezcryptox.com/signup?c=${refCode || ""}`}</span><span
             >{refCode}</span

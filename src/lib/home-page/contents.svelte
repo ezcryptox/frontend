@@ -12,7 +12,7 @@
   <div class="_394bd770 fae21543">
     <h3 class="_842ffea0">Your one-stop shop for crypto trading</h3>
     <div class="f6472c3e font-ss3">
-      <a href="?trade" class="_2f588215">
+      <a href="/trade" class="_2f588215">
         <div class="_989d578a _3c4b34ca"></div>
         <div class="b0673997">Trade all the trending assets</div>
         <div class="_580e1c84">
@@ -22,7 +22,7 @@
         <div class="_12d43166 _8d9f59a3"><b>400+</b> cryptocurrencies</div>
         <div class="b62fad60">Trade Now &gt;</div>
       </a>
-      <a href="?futures/trade" class="_2f588215">
+      <a href="/futures/trade" class="_2f588215">
         <!---->
         <div class="b0673997">Hedge with Ezcrytox Futures</div>
         <div class="_580e1c84">
@@ -33,7 +33,7 @@
         <div class="_12d43166 _8d9f59a3"><b>100x</b> Max leverage</div>
         <div class="b62fad60">Trade Now &gt;</div>
       </a>
-      <a href="?trade" class="_2f588215">
+      <a href="/trade" class="_2f588215">
         <div class="_989d578a cc033262"></div>
         <div class="b0673997">Cross Margin Trading</div>
         <div class="_580e1c84">
@@ -240,7 +240,7 @@
         </div>
       </div>
       <div class="_50693046">
-        <a href="?earn#USDT" target="_blank" class="eee5a316">
+        <a href="/earn#USDT" target="_blank" class="eee5a316">
           <span class="_65a9ca37">Est. APY</span>
           <span class="_65a9ca37">Up to <strong>100.00%</strong></span>
           <span class="f23da486">
@@ -267,7 +267,7 @@
             </span>
           </span>
         </a>
-        <a href="?earn#ETH" target="_blank" class="eee5a316">
+        <a href="/earn#ETH" target="_blank" class="eee5a316">
           <span class="_65a9ca37">Est. APY</span>
           <span class="_65a9ca37">Up to <strong>100.00%</strong></span>
           <span class="f23da486"
@@ -320,7 +320,7 @@
             </span>
           </span>
         </a>
-        <a href="?earn#HTX" target="_blank" class="eee5a316">
+        <a href="/earn#HTX" target="_blank" class="eee5a316">
           <span class="_65a9ca37">Est. APY</span>
           <span class="_65a9ca37">Up to <strong>20.00%</strong></span>
           <span class="f23da486">
