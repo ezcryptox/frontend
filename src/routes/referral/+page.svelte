@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
 	import Footer from '$lib/footer.svelte';
 	// import "../../styles/referral.css";
 	import Spot from '$lib/market/market-content/spot/spot.market.svelte';
@@ -30,7 +31,6 @@
  $: HModalOpen = false;
 
 </script>
-
 <!-- ///// -->
 {#if HModalOpen}
   <HModal closeModal={() => {
@@ -57,10 +57,8 @@
 								src="https://v3.polo-static.com/spot-web/static/img/step_1.a1297cce.svg"
 							/>
 							<div class="bc59fbae">
-								<h3>Invitee Signup</h3>
-								<p>
-									Your invitee accepts the invitation, signs up on Ezcryptox, and complete trades.
-								</p>
+								<h3>{$_('invitee-signup')}</h3>
+								<p>{$_('invitee-signs-up')}</p>
 							</div>
 						</div>
 						<div class="_6fb0d8c5">
@@ -69,12 +67,8 @@
 								src="https://v3.polo-static.com/spot-web/static/img/step_2.cbd2c2be.svg"
 							/>
 							<div class="bc59fbae">
-								<h3>Share 30% Commission</h3>
-								<p>
-									For each trade your invitee completes, you'll earn a <strong>20%</strong>
-									commission on their trading fees, while they'll also receive a rebate of
-									<strong>10%</strong> on the same fees.
-								</p>
+								<h3>{$_('share-30-commission')}</h3>
+								<p>{$_('earn-from-invitee')}<strong>20%</strong>{$_('commission-on-their-trading-fees')}<strong>10%</strong>{$_('on-the-same-fees')}</p>
 							</div>
 						</div>
 						<div class="_6fb0d8c5">
@@ -83,17 +77,11 @@
 								src="https://v3.polo-static.com/spot-web/static/img/step_3.cb2a1857.svg"
 							/>
 							<div class="bc59fbae">
-								<h3>
-									Refer friends to Unlock Mystery Boxes Together, Each Worth Up to <strong
+								<h3>{$_('refer-friends-unlock')}<strong
 										>10,000</strong
 									> USDT
 								</h3>
-								<p>
-									You'll receive <strong>1</strong> Mystery Box if your invitee logs into Ezcryptox
-									App within <strong>7 days</strong> after signing up. When your invitee achieves a
-									spot trading volume of <strong>≥ 500 USDT</strong>, both you and the invitee will
-									get <strong>1</strong> Mystery Box each.
-								</p>
+								<p>{$_('you-ll-receive')}<strong>1</strong>{$_('mystery-box-invitee')}<strong>{$_('7-days')}</strong>{$_('invitee-spot-trading-vol')}<strong>≥ 500 USDT</strong>{$_('both-you-and-the-invitee-will-get')}<strong>1</strong>{$_('mystery-box-each')}</p>
 							</div>
 						</div>
 					</div>
@@ -276,18 +264,10 @@
 					></svg
 				>
 				<div class="_9edb452b">
-					<div class="cad5e470">
-						Refer friends and Unlock Mystery Boxes Each Worth Up to 10,000 USDT Together
-					</div>
-					<div class="_68e9bac4">
-						You'll receive <strong>1</strong> Mystery Box if your invitee logs into Ezcryptox App
-						within <strong>7 days</strong> after signing up. When your invitee achieves a spot
-						trading volume of
-						<strong>≥ 500 USDT</strong>, both you and the invitee will get
-						<strong>1</strong> Mystery Box each.
-					</div>
+					<div class="cad5e470">{$_('refer-and-unlock')}</div>
+					<div class="_68e9bac4">{$_('you-ll-receive')}<strong>1</strong>{$_('mystery-box-invitee')}<strong>{$_('7-days')}</strong>{$_('invitee-spot-trading-vol')}<strong>≥ 500 USDT</strong>{$_('both-you-and-the-invitee-will-get')}<strong>1</strong>{$_('mystery-box-each')}</div>
 				</div>
-				<div class="_26815dbd">Invite Now</div>
+				<div class="_26815dbd">{$_('invite-now')}</div>
 				<!---->
 			</div>
 		</div>
@@ -296,8 +276,7 @@
 			<div data-v-1ed24750="" class="content">
 				<div data-v-6cc641e1="" data-v-1ed24750="" style="margin-bottom: 48px;">
 					<div data-v-6cc641e1="" class="_4c45e0b0">
-						<div class="ec58a5fa">
-							More Benefits<svg
+						<div class="ec58a5fa">{$_('more-benefits')}<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="24"
 								height="16"
@@ -357,15 +336,11 @@
 								style="margin-right: 12px;"
 							>
 								<div data-v-d4715390="" class="_02c32b87">
-									<div class="c371f68e">A welcome bonus worth up to $1,000</div>
-									<div class="e1d37812">
-										Your friend will receive up to $1,000 as a welcome bonus upon registering on
-										Ezcryptox and can earn extra rewards by completing Trading Tasks every day at
-										the Reward Center.
-									</div>
+									<div class="c371f68e">{$_('a-welcome-bonus-worth-up-to-1-000')}</div>
+									<div class="e1d37812">{$_('friend-will-earn')}</div>
 									<div class="f4bdc971">
 										<a href="https://poloniex.com/reward-center/bonus" target="_blank"
-											>View more <svg
+											>{$_('comments-expand')}<svg
 												xmlns="http://www.w3.org/2000/svg"
 												width="21"
 												height="16"
@@ -391,12 +366,8 @@
 								style="margin-right: 12px;"
 							>
 								<div data-v-d4715390="" class="_02c32b87">
-									<div class="c371f68e">Share industry dividends</div>
-									<div class="e1d37812">
-										We warmly welcome your suggestions regarding our products or marketing plans.
-										Let's work together with Ezcryptox to foster the growth of the industry
-										ecosystem and share its dividends.
-									</div>
+									<div class="c371f68e">{$_('share-industry-dividends')}</div>
+									<div class="e1d37812">{$_('warmly-welcome')}</div>
 									<!----><img
 										src="https://www.datocms-assets.com/51952/1697194093-.png"
 										alt="Share industry dividends"
@@ -410,8 +381,7 @@
 				</div>
 				<div data-v-1ed24750="">
 					<div class="_4c45e0b0">
-						<div class="ec58a5fa">
-							FAQs<svg
+						<div class="ec58a5fa">{$_('faqs')}<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="24"
 								height="16"
@@ -461,44 +431,23 @@
 					</div>
 					<ol class="e07c7627">
 						<li>
-							<p class="c81146a0">
-								What kind of rewards can I receive by inviting friends to sign up on Ezcryptox?
-							</p>
-							<p class="_8857ec87">
-								Ezcryptox Referral Program has undergone a major update! Each time you invite a
-								friend to register and log in to the Ezcryptox App, you will receive a Mystery Box
-								worth up to <strong>10,000 USDT</strong>. When your invitee achieves a spot trading
-								volume of
-								<strong>≥ 500 USDT</strong>, both you and the invitee will get a Mystery Box each.
-								Additionally, you'll also enjoy up to
-								<strong>60%</strong> commission.
-							</p>
+							<p class="c81146a0">{$_('what-kind-of-rewards')}</p>
+							<p class="_8857ec87">{$_('referral-program-update')}<strong>{$_('10-000-usdt')}</strong>{$_('invitee-achieves-spot-volume')}<strong>≥ 500 USDT</strong>{$_('both-mystery-box')}<strong>60%</strong>{$_('commission')}</p>
 						</li>
 						<li>
-							<p class="c81146a0">What is the maximum amount of referral rewards I can receive?</p>
-							<p class="_8857ec87">
-								You can invite an unlimited number of friends and enjoy infinite commission rewards.
-								Moreover, each month, you'll receive additional Mystery Box rewards. The more
-								friends you invite, the more Mystery Boxes you'll win.
-							</p>
+							<p class="c81146a0">{$_('max-referral-rewards')}</p>
+							<p class="_8857ec87">{$_('unlimited-invites')}</p>
 						</li>
 						<li>
-							<p class="c81146a0">When will I receive the referral rewards?</p>
-							<p class="_8857ec87">
-								To ensure the fairness and integrity of the event, we will carefully examine your
-								invitee's account status. If there are no abnormal conditions with your invitee's
-								account, both you and your invitee can check and claim the referral rewards via
-								Wallet or Coupon Center.
-							</p>
+							<p class="c81146a0">{$_('when-will-i-receive-the-referral-rewards')}</p>
+							<p class="_8857ec87">{$_('fairness-integrity')}</p>
 						</li>
 					</ol>
 					<a
 						href="https://support.poloniex.com/hc/en-us/articles/6571052590999"
 						target="_blank"
 						class="_9dc1def7"
-					>
-						View more
-					</a>
+					>{$_('comments-expand')}</a>
 				</div>
 				<div data-v-1ed24750="" class="ef367856 flex justify-between">
 					<div class="flex">
@@ -551,13 +500,11 @@
 						>
 						<div class="_5935a260">
 							<h3 class="eb9ee20f">Ezcryptox Space Traveller</h3>
-							<p class="_7578ffd7">
-								Up to <span class="highlightNew"> 60% commission</span> waiting for you to unlock!
-							</p>
+							<p class="_7578ffd7">{$_('up-to')}<span class="highlightNew">{$_('60-commission')}</span>{$_('waiting-to-unlock')}</p>
 						</div>
 					</div>
 					<div class="flex">
-						<button class="_4b3dc099"> Join us now! </button><!---->
+						<button class="_4b3dc099">{$_('join-us-now')}</button><!---->
 					</div>
 				</div>
 			</div>
@@ -566,6 +513,5 @@
 </div>
 
 <Footer />
-
 <style>
 </style>

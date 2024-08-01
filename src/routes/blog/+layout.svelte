@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
 	import Footer from '$lib/footer.svelte';
 	import { page } from '$app/stores';
     import { browser } from '$app/environment';
@@ -18,19 +19,18 @@
 	}
 	const debouncedHandleInputChange = debounce(handleInputChange, 300); // 300ms debounce
 </script>
-
 <div id="root" data-v-app="">
 	<div class="">
 		<main class="oLTck">
 			<div class="PlcZk">
 				{#if $page.url.pathname === '/blog'}
-					<span class="H49R4">Blog</span>
+					<span class="H49R4">{$_('footer-blog')}</span>
 				{:else}
 					<span class="Rd6zT"
 						><a href="/blog" class="router-link-active"
 							><svg fill="currentColor" style="width: 10px; height: 16px;"
 								><use xlink:href="#web-core-icon-back"></use></svg
-							> Home</a
+							>{$_('home')}</a
 						></span
 					>
 				{/if}

@@ -1,10 +1,10 @@
 <script>
+	import { _ } from 'svelte-i18n';
   export let handleModalOpen = null;
   function handleModal() {
     if (handleModalOpen) handleModalOpen();
   }
 </script>
-
 <div class="ant-table-placeholder">
   <div class="empty-wrapper">
     <svg
@@ -45,7 +45,7 @@
         type="button"
         class="empty-button polo-btn polo-btn-button polo-btn-primary polo-btn-medium"
         ><!---->
-        <div class="btn-sp">Invite Friends Now</div></button
+        <div class="btn-sp">{$_('invite-friends-now')}</div></button
       >
     </div>
     <div class="ant-modal-root">
@@ -100,12 +100,9 @@
                       alt=""
                     />
                     <div class="cc011bf7">
-                      <div class="fb7cd702">
-                        Scan the QR code to join，Travel together in the Crypto
-                        world
-                      </div>
+                      <div class="fb7cd702">{$_('scan-qr-code')}</div>
                       <div class="_53cc68e9">
-                        <span>Referral Code: </span><strong>EBMJA7QE</strong>
+                        <span>{$_('referral-code-1')}</span><strong>EBMJA7QE</strong>
                       </div>
                     </div>
                     <div
@@ -128,12 +125,9 @@
                       alt=""
                     />
                     <div class="cc011bf7">
-                      <div class="fb7cd702">
-                        Scan the QR code to join，Travel together in the Crypto
-                        world
-                      </div>
+                      <div class="fb7cd702">{$_('scan-qr-code')}</div>
                       <div class="_53cc68e9">
-                        <span>Referral Code: </span><strong>EBMJA7QE</strong>
+                        <span>{$_('referral-code-1')}</span><strong>EBMJA7QE</strong>
                       </div>
                     </div>
                     <div
@@ -182,7 +176,7 @@
                   >
                 </div>
               </div>
-              <div class="_9039fb86 flex" style="display: none;">Copied</div>
+              <div class="_9039fb86 flex" style="display: none;">{$_('g-copied')}</div>
             </div>
           </div>
           <div

@@ -1,14 +1,12 @@
 <script>
+	import { _ } from 'svelte-i18n';
   
 </script>
-
 <section class="a1fc5931 _9502b055">
     <div class="_67267334">
         <svg aria-hidden="true" class="svgicon" style="width: 20px; height: 20px; min-width: 20px;">
             <use xlink:href="#new"></use>
-        </svg>
-        New Listing
-    </div>
+        </svg>{$_('new-listing')}</div>
     <div class="d8722e51">
         <div class="a598ebf7">
             <a href="/trade/SELFIE_USDT" class="_65beae1d">
@@ -108,8 +106,6 @@
         </div>
     </div>
 </section>
-
-
 <style>
    
 </style>

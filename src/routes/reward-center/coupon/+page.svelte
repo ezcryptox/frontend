@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
     import SignUpBonus from "../../../lib/reward-center-components/sign-up-bonus.svelte";
     import RedeemCoupon from "../../../lib/reward-center-components/redeem-coupon.svelte";
     import ActiveCoupon from "../../../lib/reward-center-components/coupon-active.svelte";
@@ -14,10 +15,9 @@
     const toggleCouponHistoryModal = getContext('toggleCouponHistoryModal');
 
 </script>
-
 <div class="coupon">
     <div class="content">
-        {#if !isLogin}
+        {#if !$isLogin}
         <SignUpBonus />
         {:else}
         <RedeemCoupon />
@@ -26,7 +26,7 @@
         
         <div class="tabWraper">
             <button on:click={toggleCouponHistoryModal} class="couponLink"
-                >Coupon History<svg
+                >{$_('coupon-history')}<svg
                     width="12"
                     height="12"
                     viewBox="0 0 12 12"
@@ -108,9 +108,7 @@
                                                 : " ant-tabs-tab"}
                                             on:click={() =>
                                                 onContentTabChanged(0)}
-                                        >
-                                            Active
-                                        </div>
+                                        >{$_('active')}</div>
                                         <!-- svelte-ignore a11y-interactive-supports-focus -->
                                         <!-- svelte-ignore a11y-click-events-have-key-events -->
                                         <div
@@ -123,9 +121,7 @@
                                                 : " ant-tabs-tab"}
                                             on:click={() =>
                                                 onContentTabChanged(1)}
-                                        >
-                                            Invalid
-                                        </div>
+                                        >{$_('invalid')}</div>
                                     </div>
                                     <div
                                         class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
@@ -195,4 +191,3 @@
         </div>
     </div>
 </div>
-

@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
     import { onMount } from "svelte";
     import { isLogin } from "$lib/store/profile";
     let now = new Date();
@@ -82,7 +83,6 @@
         return () => clearInterval(interval);
     });
 </script>
-
 <div data-id={id} class="cb807b04 {claimed?"_487af95e":""}">
     {#if seatsOffered && !claimed}
     <span class="_7fc3b9df text-normal font-semibold">
@@ -145,9 +145,7 @@
     <div class="dd5fa101">
         {#if expiration && !complete && !claimed}
         <div data-v-6acfb068="" class="countdown">
-            <div data-v-6acfb068="" class="expiration text-gray">
-                Expiration
-            </div>
+            <div data-v-6acfb068="" class="expiration text-gray">{$_('expiration')}</div>
             <ul data-v-6acfb068="" class="countDownWraper">
                 <li data-v-6acfb068="" class="day">
                     {getDaysLeft(expiration, now)}

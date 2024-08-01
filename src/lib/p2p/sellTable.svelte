@@ -1,11 +1,11 @@
 <script>
+	import { _ } from 'svelte-i18n';
   export let openSetupModal = null;
 
   const onOpenModal = () => {
     if (openSetupModal) openSetupModal(true);
   };
 </script>
-
 <section class="_tableList_2ean6_9">
   <div
     class="el-table--fit el-table--enable-row-hover el-table--enable-row-transition el-table el-table--layout-fixed _tableLayout_f1c54_9 is-scrolling-none"
@@ -41,28 +41,25 @@
                 class="el-table_1_column_1 is-leaf el-table__cell"
                 colspan="1"
                 rowspan="1"
-                ><div class="cell">
-                  Advertisers (Completion rate)<!----><!---->
+                ><div class="cell">{$_('advertisers-completion-rate')}<!----><!---->
                 </div></th
               ><th
                 class="el-table_1_column_2 is-leaf el-table__cell"
                 colspan="1"
-                rowspan="1"><div class="cell">Price<!----><!----></div></th
+                rowspan="1"><div class="cell">{$_('g-price')}<!----><!----></div></th
               ><th
                 class="el-table_1_column_3 is-leaf el-table__cell"
                 colspan="1"
                 rowspan="1"
                 ><div class="cell">
-                  <div class="_headerLine_2ean6_111">
-                    Available <span></span> Limits
-                  </div>
+                  <div class="_headerLine_2ean6_111">{$_('g-available')}<span></span>{$_('limits')}</div>
                   <!----><!---->
                 </div></th
               ><th
                 class="el-table_1_column_4 is-leaf el-table__cell"
                 colspan="1"
                 rowspan="1"
-                ><div class="cell">Payment Method<!----><!----></div></th
+                ><div class="cell">{$_('payment-method-1')}<!----><!----></div></th
               ><th
                 class="el-table_1_column_5 is-right is-leaf el-table__cell"
                 colspan="1"
@@ -70,7 +67,7 @@
                 ><div class="cell">
                   <span
                     class="el-only-child__content el-tooltip__trigger el-tooltip__trigger"
-                    >Trade</span
+                    >{$_('footer-futures-trade')}</span
                   ><!----><!---->
                 </div></th
               ></tr
@@ -118,7 +115,7 @@
                           <div class="">
                             <div class="_name_2ean6_165">
                               <a href="/p2p/merchant/376127151" class=""
-                                >Satoshiseller</a
+                                >{$_('satoshiseller')}</a
                               ><span class="_flex_xvdld_9"
                                 ><!----><svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +182,7 @@
                                 ><!----></span
                               >
                             </div>
-                            <div class="_trade_2ean6_189">Trades: 2 | 25%</div>
+                            <div class="_trade_2ean6_189">{$_('trades-2-25%')}</div>
                           </div>
                         </div>
                       </div></td
@@ -195,7 +192,7 @@
                       colspan="1"
                       ><div class="cell">
                         <!---->
-                        <div class="_price_2ean6_192">63512.25 USD</div>
+                        <div class="_price_2ean6_192">{$_('63512.25-usd')}</div>
                       </div></td
                     ><td
                       class="el-table_1_column_3 el-table__cell"
@@ -205,14 +202,14 @@
                         <!---->
                         <div class="_record_2ean6_205">
                           <div class="_line_2ean6_211">
-                            <span class="_label_2ean6_215">Available</span><span
-                              class="_label_2ean6_215">Limits</span
+                            <span class="_label_2ean6_215">{$_('g-available')}</span><span
+                              class="_label_2ean6_215">{$_('limits')}</span
                             >
                           </div>
                           <div class="_line_2ean6_211">
-                            <span class="_value_2ean6_227">50.000000 BTC</span
+                            <span class="_value_2ean6_227">{$_('50.000000-btc')}</span
                             ><span class="_value_2ean6_227"
-                              >100.00 - 1400000.00 USD</span
+                              >{$_('100-00-1400000-00-usd')}</span
                             >
                           </div>
                         </div>
@@ -226,13 +223,13 @@
                         <div class="_method_2ean6_239">
                           <span style="color: rgb(1, 33, 105);"
                             ><em style="background-color: rgb(1, 33, 105);"
-                            ></em> Bank of America</span
+                            ></em>{$_('bank-of-america')}</span
                           ><span style="color: rgb(99, 49, 204);"
                             ><em style="background-color: rgb(99, 49, 204);"
-                            ></em> Zelle</span
+                            ></em>{$_('zelle')}</span
                           ><span style="color: rgb(0, 213, 75);"
                             ><em style="background-color: rgb(0, 213, 75);"
-                            ></em> Cash app</span
+                            ></em>{$_('cash-app')}</span
                           >
                         </div>
                       </div></td
@@ -248,7 +245,7 @@
                             aria-disabled="false"
                             type="button"
                             on:click={onOpenModal}
-                            ><!--v-if--><span class="">Sell BTC</span></button
+                            ><!--v-if--><span class="">{$_('sell-btc')}</span></button
                           >
                         </div>
                       </div></td

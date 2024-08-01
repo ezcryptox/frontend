@@ -1,8 +1,7 @@
 <script>
+	import { _ } from 'svelte-i18n';
 import "../../../styles/withdraw.css"
 </script>
-
-
 <div class="wc-wallet f25e176f">
     <div class="topLayoutWraper">
         <h3 class="topLayoutNav">
@@ -11,14 +10,14 @@ import "../../../styles/withdraw.css"
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M9.36018 3.06641L10.6419 4.43487L4.69353 10.0064L10.6412 15.5657L9.36089 16.9355L1.94922 10.0079L9.36018 3.06641Z" fill="currentColor"></path>
                 </svg>
             </a>
-            <a href="/wallet/?tab=spot" class=""> Wallet </a>
+            <a href="/wallet/?tab=spot" class="">{$_('g-wallet')}</a>
             <span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 2.5H13L5 13.5H3L11 2.5Z" fill="currentColor"></path>
                 </svg>
             </span>
             <!---->
-            <a href="/wallet/withdraw" class="focus back">Withdraw</a>
+            <a href="/wallet/withdraw" class="focus back">{$_('g-withdraw')}</a>
         </h3>
         <div class="container">
             <!---->
@@ -28,10 +27,10 @@ import "../../../styles/withdraw.css"
                         <div class="leftSlide">
                             <dl>
                                 <dt>
-                                    <h4>Select Coin</h4>
+                                    <h4>{$_('select-coin')}</h4>
                                 </dt>
                                 <dd class="leftMain">
-                                    <span class="laber">Coin</span>
+                                    <span class="laber">{$_('g-currency')}</span>
                                     <span class="currencySelectList _83857b91 _8a25e73a undefined">
                                         <!---->
                                         <span class="_9f048623">
@@ -69,18 +68,16 @@ import "../../../styles/withdraw.css"
                                                             <dl class="disable">
                                                                 <dt>
                                                                     <img alt="" src="https://www.datocms-assets.com/51952/1638805102-zks.png" class="imgICon">
-                                                                    <strong> ZKS</strong>
-                                                                    ZKSpace
-                                                                </dt>
-                                                                <dd>Suspended</dd>
+                                                                    <strong> ZKS</strong>{$_('zkspace')}</dt>
+                                                                <dd>{$_('suspended')}</dd>
                                                             </dl>
                                                         </div>
                                                         <div class="_43ec205b _00af2d11 polo-option">
                                                             <dl class="disable">
                                                                 <dt>
                                                                     <img alt="" class="imgICon">
-                                                                    <strong> ZORRO</strong> ZORRO </dt>
-                                                                <dd>Suspended</dd>
+                                                                    <strong>{$_('zorro')}</strong>{$_('zorro')}</dt>
+                                                                <dd>{$_('suspended')}</dd>
                                                             </dl>
                                                         </div>
                                                     </div>
@@ -92,10 +89,10 @@ import "../../../styles/withdraw.css"
                             </dl>
                             <dl class="marginTop32">
                                 <dt>
-                                    <h4>Send To</h4>
+                                    <h4>{$_('send-to')}</h4>
                                 </dt>
                                 <dd class="leftMain">
-                                    <span class="laber">Address</span>
+                                    <span class="laber">{$_('address')}</span>
                                     <div class="polo-input left polo-input-huge polo-input-default">
                                         <!---->
                                         <input type="text" placeholder="Enter Address">
@@ -106,7 +103,7 @@ import "../../../styles/withdraw.css"
                                         </a>
                                     </div>
                                     <!---->
-                                    <span class="laber marginTop24">Network</span>
+                                    <span class="laber marginTop24">{$_('network')}</span>
                                     <span class="networkSelectList _83857b91 _8a25e73a undefined">
                                         <!---->
                                         <span class="_9f048623">
@@ -136,12 +133,11 @@ import "../../../styles/withdraw.css"
                         </div>
                         <div class="rightSlide">
                             <div class="depositRelatedWraper">
-                                <h4>Related Questions</h4>
-                                <p> Have you had problems with your Withdraw? Please click to view Withdraw related questions. </p>
+                                <h4>{$_('related-questions')}</h4>
+                                <p>{$_('withdraw-problems')}</p>
                                 <button type="button" class="relateBtn polo-btn polo-btn-text polo-btn-positive polo-btn-mini">
                                     <!---->
-                                    <div class="btn-sp"> Related Questions
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <div class="btn-sp">{$_('related-questions')}<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M9.36018 3.06641L10.6419 4.43487L4.69353 10.0064L10.6412 15.5657L9.36089 16.9355L1.94922 10.0079L9.36018 3.06641Z" fill="currentColor"></path>
                                         </svg>
                                     </div>
@@ -161,9 +157,7 @@ import "../../../styles/withdraw.css"
                                 </svg>
                             </div>
                             <p class="depositRelatedWraper marginTop12 online">
-                                <strong>$ 10,000.00</strong>
-                                daily withdrawal limit remaining.
-                            </p>
+                                <strong>$ 10,000.00</strong>{$_('daily-limit-remaining')}</p>
                         </div>
                     </div>
                 </div>
@@ -171,7 +165,7 @@ import "../../../styles/withdraw.css"
                     <div class="historyWraper">
                         <dl>
                             <dt>
-                                <h4>Recent Withdrawals</h4>
+                                <h4>{$_('recent-withdrawals')}</h4>
                             </dt>
                             <dd>
                                 <label class="ant-checkbox-wrapper">
@@ -179,12 +173,11 @@ import "../../../styles/withdraw.css"
                                         <input type="checkbox" class="ant-checkbox-input" value="">
                                         <span class="ant-checkbox-inner"></span>
                                     </span>
-                                    <span>Hide Error Notices</span>
+                                    <span>{$_('hide-error-notices')}</span>
                                 </label>
                                 <button type="button" class="historyNav polo-btn polo-btn-text polo-btn-primary polo-btn-mini">
                                     <!---->
-                                    <div class="btn-sp"> View All
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <div class="btn-sp">{$_('g-view-all')}<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M9.36018 3.06641L10.6419 4.43487L4.69353 10.0064L10.6412 15.5657L9.36089 16.9355L1.94922 10.0079L9.36018 3.06641Z" fill="currentColor"></path>
                                         </svg>
                                     </div>
@@ -214,7 +207,7 @@ import "../../../styles/withdraw.css"
                                                                 <tr>
                                                                     <th key="createTime" class="">
                                                                         <span class="ant-table-header-column"><div>
-                                                                            <span class="ant-table-column-title">Time</span>
+                                                                            <span class="ant-table-column-title">{$_('g-date')}</span>
                                                                             <span class="ant-table-column-sorter"></span>
                                                                         </div>
                                                                         </span>
@@ -222,7 +215,7 @@ import "../../../styles/withdraw.css"
                                                                     <th key="address" class="">
                                                                         <span class="ant-table-header-column">
                                                                             <div>
-                                                                                <span class="ant-table-column-title">Address</span>
+                                                                                <span class="ant-table-column-title">{$_('address')}</span>
                                                                                 <span class="ant-table-column-sorter"></span>
                                                                             </div>
                                                                         </span>
@@ -230,21 +223,21 @@ import "../../../styles/withdraw.css"
                                                                     <th key="txId" class="">
                                                                         <span class="ant-table-header-column">
                                                                             <div>
-                                                                                <span class="ant-table-column-title">TxID</span>
+                                                                                <span class="ant-table-column-title">{$_('txid')}</span>
                                                                                 <span class="ant-table-column-sorter"></span>
                                                                             </div>
                                                                         </span>
                                                                     </th>
                                                                     <th key="parentCurrency" class="">
                                                                         <span class="ant-table-header-column"><div>
-                                                                            <span class="ant-table-column-title">Coin</span>
+                                                                            <span class="ant-table-column-title">{$_('g-currency')}</span>
                                                                             <span class="ant-table-column-sorter"></span>
                                                                         </div>
                                                                         </span>
                                                                     </th>
                                                                     <th key="amount" class="">
                                                                         <span class="ant-table-header-column"><div>
-                                                                            <span class="ant-table-column-title">Amount</span>
+                                                                            <span class="ant-table-column-title">{$_('g-qty')}</span>
                                                                             <span class="ant-table-column-sorter"></span>
                                                                         </div>
                                                                         </span>
@@ -252,13 +245,13 @@ import "../../../styles/withdraw.css"
                                                                     <th key="netWork" class="">
                                                                         <span class="ant-table-header-column">
                                                                             <div>
-                                                                                <span class="ant-table-column-title">Network</span>
+                                                                                <span class="ant-table-column-title">{$_('network')}</span>
                                                                                 <span class="ant-table-column-sorter"></span>
                                                                             </div>
                                                                         </span>
                                                                     </th>
                                                                     <th key="status" class="ant-table-row-cell-last"><span class="ant-table-header-column"><div>
-                                                                        <span class="ant-table-column-title">Status</span>
+                                                                        <span class="ant-table-column-title">{$_('g-status')}</span>
                                                                         <span class="ant-table-column-sorter"></span>
                                                                     </div>
                                                                     </span>
@@ -278,7 +271,7 @@ import "../../../styles/withdraw.css"
                                                                 <rect x="15.4546" y="50.9082" width="16.3636" height="2.72727" rx="0.454545" fill="#E3E3E3"></rect>
                                                                 <rect x="15.4546" y="59.0898" width="16.3636" height="2.72727" rx="0.454545" fill="#E3E3E3"></rect>
                                                             </svg>
-                                                            <p class="empty-text" style=""> No Data </p>
+                                                            <p class="empty-text" style="">{$_('no-data')}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -295,7 +288,6 @@ import "../../../styles/withdraw.css"
         </div>
     </div>
 </div>
-
 <style>
 
 </style>

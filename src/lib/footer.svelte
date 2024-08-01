@@ -1,7 +1,13 @@
 <script>
 	import '../styles/footer.css';
 	import { _ } from 'svelte-i18n';
+	import Language from './navbar-components/language.svelte';
+	
+	let showLanguageModal = false;
+
+	$: currentLang = 'English'
 </script>
+<Language {showLanguageModal} onSelectedLang={ curr => currentLang = curr} on:click={() => (showLanguageModal = false)}/>
 <div id="uniframe-footer" class="footer-wrapper" data-v-app>
 	<footer class="beb6dc28 uniframe-root">
 		<div class="e2fff687">
@@ -29,7 +35,9 @@
 				<main class="e5cc3d28">
 					<div class="">
 						<div class="a1d7703b">{ $_("global-language") }</div>
-						<div class="fa317b72">{$_('english')}<svg fill="currentColor" style="width: 24px; height: 24px;">
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<!-- svelte-ignore a11y-no-static-element-interactions -->
+						<div on:click={() => showLanguageModal = true} class="fa317b72">{currentLang}<svg fill="currentColor" style="width: 24px; height: 24px;">
 								<use xlink:href="#uniframe-icon-arrow-down"></use>
 							</svg>
 						</div>

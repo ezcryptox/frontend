@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { _ } from 'svelte-i18n';
 	import '../../../styles/buy.css';
 	import axios from 'axios';
 	import pkg from 'lodash';
@@ -200,13 +201,10 @@
 	}
 	const debouncedHandleInputChange = debounce(handleInputChange, 300); // 300ms debounce
 </script>
-
 <div class="contentWraper cardsWraper mt-[64px] {responsiveClass}">
 	<dl class="navWaper">
 		<dt>
-			<a href="/cards/buy" class="router-link-exact-active router-link-active" aria-current="page">
-				Buy Crypto
-				<!-- </a><a href="/cards/sell" class=""> Sell Crypto </a> -->
+			<a href="/cards/buy" class="router-link-exact-active router-link-active" aria-current="page">{$_('g-buy-crypto')}<!-- </a><a href="/cards/sell" class="">{$_('sell-crypto')}</a> -->
 			</a>
 		</dt>
 		<dd>
@@ -242,7 +240,7 @@
 							stroke-width="1.57143"
 							stroke-linecap="square"
 						></path></svg
-					><i> History</i></span
+					><i>{$_('g-history')}</i></span
 				><span class="lan"></span><span
 					><svg
 						width="22"
@@ -256,7 +254,7 @@
 							d="M10.4524 6.5169L10.5 6.5473V13.7773H6.5V5.3432C6.86009 5.39501 7.29184 5.47175 7.79629 5.58505C8.75309 5.79995 9.44672 6.05202 9.88468 6.23973C10.1038 6.33365 10.2593 6.41162 10.3521 6.46103C10.3985 6.48574 10.4292 6.50332 10.4444 6.51218L10.4524 6.5169ZM16 13.7773H12V6.55521C12.032 6.54148 12.0697 6.52546 12.1127 6.50745C12.2771 6.43875 12.5181 6.34183 12.8145 6.23358C13.4126 6.0151 14.2107 5.75978 15.0454 5.59215C15.4037 5.52018 15.7216 5.46319 16 5.41805V13.7773ZM16 3.89977C15.6476 3.95303 15.2316 4.0248 14.75 4.12151C12.8828 4.49651 11.25 5.24651 11.25 5.24651C11.25 5.24651 10.2266 4.59353 8.125 4.12151C7.48335 3.9774 6.9422 3.88633 6.5 3.82935C6.12676 3.78125 5.82401 3.75744 5.59082 3.74651C5.19542 3.72799 5 3.74651 5 3.74651V15.2773H10.5V16.2617H12V15.2773H17.5V3.74651C17.5 3.74651 17.0138 3.74651 16 3.89977Z"
 							fill="currentColor"
 						></path></svg
-					><i> Support</i></span
+					><i>{$_('footer-support')}</i></span
 				>
 			</p>
 		</dd>
@@ -266,7 +264,7 @@
 			<dt class="leftSlide">
 				<dl>
 					<dt class="leftSlideMain">
-						<p>Pay</p>
+						<p>{$_('pay')}</p>
 						<dl class="marginTop8">
 							<dt>
 								<span class="leftSelectWraper cardsSelectWraper _83857b91 _8a25e73a undefined"
@@ -311,7 +309,7 @@
 											<Popover.Content class="{responsiveClass === "isMobile" ? "w-[96%]": "w-[200px]"} p-0">
 												<Command.Root style="border: none">
 													<Command.Input style="border: none" placeholder="" />
-													<Command.Empty>No Currency found.</Command.Empty>
+													<Command.Empty>{$_('no-currency-found')}</Command.Empty>
 													<Command.Group>
 														<div style="top: 45px" class="f066ab20 c053e25d polo-select">
 															{#each currencyData as currency}
@@ -400,7 +398,7 @@
 						</dl>
 					</dt>
 					<dd class="rightSlideMain">
-						<p>Receive</p>
+						<p>{$_('receive')}</p>
 						<span
 							class="rightSelectWraper cardsSelectWraper marginTop8 _83857b91 _8a25e73a undefined"
 							><!----><span class="_9f048623">
@@ -443,7 +441,7 @@
 									<Popover.Content class="{responsiveClass === "isMobile" ? "w-[96%]": "w-[200px]"} p-0">
 										<Command.Root style="border: none">
 											<Command.Input style="border: none" placeholder="" />
-											<Command.Empty>No Crypto found.</Command.Empty>
+											<Command.Empty>{$_('no-crypto-found')}</Command.Empty>
 											<Command.Group>
 												<div style="top: 45px" class="f066ab20 c053e25d polo-select">
 													{#each cryptoData as crypto}
@@ -765,7 +763,7 @@
 		</dl>
 		<dl class="detailsWraper marginTop16">
 			<dt class="leftSider">
-				<h3 class="title">Select payment method</h3>
+				<h3 class="title">{$_('select-payment-method')}</h3>
 				<ul class="methodWraper">
 					<li class="active">
 						<dl>
@@ -851,8 +849,8 @@
 							</dd>
 						</dl>
 						<dl class="marginTop12">
-							<dt>Est. arrival time : &gt; 2 min</dt>
-							<dd>FEE : <span class="emphasize_green"> 3.95%</span></dd>
+							<dt>{$_('est-arrival-time-2-min')}</dt>
+							<dd>{$_('fee')}<span class="emphasize_green"> 3.95%</span></dd>
 						</dl>
 					</li>
 					<!-- <li class="">
@@ -901,7 +899,7 @@
 											><rect width="24" height="24" fill="white"></rect></clipPath
 										></defs
 									></svg
-								><strong>SIMPLEX</strong>
+								><strong>{$_('simplex')}</strong>
 							</dt>
 							<dd>
 								<span class="payWraper"
@@ -940,8 +938,8 @@
 							</dd>
 						</dl>
 						<dl class="marginTop12">
-							<dt>Est. arrival time : &gt; 5 min</dt>
-							<dd>FEE : <span class="emphasize_green"> 3.5%-5%</span></dd>
+							<dt>{$_('est-arrival-time-5-min')}</dt>
+							<dd>{$_('fee')}<span class="emphasize_green"> 3.5%-5%</span></dd>
 						</dl>
 					</li> -->
 				</ul>
@@ -979,8 +977,7 @@
 						><defs
 							><clipPath id="clip0_226_28219"><rect width="24" height="24"></rect></clipPath></defs
 						></svg
-					>Order Details
-				</h3>
+					>{$_('order-details')}</h3>
 				<div class="orderDetailsWraper">
 					{#if buyQuote}
 						<div class="ant-spin-nested-loading">
@@ -998,7 +995,7 @@
 							<div class="ant-spin-container {loadingQuote ? 'ant-spin-blur' : ''}">
 								<div class="display">
 									<dl>
-										<dt>Payment method</dt>
+										<dt>{$_('payment-method')}</dt>
 										<dd class="flex-start">
 											<svg
 												width="24"
@@ -1017,13 +1014,12 @@
 												href="https://support.moonpay.com/"
 												target="_blank"
 												class="polo-link polo-link-default"
-												>Learn more
-											</a>
+												>{$_('learn-more-3')}</a>
 										</dd>
 										
 									</dl>
 									<dl>
-										<dt>Price</dt>
+										<dt>{$_('g-price')}</dt>
 										<dd>
 											<strong
 												>1 {buyQuote.cryptoCurrency.toUpperCase()} ≈ {buyQuote.price.toFixed(4)}
@@ -1034,7 +1030,7 @@
 									<dl>
 										<Tooltip.Root>
 											<Tooltip.Trigger>
-												<dt><span class="tooltip">Total (fee included)</span></dt>
+												<dt><span class="tooltip">{$_('total-fee-included')}</span></dt>
 											</Tooltip.Trigger>
 											<Tooltip.Content>
 												<p>
@@ -1050,8 +1046,7 @@
 										<dd>{inputAmount} {buyQuote.fiatCurrency.toUpperCase()}</dd>
 									</dl>
 									<dl class="test-mode">
-											<strong>TEST MODE: </strong> You can only purchase ETH on sepolia testnet
-										</dl>
+											<strong>{$_('test-mode')}</strong>{$_('eth-test-mode')}</dl>
 								</div>
 							</div>
 						</div>
@@ -1106,27 +1101,19 @@
 									fill="#878787"
 								></rect></svg
 							>
-							<p class="marginTop8">Please enter an amount first</p>
+							<p class="marginTop8">{$_('please-enter-an-amount-first')}</p>
 						</div>
 					{/if}
 
 					<div class="agreenWraper marginTop40">
-						<p>Disclaimer</p>
+						<p>{$_('disclaimer')}</p>
 						<div class="small">
-							<p>
-								You are leaving Ezcryptox and will be redirected to MoonPay, a licensed financial
-								institution that provides credit/debit card payment service as a third party. Any
-								risk that occurs during the use of the service shall be borne by MoonPay. Please
-								read and agree to the <a
+							<p>{$_('leaving-ezcryptox-full')}<a
 									href="https://www.moonpay.com/legal/terms_of_use_usa"
 									target="_blank"
-									>Terms of Use
-								</a>before proceeding.
-							</p>
-							<p>
-								If you have any questions or suggestions on credit card margin payment, please
-								contact <a href="https://support.moonpay.com/" target="_blank"
-									>MoonPay customer support</a
+									>{$_('terms-of-use')}</a>{$_('before-proceeding')}</p>
+							<p>{$_('card-margin-questions')}<a href="https://support.moonpay.com/" target="_blank"
+									>{$_('moonpay-customer-support')}</a
 								>
 							</p>
 						</div>
@@ -1139,15 +1126,12 @@
 							<Label
 								for="terms"
 								class="ml-1 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-							>
-								I have read and agree to the Terms of Use
-							</Label>
+							>{$_('agree-to-terms')}</Label>
 						</p>
 					</div>
 					<dl class="topborder marginTop16">
 						<dt>
-							<p>
-								You will get <strong>{buyQuote?.cryptoAmount || '--'} {selectedCrypto.code}</strong>
+							<p>{$_('you-will-get')}<strong>{buyQuote?.cryptoAmount || '--'} {selectedCrypto.code}</strong>
 							</p>
 						</dt>
 						<dd>
@@ -1163,7 +1147,7 @@
 								style="width: 145px;"
 								><!---->
 								<div aria-disabled={initializingOnrampFlow} class="btn-sp">
-									{initializingOnrampFlow ? 'Please Wait' : 'Submit'}
+									{initializingOnrampFlow ? '. . .' : $_('g-submit')}
 								</div></button
 							>
 						</dd>

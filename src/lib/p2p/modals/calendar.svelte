@@ -1,3 +1,6 @@
+<script>
+	import { _ } from 'svelte-i18n';
+</script>
 <div
   class="el-popper is-pure is-light el-picker__popper"
   tabindex="-1"
@@ -43,7 +46,7 @@
                 ></i
               ></button
             ><!--v-if--><!--v-if-->
-            <div>2024 June</div>
+            <div>{$_('2024-june')}</div>
           </div>
           <table
             role="grid"
@@ -54,16 +57,16 @@
           >
             <tbody
               ><tr
-                ><!--v-if--><th scope="col" aria-label="Sunday">Sun</th><th
+                ><!--v-if--><th scope="col" aria-label="Sunday">{$_('sun')}</th><th
                   scope="col"
-                  aria-label="Monday">Mon</th
-                ><th scope="col" aria-label="Tuesday">Tue</th><th
+                  aria-label="Monday">{$_('mon')}</th
+                ><th scope="col" aria-label="Tuesday">{$_('tue')}</th><th
                   scope="col"
-                  aria-label="Wednesday">Wed</th
-                ><th scope="col" aria-label="Thursday">Thu</th><th
+                  aria-label="Wednesday">{$_('wed')}</th
+                ><th scope="col" aria-label="Thursday">{$_('thu')}</th><th
                   scope="col"
-                  aria-label="Friday">Fri</th
-                ><th scope="col" aria-label="Saturday">Sat</th></tr
+                  aria-label="Friday">{$_('fri')}</th
+                ><th scope="col" aria-label="Saturday">{$_('sat')}</th></tr
               ><tr class="el-date-table__row"
                 ><td class="prev-month" aria-selected="false" tabindex="-1"
                   ><div class="el-date-table-cell">
@@ -273,7 +276,7 @@
                 ></i
               ></button
             >
-            <div>2024 July</div>
+            <div>{$_('2024-july')}</div>
           </div>
           <table
             role="grid"
@@ -284,16 +287,16 @@
           >
             <tbody
               ><tr
-                ><!--v-if--><th scope="col" aria-label="Sunday">Sun</th><th
+                ><!--v-if--><th scope="col" aria-label="Sunday">{$_('sun')}</th><th
                   scope="col"
-                  aria-label="Monday">Mon</th
-                ><th scope="col" aria-label="Tuesday">Tue</th><th
+                  aria-label="Monday">{$_('mon')}</th
+                ><th scope="col" aria-label="Tuesday">{$_('tue')}</th><th
                   scope="col"
-                  aria-label="Wednesday">Wed</th
-                ><th scope="col" aria-label="Thursday">Thu</th><th
+                  aria-label="Wednesday">{$_('wed')}</th
+                ><th scope="col" aria-label="Thursday">{$_('thu')}</th><th
                   scope="col"
-                  aria-label="Friday">Fri</th
-                ><th scope="col" aria-label="Saturday">Sat</th></tr
+                  aria-label="Friday">{$_('fri')}</th
+                ><th scope="col" aria-label="Saturday">{$_('sat')}</th></tr
               ><tr class="el-date-table__row"
                 ><td class="prev-month" aria-selected="false" tabindex="-1"
                   ><div class="el-date-table-cell">
@@ -488,3 +491,4 @@
     style="position: absolute; top: 164.5px;"
   ></span>
 </div>
+

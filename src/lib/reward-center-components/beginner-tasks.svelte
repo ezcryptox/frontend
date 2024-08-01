@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
     import TaskCard from './task-card.svelte';
     let now = new Date();
     const welcomeTasks = [
@@ -110,10 +111,7 @@
     ];
      
 </script>
-
-
-
-    <div class="_4502231f">
+<div class="_4502231f">
         <section>
             <div class="d6c82c64">
                 <svg
@@ -1038,9 +1036,7 @@
                     ></svg
                 >
                 <div>
-                    <div class="text-strong text-large font-bold">
-                        Welcome Bonus
-                    </div>
+                    <div class="text-strong text-large font-bold">{$_('welcome-bonus-1')}</div>
                 </div>
             </div>
 
@@ -1055,8 +1051,7 @@
                 <img
                     width="24"
                     src="data:image/png;base64,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"
-                />Futures Trade
-            </div>
+                />{$_('futures-trade')}</div>
             <div class="_829ba225">
                 {#each futuresTasks as task}
                 <TaskCard {...task} />
@@ -1829,8 +1824,7 @@
                             ></stop></linearGradient
                         ></defs
                     ></svg
-                >Earn
-            </div>
+                >{$_('g-earn')}</div>
             <div class="_829ba225">
                 {#each earnTasks as task}
                 <TaskCard {...task} />

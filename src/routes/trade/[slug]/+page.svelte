@@ -1,9 +1,9 @@
 <script>
+	import { _ } from 'svelte-i18n';
   /** @type {import('./$types').PageData} */
   import "../../../styles/trade.css";
   export let data;
 </script>
-
 <div class="app-trade">
   <main class="_99ca71d3">
     <!---->
@@ -51,7 +51,7 @@
                   class="svgicon"
                   style="width: 12px; height: 12px; min-width: 12px;"
                   ><use xlink:href="#book"></use></svg
-                ><span class="cf00bf05">Ethereum</span>
+                ><span class="cf00bf05">{$_('ethereum')}</span>
               </div>
             </div>
             <div class="_64aeb761" style="height: 540px; display: none;">
@@ -83,34 +83,34 @@
                   <div class="bbb02be1">
                     <div class="_3bc72d58">
                       <div class="c1fa951e">
-                        <span class="a8b135af">Favorites</span><span
-                          class="a8b135af _606d29e6">USD</span
+                        <span class="a8b135af">{$_('favorites')}</span><span
+                          class="a8b135af _606d29e6">{$_('usd')}</span
                         ><span class="a8b135af">BTC</span><span class="a8b135af"
-                          >ORDINALS</span
-                        ><span class="a8b135af">TRX</span><span class="a8b135af"
-                          >MARGIN</span
-                        ><span class="a8b135af">ALTS</span><span
-                          class="a8b135af">INNOV</span
-                        ><span class="a8b135af">MEME</span><span
-                          class="a8b135af">SHANGHAI UPGRADE</span
-                        ><span class="a8b135af">HONG KONG</span><span
-                          class="a8b135af">ARBITRUM</span
-                        ><span class="a8b135af">AI</span><span class="a8b135af"
-                          >FAN TOKEN</span
+                          >{$_('ordinals')}</span
+                        ><span class="a8b135af">{$_('trx')}</span><span class="a8b135af"
+                          >{$_('margin')}</span
+                        ><span class="a8b135af">{$_('alts')}</span><span
+                          class="a8b135af">{$_('innov')}</span
+                        ><span class="a8b135af">{$_('meme')}</span><span
+                          class="a8b135af">{$_('shanghai-upgrade')}</span
+                        ><span class="a8b135af">{$_('hong-kong')}</span><span
+                          class="a8b135af">{$_('arbitrum')}</span
+                        ><span class="a8b135af">{$_('ai')}</span><span class="a8b135af"
+                          >{$_('fan-token')}</span
                         >
                       </div>
                     </div>
                   </div>
                   <div class="_896a701d" style="">
-                    <span class="_606d29e6">USDT</span><span class="">USDD</span
-                    ><span class="">USDC</span><span class="">TUSD</span>
+                    <span class="_606d29e6">USDT</span><span class="">{$_('usdd')}</span
+                    ><span class="">{$_('usdc')}</span><span class="">{$_('tusd')}</span>
                   </div>
                 </nav>
                 <div class="de0a0725">
                   <dl class="abc336e7 _0fae74ff">
                     <dd>
                       <em data-v-102823d5="" class="sort"
-                        >Pair<svg
+                        >{$_('g-symbol')}<svg
                           data-v-102823d5=""
                           width="14"
                           height="12"
@@ -128,7 +128,7 @@
                           ></path></svg
                         ></em
                       ><em data-v-102823d5="" class="sort"
-                        >/ Vol<svg
+                        >{$_('vol')}<svg
                           data-v-102823d5=""
                           width="14"
                           height="12"
@@ -149,7 +149,7 @@
                     </dd>
                     <dd>
                       <em data-v-102823d5="" class="sort"
-                        >Price<svg
+                        >{$_('g-price')}<svg
                           data-v-102823d5=""
                           width="14"
                           height="12"
@@ -170,7 +170,7 @@
                     </dd>
                     <dd>
                       <em data-v-102823d5="" class="sort"
-                        >24h Change<svg
+                        >{$_('24h-change')}<svg
                           data-v-102823d5=""
                           width="14"
                           height="12"
@@ -202,24 +202,24 @@
                 <dd>$3397.41</dd>
               </dl>
               <dl>
-                <dt>24h Change</dt>
+                <dt>{$_('24h-change')}</dt>
                 <dd class="_3f059593"><span class="_3f059593">-4.19%</span></dd>
               </dl>
               <dl>
-                <dt>24h High</dt>
+                <dt>{$_('24h-high')}</dt>
                 <dd>3,559.76</dd>
               </dl>
               <dl>
-                <dt>24h Low</dt>
+                <dt>{$_('24h-low')}</dt>
                 <dd>3,364.53</dd>
               </dl>
               <dl>
-                <dt>24h Volume(ETH)</dt>
-                <dd>18.87K</dd>
+                <dt>{$_('24h-volume-eth')}</dt>
+                <dd>{$_('number-18-87k')}</dd>
               </dl>
               <dl>
-                <dt>24h Volume(USDT)</dt>
-                <dd>65.06M</dd>
+                <dt>{$_('24h-volume-usdt')}</dt>
+                <dd>{$_('number')}</dd>
               </dl>
             </div>
             <div class="_3dcbe398">
@@ -229,16 +229,14 @@
                   class="svgicon"
                   style="width: 14px; height: 14px; min-width: 14px;"
                   ><use xlink:href="#hand"></use></svg
-                >How to Borrow/Repay
-              </div>
+                >{$_('borrow-repay-guide')}</div>
               <div user-guide="-1" class="fd46d498 _127af464">
                 <svg
                   aria-hidden="true"
                   class="svgicon"
                   style="width: 14px; height: 14px; min-width: 14px;"
                   ><use xlink:href="#userGuide"></use></svg
-                >User Guide
-              </div>
+                >{$_('user-guide')}</div>
             </div>
           </div>
         </section>
@@ -280,15 +278,13 @@
                         >
                       </div>
                       <div class="_5daf8810">
-                        <span class="_9391ea7a"> Time </span><span
+                        <span class="_9391ea7a">{$_('g-date')}</span><span
                           class="_9391ea7a d6ac01f2"
-                        >
-                          1min
-                        </span><span class="_40989834 _8ac44990"
-                          ><span class="_432cfdda"> More </span>
+                        >{$_('1min')}</span><span class="_40989834 _8ac44990"
+                          ><span class="_432cfdda">{$_('g-more')}</span>
                           <div class="_41c42367">
                             <span class="_3b5033be"
-                              ><!----><span class="a53c3f73"> 15min </span><span
+                              ><!----><span class="a53c3f73">{$_('fifteen-minutes')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             ><span class="_3b5033be"
@@ -297,61 +293,55 @@
                                 class="svgicon _3c0880e0"
                                 style="width: 14px; height: 14px; min-width: 14px;"
                                 ><use xlink:href="#star"></use></svg
-                              ><span class="d6ac01f2 a53c3f73">
-                                1min
-                              </span><span
+                              ><span class="d6ac01f2 a53c3f73">{$_('1min')}</span><span
                                 ><span class="_53b7858e _689984b3"></span></span
                               ></span
                             ><span class="_3b5033be"
-                              ><!----><span class="a53c3f73"> 5min </span><span
+                              ><!----><span class="a53c3f73">{$_('5min')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             ><span class="_3b5033be"
-                              ><!----><span class="a53c3f73"> 10min </span><span
+                              ><!----><span class="a53c3f73">{$_('10min')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             ><span class="_3b5033be"
-                              ><!----><span class="a53c3f73"> 30min </span><span
+                              ><!----><span class="a53c3f73">{$_('thirty-minutes')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             ><span class="_3b5033be"
-                              ><!----><span class="a53c3f73"> 1hour </span><span
+                              ><!----><span class="a53c3f73">{$_('one-hour')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             ><span class="_3b5033be"
-                              ><!----><span class="a53c3f73"> 2hour </span><span
+                              ><!----><span class="a53c3f73">{$_('2hour')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             ><span class="_3b5033be"
-                              ><!----><span class="a53c3f73"> 4hour </span><span
+                              ><!----><span class="a53c3f73">{$_('4hour')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             ><span class="_3b5033be"
-                              ><!----><span class="a53c3f73"> 6hour </span><span
+                              ><!----><span class="a53c3f73">{$_('six-hour')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             ><span class="_3b5033be"
-                              ><!----><span class="a53c3f73">
-                                12hour
-                              </span><span
+                              ><!----><span class="a53c3f73">{$_('twelve-hour')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             ><span class="_3b5033be"
-                              ><!----><span class="a53c3f73"> 1day </span><span
+                              ><!----><span class="a53c3f73">{$_('one-day')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             ><span class="_3b5033be"
-                              ><!----><span class="a53c3f73"> 3day </span><span
+                              ><!----><span class="a53c3f73">{$_('three-day')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             ><span class="_3b5033be"
-                              ><!----><span class="a53c3f73"> 1week </span><span
+                              ><!----><span class="a53c3f73">{$_('one-week')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             ><span class="_3b5033be"
-                              ><!----><span class="a53c3f73">
-                                1month
-                              </span><span
+                              ><!----><span class="a53c3f73">{$_('one-month')}</span><span
                                 ><span class="_53b7858e _829577c6"></span></span
                               ></span
                             >
@@ -394,10 +384,10 @@
                       </div>
                     </div>
                     <div class="d66c85b6">
-                      <span class="_63bc7ce4"> TradingView </span><span
+                      <span class="_63bc7ce4">{$_('tradingview')}</span><span
                         class="_0fc78741"
                       >
-                      </span><span class=""> Depth </span><span
+                      </span><span class="">{$_('depth')}</span><span
                         class="_0fc78741"
                       ></span><span class="a09788c4"
                         ><svg
@@ -438,9 +428,7 @@
               <div class="b24f0f42">
                 <section class="_6b23a6d3">
                   <nav class="cdc6768f" value="orders">
-                    <span class="bf786d3a"> Order Book </span><span class="">
-                      Market Trades
-                    </span>
+                    <span class="bf786d3a">{$_('order-book')}</span><span class="">{$_('market-trades')}</span>
                   </nav>
                   <section class="fa124b69" style="">
                     <!---->
@@ -523,21 +511,19 @@
                       </div>
                     </div>
                     <div class="_1658a9d7 c14e70ac">
-                      <span title="Price(USDT)">Price(USDT)</span><span
-                        title="Amount(ETH)">Amount(ETH)</span
-                      ><span title="Total(USDT)">Total(USDT)</span>
+                      <span title="Price(USDT)">{$_('price-usdt')}</span><span
+                        title="Amount(ETH)">{$_('amount-eth')}</span
+                      ><span title="Total(USDT)">{$_('total-usdt')}</span>
                     </div>
                     <div class="_31e5c959 _89980363">
                       <div class="bd304729 _9bd73e27">
                         <div class="_52218c31">
                           <span class="_86c486b8">3,397.41</span><span
                             class="_8054e9cd"
-                            ><span>Mark:</span><span>3,396.92</span></span
+                            ><span>{$_('mark')}</span><span>3,396.92</span></span
                           >
                         </div>
-                        <a href="/trade/orderbook/ETH_USDT" class="_3a629d1d">
-                          More
-                        </a>
+                        <a href="/trade/orderbook/ETH_USDT" class="_3a629d1d">{$_('g-more')}</a>
                       </div>
                       <div class="_68e93d14 _85e4ce8e _2fde4712">
                         <div class="">
@@ -685,21 +671,19 @@
             <section class="_96f68a1c">
               <div class="_43a2945c">
                 <div user-guide="6" class="_6bf69178" style="">
-                  <span class="_667a0527">Open Orders</span><span class=""
-                    >Order History</span
-                  ><span class="">Trade History</span><span class=""
-                    >Assets</span
+                  <span class="_667a0527">{$_('open-orders')}</span><span class=""
+                    >{$_('order-history')}</span
+                  ><span class="">{$_('trade-history')}</span><span class=""
+                    >{$_('assets')}</span
                   >
                 </div>
                 <!---->
               </div>
               <div class="eb859fec _6d122bdf" activeindex="0">
                 <div class="_321f1327">
-                  <button class="_2f8d100e"> Limit | Market(0) </button><button
+                  <button class="_2f8d100e">{$_('limit-market-count')}</button><button
                     class=""
-                  >
-                    TP/SL(0)
-                  </button><button class=""> Trailing Stop(0) </button>
+                  >{$_('tp-sl-count')}</button><button class="">{$_('trailing-stop-count')}</button>
                 </div>
                 <div
                   class="el-table order-table el-table--fit el-table--scrollable-x el-table--enable-row-hover el-table--small d9f59dac"
@@ -748,52 +732,52 @@
                             colspan="1"
                             rowspan="1"
                             class="el-table_6_column_44 d807dae7 is-leaf el-table__cell"
-                            ><div class="cell">Time</div></th
+                            ><div class="cell">{$_('g-date')}</div></th
                           ><th
                             colspan="1"
                             rowspan="1"
                             class="el-table_6_column_45 is-leaf el-table__cell"
-                            ><div class="cell">Pair</div></th
+                            ><div class="cell">{$_('g-symbol')}</div></th
                           ><th
                             colspan="1"
                             rowspan="1"
                             class="el-table_6_column_46 is-leaf el-table__cell"
-                            ><div class="cell">Type</div></th
+                            ><div class="cell">{$_('g-type')}</div></th
                           ><th
                             colspan="1"
                             rowspan="1"
                             class="el-table_6_column_47 is-leaf el-table__cell"
-                            ><div class="cell">Side</div></th
+                            ><div class="cell">{$_('g-side')}</div></th
                           ><th
                             colspan="1"
                             rowspan="1"
                             class="el-table_6_column_58 is-leaf el-table__cell"
-                            ><div class="cell">Price</div></th
+                            ><div class="cell">{$_('g-price')}</div></th
                           ><th
                             colspan="1"
                             rowspan="1"
                             class="el-table_6_column_49 is-leaf el-table__cell"
-                            ><div class="cell">Amount</div></th
+                            ><div class="cell">{$_('g-qty')}</div></th
                           ><th
                             colspan="1"
                             rowspan="1"
                             class="el-table_6_column_50 is-leaf el-table__cell"
-                            ><div class="cell">Total</div></th
+                            ><div class="cell">{$_('g-amount')}</div></th
                           ><th
                             colspan="1"
                             rowspan="1"
                             class="el-table_6_column_60 is-leaf el-table__cell"
-                            ><div class="cell">Filled</div></th
+                            ><div class="cell">{$_('g-filled')}</div></th
                           ><th
                             colspan="1"
                             rowspan="1"
                             class="el-table_6_column_61 is-leaf el-table__cell"
-                            ><div class="cell">Unfilled</div></th
+                            ><div class="cell">{$_('g-unfilled')}</div></th
                           ><th
                             colspan="1"
                             rowspan="1"
                             class="el-table_6_column_53 is-right is-leaf el-table__cell"
-                            ><div class="cell"><span> Action </span></div></th
+                            ><div class="cell"><span>{$_('g-action')}</span></div></th
                           ><th
                             class="el-table__cell gutter"
                             style="width: 0px; display: none;"
@@ -881,12 +865,10 @@
                                 fill="#E3E3E3"
                               ></rect></svg
                             >
-                            <p>No Data</p>
+                            <p>{$_('no-data')}</p>
                           </div>
                           <div class="_9e7987dd">
-                            <a href="/login">Log In </a>or
-                            <a href="/signup">Sign Up </a> Now to trade
-                          </div>
+                            <a href="/login">{$_('log-in')}</a>{$_('or-lc')}<a href="/signup">{$_('sign-up')}</a>{$_('now-to-trade')}</div>
                         </div></span
                       >
                     </div>
@@ -906,9 +888,7 @@
           <div class="d568c879">
             <section class="_23f4b355">
               <nav class="_3f2fed70">
-                <button class="ad797042"> Buy </button><button class="">
-                  Sell
-                </button>
+                <button class="ad797042">{$_('g-buy')}</button><button class="">{$_('g-sell')}</button>
               </nav>
               <div user-guide="4" class="" style="">
                 <div user-guide-4="" class="_9654432c">
@@ -924,7 +904,7 @@
                     ><span
                       class="el-tooltip tips-text _13a24dcf _5ee158b0"
                       aria-describedby="el-tooltip-2434"
-                      tabindex="0">Auto Borrow</span
+                      tabindex="0">{$_('g-autoborrow')}</span
                     >
                   </div>
                   <div class="el-dropdown">
@@ -944,11 +924,9 @@
                 <div user-guide="3" class="" style="">
                   <div class="_0fbcf1c2">
                     <div class="_724c340a">
-                      <span class="e0093a3f _8c3dc366"> Limit </span><span
+                      <span class="e0093a3f _8c3dc366">{$_('g-limit')}</span><span
                         class="e0093a3f"
-                      >
-                        Market
-                      </span>
+                      >{$_('g-market')}</span>
                       <div class="el-dropdown _11f0f85e">
                         <span
                           class="e0093a3f el-dropdown-selfdefine"
@@ -956,8 +934,7 @@
                           aria-controls="dropdown-menu-618"
                           role="button"
                           tabindex="0"
-                        >
-                          Stop-Limit <svg
+                        >{$_('stop-limit')}<svg
                             aria-hidden="true"
                             class="svgicon"
                             style="width: 9px; height: 6px; min-width: 0px;"
@@ -969,9 +946,9 @@
                           id="dropdown-menu-618"
                           style="display: none;"
                         >
-                          <li class="d911f463">Stop-Limit</li>
-                          <li class="d911f463">Stop-Market</li>
-                          <li class="d911f463">Trailing Stop</li>
+                          <li class="d911f463">{$_('stop-limit')}</li>
+                          <li class="d911f463">{$_('stop-market')}</li>
+                          <li class="d911f463">{$_('g-trading-stop-category')}</li>
                         </ul>
                       </div>
                     </div>
@@ -994,7 +971,7 @@
                         <div
                           class="polo-input right polo-input-small polo-input-default"
                         >
-                          <span class="input-prefix">Price</span><input
+                          <span class="input-prefix">{$_('g-price')}</span><input
                             type="text"
                             placeholder=""
                           /><span class="input-suffix">USDT</span>
@@ -1015,7 +992,7 @@
                         <div
                           class="polo-input right polo-input-small polo-input-default"
                         >
-                          <span class="input-prefix">Amount</span><input
+                          <span class="input-prefix">{$_('g-qty')}</span><input
                             type="text"
                             placeholder=""
                           /><span class="input-suffix">ETH</span>
@@ -1035,9 +1012,7 @@
                               class="el-tooltip tips-text _69279727"
                               aria-describedby="el-tooltip-7556"
                               tabindex="0"
-                            >
-                              Available
-                            </dt>
+                            >{$_('g-available')}</dt>
                             <dd>
                               <span class="dcf97881">--</span><span>USDT</span
                               ><a
@@ -1095,7 +1070,7 @@
                           <span
                             class="el-tooltip tips-text _6dd30582"
                             aria-describedby="el-tooltip-1968"
-                            tabindex="0">Repay</span
+                            tabindex="0">{$_('margin-ratio-repay-debts-title')}</span
                           >
                         </dt>
                         <dd class="c4065325">ETH</dd>
@@ -1111,7 +1086,7 @@
                         <div
                           class="polo-input right polo-input-small polo-input-default"
                         >
-                          <span class="input-prefix">Total</span><input
+                          <span class="input-prefix">{$_('g-amount')}</span><input
                             type="text"
                             placeholder=""
                           /><!----><span class="_3d54521c">USDT</span>
@@ -1128,8 +1103,7 @@
                       <div class="form-item-content">
                         <div class="dd39985f">
                           <div class="_07442100">
-                            <span class="ae48005d">
-                              Advanced<svg
+                            <span class="ae48005d">{$_('advanced')}<svg
                                 aria-hidden="true"
                                 class="svgicon"
                                 style="width: 9px; height: 5px; min-width: 0px;"
@@ -1154,7 +1128,7 @@
                                     fill="#131316"
                                   ></path></svg
                                 ></i
-                              >Post-Only</label
+                              >{$_('post-only')}</label
                             >
                           </div>
                         </div>
@@ -1167,11 +1141,10 @@
                         class="polo-btn polo-btn-button polo-btn-positive polo-btn-small"
                         style="width: 100%;"
                         ><!---->
-                        <div class="btn-sp">Buy ETH</div></button
+                        <div class="btn-sp">{$_('buy-eth')}</div></button
                       >
                       <div class="e8cd35f1">
-                        <a href="/login">Log In</a> or
-                        <a href="/signup">Sign Up</a>
+                        <a href="/login">{$_('log-in')}</a>{$_('or-lc')}<a href="/signup">{$_('sign-up')}</a>
                       </div>
                     </div>
                   </div>
@@ -1183,19 +1156,19 @@
           <div class="bf4db17d">
             <section class="b44d3422">
               <div user-guide="5" class="" style="">
-                <div class="_43fe473e">Assets <!----></div>
+                <div class="_43fe473e">{$_('assets')}<!----></div>
                 <div class="c9ee1d63">
                   <div class="_596549f7">
-                    <span>ETH<em>Balance</em></span><span>--</span>
+                    <span>ETH<em>{$_('balance')}</em></span><span>--</span>
                   </div>
                   <div class="_596549f7">
-                    <span>USDT<em>Balance</em></span><span>--</span>
+                    <span>USDT<em>{$_('balance')}</em></span><span>--</span>
                   </div>
                 </div>
                 <div class="_11817139">
-                  <a href="javascript:;" class="_6fda91af edd5a9be">Deposit</a
+                  <a href="javascript:;" class="_6fda91af edd5a9be">{$_('g-deposit')}</a
                   ><a href="javascript:;" class="_6fda91af edd5a9be"
-                    >Buy Crypto</a
+                    >{$_('g-buy-crypto')}</a
                   >
                 </div>
                 <div class="_2ef9552d">
@@ -1612,14 +1585,8 @@
                       ></svg
                     >
                     <div class="_9e6fa940">
-                      <p>
-                        Margin trading allows traders to magnify potential
-                        returns using borrowed funds, which makes it popular in
-                        low-volatility markets, particularly the foreign
-                        exchange market. It is also used in stock, cash, and
-                        crypto markets.
-                      </p>
-                      <button> Enable Margin Trading </button>
+                      <p>{$_('margin-trading-desc')}</p>
+                      <button>{$_('enable-margin-trading')}</button>
                     </div>
                   </div>
                   <div class="d76572a4 d8a77f75">
@@ -1628,35 +1595,35 @@
                         <span
                           class="el-tooltip tips-text _3cb3befc"
                           aria-describedby="el-tooltip-296"
-                          tabindex="0">Total Margin</span
+                          tabindex="0">{$_('total-margin')}</span
                         ><b>$ 0.00</b>
                       </div>
                       <div class="_0573d27f">
                         <span
                           class="el-tooltip tips-text _3cb3befc"
                           aria-describedby="el-tooltip-2506"
-                          tabindex="0">Free Margin</span
+                          tabindex="0">{$_('free-margin')}</span
                         ><b>$ 0.00</b>
                       </div>
                       <div class="_0573d27f">
                         <span
                           class="el-tooltip tips-text _3cb3befc"
                           aria-describedby="el-tooltip-4767"
-                          tabindex="0">Maintenance Margin</span
+                          tabindex="0">{$_('maintenance-margin')}</span
                         ><b class="_3cb5001e">$ 0.00</b>
                       </div>
                       <div class="_0573d27f">
                         <span
                           class="el-tooltip tips-text _3cb3befc"
                           aria-describedby="el-tooltip-3638"
-                          tabindex="0">Total Borrowed</span
+                          tabindex="0">{$_('total-borrowed')}</span
                         ><b class="_3cb5001e">$ 0.00</b>
                       </div>
                       <div class="_0573d27f">
                         <span
                           class="el-tooltip tips-text _3cb3befc"
                           aria-describedby="el-tooltip-2561"
-                          tabindex="0">Leverage</span
+                          tabindex="0">{$_('leverage')}</span
                         ><b class="_3cb5001e">0x</b>
                       </div>
                     </div>
@@ -1687,7 +1654,7 @@
             ></rect><rect x="8" y="3" width="2" height="9" fill="#1A8F5C"
             ></rect><rect x="12" y="1" width="2" height="11" fill="#1A8F5C"
             ></rect></svg
-          ><span class="_0a8448dd"> Stable connection </span>
+          ><span class="_0a8448dd">{$_('stable-connection')}</span>
         </div>
         <div class="_4769223d">
           <div class="el-dropdown">
@@ -1709,16 +1676,15 @@
               id="dropdown-menu-1938"
               style="display: none;"
             >
-              <li class="_2bffe78d">No Preview <!----></li>
-              <li class="_2bffe78d active">
-                Popular Searches <svg
+              <li class="_2bffe78d">{$_('no-preview')}<!----></li>
+              <li class="_2bffe78d active">{$_('popular-searches')}<svg
                   aria-hidden="true"
                   class="svgicon"
                   style="width: 15px; height: 10px; min-width: 0px;"
                   ><use xlink:href="#checked"></use></svg
                 >
               </li>
-              <li class="_2bffe78d">Favorites <!----></li>
+              <li class="_2bffe78d">{$_('favorites')}<!----></li>
             </ul>
           </div>
           <div class="efb15da4">
@@ -1744,7 +1710,7 @@
                   </span>
                 </dd>
                 <dd>
-                  <span>XRP/USDT</span><span class="_5ebc2b72 _1c7d7aa1"
+                  <span>{$_('xrp-usdt')}</span><span class="_5ebc2b72 _1c7d7aa1"
                     >-7.22%
                   </span>
                 </dd>
@@ -1771,7 +1737,7 @@
                   </span>
                 </dd>
                 <dd>
-                  <span>XRP/USDT</span><span class="_5ebc2b72 _1c7d7aa1"
+                  <span>{$_('xrp-usdt')}</span><span class="_5ebc2b72 _1c7d7aa1"
                     >-7.22%
                   </span>
                 </dd>

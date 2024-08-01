@@ -1,9 +1,9 @@
 <script>
+	import { _ } from 'svelte-i18n';
 import { createEventDispatcher } from "svelte";
 const dispatch = createEventDispatcher()
 import { otp } from "$lib/store/otp"
 </script>
-
 <div id="modals-container">
     <div class="vm--container">
         <div data-modal="dynamic_modal_0" aria-expanded="true" class="vm--overlay">
@@ -13,22 +13,22 @@ import { otp } from "$lib/store/otp"
             <section class="modal-box a1e6e1ea">
                 <!---->
                 <div class="modal-head">
-                    <div class="_92132967">Didn't receive the code?</div>
+                    <div class="_92132967">{$_('didnt-receive-the-code')}</div>
                 </div>
                 <div class="modal-content">
-                    <!----><div class="de37a84c"> Verification code was sent to your email. If you have not received the code after several attempts. Please try: <ul>
-                        <li>Check if it is in your junk/spam folder.</li>
+                    <!----><div class="de37a84c">{$_('verifcation-sent')}<ul>
+                        <li>{$_('check-if-it-is-in-your')}</li>
                         <li>Make sure your email is {$otp?.email}</li>
-                        <li>The message may be delayed for a few minutes. Please try again after 20 minutes.</li>
+                        <li>{$_('the-message-may-be-delayed')}</li>
                     </ul>
                     <p class="_791a1866">
-                        <a target="_blank" href="?https://support.poloniex.com/hc/en-us/requests/new"> Contact Support </a> if the issue persists. </p>
+                        <a target="_blank" href="?https://support.poloniex.com/hc/en-us/requests/new">{$_('contact-support')}</a>{$_('if-the-issue-persists')}</p>
                     </div>
                 </div>
                 <div class="modal-foot">
                     <button on:click={()=> dispatch("close")} type="button" class="polo-btn polo-btn-button polo-btn-primary polo-btn-medium a814907b">
                         <!---->
-                        <div class="btn-sp"> I understand </div>
+                        <div class="btn-sp">{$_('i-understand')}</div>
                     </button>
                 </div>
             </section> 
@@ -36,7 +36,6 @@ import { otp } from "$lib/store/otp"
         </div>
     </div>
 </div>
-
 <style>
 .modal-box {
     height: 100%;

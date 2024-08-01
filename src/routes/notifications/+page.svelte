@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
     import "../../styles/notification/message-center.css";
     import Footer from "$lib/footer.svelte";
     import { isLogin } from "$lib/store/profile";
@@ -118,11 +119,10 @@
         markAsRead = true
     }
 </script>
-
 <div class="app-notifications">
     <header class="_9ed2bf8f">
         <div class="content">
-            <h1 class="font-bold text-large _1bc0e61b">Message Center</h1>
+            <h1 class="font-bold text-large _1bc0e61b">{$_('message-center')}</h1>
         </div>
     </header>
     <section class="f263374b">
@@ -139,8 +139,7 @@
                                         ? "_1b564715"
                                         : ""}
                                     on:click={() => onTabChanged(0)}
-                                >
-                                    Account Activities</span
+                                >{$_('account-activities')}</span
                                 >
                                 <!-- svelte-ignore a11y-no-static-element-interactions -->
                                 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -149,8 +148,7 @@
                                         ? "_1b564715"
                                         : ""}
                                     on:click={() => onTabChanged(1)}
-                                >
-                                    Platform Notices</span
+                                >{$_('platform-notices')}</span
                                 >
                             </div>
                             {#if $isLogin}
@@ -165,7 +163,7 @@
                                                 bind:checked={hideRead}
                                             /></span
                                         ><!----></span
-                                    >Hide Read</span
+                                    >{$_('hide-read')}</span
                                 >
                                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                                 <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -191,7 +189,7 @@
                                                 ></rect></clipPath
                                             ></defs
                                         ></svg
-                                    >Mark as read</span
+                                    >{$_('mark-as-read')}</span
                                 >
                             </div>
                             {/if}
@@ -277,7 +275,7 @@
                                                             fill="#F2F2F2"
                                                         ></path>
                                                     </svg>
-                                                    <span>No Messages</span>
+                                                    <span>{$_('no-messages')}</span>
                                                 </div>
                                             </div>
                                         {/if}
@@ -316,7 +314,7 @@
                 </div>
 
                 <div class="_9ab6191d _97a51e5f">
-                    <div class="_377b4cf3 font-bold">Trending</div>
+                    <div class="_377b4cf3 font-bold">{$_('trending')}</div>
 
                     <nav>
                         {#each trendingItems as item}
@@ -350,7 +348,7 @@
                     <a
                         href="/trade"
                         target="_blank"
-                        class="f8e6b0b4 text-normal  font-semibold  ">View details &gt;</a
+                        class="f8e6b0b4 text-normal  font-semibold  ">{$_('view-details')}</a
                     >
                 </div>
             </div>

@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
   import "../../../styles/login.css";
   import { screen } from "$lib/store/screen";
   import { url } from "$lib/store/routes";
@@ -68,7 +69,6 @@
     }
   });
 </script>
-
 {#if isPhone}
   <Phone
     on:close={() => (isPhone = false)}
@@ -77,7 +77,7 @@
   />
 {/if}
 <svelte:head>
-  <title>Ezcryptox Login</title>
+  <title>{$_('ezcryptox-login')}</title>
   <meta name="description" content="Login to Ezcryptox exchange " />
 </svelte:head>
 
@@ -91,12 +91,8 @@
           class="a40d00e5"
           style="background: url(&quot;https://www.datocms-assets.com/51952/1683183420-bg.png&quot;) center center / cover no-repeat rgb(255, 255, 255);"
         >
-          <p class="_005c09a5" style="color: rgb(255, 255, 255);">
-            Welcome Bonus Up to $1000
-          </p>
-          <p class="b5fa3c38" style="color: rgb(255, 255, 255);">
-            Connecting you to the power of crypto
-          </p>
+          <p class="_005c09a5" style="color: rgb(255, 255, 255);">{$_('welcome-bonus')}</p>
+          <p class="b5fa3c38" style="color: rgb(255, 255, 255);">{$_('connecting-you-to-the-power-of-crypto')}</p>
           <div
             class="cf24226d"
             style="background: url(&quot;https://www.datocms-assets.com/51952/1682304580-1.svg&quot;) center center no-repeat;"
@@ -107,20 +103,16 @@
     <div class="_20c1a58b {$screen > 1025 ? '_8ec5b3ca' : ''}">
       <div class="c81ae558">
         <!---->
-        <p class="d94bb610">Create Account</p>
+        <p class="d94bb610">{$_('create-account')}</p>
         <div class="_17d8b5db">
           <button
             on:click={() => (isEmail = true)}
             class="_483da2ae {isEmail ? 'ab6e6929' : ''} "
-          >
-            Email
-          </button>
+          >{$_('g-email')}</button>
           <button
             on:click={() => (isEmail = false)}
             class="_483da2ae {!isEmail ? 'ab6e6929' : ''}"
-          >
-            Phone
-          </button>
+          >{$_('g-phone')}</button>
         </div>
         <div data-v-39752d79="" class="order-form _3f44b0a0">
           <div
@@ -235,9 +227,7 @@
             class="form-item b21cb516"
             data-v-39752d79=""
           >
-            <span class="item-label-title">
-              Referral code(optional)
-              <span class="_37140af7"> Get 10% off </span>
+            <span class="item-label-title">{$_('referral-code-optional')}<span class="_37140af7">{$_('get-10-off')}</span>
               <button class="_9c04eb16" on:click={toggleRefField}></button>
             </span>
             <div class="form-item-content">
@@ -270,28 +260,24 @@
               style="width: 100%;"
             >
               <!---->
-              <div class="btn-sp">Create Account</div>
+              <div class="btn-sp">{$_('create-account')}</div>
             </button>
             <a
               href="/reward-center"
               target="_blank"
               class="c75bbaa0"
-              data-v-39752d79="">Up to&nbsp;<strong>$1000</strong></a
+              data-v-39752d79="">{$_('up-to')}<strong>$1000</strong></a
             >
           </div>
-          <p data-v-39752d79="" class="f8c64585">
-            By creating account I agree to the <a href="/{$url}?support/terms">
-              User Agreement</a
+          <p data-v-39752d79="" class="f8c64585">{$_('by-creating-account-i-agree-to-the')}<a href="/{$url}?support/terms">{$_('user-agreement')}</a
             >.
           </p>
-          <p data-v-39752d79="" class="f8c64585 _02dc9043">
-            Already have an account?<a href="/login">Login</a>
+          <p data-v-39752d79="" class="f8c64585 _02dc9043">{$_('already-have-an-account')}<a href="/login">{$_('login')}</a>
           </p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <style>
 </style>

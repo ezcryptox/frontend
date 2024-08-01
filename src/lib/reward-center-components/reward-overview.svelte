@@ -1,14 +1,14 @@
 <script>
+	import { _ } from 'svelte-i18n';
     import { getContext } from "svelte";
     const toggleRewardHistoryModal = getContext(
         "toggleRewardHistoryModal",
     );
     
 </script>
-
 <div class="content _7466f71e">
     <div data-v-5adccc07="" class="overviewWraper">
-        <h3 data-v-5adccc07="">Reward Overview</h3>
+        <h3 data-v-5adccc07="">{$_('reward-overview')}</h3>
         <ul data-v-5adccc07="">
             <li data-v-5adccc07="">
                 <svg
@@ -153,7 +153,7 @@
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <!-- svelte-ignore a11y-no-static-element-interactions -->
                     <span on:click={toggleRewardHistoryModal} data-v-5adccc07=""
-                        >Rewards Earned (Spot/Futures) <svg
+                        >{$_('rewards-earned-spot-futures')}<svg
                             data-v-5adccc07=""
                             width="12"
                             height="12"
@@ -259,7 +259,7 @@
                 <p data-v-5adccc07="">
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <span on:click={() => window.location.href='/reward-center/coupon'} data-v-5adccc07=""
-                        >My Coupons (Spot/Futures)<svg
+                        >{$_('my-coupons-spot-futures')}<svg
                             data-v-5adccc07=""
                             width="12"
                             height="12"
@@ -463,7 +463,7 @@
                 <p data-v-5adccc07="">
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <span on:click={() => window.location.href='/futures/trade/'} data-v-5adccc07=""
-                        >Futures Trial Fund<svg
+                        >{$_('futures-trial-fund-1')}<svg
                             data-v-5adccc07=""
                             width="12"
                             height="12"

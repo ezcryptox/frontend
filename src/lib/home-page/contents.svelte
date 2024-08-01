@@ -1,8 +1,8 @@
 <script>
+	import { _ } from 'svelte-i18n';
   import Tabs from "./market-cards/tabs.svelte";
   import { screen } from "$lib/store/screen";
 </script>
-
 <div class="_9c78c7ce">
   <div class="_6f352640"></div>
   <div class="aefdbb77 fae21543 font-ss3">
@@ -10,38 +10,29 @@
   </div>
 
   <div class="_394bd770 fae21543">
-    <h3 class="_842ffea0">Your one-stop shop for crypto trading</h3>
+    <h3 class="_842ffea0">{$_('your-one-stop-shop-for-crypto-trading')}</h3>
     <div class="f6472c3e font-ss3">
       <a href="/trade" class="_2f588215">
         <div class="_989d578a _3c4b34ca"></div>
-        <div class="b0673997">Trade all the trending assets</div>
-        <div class="_580e1c84">
-          Discover over 400 cryptocurrencies including all the trending new
-          listings.
-        </div>
-        <div class="_12d43166 _8d9f59a3"><b>400+</b> cryptocurrencies</div>
-        <div class="b62fad60">Trade Now &gt;</div>
+        <div class="b0673997">{$_('trade-all-the-trending-assets')}</div>
+        <div class="_580e1c84">{$_('discover-cryptos-listings')}</div>
+        <div class="_12d43166 _8d9f59a3"><b>400+</b>{$_('cryptocurrencies')}</div>
+        <div class="b62fad60">{$_('trade-now')}</div>
       </a>
       <a href="/futures/trade" class="_2f588215">
         <!---->
-        <div class="b0673997">Hedge with Ezcrytox Futures</div>
-        <div class="_580e1c84">
-          Trade Bitcoin, Ethereum, and other perpetual swap contracts with up to
-          100x leverage on Ezcrytox Futures.
-        </div>
+        <div class="b0673997">{$_('hedge-with-ezcrytox-futures')}</div>
+        <div class="_580e1c84">{$_('futures-trading')}</div>
         <div class="_989d578a _0ab34971"></div>
-        <div class="_12d43166 _8d9f59a3"><b>100x</b> Max leverage</div>
-        <div class="b62fad60">Trade Now &gt;</div>
+        <div class="_12d43166 _8d9f59a3"><b>100x</b>{$_('max-leverage')}</div>
+        <div class="b62fad60">{$_('trade-now')}</div>
       </a>
       <a href="/trade" class="_2f588215">
         <div class="_989d578a cc033262"></div>
-        <div class="b0673997">Cross Margin Trading</div>
-        <div class="_580e1c84">
-          Brand-new cross margin trading with 3x leverage. Auto borrow and repay
-          funds in your portfolio account.
-        </div>
-        <div class="_12d43166">As low as <b>1%</b> interest rate</div>
-        <div class="b62fad60">Trade Now &gt;</div>
+        <div class="b0673997">{$_('cross-margin-trading')}</div>
+        <div class="_580e1c84">{$_('cross-margin-trading-1')}</div>
+        <div class="_12d43166">{$_('as-low-as')}<b>1%</b>{$_('interest-rate')}</div>
+        <div class="b62fad60">{$_('trade-now')}</div>
       </a>
     </div>
   </div>
@@ -49,11 +40,8 @@
   <div class="c83d7e4f fae21543">
     <div class="_08952e30 _9e3407c6">
       <div class="d59dc0ad">
-        <div class="_1a59beaa">Earn Crypto Rewards</div>
-        <div class="_3cc9899b font-ss3">
-          Participate in Polo Earn wealth management and enjoy the benefits of
-          higher rate
-        </div>
+        <div class="_1a59beaa">{$_('earn-crypto-rewards')}</div>
+        <div class="_3cc9899b font-ss3">{$_('polo-earn-benefits')}</div>
         <div
           data-v-eef5f0e0=""
           class="d96013a4 {$screen < 537 ? '_48777af8' : ''}"
@@ -217,13 +205,9 @@
               <i
                 data-v-eef5f0e0=""
                 style="background-image: url(&quot;https://www.datocms-assets.com/51952/1638913308-usdt.png&quot;);"
-              ></i>
-              New User Benefit
-            </h6>
+              ></i>{$_('new-user-benefit')}</h6>
             <dl data-v-eef5f0e0="">
-              <dt data-v-eef5f0e0="">
-                Enjoy <span>100.00%</span> APY with <span>1 USDT</span> min subscription
-              </dt>
+              <dt data-v-eef5f0e0="">{$_('enjoy')}<span>100.00%</span>{$_('apy-with')}<span>1 USDT</span>{$_('min-subscription')}</dt>
               <dd data-v-eef5f0e0="">
                 <button
                   data-v-eef5f0e0=""
@@ -231,7 +215,7 @@
                   class="polo-btn polo-btn-button polo-btn-positive polo-btn-medium"
                 >
                   <!---->
-                  <div class="btn-sp">Try It Now</div>
+                  <div class="btn-sp">{$_('try-it-now')}</div>
                 </button>
               </dd>
             </dl>
@@ -241,8 +225,8 @@
       </div>
       <div class="_50693046">
         <a href="/earn#USDT" target="_blank" class="eee5a316">
-          <span class="_65a9ca37">Est. APY</span>
-          <span class="_65a9ca37">Up to <strong>100.00%</strong></span>
+          <span class="_65a9ca37">{$_('est-apy')}</span>
+          <span class="_65a9ca37">{$_('up-to')}<strong>100.00%</strong></span>
           <span class="f23da486">
             <i
               class="f663b64f"
@@ -268,8 +252,8 @@
           </span>
         </a>
         <a href="/earn#ETH" target="_blank" class="eee5a316">
-          <span class="_65a9ca37">Est. APY</span>
-          <span class="_65a9ca37">Up to <strong>100.00%</strong></span>
+          <span class="_65a9ca37">{$_('est-apy')}</span>
+          <span class="_65a9ca37">{$_('up-to')}<strong>100.00%</strong></span>
           <span class="f23da486"
             ><i
               class="f663b64f"
@@ -294,8 +278,8 @@
           </span>
         </a>
         <a href="?earn#BTC" target="_blank" class="eee5a316">
-          <span class="_65a9ca37">Est. APY</span>
-          <span class="_65a9ca37">Up to <strong>100.00%</strong></span>
+          <span class="_65a9ca37">{$_('est-apy')}</span>
+          <span class="_65a9ca37">{$_('up-to')}<strong>100.00%</strong></span>
           <span class="f23da486">
             <i
               class="f663b64f"
@@ -321,14 +305,14 @@
           </span>
         </a>
         <a href="/earn#HTX" target="_blank" class="eee5a316">
-          <span class="_65a9ca37">Est. APY</span>
-          <span class="_65a9ca37">Up to <strong>20.00%</strong></span>
+          <span class="_65a9ca37">{$_('est-apy')}</span>
+          <span class="_65a9ca37">{$_('up-to')}<strong>20.00%</strong></span>
           <span class="f23da486">
             <i
               class="f663b64f"
               style="background-image: url(&quot;https://www.datocms-assets.com/51952/1706088741-x-dark.png&quot;);"
             ></i>
-            <strong> HTX </strong>
+            <strong>{$_('htx')}</strong>
             <span class="dc3b6629">
               <svg
                 width="16"
@@ -474,27 +458,18 @@
         </svg>
       </div>
       <div class="d59dc0ad">
-        <div class="_1a59beaa">Safeguard Your Assets</div>
-        <div class="_3cc9899b font-ss3">
-          An industry-leading, multi-layered risk management system to safeguard
-          your assets 24/7, all year round.
-        </div>
+        <div class="_1a59beaa">{$_('safeguard-your-assets')}</div>
+        <div class="_3cc9899b font-ss3">{$_('top-tier-industry')}</div>
         <div class="_91ee65a3 font-ss3 _525b8035">
-          <b>Multi-layered</b>
-          Security
-        </div>
+          <b>{$_('multi-layered')}</b>{$_('g-security')}</div>
       </div>
     </div>
     <div class="_08952e30">
       <div class="d59dc0ad">
-        <div class="_1a59beaa">World-Leading NFT Marketplace</div>
-        <div class="_3cc9899b font-ss3">
-          Create your NFTs; discover, buy, and trade worldwide premium NFT
-          collections easily.
-        </div>
+        <div class="_1a59beaa">{$_('world-leading-nft-marketplace')}</div>
+        <div class="_3cc9899b font-ss3">{$_('nft-collections-easily')}</div>
         <div class="_91ee65a3 font-ss3 _525b8035">
-          <b>10,000,000 +</b>NFT
-        </div>
+          <b>10,000,000 +</b>{$_('nft')}</div>
       </div>
       <div id="section2Img3" class="_13e26297 _9b8ebe97">
         <svg
@@ -696,36 +671,27 @@
 
   <div class="d4ced24e">
     <div class="_0afb5503">
-      <h3 class="_0b275020">The Most Trusted Exchange as Always</h3>
+      <h3 class="_0b275020">{$_('the-most-trusted-exchange-as-always')}</h3>
       <div class="ce33e2f7 font-ss3">
         <div class="bfdc8ba7">
           <div class="_04640162 _26537c60"></div>
           <div class="_15c0afd9">
-            <div class="_5eaa08ba">Secure and Stable</div>
-            <div class="c40d812e">
-              We provide a trusted and intuitive platform for users, of all
-              experience levels, to trade how they want.
-            </div>
+            <div class="_5eaa08ba">{$_('secure-and-stable')}</div>
+            <div class="c40d812e">{$_('provide-a-trusted-platform')}</div>
           </div>
         </div>
         <div class="bfdc8ba7">
           <div class="_04640162 _59617368"></div>
           <div class="_15c0afd9">
-            <div class="_5eaa08ba">24 / 7 Support</div>
-            <div class="c40d812e">
-              Reach out to our support team with any issues and we'll help you
-              resolve them as quickly as possible.
-            </div>
+            <div class="_5eaa08ba">{$_('24-7-support')}</div>
+            <div class="c40d812e">{$_('st-issue-resolver')}</div>
           </div>
         </div>
         <div class="bfdc8ba7">
           <div class="_04640162 _0498cef7"></div>
           <div class="_15c0afd9">
-            <div class="_5eaa08ba">VIP Service</div>
-            <div class="c40d812e">
-              Ezcrytox offers high rate limit, and low latency API for you with
-              good overall liquidity; friendly for institutional traders.
-            </div>
+            <div class="_5eaa08ba">{$_('vip-service')}</div>
+            <div class="c40d812e">{$_('offers-hr-limit-and-ll')}</div>
           </div>
         </div>
       </div>
@@ -735,11 +701,8 @@
   <div class="_5431dfec">
     <div class="_44485587">
       <!---->
-      <h3 class="_8bd923f7">Join Our Community</h3>
-      <p class="_699f5219 font-ss3">
-        Keep up with the Ezcrytox team and our traders from across the world. We
-        have everything you need to become a crypto expert.
-      </p>
+      <h3 class="_8bd923f7">{$_('join-our-community')}</h3>
+      <p class="_699f5219 font-ss3">{$_('keeping-up-with-traders')}</p>
       <div class="cd08fd85">
         <a target="_blank" href="?twitter.com/Ezcrytox" class="abfe67fb">
           <svg
@@ -964,10 +927,8 @@
   <div class="_4aaab2bd">
     <div class="fdf11cf7">
       <div class="_960fdf24">
-        <h3 class="_986dc130">Start Your Crypto Journey Now</h3>
-        <div class="_10b939b9 font-ss3">
-          Connecting you to the power of crypto
-        </div>
+        <h3 class="_986dc130">{$_('start-your-crypto-journey-now')}</h3>
+        <div class="_10b939b9 font-ss3">{$_('connecting-you-to-the-power-of-crypto')}</div>
       </div>
       <div class="_73a8d391 font-ss3">
         <input type="email" placeholder="Enter your email" />
@@ -976,7 +937,7 @@
           class="polo-btn polo-btn-button polo-btn-primary polo-btn-large"
         >
           <!---->
-          <div class="btn-sp">Sign Up</div>
+          <div class="btn-sp">{$_('sign-up')}</div>
         </button>
       </div>
     </div>

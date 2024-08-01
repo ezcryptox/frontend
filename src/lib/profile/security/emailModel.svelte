@@ -1,21 +1,21 @@
 <script>
+	import { _ } from 'svelte-i18n';
 import { createEventDispatcher } from "svelte";
 const dispatch = createEventDispatcher()
 </script>
-
 <div id="uniframe-dialog" data-v-app="">
     <div class="vfm vfm--fixed vfm--inset" role="dialog" aria-modal="true" style="z-index: 1000101;">
         <div class="vfm__overlay vfm--overlay vfm--absolute vfm--inset vfm--prevent-none uniframe-root" aria-hidden="true"></div>
         <div class="vfm__content vfm--outline-none uniframe-root" >
             <div class="b26b640a f7829a1e d18f1a18">
                 <div class="a777dc19">
-                    <h3>Please enable phone verification and email verification before trying to change/disable them.</h3>
+                    <h3>{$_('enable-verification')}</h3>
                 </div>
                 <!----><!---->
                 <div class="ef7d8eba">
                     <!---->
                     <button on:click={()=> dispatch("close")} data-size="large" type="button" class="ce727619 cb6de6db">
-                        <span>I understand</span>
+                        <span>{$_('i-understand')}</span>
                     </button>
                 </div>
                 <svg fill="currentColor" class="d43c3839">
@@ -31,7 +31,6 @@ const dispatch = createEventDispatcher()
         </div>
     </div>
 </div>
-
 <style>
 .vfm--inset {
     top: 0;

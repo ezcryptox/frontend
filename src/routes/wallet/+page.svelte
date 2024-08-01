@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
 	import Spot from '$lib/wallet/spot.svelte';
 	import '../../styles/wallet.css';
 	import '../../styles/withdraw.css';
@@ -36,7 +37,6 @@
 		}
 	});
 </script>
-
 {#if $seaser[0] === 'transfer'}
 	<Transfer />
 {/if}
@@ -47,7 +47,7 @@
 		<div class="_352af221">
 			<div class="dfafa451">
 				<div class="_8979253c">
-					<span class="_6e618a34">Estimated Balance</span>
+					<span class="_6e618a34">{$_('estimated-balance')}</span>
 					<span class="f6d83fd9">
 						<svg
 							width="18"
@@ -65,12 +65,12 @@
 					</span>
 				</div>
 				<div class="_802fc171">
-					<div class="fed61cf8">0.00000000 BTC</div>
+					<div class="fed61cf8">{$_('btc-amount')}</div>
 					<div class="_731ec4d9">≈$0.00</div>
 					<div class="_08daca67">
-						<a href="/wallet/deposit" class="_8ae4d264 fb100468"> Deposit </a>
-						<a href="/wallet/withdraw" class="_8ae4d264 fb100468"> Withdraw </a>
-						<a href="/wallet/?tab=transfer" class="_8ae4d264"> Transfer </a>
+						<a href="/wallet/deposit" class="_8ae4d264 fb100468">{$_('g-deposit')}</a>
+						<a href="/wallet/withdraw" class="_8ae4d264 fb100468">{$_('g-withdraw')}</a>
+						<a href="/wallet/?tab=transfer" class="_8ae4d264">{$_('g-transfer')}</a>
 						<a href="/wallet/?tab=transfer" class="_7999440f">
 							<svg
 								width="14"
@@ -118,44 +118,41 @@
 										<stop offset="1" stop-color="#FF7163"></stop>
 									</linearGradient>
 								</defs>
-							</svg>My Coupons (0)&gt;</a
+							</svg>{$_('my-coupons-count>', {count: 0})}</a
 						>
 					</div>
 				</div>
 				<div class="_3b04c316">
 					<div class="_8b305fc7">
 						<div class="_66590ade">
-							<div class="_92aab3aa">Spot Account</div>
+							<div class="_92aab3aa">{$_('g-account-spot')}</div>
 						</div>
 						<div class="_3fdd424e">
-							<div class="a3e2e302">0.00000000 BTC</div>
+							<div class="a3e2e302">{$_('btc-amount')}</div>
 							<div class="_010696f9">≈$0.00</div>
 						</div>
 					</div>
 					<div class="_8b305fc7">
 						<div class="_66590ade">
-							<div class="_92aab3aa">Futures Account</div>
+							<div class="_92aab3aa">{$_('g-account-futures')}</div>
 							<div class="_3fdd424e">
-								<div class="a3e2e302">0.00000000 BTC</div>
+								<div class="a3e2e302">{$_('btc-amount')}</div>
 								<div class="_010696f9">≈$0.00</div>
 							</div>
-							<div class="_53ae92b4">Available Coupons: <span class=""> 0.00 USDT </span></div>
+							<div class="_53ae92b4">{$_('available-coupons')}<span class="">{$_('0-00-usdt')}</span></div>
 						</div>
 					</div>
 					<div class="_8b305fc7">
 						<div class="_66590ade">
-							<div class="_92aab3aa">
-								Earn Account
-								<a href="?javascript" class="e3b4302b"
-									><span class="_6e618a34">Earn History</span></a
+							<div class="_92aab3aa">{$_('earn-account')}<a href="?javascript" class="e3b4302b"
+									><span class="_6e618a34">{$_('earn-history')}</span></a
 								>
 							</div>
 							<div class="_3fdd424e">
-								<div class="a3e2e302">0.00000000 BTC</div>
+								<div class="a3e2e302">{$_('btc-amount')}</div>
 								<div class="_010696f9">≈$0.00</div>
 							</div>
-							<div class="_53ae92b4">
-								Last Day Returns : <span class=""> 0 USDT </span>
+							<div class="_53ae92b4">{$_('last-day-returns')}<span class=""> 0 USDT </span>
 								<svg
 									width="12"
 									height="12"
@@ -203,16 +200,16 @@
 						href="/wallet/?tab=spot"
 						class=" {$seaser[0] === 'spot' ? '_34945ed8' : ''}  _833dd21c"
 					>
-						<span class="_8f87c557">Spot</span>
+						<span class="_8f87c557">{$_('g-spot')}</span>
 					</a>
 					<a
 						href="/wallet/?tab=futures"
 						class="_833dd21c {$seaser[0] === 'futures' ? '_34945ed8' : ''} "
 					>
-						<span class="_8f87c557">Futures</span>
+						<span class="_8f87c557">{$_('g-futures')}</span>
 					</a>
 					<a href="/wallet/?tab=earn" class="_833dd21c {$seaser[0] === 'earn' ? '_34945ed8' : ''}">
-						<span class="_8f87c557">Earn</span>
+						<span class="_8f87c557">{$_('g-earn')}</span>
 					</a>
 				</nav>
 
@@ -225,14 +222,14 @@
 								</span>
 								<!---->
 							</span>
-							<span class="g-tips-text _4b499324"> Margin Wallet Mode </span>
+							<span class="g-tips-text _4b499324">{$_('margin-wallet-mode')}</span>
 							<!---->
 						</div>
 						<div class="d7adc68b">
 							<span class="_7c90adca">
 								<input type="checkbox" class="f9fc5c52" />
 							</span>
-							<span class="_8f87c557">Hide not held assets</span>
+							<span class="_8f87c557">{$_('hide-not-held-assets')}</span>
 						</div>
 						<div class="_4a9a9384">
 							<span class="polo-switch polo-switch-middle">
@@ -240,8 +237,7 @@
 									<input type="checkbox" true-value="true" />
 								</span><!---->
 							</span>
-							<p>
-								Auto-Earn <span>
+							<p>{$_('auto-earn')}<span>
 									<svg
 										width="16"
 										height="16"
@@ -267,7 +263,7 @@
 							</p>
 						</div>
 						<span class="cafcfd6f">
-							<a href="/convert/small" class="_4f6d8f6a">Convert Low-Value Balance to TRX</a>
+							<a href="/convert/small" class="_4f6d8f6a">{$_('convert-to-trx')}</a>
 						</span>
 					</div>
 					<div class="_9c5bacd2">

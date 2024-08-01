@@ -1,13 +1,13 @@
 <script>
+	import { _, locale } from 'svelte-i18n';
     import "../../styles/language.css";
-    import {getCookie,setCookie} from "$lib/store/cookies";
-    import { onMount } from "svelte";
     export let showLanguageModal = false
     $: selectedTab = 0;
     $: selectedTabItem = 0;
 
+    export let onSelectedLang = (lang) => {};
     const language = [
-        { name: "English", locale: "en-us" },
+        { name: "English", locale: "en" },
         { name: "中文（简体）", locale: "zh-CN" },
         { name: "中文（繁体）", locale: "zh-TW" },
         { name: "русский", locale: "ru" },
@@ -40,29 +40,20 @@
     };
     const onTabItemSelected = (index) => {
         selectedTabItem = index;
-        
         if (selectedTab === 0) {
-            const locale = language[index].locale
-            setCookie("locale",locale)
-            document.documentElement.setAttribute("lang", locale);
-            document.documentElement.setAttribute("data-uniframe-locale", locale);
-           
+            const newLocale = language[index].locale
+            locale.set(newLocale);
         }
     };
 
-    onMount(() => {
-        // Example usage: Retrieve the locale cookie
-        const savedLocale = getCookie("locale");
-       
-        if (savedLocale && selectedTab === 0) {
-            const index = language.findIndex(
-                (lang) => lang.locale === savedLocale,
-            );
-            if (index >= 0) onTabItemSelected(index);
-        }
-    });
+   // @ts-ignore
+     $: if ($locale) {
+        const index = language.findIndex(lang => lang.locale === $locale);
+        selectedTabItem = index !== -1 ? index : 0
+        if (onSelectedLang) onSelectedLang(language[index]?.name || 'English')
+    }
+    
 </script>
-
 {#if showLanguageModal}
 <div id="uniframe-dialog" data-v-app="">
     <div
@@ -89,17 +80,13 @@
                         <li
                             class={selectedTab === 0 ? "a51c0809" : ""}
                             on:click={() => onTabChanged(0)}
-                        >
-                            Language
-                        </li>
+                        >{$_('global-language')}</li>
 
                         <!-- svelte-ignore a11y-click-events-have-key-events -->
-                        <li
+                        <!-- <li
                             class={selectedTab === 1 ? "a51c0809" : ""}
                             on:click={() => onTabChanged(1)}
-                        >
-                            Currency
-                        </li>
+                        >{$_('global-currency')}</li> -->
                     </ul>
                 </div>
                 <div class="b6cfa543">

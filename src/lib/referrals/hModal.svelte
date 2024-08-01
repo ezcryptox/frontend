@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
 	import { ServerURl } from '$lib/backendUrl';
 	import axios from 'axios';
 	import { onMount } from 'svelte';
@@ -24,7 +25,6 @@
     loadItems();
   })
 </script>
-
 <div
 	tabindex="-1"
 	role="dialog"
@@ -55,7 +55,7 @@
 				</span>
 			</button>
 			<div class="ant-modal-header">
-				<div id="rcDialogTitle0" class="ant-modal-title">Top Inviters</div>
+				<div id="rcDialogTitle0" class="ant-modal-title">{$_('top-inviters')}</div>
 			</div>
 			<div class="ant-modal-body" style="padding: 0px;">
 				<div class="_86658441">
@@ -80,7 +80,7 @@
 															<th key="ranking" class="ant-table-row-cell-break-word">
 																<span class="ant-table-header-column">
 																	<div>
-																		<span class="ant-table-column-title">Ranking</span>
+																		<span class="ant-table-column-title">{$_('ranking')}</span>
 																		<span class="ant-table-column-sorter"></span>
 																	</div>
 																</span>
@@ -88,7 +88,7 @@
 															<th key="email" class="ant-table-row-cell-break-word">
 																<span class="ant-table-header-column">
 																	<div>
-																		<span class="ant-table-column-title">Email</span>
+																		<span class="ant-table-column-title">{$_('g-email')}</span>
 																		<span class="ant-table-column-sorter"></span>
 																	</div>
 																</span>
@@ -96,7 +96,7 @@
 															<th key="invitees" class="ant-table-row-cell-break-word">
 																<span class="ant-table-header-column">
 																	<div>
-																		<span class="ant-table-column-title">Invitees</span>
+																		<span class="ant-table-column-title">{$_('invitees')}</span>
 																		<span class="ant-table-column-sorter"></span>
 																	</div>
 																</span>
@@ -108,7 +108,7 @@
 															>
 																<span class="ant-table-header-column">
 																	<div>
-																		<span class="ant-table-column-title">Earnings (USDT)</span>
+																		<span class="ant-table-column-title">{$_('earnings-usdt')}</span>
 																		<span class="ant-table-column-sorter"></span>
 																	</div>
 																</span>
@@ -162,7 +162,7 @@
 																<td colspan="4">
 																	<div class="qqWi0">
 																		<div class="YSmmf dark:text-white">
-																			<div>No records</div>
+																			<div>{$_('g-nodata')}</div>
 																			<!---->
 																		</div>
 																	</div>
@@ -197,7 +197,6 @@
 		</div>
 	</div>
 </div>
-
 <style>
 	/* Add your styles here if needed */
 	.qqWi0 {

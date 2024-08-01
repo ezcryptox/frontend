@@ -1,7 +1,7 @@
 <script>
+	import { _ } from 'svelte-i18n';
 	import { slideFade } from "$lib/transitions";
 </script>
-
 <div class="a773e3aa" transition:slideFade={{ duration: 200 }}>
     <ul>
         <li>
@@ -11,9 +11,9 @@
                 </svg>
                 </div>
                 <div class="d4ef16dd">
-                    <span>Futures Trading</span>
+                    <span>{$_('g-futures-trade')}</span>
                 </div>
-                <div class="ddfb18d1">Perpetual settled in USDT</div>
+                <div class="ddfb18d1">{$_('futures-trade-subtitle')}</div>
             </a>
         </li>
         <li>
@@ -24,9 +24,9 @@
                     </svg>
                 </div>
                 <div class="d4ef16dd">
-                    <span>Grid Trading</span>
+                    <span>{$_('g-grid-trade')}</span>
                 </div>
-                <div class="ddfb18d1">Pro tool for newbies</div>
+                <div class="ddfb18d1">{$_('grid-trade-subtitle')}</div>
             </a>
         </li>
         <li>
@@ -37,14 +37,13 @@
                     </svg>
                 </div>
                 <div class="d4ef16dd">
-                    <span>Copy Trading</span>
+                    <span>{$_('g-copy-trading')}</span>
                 </div>
-                <div class="ddfb18d1">Trade like experts by following their trades</div>
+                <div class="ddfb18d1">{$_('copy-trading-subtitle')}</div>
             </a>
         </li>
     </ul>
 </div>
-
 <style>
    
 </style>

@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
 import { onMount } from "svelte";
 import { screen } from "$lib/store/screen"
 import { handleExchanegerate } from "../hook"
@@ -19,12 +20,11 @@ onMount(async () => {
 
 
 </script>
-
 <div class="_6cad0982">
-    <button class="_3568d55e {tab === 1 ? "c48b7a0c" : ""}" on:click={()=> tab = 1}> Trending </button>
-    <button class="_3568d55e {tab === 2 ? "c48b7a0c" : ""}" on:click={()=> tab = 2}> 24H Gainers </button>
-    <button class="_3568d55e {tab === 3 ? "c48b7a0c" : ""}" on:click={()=> tab = 3}> Top Futures </button>
-    <button class="_3568d55e {tab === 4 ? "c48b7a0c" : ""}" on:click={()=> tab = 4}> 24H Losers </button>
+    <button class="_3568d55e {tab === 1 ? "c48b7a0c" : ""}" on:click={()=> tab = 1}>{$_('trending')}</button>
+    <button class="_3568d55e {tab === 2 ? "c48b7a0c" : ""}" on:click={()=> tab = 2}>{$_('24h-gainers')}</button>
+    <button class="_3568d55e {tab === 3 ? "c48b7a0c" : ""}" on:click={()=> tab = 3}>{$_('top-futures')}</button>
+    <button class="_3568d55e {tab === 4 ? "c48b7a0c" : ""}" on:click={()=> tab = 4}>{$_('24h-losers')}</button>
     {#if $screen > 1022}
     <a href="/markets" class="_769a4f15">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,8 +42,8 @@ onMount(async () => {
 {:else}
     <div class="_4fd0cd7d">
         <div class="b780ffd8">
-            <div class="_2858318f">Market</div>
-            <div class="_2858318f"> Price/Change(24) </div>
+            <div class="_2858318f">{$_('g-market')}</div>
+            <div class="_2858318f">{$_('price-change-24')}</div>
         </div>
         {#if loading}
             <Loader />
@@ -88,9 +88,7 @@ onMount(async () => {
         {/each}
         {/if}
         <div class="_769a4f15">
-            <a href="/markets">
-                View markets
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a href="/markets">{$_('view-markets')}<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 2L8 5.5L4 9" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
                 </svg>
             </a>
@@ -99,7 +97,6 @@ onMount(async () => {
 
     </div>
 {/if}
-
 <style>
 
 </style>

@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
 	import '../app.css';
 	import { routes, url, handleAuthToken, tab, seaser } from '$lib/store/routes';
 	import { browser } from '$app/environment';
@@ -76,7 +77,6 @@
 		}
 	}
 </script>
-
 <ModeWatcher />
 <div>
 	{#if !$screen}
@@ -120,12 +120,10 @@
                             </g>
                         </svg>
                         <div>
-                            <div class="_88bac86c">Sign up for Ezcryptox , Win Up to 
-                                <strong>$1,000</strong>
+                            <div class="_88bac86c">{$_('sign-up-for-ezcryptox-win-up-to')}<strong>$1,000</strong>
                             </div>
                         </div>
-                        <div class="_7c4620f1">Create an account 
-                            <svg data-v-76f9e784="" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="_7ccf3b75">
+                        <div class="_7c4620f1">{$_('create-an-account')}<svg data-v-76f9e784="" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="_7ccf3b75">
                                 <circle data-v-76f9e784="" cx="12" cy="12" r="11.25" fill="#1E1E1C" stroke="#E3E3E3" stroke-width="1.5"></circle>
                                 <path data-v-76f9e784="" d="M7.62549 7.625L17.2505 17.25" stroke="#E3E3E3" stroke-width="1.75"></path>
                                 <path data-v-76f9e784="" d="M7.62549 17.25L17.2505 7.625" stroke="#E3E3E3" stroke-width="1.75"></path>
@@ -135,7 +133,7 @@
         </div> -->
 	{/if}
 </div>
-<!-- 
+<!--
 <style>
 	.preload {
 		position: fixed;

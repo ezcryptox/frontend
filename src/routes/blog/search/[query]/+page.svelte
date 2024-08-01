@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
     import { page } from "$app/stores";
     import "../../../../styles/blog/search.css";
     const query = $page.params.query;
@@ -22,9 +23,8 @@
         loadingArticles(q)
     })
 </script>
-
 <div class="DSAsd IsyAl">
-    <p class="sW0tO">Search Results for: <span>{$searchQuery}</span></p>
+    <p class="sW0tO">{$_('search-results-for')}<span>{$searchQuery}</span></p>
     
      {#each blogs as blog}
         <a href="/blog/{blog.id}" class="fCCy-"

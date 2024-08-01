@@ -1,7 +1,7 @@
 <script>
+	import { _ } from 'svelte-i18n';
   import "../../../styles/withdraw.css"
 </script>
-
 <div class="wc-wallet f25e176f">
     <div class="topLayoutWraper">
         <h3 class="topLayoutNav">
@@ -10,14 +10,14 @@
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M9.36018 3.06641L10.6419 4.43487L4.69353 10.0064L10.6412 15.5657L9.36089 16.9355L1.94922 10.0079L9.36018 3.06641Z" fill="currentColor"></path>
                 </svg>
             </a>
-            <a href="/wallet/spot" class=""> Wallet </a>
+            <a href="/wallet/spot" class="">{$_('g-wallet')}</a>
             <span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 2.5H13L5 13.5H3L11 2.5Z" fill="currentColor"></path>
                 </svg>
             </span>
             <!---->
-            <a href="/wallet/?tab=withdraw" class="focus back">Deposit</a>
+            <a href="/wallet/?tab=withdraw" class="focus back">{$_('g-deposit')}</a>
         </h3>
         <div class="container">
             <!---->
@@ -27,10 +27,10 @@
                         <div class="leftSlide">
                             <dl>
                                 <dt>
-                                    <h4>Select Coin</h4>
+                                    <h4>{$_('select-coin')}</h4>
                                 </dt>
                             <dd class="leftMain">
-                                <span class="laber">Coin</span>
+                                <span class="laber">{$_('g-currency')}</span>
                                 <span class="currencySelectList _83857b91 _8a25e73a undefined">
                                     <!---->
                                     <span class="_9f048623">
@@ -51,7 +51,7 @@
                                                 </div>
                                                 <div class="f066ab20 c053e25d polo-select">
                                                     <!---->
-                                                    <h5 class="marginBtn8"> All crypto (875) </h5>
+                                                    <h5 class="marginBtn8"> {$_('all-crypto-count', {count: 0})} </h5>
                                                     <div class="_43ec205b _00af2d11 polo-option">
                                                         <dl class="">
                                                             <dt>
@@ -65,7 +65,7 @@
                                                         <dl class="">
                                                             <dt>
                                                                 <img src="https://www.datocms-assets.com/51952/1705396070-zuzalu-logo.png" alt="" class="imgICon">
-                                                                <strong> ZUZALU</strong> Zuzalu Inu </dt>
+                                                                <strong>{$_('zuzalu')}</strong>{$_('zuzalu-inu')}</dt>
                                                                 <!---->
                                                             </dl>
                                                         </div>
@@ -79,10 +79,10 @@
                             </dl>
                             <dl class="marginTop32">
                                 <dt>
-                                    <h4>Deposit To</h4>
+                                    <h4>{$_('deposit-to')}</h4>
                                 </dt>
                                 <dd class="leftMain">
-                                    <span class="laber">Network</span>
+                                    <span class="laber">{$_('network')}</span>
                                     <span class="networkSelectList _83857b91 _8a25e73a undefined">
                                         <!---->
                                         <span class="_9f048623">
@@ -112,12 +112,11 @@
                         </div>
                         <div class="rightSlide">
                             <div class="depositRelatedWraper">
-                                <h4>Related Questions</h4>
-                                <p> Have you had problems with your Deposit? Please click to view Deposit related questions. </p>
+                                <h4>{$_('related-questions')}</h4>
+                                <p>{$_('deposit-problems')}</p>
                                 <button type="button" class="relateBtn polo-btn polo-btn-text polo-btn-positive polo-btn-mini">
                                     <!---->
-                                    <div class="btn-sp"> Related Questions
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <div class="btn-sp">{$_('related-questions')}<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M9.36018 3.06641L10.6419 4.43487L4.69353 10.0064L10.6412 15.5657L9.36089 16.9355L1.94922 10.0079L9.36018 3.06641Z" fill="currentColor"></path>
                                         </svg>
                                     </div>
@@ -144,13 +143,12 @@
                     <div class="historyWraper">
                         <dl>
                             <dt>
-                            <h4>Recent Deposits</h4>
+                            <h4>{$_('recent-deposits')}</h4>
                             </dt>
                         <dd>
                             <button type="button" class="historyNav polo-btn polo-btn-text polo-btn-primary polo-btn-mini">
                                 <!---->
-                                <div class="btn-sp"> View All
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <div class="btn-sp">{$_('g-view-all')}<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M9.36018 3.06641L10.6419 4.43487L4.69353 10.0064L10.6412 15.5657L9.36089 16.9355L1.94922 10.0079L9.36018 3.06641Z" fill="currentColor"></path>
                                     </svg>
                                 </div>
@@ -181,14 +179,14 @@
                                                                 <th key="createTime" class="">
                                                                     <span class="ant-table-header-column">
                                                                         <div>
-                                                                            <span class="ant-table-column-title">Time</span>
+                                                                            <span class="ant-table-column-title">{$_('g-date')}</span>
                                                                             <span class="ant-table-column-sorter"></span>
                                                                         </div>
                                                                     </span>
                                                                 </th>
                                                                 <th key="address" class="">
                                                                     <span class="ant-table-header-column"><div>
-                                                                        <span class="ant-table-column-title">Address</span>
+                                                                        <span class="ant-table-column-title">{$_('address')}</span>
                                                                         <span class="ant-table-column-sorter"></span>
                                                                     </div>
                                                                 </span>
@@ -196,7 +194,7 @@
                                                             <th key="txId" class="">
                                                                 <span class="ant-table-header-column">
                                                                     <div>
-                                                                        <span class="ant-table-column-title">TxID</span>
+                                                                        <span class="ant-table-column-title">{$_('txid')}</span>
                                                                         <span class="ant-table-column-sorter"></span>
                                                                     </div>
                                                                 </span>
@@ -204,7 +202,7 @@
                                                             <th key="parentCurrency" class="">
                                                                 <span class="ant-table-header-column">
                                                                     <div>
-                                                                        <span class="ant-table-column-title">Coin</span>
+                                                                        <span class="ant-table-column-title">{$_('g-currency')}</span>
                                                                         <span class="ant-table-column-sorter"></span>
                                                                     </div>
                                                                 </span>
@@ -212,14 +210,14 @@
                                                             <th key="amount" class="">
                                                                 <span class="ant-table-header-column">
                                                                     <div>
-                                                                        <span class="ant-table-column-title">Amount</span>
+                                                                        <span class="ant-table-column-title">{$_('g-qty')}</span>
                                                                         <span class="ant-table-column-sorter"></span>
                                                                     </div>
                                                                 </span>
                                                             </th>
                                                             <th key="netWork" class="">
                                                                 <span class="ant-table-header-column"><div>
-                                                                    <span class="ant-table-column-title">Network</span>
+                                                                    <span class="ant-table-column-title">{$_('network')}</span>
                                                                     <span class="ant-table-column-sorter"></span>
                                                                 </div>
                                                             </span>
@@ -227,7 +225,7 @@
                                                         <th key="status" class="ant-table-row-cell-last">
                                                             <span class="ant-table-header-column">
                                                                 <div>
-                                                                    <span class="ant-table-column-title">Status</span>
+                                                                    <span class="ant-table-column-title">{$_('g-status')}</span>
                                                                     <span class="ant-table-column-sorter"></span>
                                                                 </div>
                                                             </span>
@@ -236,8 +234,7 @@
                                                 </thead>
                                                 <tbody class="ant-table-tbody"></tbody>
                                             </table>
-                                        </div><div class="ant-table-placeholder"><div class="empty-wrapper"><svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="empty-img" style=""><path fill-rule="evenodd" clip-rule="evenodd" d="M12.7272 18.1816C11.7231 18.1816 10.9091 18.9957 10.9091 19.9998V43.6362H36.3636V36.3634H33.6364C33.1343 36.3634 32.7273 35.9564 32.7273 35.4543V26.3634C32.7273 25.8613 33.1343 25.4543 33.6364 25.4543H36.3636V18.1816H12.7272Z" fill="#E3E3E3"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M61.8182 43.6357H36.3636V69.0903H60C61.0042 69.0903 61.8182 68.2763 61.8182 67.2721V43.6357ZM53.6364 47.2725C54.1385 47.2725 54.5455 46.8654 54.5455 46.3634V43.6361L43.6364 43.6361V46.3634C43.6364 46.8654 44.0434 47.2725 44.5455 47.2725L53.6364 47.2725Z" fill="#E3E3E3"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M18.1818 40.9091C18.1818 40.407 18.5888 40 19.0908 40H28.1818C28.6838 40 29.0908 40.407 29.0908 40.9091V43.6364H18.1818V40.9091ZM10.9091 43.6367H36.3636V50.9091H39.0908C39.5929 50.9091 39.9999 51.3161 39.9999 51.8182V60.9091C39.9999 61.4112 39.5929 61.8182 39.0908 61.8182H36.3636V69.0913H12.7272C11.7231 69.0913 10.9091 68.2772 10.9091 67.2731V43.6367Z" fill="#F2F2F2"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M49.3305 39.7517C49.6855 40.1067 50.2611 40.1067 50.6161 39.7517L52.3961 37.9717L57.2798 42.8554L73.9932 26.142C74.7032 25.432 74.7032 24.2808 73.9932 23.5707L57.2798 6.85727L52.2857 11.8514L50.6161 10.1818C50.2611 9.82681 49.6855 9.82681 49.3305 10.1818L42.9023 16.6101C42.5472 16.9651 42.5472 17.5407 42.9023 17.8957L44.5718 19.5652L39.2807 24.8564L44.6822 30.2578L42.9022 32.0378C42.5472 32.3928 42.5472 32.9684 42.9022 33.3234L49.3305 39.7517ZM61.2458 19.6858L62.21 20.65C62.565 21.005 62.565 21.5806 62.21 21.9356L57.8709 26.2747C57.5159 26.6297 56.9403 26.6297 56.5853 26.2747L55.621 25.3105C55.266 24.9555 55.266 24.3798 55.621 24.0248L59.9601 19.6858C60.3151 19.3307 60.8907 19.3307 61.2458 19.6858ZM54.4961 26.4354L55.4603 27.3997C55.8154 27.7547 55.8154 28.3303 55.4603 28.6853L54.4961 29.6495C54.1411 30.0046 53.5655 30.0046 53.2105 29.6495L52.2462 28.6853C51.8912 28.3303 51.8912 27.7547 52.2462 27.3997L53.2105 26.4354C53.5655 26.0804 54.1411 26.0804 54.4961 26.4354Z" fill="#B8B8B8"></path><rect x="15.4546" y="50.9082" width="16.3636" height="2.72727" rx="0.454545" fill="#E3E3E3"></rect><rect x="15.4546" y="59.0898" width="16.3636" height="2.72727" rx="0.454545" fill="#E3E3E3"></rect></svg><p class="empty-text" style=""> No Data </p></div></div></div></div></div></div></div></div><!----></div></div></div></div></div></div></div>
-
+                                        </div><div class="ant-table-placeholder"><div class="empty-wrapper"><svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="empty-img" style=""><path fill-rule="evenodd" clip-rule="evenodd" d="M12.7272 18.1816C11.7231 18.1816 10.9091 18.9957 10.9091 19.9998V43.6362H36.3636V36.3634H33.6364C33.1343 36.3634 32.7273 35.9564 32.7273 35.4543V26.3634C32.7273 25.8613 33.1343 25.4543 33.6364 25.4543H36.3636V18.1816H12.7272Z" fill="#E3E3E3"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M61.8182 43.6357H36.3636V69.0903H60C61.0042 69.0903 61.8182 68.2763 61.8182 67.2721V43.6357ZM53.6364 47.2725C54.1385 47.2725 54.5455 46.8654 54.5455 46.3634V43.6361L43.6364 43.6361V46.3634C43.6364 46.8654 44.0434 47.2725 44.5455 47.2725L53.6364 47.2725Z" fill="#E3E3E3"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M18.1818 40.9091C18.1818 40.407 18.5888 40 19.0908 40H28.1818C28.6838 40 29.0908 40.407 29.0908 40.9091V43.6364H18.1818V40.9091ZM10.9091 43.6367H36.3636V50.9091H39.0908C39.5929 50.9091 39.9999 51.3161 39.9999 51.8182V60.9091C39.9999 61.4112 39.5929 61.8182 39.0908 61.8182H36.3636V69.0913H12.7272C11.7231 69.0913 10.9091 68.2772 10.9091 67.2731V43.6367Z" fill="#F2F2F2"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M49.3305 39.7517C49.6855 40.1067 50.2611 40.1067 50.6161 39.7517L52.3961 37.9717L57.2798 42.8554L73.9932 26.142C74.7032 25.432 74.7032 24.2808 73.9932 23.5707L57.2798 6.85727L52.2857 11.8514L50.6161 10.1818C50.2611 9.82681 49.6855 9.82681 49.3305 10.1818L42.9023 16.6101C42.5472 16.9651 42.5472 17.5407 42.9023 17.8957L44.5718 19.5652L39.2807 24.8564L44.6822 30.2578L42.9022 32.0378C42.5472 32.3928 42.5472 32.9684 42.9022 33.3234L49.3305 39.7517ZM61.2458 19.6858L62.21 20.65C62.565 21.005 62.565 21.5806 62.21 21.9356L57.8709 26.2747C57.5159 26.6297 56.9403 26.6297 56.5853 26.2747L55.621 25.3105C55.266 24.9555 55.266 24.3798 55.621 24.0248L59.9601 19.6858C60.3151 19.3307 60.8907 19.3307 61.2458 19.6858ZM54.4961 26.4354L55.4603 27.3997C55.8154 27.7547 55.8154 28.3303 55.4603 28.6853L54.4961 29.6495C54.1411 30.0046 53.5655 30.0046 53.2105 29.6495L52.2462 28.6853C51.8912 28.3303 51.8912 27.7547 52.2462 27.3997L53.2105 26.4354C53.5655 26.0804 54.1411 26.0804 54.4961 26.4354Z" fill="#B8B8B8"></path><rect x="15.4546" y="50.9082" width="16.3636" height="2.72727" rx="0.454545" fill="#E3E3E3"></rect><rect x="15.4546" y="59.0898" width="16.3636" height="2.72727" rx="0.454545" fill="#E3E3E3"></rect></svg><p class="empty-text" style="">{$_('no-data')}</p></div></div></div></div></div></div></div></div><!----></div></div></div></div></div></div></div>
 <style>
    
 </style>

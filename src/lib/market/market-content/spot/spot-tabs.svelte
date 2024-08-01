@@ -1,7 +1,7 @@
 <script>
+	import { _ } from 'svelte-i18n';
 
 </script>
-
 <div class="_9ee5e188">
     <div class="_5e5404d1 _5527c494">
         <span class="_8733ff05 _823ea934">
@@ -44,7 +44,6 @@
         </div>
     </div>
 </div>
-
 <style>
 
 </style>

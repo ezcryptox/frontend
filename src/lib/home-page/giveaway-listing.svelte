@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
 import { slide } from "svelte/transition";
 import { onMount } from "svelte";
 import { screen } from "$lib/store/screen";
@@ -31,7 +32,6 @@ const handleChangeView = ((event)=>{
 })
 
 </script>
- 
 <div class="_86eb487d">
     <div class="_238572a7 {$screen > 1200 ? "screen1" : $screen > 1022 ? "screen2" : $screen > 770 ? "screen3" : "screen4"}">
         <button disabled={!changeView} on:click={()=>handleChangeView("prev")} class="_590fc55f _0e85c167 {!changeView ? "_7c2fb6ee" : ""}"></button>
@@ -42,21 +42,19 @@ const handleChangeView = ((event)=>{
     </div>
     <div class="_6fc74819 font-ss3">
         <a href="?support.poloniex.com/hc/en-us/articles/22637690081175-Bulk-Asset-Delistings-April-12-2024"  class="_303c9628">
-            <div class="_1e05476f"> Bulk Asset Delistings April 12, 2024 </div>
+            <div class="_1e05476f">{$_('bulk-asset-delistings-april-12-2024')}</div>
             <span class="ac20bdee"> 04-07 </span>
         </a>
         {#if $screen > 1022}
             <a href="?support.poloniex.com/hc/en-us/articles/22467997807383-Project-introduction-What-is-IXS"  class="_303c9628">
-                <div class="_1e05476f"> Project introduction - What is IXS？ </div>
+                <div class="_1e05476f">{$_('project-intro')}</div>
                 <span class="ac20bdee"> 04-01 </span>
             </a>
         {/if}
       
-        <a  href="?support.poloniex.com/hc/en-us/categories/360002700674" class="_41acdb78"> Learn More &gt; </a>
+        <a  href="?support.poloniex.com/hc/en-us/categories/360002700674" class="_41acdb78">{$_('learn-more-1')}</a>
     </div>
 </div>
-
-
 <style>
   ._238572a7.screen1 {
         width: 1136px;
