@@ -1,6 +1,9 @@
+<script>
+	import { _ } from 'svelte-i18n';
+</script>
 <div class="qqWi0">
 	<div class="YSmmf dark:text-white">
-		<div>No records</div>
+		<div>{$_('g-nodata')}</div>
 	</div>
 </div>
 <style>

@@ -1,21 +1,21 @@
 <script>
+	import { _ } from 'svelte-i18n';
     import { createEventDispatcher } from "svelte";
     const dispatch = createEventDispatcher()
     </script>
-    
-    <div id="uniframe-dialog" data-v-app="">
+<div id="uniframe-dialog" data-v-app="">
         <div class="vfm vfm--fixed vfm--inset" role="dialog" aria-modal="true" style="z-index: 1000101;">
             <div class="vfm__overlay vfm--overlay vfm--absolute vfm--inset vfm--prevent-none uniframe-root" aria-hidden="true"></div>
             <div class="vfm__content vfm--outline-none uniframe-root" >
                 <div class="b26b640a f7829a1e d18f1a18">
                     <div class="a777dc19">
-                        <h3>In order to protect your account, withdrawals will be disabled for 24 hours after you make this change.</h3>
+                        <h3>{$_('withdrawal-account-protection')}</h3>
                     </div>
                     <!----><!---->
                     <div class="ef7d8eba">
                         <!---->
                         <button on:click={()=> dispatch("close")} data-size="large" type="button" class="ce727619 cb6de6db">
-                            <span>Continue</span>
+                            <span>{$_('global-open')}</span>
                         </button>
                     </div>
                     <svg fill="currentColor" class="d43c3839">
@@ -30,10 +30,10 @@
     <div class="f3uQo">
         <div class="SB4GP">
             <div class="fpnFq">
-                <div class="_964A3">Change Password</div>
+                <div class="_964A3">{$_('change-password')}</div>
                 <form novalidate="" class="_95zYh">
                     <div class="Wl-XI">
-                        <div class="d6gb5">Old password</div>
+                        <div class="d6gb5">{$_('old-password')}</div>
                         <div class="FJoFo">
                             <div data-size="large" class="gs2D2 SKd74 phcVN">
                                 <!---->
@@ -50,7 +50,7 @@
                     <!---->
                     </div>
                     <div class="Wl-XI">
-                        <div class="d6gb5">New password</div>
+                        <div class="d6gb5">{$_('new-password')}</div>
                         <div class="FJoFo">
                             <div data-size="large" class="gs2D2 SKd74 phcVN">
                                 <!---->
@@ -67,7 +67,7 @@
                     <!---->
                     </div>
                     <div class="Wl-XI">
-                        <div class="d6gb5">Confirm new password</div>
+                        <div class="d6gb5">{$_('confirm-new-password')}</div>
                         <div class="FJoFo" type="password">
                             <div data-size="large" class="gs2D2 SKd74 phcVN">
                                 <!---->
@@ -84,14 +84,13 @@
                     <!---->
                     </div>
                     <button data-size="large" type="button" disabled="" class="jRLsY SOUdU _4hKzv">
-                        <span><!---->Continue<!----></span>
+                        <span><!---->{$_('global-open')}<!----></span>
                     </button>
                 </form>
             </div>
         </div>
     </div>
-    
-    <style>
+<style>
     .vfm--inset {
         top: 0;
         right: 0;
@@ -190,4 +189,3 @@
 
     
     </style>
-    

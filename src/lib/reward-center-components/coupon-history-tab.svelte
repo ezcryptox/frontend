@@ -1,3 +1,6 @@
+<script>
+	import { _ } from 'svelte-i18n';
+</script>
 <div class="f745756d">
     <div
         class="ant-table-wrapper"
@@ -44,7 +47,7 @@
                                                     >
                                                         <span
                                                             class="ant-table-column-title"
-                                                            >Coupon</span
+                                                            >{$_('coupon')}</span
                                                         ><span
                                                             class="ant-table-column-sorter"
 
@@ -60,8 +63,7 @@
                                                     >
                                                         <span
                                                             class="ant-table-column-title"
-                                                            >Amount
-                                                            used</span
+                                                            >{$_('amount-used')}</span
                                                         ><span
                                                             class="ant-table-column-sorter"
 
@@ -77,8 +79,7 @@
                                                     >
                                                         <span
                                                             class="ant-table-column-title"
-                                                            >Used
-                                                            at</span
+                                                            >{$_('used-at')}</span
                                                         ><span
                                                             class="ant-table-column-sorter"
 
@@ -94,7 +95,7 @@
                                                     >
                                                         <span
                                                             class="ant-table-column-title"
-                                                            >Status</span
+                                                            >{$_('g-status')}</span
                                                         ><span
                                                             class="ant-table-column-sorter"
 
@@ -185,10 +186,7 @@
                                     <p
                                         class="empty-text"
                                         style=""
-                                    >
-                                        No
-                                        records.
-                                    </p>
+                                    >{$_('no-records')}</p>
                                 </div>
                             </div>
                         </div>

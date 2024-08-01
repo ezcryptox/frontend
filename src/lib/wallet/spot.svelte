@@ -1,23 +1,23 @@
 <script>
+	import { _ } from 'svelte-i18n';
   
 </script>
-
 <div class="_753fc960">
     <!---->
     <div class="d52631a5">
-        <span class="_6c80e451">Coin</span>
+        <span class="_6c80e451">{$_('g-currency')}</span>
         <span>
-            <span class="g-tips-text"> Available </span>
+            <span class="g-tips-text">{$_('g-available')}</span>
         </span>
         <!---->
         <!---->
         <span>
-            <span class="g-tips-text ant-tooltip-open"> In Use </span>
+            <span class="g-tips-text ant-tooltip-open">{$_('in-use')}</span>
         </span>
         <span class="_6a482ffd">
-            <span class="g-tips-text"> Balance </span>
+            <span class="g-tips-text">{$_('balance')}</span>
         </span>
-        <span class="_6645d580"> Action </span>
+        <span class="_6645d580">{$_('g-action')}</span>
     </div>
 
     <div class="_743cc7da">
@@ -47,14 +47,14 @@
                 <!---->
             </div>
             <div class="dd466019">
-                <span class="ebff5032 _5a4e75d5 _2c143edc"> Trade <ul class="e643ae4b">
+                <span class="ebff5032 _5a4e75d5 _2c143edc">{$_('footer-futures-trade')}<ul class="e643ae4b">
 
                 </ul>
                 </span>
                 <!---->
                 <!---->
-                <a href="wallet?tab=spot" class="ebff5032"> Deposit </a>
-                <a href="wallet?tab=spot" class="ebff5032"> Withdraw </a>
+                <a href="wallet?tab=spot" class="ebff5032">{$_('g-deposit')}</a>
+                <a href="wallet?tab=spot" class="ebff5032">{$_('g-withdraw')}</a>
                 <!---->
             </div>
             <!---->
@@ -86,19 +86,19 @@
                 <!---->
             </div>
             <div class="dd466019">
-                <span class="ebff5032 _5a4e75d5 _2c143edc"> Trade <ul class="e643ae4b">
+                <span class="ebff5032 _5a4e75d5 _2c143edc">{$_('footer-futures-trade')}<ul class="e643ae4b">
 
                 </ul>
                 </span>
-                <span class="ebff5032 _5a4e75d5"> Earn <div class="e643ae4b"><dl class="b234d075">
-                    <dt>Flexible</dt>
+                <span class="ebff5032 _5a4e75d5">{$_('g-earn')}<div class="e643ae4b"><dl class="b234d075">
+                    <dt>{$_('flexible')}</dt>
                     <dd>
                         <strong>
                             <!----> 10.00%</strong>
                     </dd>
                 </dl>
                 <dl class="b234d075">
-                    <dt>Fixed</dt>
+                    <dt>{$_('fixed')}</dt>
                     <dd>
                         <strong>
                             <!----> 100.00%</strong>
@@ -107,8 +107,8 @@
                 </div>
                 </span>
                 <!---->
-                <a href="/wallet/deposit/ABI" class="ebff5032 _2c143edc"> Deposit </a>
-                <a href="/wallet/withdraw/ABI" class="ebff5032"> Withdraw </a>
+                <a href="/wallet/deposit/ABI" class="ebff5032 _2c143edc">{$_('g-deposit')}</a>
+                <a href="/wallet/withdraw/ABI" class="ebff5032">{$_('g-withdraw')}</a>
                 <!---->
             </div>
             <!---->
@@ -120,13 +120,13 @@
 
                 </span>
                 <div class="_08f39f66">
-                    <div class="_4eeef9eb"> AC <!---->
+                    <div class="_4eeef9eb">{$_('ac')}<!---->
                         <span class="c1609ed9">
                             <!---->
                             <!---->
                         </span>
                     </div>
-                    <div class="_2f2633e0">ArtCoin</div>
+                    <div class="_2f2633e0">{$_('art-coin')}</div>
                 </div>
             </div>
             <div>
@@ -142,14 +142,14 @@
                 <!---->
             </div>
             <div class="dd466019">
-                <span class="ebff5032 _5a4e75d5 _2c143edc"> Trade <ul class="e643ae4b">
+                <span class="ebff5032 _5a4e75d5 _2c143edc">{$_('footer-futures-trade')}<ul class="e643ae4b">
 
                 </ul>
                 </span>
                 <!---->
                 <!---->
-                <a href="/wallet/deposit/AC" class="ebff5032"> Deposit </a>
-                <a href="/wallet/withdraw/AC" class="ebff5032"> Withdraw </a>
+                <a href="/wallet/deposit/AC" class="ebff5032">{$_('g-deposit')}</a>
+                <a href="/wallet/withdraw/AC" class="ebff5032">{$_('g-withdraw')}</a>
                 <!---->
             </div>
             <!---->
@@ -161,13 +161,13 @@
 
                 </span>
                 <div class="_08f39f66">
-                    <div class="_4eeef9eb"> ACE <!---->
+                    <div class="_4eeef9eb">{$_('ace')}<!---->
                         <span class="c1609ed9">
                             <!---->
                             <!---->
                         </span>
                     </div>
-                    <div class="_2f2633e0">Fusionist</div>
+                    <div class="_2f2633e0">{$_('fusionist')}</div>
                 </div>
             </div>
             <div>
@@ -183,14 +183,14 @@
                 <!---->
             </div>
             <div class="dd466019">
-                <span class="ebff5032 _5a4e75d5 _2c143edc"> Trade <ul class="e643ae4b">
+                <span class="ebff5032 _5a4e75d5 _2c143edc">{$_('footer-futures-trade')}<ul class="e643ae4b">
 
                 </ul>
                 </span>
                 <!---->
                 <!---->
-                <a href="/wallet/deposit/ACE" class="ebff5032"> Deposit </a>
-                <a href="/wallet/withdraw/ACE" class="ebff5032"> Withdraw </a>
+                <a href="/wallet/deposit/ACE" class="ebff5032">{$_('g-deposit')}</a>
+                <a href="/wallet/withdraw/ACE" class="ebff5032">{$_('g-withdraw')}</a>
                 <!---->
             </div>
             <!---->
@@ -208,7 +208,7 @@
                             <!---->
                         </span>
                     </div>
-                    <div class="_2f2633e0">Alchemy</div>
+                    <div class="_2f2633e0">{$_('alchemy')}</div>
                 </div>
             </div>
             <div>
@@ -224,14 +224,14 @@
                 <!---->
             </div>
             <div class="dd466019">
-                <span class="ebff5032 _5a4e75d5 _2c143edc"> Trade <ul class="e643ae4b">
+                <span class="ebff5032 _5a4e75d5 _2c143edc">{$_('footer-futures-trade')}<ul class="e643ae4b">
 
                 </ul>
                 </span>
                 <!---->
                 <!---->
-                <a href="/wallet/deposit/ACH1" class="ebff5032"> Deposit </a>
-                <a href="/wallet/withdraw/ACH1" class="ebff5032"> Withdraw </a>
+                <a href="/wallet/deposit/ACH1" class="ebff5032">{$_('g-deposit')}</a>
+                <a href="/wallet/withdraw/ACH1" class="ebff5032">{$_('g-withdraw')}</a>
                 <!---->
             </div>
             <!---->
@@ -243,13 +243,13 @@
 
                 </span>
                 <div class="_08f39f66">
-                    <div class="_4eeef9eb"> ACM <!---->
+                    <div class="_4eeef9eb">{$_('acm')}<!---->
                         <span class="c1609ed9">
                             <!---->
                             <!---->
                         </span>
                     </div>
-                    <div class="_2f2633e0">AC Milan Fan Token</div>
+                    <div class="_2f2633e0">{$_('ac-milan-fan-token')}</div>
                 </div>
             </div>
             <div>
@@ -265,14 +265,14 @@
                 <!---->
             </div>
             <div class="dd466019">
-                <span class="ebff5032 _5a4e75d5 _2c143edc"> Trade <ul class="e643ae4b">
+                <span class="ebff5032 _5a4e75d5 _2c143edc">{$_('footer-futures-trade')}<ul class="e643ae4b">
 
                 </ul>
                 </span>
                 <!---->
                 <!---->
-                <a href="/wallet/deposit/ACM" class="ebff5032 _2c143edc"> Deposit </a>
-                <a href="/wallet/withdraw/ACM" class="ebff5032"> Withdraw </a>
+                <a href="/wallet/deposit/ACM" class="ebff5032 _2c143edc">{$_('g-deposit')}</a>
+                <a href="/wallet/withdraw/ACM" class="ebff5032">{$_('g-withdraw')}</a>
                 <!---->
             </div>
             <!---->
@@ -306,14 +306,14 @@
                 <!---->
             </div>
             <div class="dd466019">
-                <span class="ebff5032 _5a4e75d5 _2c143edc"> Trade <ul class="e643ae4b">
+                <span class="ebff5032 _5a4e75d5 _2c143edc">{$_('footer-futures-trade')}<ul class="e643ae4b">
 
                 </ul>
                 </span>
                 <!---->
                 <!---->
-                <a href="/wallet/deposit/ACRIA" class="ebff5032"> Deposit </a>
-                <a href="/wallet/withdraw/ACRIA" class="ebff5032"> Withdraw </a>
+                <a href="/wallet/deposit/ACRIA" class="ebff5032">{$_('g-deposit')}</a>
+                <a href="/wallet/withdraw/ACRIA" class="ebff5032">{$_('g-withdraw')}</a>
                 <!---->
             </div>
             <!----><!---->
@@ -343,14 +343,13 @@
                 <rect x="15.4546" y="50.9082" width="16.3636" height="2.72727" rx="0.454545" fill="#E3E3E3"></rect>
                 <rect x="15.4546" y="59.0898" width="16.3636" height="2.72727" rx="0.454545" fill="#E3E3E3"></rect>
             </svg>
-            <p class="empty-text"> No Data </p>
+            <p class="empty-text">{$_('no-data')}</p>
         </div>
     </div>
     </div>
 
  
 </div>
-
 <style>
    
 </style>

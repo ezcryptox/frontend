@@ -1,9 +1,9 @@
 <script>
+	import { _ } from 'svelte-i18n';
   import Orders from "./orders.svelte";
 
   let showOrders = false;
 </script>
-
 <div class="_actionGroup_piyeq_55">
   <div
     class="_item_piyeq_60 _orderItem_piyeq_94"
@@ -38,7 +38,7 @@
           clip-rule="evenodd"
           d="M9.70825 13.9085H15.2797V15.6228H9.70825V13.9085Z"
         ></path></svg
-      > Orders</span
+      >{$_('orders')}</span
     ><em class="_msgCount_piyeq_94" style="display: none;">0</em>
     <em class="_msgCount_piyeq_94" style={showOrders ? "" : "display: none;"}
       >0</em
@@ -70,7 +70,7 @@
             clip-rule="evenodd"
             d="M5.85577 8.40156L11.5 5.14286L17.1442 8.40156V14.919L11.5 18.1776L5.85577 14.919V8.40156ZM11.5 3L19 7.33013V15.9904L11.5 20.3205L4 15.9904V7.33013L11.5 3ZM10.2632 11.6603C10.2632 10.977 10.8171 10.4231 11.5004 10.4231C12.1837 10.4231 12.7376 10.977 12.7376 11.6603C12.7376 12.3435 12.1837 12.8974 11.5004 12.8974C10.8171 12.8974 10.2632 12.3435 10.2632 11.6603ZM11.5004 8.56731C9.79221 8.56731 8.40745 9.95207 8.40745 11.6603C8.40745 13.3684 9.79221 14.7532 11.5004 14.7532C13.2086 14.7532 14.5933 13.3684 14.5933 11.6603C14.5933 9.95207 13.2086 8.56731 11.5004 8.56731Z"
           ></path></svg
-        > Settings</span
+        >{$_('settings')}</span
       ><!--v-if-->
     </div>
   </div>

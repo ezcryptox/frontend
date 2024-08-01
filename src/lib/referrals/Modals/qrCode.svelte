@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
   export let refCode = "";
   export let QrCode_src = "";
   export let handleRefModal = null;
@@ -7,7 +8,6 @@
     if (handleRefModal) handleRefModal();
   }
 </script>
-
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="ant-modal-root">
   <div class="ant-modal-mask"></div>
@@ -85,7 +85,7 @@
                 style="width: 288px; height: 288px;"
               ></canvas> -->
             </div>
-            <div class="c083e7ea"><span> Referral Code </span></div>
+            <div class="c083e7ea"><span>{$_('referral-code-2')}</span></div>
             <div class="_35a4a9e8 flex justify-between">
               <strong>{refCode}</strong>
               <div class="flex">
@@ -121,7 +121,7 @@
               </div>
             </div>
           </div>
-          <div class="e166b803 flex" style="display: none;">Copied</div>
+          <div class="e166b803 flex" style="display: none;">{$_('g-copied')}</div>
         </div>
       </div>
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->

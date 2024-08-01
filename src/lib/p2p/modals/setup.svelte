@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
   export let closeSetupModal = null;
 
   const handleSetupClose = () => {
@@ -7,7 +8,6 @@
     }
   };
 </script>
-
 <div
   class="vfm vfm--fixed vfm--inset"
   role="dialog"
@@ -22,7 +22,7 @@
     <div class="_componentBox_1n9eh_9">
       <div class="_dialogWraper_uieru_103">
         <span on:click={handleSetupClose} role="button" tabindex={0}>X</span>
-        <h1 class="_title_uieru_124">First, setup the following</h1>
+        <h1 class="_title_uieru_124">{$_('first-setup-the-following')}</h1>
         <p class="_tips_uieru_9">
           <svg
             width="16"
@@ -39,24 +39,19 @@
               clip-rule="evenodd"
               d="M8 1.5C11.5899 1.5 14.5 4.41015 14.5 8C14.5 11.5899 11.5899 14.5 8 14.5C4.41015 14.5 1.5 11.5899 1.5 8C1.5 4.41015 4.41015 1.5 8 1.5ZM8 0C12.4183 0 16 3.58172 16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0Z"
             ></path>
-          </svg>
-          Depending on the actual scenario of using the P2P service, you may be required
-          to set up different items.
-        </p>
+          </svg>{$_('set-up-different-items')}</p>
         <div class="_setWraper_uieru_30">
           <ul>
             <li>
               <dl>
-                <dt>Complete KYC verification</dt>
+                <dt>{$_('complete-kyc-verification')}</dt>
                 <dd>
                   <button
                     class="el-button el-button--primary is-link"
                     aria-disabled="false"
                     type="button"
                     on:click={() => handleCurrencySelect("KYC")}
-                  >
-                    Set up now
-                    <svg
+                  >{$_('set-up-now')}<svg
                       width="6"
                       height="10"
                       viewBox="0 0 6 10"
@@ -74,16 +69,14 @@
             </li>
             <li>
               <dl>
-                <dt>Set a nickname</dt>
+                <dt>{$_('set-a-nickname')}</dt>
                 <dd>
                   <button
                     class="el-button el-button--primary is-disabled is-link"
                     aria-disabled="true"
                     disabled
                     type="button"
-                  >
-                    Set up now
-                    <svg
+                  >{$_('set-up-now')}<svg
                       width="6"
                       height="10"
                       viewBox="0 0 6 10"
@@ -101,16 +94,14 @@
             </li>
             <li>
               <dl>
-                <dt>Add an account to GA for authentication</dt>
+                <dt>{$_('add-an-account-to-ga-for-authentication')}</dt>
                 <dd>
                   <button
                     class="el-button el-button--primary is-link"
                     aria-disabled="false"
                     type="button"
                     on:click={() => handleCurrencySelect("GA")}
-                  >
-                    Set up now
-                    <svg
+                  >{$_('set-up-now')}<svg
                       width="6"
                       height="10"
                       viewBox="0 0 6 10"
@@ -128,16 +119,14 @@
             </li>
             <li>
               <dl>
-                <dt>Enable at least one payment method</dt>
+                <dt>{$_('enable-at-least-one-payment-method')}</dt>
                 <dd>
                   <button
                     class="el-button el-button--primary is-disabled is-link"
                     aria-disabled="true"
                     disabled
                     type="button"
-                  >
-                    Set up now
-                    <svg
+                  >{$_('set-up-now')}<svg
                       width="6"
                       height="10"
                       viewBox="0 0 6 10"
@@ -159,9 +148,7 @@
             aria-disabled="false"
             type="button"
             style="margin-top: 32px; display: block; width: 100%;"
-          >
-            Not Now
-          </button>
+          >{$_('not-now')}</button>
         </div>
       </div>
     </div>

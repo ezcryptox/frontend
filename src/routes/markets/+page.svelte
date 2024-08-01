@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
 import NewListing from "$lib/market/new-listing.svelte";
 import TopGainer from "$lib/market/top-gainer.svelte";
 import Trending from "$lib/market/trending.svelte";
@@ -25,11 +26,10 @@ onMount(async () => {
 })
 
 </script>
-
 <div class="app-markets">
     <main class="_9df3dcbf">
         <div class="_4b9aaf1e _1e5e2a71">
-            <div class="c4f3185a">Markets</div>
+            <div class="c4f3185a">{$_('g-markets')}</div>
             <section class="_254714c9">
                 {#if $screen > 1150}
                     <NewListing />
@@ -49,17 +49,11 @@ onMount(async () => {
                                 <!-- <span class="">
                                     <svg aria-hidden="true" class="svgicon" style="width: 16px; height: 16px; min-width: 16px;">
                                         <use xlink:href="#star"></use>
-                                    </svg>
-                                    Favorites
-                                </span> -->
+                                    </svg>{$_('favorites')}</span> -->
                                 <span class="b2b60cf7">
-                                    <!---->
-                                    Spot
-                                </span>
+                                    <!---->{$_('g-spot')}</span>
                                 <span class="">
-                                    <!---->
-                                    Futures
-                                </span>
+                                    <!---->{$_('g-futures')}</span>
                             </div>
                             {#if $screen > 500}
                             <div class="polo-input left polo-input-small polo-input-default _21d80562">
@@ -85,7 +79,6 @@ onMount(async () => {
         </div>
     </main>
 </div>
-
 <style>
 
 </style>

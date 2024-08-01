@@ -1,3 +1,6 @@
+<script>
+	import { _ } from 'svelte-i18n';
+</script>
   <!---->
   <div class="empthWraper">
     <svg
@@ -36,12 +39,9 @@
             fill="#F2F2F2"
         ></path></svg
     >
-    <p>
-        No records.<a
+    <p>{$_('no-records')}<a
             class="polo-link polo-link-default is-underline"
-        >
-            Sign Up
-        </a>
+        >{$_('sign-up')}</a>
     </p>
 </div>
 <!---->

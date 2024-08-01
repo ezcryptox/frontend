@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
     import {handleAuthToken} from "$lib/store/routes";
     import { onMount } from "svelte";
     import { handleProfileSecurity } from "$lib/index"
@@ -24,8 +25,7 @@
     })
 
 </script>
-
-    {#if showEmailModel}
+{#if showEmailModel}
         <EmailModel on:close={()=> showEmailModel = false}/>
     {/if}
 
@@ -37,14 +37,14 @@
     {#if data}
     <div class="_3yZtL ZZKGD" style="--12829c0b: 0 64px;">
         <div class="pvuZv">
-            <h2>Two-Factor Authentication (2FA)</h2>
+            <h2>{$_('two-factor-authentication-2fa')}</h2>
             <div class="N1KMQ">
                 <div class="_2lg0i">
                     <div class="w94ff">
                         <div class="BynR- _5cbXB"></div>
                         <div>
-                            <h3>Passkeys <span class="M42GW">Hot</span></h3>
-                            <h4>Faster login and enhanced account security</h4>
+                            <h3>{$_('passkeys')}<span class="M42GW">{$_('comments-hot')}</span></h3>
+                            <h4>{$_('enhanced-security')}</h4>
                         </div>
                     </div>
                     <div class="cMzxQ">
@@ -52,11 +52,11 @@
                             <svg fill="currentColor" class="euYsy {data.passkey ? "O-m3o" : ""} " style="width: 14px; height: 14px;">
                                 <use xlink:href="#web-core-icon-fill-pass"></use>
                             </svg>
-                            <span class="cpapx">Not linked</span>
+                            <span class="cpapx">{$_('g-unlinked')}</span>
                         </div>
                         <div class="_9Tue6">
                             <button on:click={()=> showPasskeyModel = true} data-size="small" type="button" class="jRLsY wzmE4">
-                                <span><!---->Add<!---->
+                                <span><!---->{$_('g-add')}<!---->
                                 </span>
                             </button>
                         </div>
@@ -66,9 +66,9 @@
                     <div class="w94ff">
                         <div class="BynR- IDa6w"></div>
                         <div>
-                            <h3>Google Authenticator <!---->
+                            <h3>{$_('g-google')}<!---->
                             </h3>
-                            <h4>Protect your account and transactions</h4>
+                            <h4>{$_('protect-your-account-and-transactions')}</h4>
                         </div>
                     </div>
                     <div class="cMzxQ">
@@ -76,12 +76,12 @@
                             <svg fill="currentColor" class="euYsy {data.fa_auth ? "O-m3o" : ""} " style="width: 14px; height: 14px;">
                                 <use xlink:href="#web-core-icon-fill-pass"></use>
                             </svg>
-                            <span class="cpapx">Not linked</span>
+                            <span class="cpapx">{$_('g-unlinked')}</span>
                              <!---->
                             </div>
                             <div class="_9Tue6">
                                 <a href="/profile?tab=security&&model=2fa" data-size="small" class="jRLsY wzmE4">
-                                    <span> <!---->Enable<!----></span>
+                                    <span> <!---->{$_('g-enable')}<!----></span>
                                 </a>
                             </div>
                         </div>
@@ -90,8 +90,8 @@
                         <div class="w94ff">
                             <div class="BynR- ZRWIU"></div>
                             <div>
-                                <h3>Email <!----></h3>
-                                <h4>Protect your account and transactions</h4>
+                                <h3>{$_('g-email')}<!----></h3>
+                                <h4>{$_('protect-your-account-and-transactions')}</h4>
                             </div>
                         </div>
                         <div class="cMzxQ">
@@ -104,7 +104,7 @@
                             <div class="_9Tue6">
                                 <button on:click={()=> showEmailModel = true} data-size="small" type="button" class="jRLsY nFueq">
                                     <span>
-                                        <!---->Manage<!---->
+                                        <!---->{$_('g-manage')}<!---->
                                     </span>
                                 </button>
                             </div>
@@ -114,9 +114,9 @@
                         <div class="w94ff">
                             <div class="BynR- xbP0k"></div>
                             <div>
-                                <h3>Phone <!---->
+                                <h3>{$_('g-phone')}<!---->
                                 </h3>
-                                <h4>Protect your account and transactions</h4>
+                                <h4>{$_('protect-your-account-and-transactions')}</h4>
                             </div>
                         </div>
                         <div class="cMzxQ">
@@ -124,13 +124,13 @@
                                 <svg fill="currentColor" class="euYsy {data.phone ? "O-m3o" : ""} " style="width: 14px; height: 14px;">
                                     <use xlink:href="#web-core-icon-fill-pass"></use>
                                 </svg>
-                                <span class="cpapx">Not linked</span>
+                                <span class="cpapx">{$_('g-unlinked')}</span>
                             </div>
                             <div class="_9Tue6">
                                 <!---->
                                 <a href="/profile?tab=security&&model=phone" data-size="small" class="jRLsY wzmE4">
                                     <span>
-                                        <!---->Enable<!---->
+                                        <!---->{$_('g-enable')}<!---->
                                     </span>
                                 </a>
                             </div>
@@ -143,21 +143,21 @@
     
     <div class="_3yZtL on9Xm" style="--12829c0b: 0 64px;">
         <div class="pvuZv">
-            <h2>Advanced Security Settings</h2>
+            <h2>{$_('advanced-security-settings')}</h2>
             <div class="N1KMQ">
                 <div class="MrcpO">
                     <div class="w94ff">
                         <div class="BynR- xTHGO"></div>
                         <div>
-                            <h3>Login Password <!---->
+                            <h3>{$_('login-password')}<!---->
                             </h3>
-                            <h4>You will be logged out automatically after changing your password.</h4>
+                            <h4>{$_('password-change-logout')}</h4>
                         </div>
                     </div>
                     <div class="D8FJb">
                         <a href="/profile?tab=security&&model=change-password" data-size="small" class="jRLsY nFueq">
                             <span>
-                                <!---->Change<!---->
+                                <!---->{$_('g-change')}<!---->
                             </span>
                         </a>
                     </div>
@@ -169,7 +169,7 @@
     
     <div class="_3yZtL UGkZw" style="--12829c0b: 0 64px;">
         <div class="pvuZv">
-            <h2>Devices and Activities</h2>
+            <h2>{$_('devices-and-activities')}</h2>
             <div class="N1KMQ">
                 <div class="UTBi-">
                     <div class="w94ff">
@@ -177,15 +177,15 @@
     
                         </div>
                         <div>
-                            <h3>Device Management <!---->
+                            <h3>{$_('device-management')}<!---->
                             </h3>
-                            <h4>Manage allowed device list</h4>
+                            <h4>{$_('manage-allowed-device-list')}</h4>
                         </div>
                     </div>
                     <div class="Yq6kf">
                         <a href="/profile/security/device-management" data-size="small" class="jRLsY nFueq">
                             <span>
-                                <!---->More<!---->
+                                <!---->{$_('g-more')}<!---->
                             </span>
                         </a>
                     </div>
@@ -196,7 +196,7 @@
     
                         </div>
                         <div>
-                            <h3>Account Activity <!---->
+                            <h3>{$_('account-activity')}<!---->
                             </h3>
                             <h4>
     
@@ -206,7 +206,7 @@
                     <div class="Yq6kf">
                         <a href="/profile/security/login-history" data-size="small" class="jRLsY nFueq">
                             <span>
-                                <!---->More<!---->
+                                <!---->{$_('g-more')}<!---->
                             </span>
                         </a>
                     </div>
@@ -216,7 +216,7 @@
     </div>
     {:else if errorEl}
         <div style="height: 60vh; display: flex; justify-content: center; align-items: center;">
-            <h2> Something went wrong</h2>
+            <h2>{$_('something-went-wrong')}</h2>
         </div>
     {:else if isLoading}
     <div style="height: 60vh;">

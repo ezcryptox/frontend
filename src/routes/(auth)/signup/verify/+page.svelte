@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
   import "../../../../styles/login.css";
   import Rule from "./rule.svelte";
   import { otp } from "$lib/store/otp";
@@ -77,20 +78,18 @@
     }
   };
 </script>
-
 {#if isRule}
   <Rule on:close={() => (isRule = false)} />
 {/if}
 
 <div class="wc-signup">
   <div class="_848abb12 bf2bd91d">
-    <p class="_54043c3a">Verification Code</p>
+    <p class="_54043c3a">{$_('g-verifycode')}</p>
     <div data-v-39752d79="" class="order-form">
       <div data-key="emailCode" class="form-item" data-v-39752d79="">
         <!---->
         <div class="form-item-content">
-          <p class="_81c39b32">
-            Enter the 6-digit code sent to <strong>{$otp?.email}</strong>
+          <p class="_81c39b32">{$_('enter-the-6-digit-code-sent-to')}<strong>{$otp?.email}</strong>
           </p>
           <div class="_041e59c9">
             <span>
@@ -128,14 +127,9 @@
         <div class="btn-sp">{loading ? "Loading..." : "Activate Account"}</div>
       </button>
     </div>
-    <p class="_5100ec47">
-      Didn’t receive email code?
-      <button on:click={() => (isRule = true)} class="cfcce75a">
-        Learn More
-      </button>
+    <p class="_5100ec47">{$_('didnt-receive-email-code')}<button on:click={() => (isRule = true)} class="cfcce75a">{$_('learn-more-2')}</button>
     </p>
   </div>
 </div>
-
 <style>
 </style>

@@ -1,3 +1,6 @@
+<script>
+	import { _ } from 'svelte-i18n';
+</script>
 <div class="f745756d">
     <div
         class="ant-table-wrapper"
@@ -27,7 +30,7 @@
                                                     ><div>
                                                         <span
                                                             class="ant-table-column-title"
-                                                            >Task</span
+                                                            >{$_('task')}</span
                                                         ><span
                                                             class="ant-table-column-sorter"
                                                         ></span>
@@ -39,7 +42,7 @@
                                                     ><div>
                                                         <span
                                                             class="ant-table-column-title"
-                                                            >Reward</span
+                                                            >{$_('reward')}</span
                                                         ><span
                                                             class="ant-table-column-sorter"
                                                         ></span>
@@ -53,7 +56,7 @@
                                                     ><div>
                                                         <span
                                                             class="ant-table-column-title"
-                                                            >Distributed at</span
+                                                            >{$_('distributed-at')}</span
                                                         ><span
                                                             class="ant-table-column-sorter"
                                                         ></span>
@@ -119,7 +122,7 @@
                                             fill="#E3E3E3"
                                         ></rect></svg
                                     >
-                                    <p class="empty-text">No records.</p>
+                                    <p class="empty-text">{$_('no-records')}</p>
                                 </div>
                             </div>
                         </div>
@@ -129,3 +132,4 @@
         </div>
     </div>
 </div>
+

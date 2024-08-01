@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
 import { createEventDispatcher } from "svelte";
 import { onMount } from "svelte";
 const dispatch = createEventDispatcher()
@@ -14,7 +15,6 @@ const handleCountryFiltring = ((value)=>{
 })
 
 </script>
-
 <div id="modals-container">
     <div class="vm--container">
         <div data-modal="dynamic_modal_4" aria-expanded="true" class="vm--overlay">
@@ -23,7 +23,7 @@ const handleCountryFiltring = ((value)=>{
         <div role="dialog" aria-modal="true" class="vm--modal" style="top: 254px; left: 276px; width: 360px; height: 434px;">
             <div class="ba07351b">
                 <div class="_2eb77cb4">
-                    <p class="_9b8db05d">Please select area code</p>
+                    <p class="_9b8db05d">{$_('please-select-area-code')}</p>
                     <button on:click={()=> dispatch("close")} class="_65ad97c4"></button>
                 </div>
                 <div class="_9c5bacd2 a0d68ba2">
@@ -48,7 +48,7 @@ const handleCountryFiltring = ((value)=>{
                     {/each}
                     <div class="a432cd41" style="display: none;">
                         <span class="_107b55a2"></span>
-                        <p class="_2a96bcb4">No results found</p>
+                        <p class="_2a96bcb4">{$_('no-results-found')}</p>
                     </div>
                 </div>
             </div>

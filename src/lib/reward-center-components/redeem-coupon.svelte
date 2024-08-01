@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
      import { getContext } from 'svelte';
     const toggleRedemptionHistoryModal = getContext('toggleRedemptionHistoryModal');
 </script>
@@ -93,10 +94,7 @@
                 ></svg
             >
             <div>
-                <h3>Futures Trial Fund Coupon</h3>
-                 If you received the coupon code from Ezcryptox, please redeem it
-                here.
-            </div>
+                <h3>{$_('futures-trial-fund-coupon')}</h3>{$_('redeem-coupon')}</div>
         </dt>
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -105,8 +103,7 @@
         <dd>
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <a on:click={toggleRedemptionHistoryModal} class="polo-link polo-link-default is-underline"
-                >Redemption History
-            </a>
+                >{$_('redemption-history')}</a>
             <div
                 class="polo-input left polo-input-medium polo-input-default _46a026b4"
             >
@@ -114,7 +111,7 @@
                     type="button"
                     class="polo-btn polo-btn-button polo-btn-positive polo-btn-mini"
                     ><!---->
-                    <div class="btn-sp">Redeem</div></button
+                    <div class="btn-sp">{$_('redeem')}</div></button
                 >
             </div>
         </dd>

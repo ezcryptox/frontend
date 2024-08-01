@@ -1,11 +1,11 @@
 <script>
+	import { _ } from 'svelte-i18n';
   import { screen } from "$lib/store/screen"
   export let openSetupModal = null;
   const onOpenModal = () => {
     if (openSetupModal) openSetupModal(true);
   };
 </script>
-
 <section class="_tableList_2ean6_9">
   <div class="el-table--fit el-table--enable-row-hover el-table--enable-row-transition el-table el-table--layout-fixed _tableLayout_f1c54_9 is-scrolling-none"
     data-prefix="el" >
@@ -23,34 +23,31 @@
                 class="el-table_1_column_1 is-leaf el-table__cell"
                 colspan="1"
                 rowspan="1"
-                ><div class="cell">
-                  Advertisers (Completion rate)<!----><!---->
+                ><div class="cell">{$_('advertisers-completion-rate')}<!----><!---->
                 </div>
                 </th>
                 {#if $screen > 1000}
                 <th
                 class="el-table_1_column_2 is-leaf el-table__cell"
                 colspan="1"
-                rowspan="1"><div class="cell">Price<!----><!----></div></th>
+                rowspan="1"><div class="cell">{$_('g-price')}<!----><!----></div></th>
               <th
                 class="el-table_1_column_3 is-leaf el-table__cell"
                 colspan="1"
                 rowspan="1"
                 ><div class="cell">
-                  <div class="_headerLine_2ean6_111">
-                    Available <span></span> Limits
-                  </div>
+                  <div class="_headerLine_2ean6_111">{$_('g-available')}<span></span>{$_('limits')}</div>
                   <!----><!---->
                 </div></th
               >
               
                 <th class="el-table_1_column_4 is-leaf el-table__cell" colspan="1"  rowspan="1">
-                  <div class="cell">Payment Method<!----><!----></div>
+                  <div class="cell">{$_('payment-method-1')}<!----><!----></div>
                 </th>
               {/if}
               <th class="el-table_1_column_5 is-right is-leaf el-table__cell"
                 colspan="1" rowspan="1">
-                <div class="cell">Trade<!----><!----></div>
+                <div class="cell">{$_('footer-futures-trade')}<!----><!----></div>
               </th>
                 </tr>
             </thead>
@@ -67,17 +64,17 @@
                     <span class="_merchantIcon_f9alk_9 _icon_2ean6_127 _online_2ean6_157">N</span></a>
                   <div class="">
                     <div class="_name_2ean6_165">
-                      <a href="/p2p/merchant/481359171" class="">Nasi Lemak</a>
+                      <a href="/p2p/merchant/481359171" class="">{$_('nasi-lemak')}</a>
                       <span class="_flex_xvdld_9">
                         <!----><!----><!---->
                         </span>
                     </div>
                     {#if $screen > 1000}
-                      <div class="_trade_2ean6_189">Trades: 9 | 47%</div>
+                      <div class="_trade_2ean6_189">{$_('trades-9-47')}</div>
                       {:else}
                       <div class="cell">
                         <!---->
-                        <div class="_price_2ean6_192">0.99 USD</div>
+                        <div class="_price_2ean6_192">{$_('0-99-usd')}</div>
                       </div>
                     {/if}
                   </div>
@@ -85,19 +82,19 @@
                 {#if $screen < 1000}
                   <div class="_record_2ean6_205">
                     <div class="_line_2ean6_211">
-                      <span class="_label_2ean6_215">Available</span><span
-                        class="_label_2ean6_215">Limits</span>
+                      <span class="_label_2ean6_215">{$_('g-available')}</span><span
+                        class="_label_2ean6_215">{$_('limits')}</span>
                     </div>
                     <div class="_line_2ean6_211">
-                      <span class="_value_2ean6_227">7287.834766 USDT</span>
-                      <span class="_value_2ean6_227">55.00 - 855.00 USD</span>
+                      <span class="_value_2ean6_227">{$_('7287-834766-usdt')}</span>
+                      <span class="_value_2ean6_227">{$_('55-00-855-00-usd')}</span>
                     </div>
                   </div>
 
                   <div class="_method_2ean6_239">
                     <span style="color: rgb(240, 185, 11);">
                       <em style="background-color: rgb(240, 185, 11);">
-                    </em> Bank Transfer</span>
+                    </em>{$_('bank-transfer')}</span>
                   </div>
                 {/if}
                
@@ -108,7 +105,7 @@
               <td class="el-table_1_column_2 el-table__cell" rowspan="1" colspan="1">
               <div class="cell">
                 <!---->
-                <div class="_price_2ean6_192">0.99 USD</div>
+                <div class="_price_2ean6_192">{$_('0-99-usd')}</div>
               </div>
             </td>
            
@@ -117,12 +114,12 @@
                 <!---->
                 <div class="_record_2ean6_205">
                   <div class="_line_2ean6_211">
-                    <span class="_label_2ean6_215">Available</span><span
-                      class="_label_2ean6_215">Limits</span>
+                    <span class="_label_2ean6_215">{$_('g-available')}</span><span
+                      class="_label_2ean6_215">{$_('limits')}</span>
                   </div>
                   <div class="_line_2ean6_211">
-                    <span class="_value_2ean6_227">7287.834766 USDT</span>
-                    <span class="_value_2ean6_227">55.00 - 855.00 USD</span>
+                    <span class="_value_2ean6_227">{$_('7287-834766-usdt')}</span>
+                    <span class="_value_2ean6_227">{$_('55-00-855-00-usd')}</span>
                   </div>
                 </div>
               </div>
@@ -133,7 +130,7 @@
                 <div class="_method_2ean6_239">
                   <span style="color: rgb(240, 185, 11);">
                     <em style="background-color: rgb(240, 185, 11);">
-                  </em> Bank Transfer</span>
+                  </em>{$_('bank-transfer')}</span>
                 </div>
               </div>
               </td>
@@ -144,14 +141,14 @@
               colspan="1"
               ><div class="cell">
                 <!---->
-                <div class="_trade_2ean6_189">Trades: 9 | 47%</div>
+                <div class="_trade_2ean6_189">{$_('trades-9-47')}</div>
                 <div class="_BtnWraper_d4ofj_9">
                   <button
                     class="el-button el-button--success"
                     aria-disabled="false"
                     type="button"
                     on:click={onOpenModal}
-                    ><!--v-if--><span class="">Buy USDT</span></button
+                    ><!--v-if--><span class="">{$_('buy-usdt')}</span></button
                   >
                 </div>
               </div></td

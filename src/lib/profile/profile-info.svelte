@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
   import { handleAuthToken } from "$lib/store/routes";
   import { onMount } from "svelte";
   import { loading, error } from "$lib/store/error-message";
@@ -13,12 +14,11 @@
     }
   });
 </script>
-
 {#if data}
   <div class="JU6GJ">
     <div class="_49R7m">
       <!----><!----><!---->
-      <h2>Profile Info <span class="AG3uu _4wz0v">Level 1 Verified</span></h2>
+      <h2>{$_('profile-info')}<span class="AG3uu _4wz0v">{$_('level-1-verified')}</span></h2>
       <div class="nBFHm">
         <h3>{data.email}</h3>
         <!----><!----><!---->
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="Qul7N">
-      <p class="QKu-k">Limits &amp; Features</p>
+      <p class="QKu-k">{$_('limits-features')}</p>
       <div class="MW3aP">
         <section>
           <div class="">
@@ -53,9 +53,9 @@
                       >
                       </path>
                     </g>
-                  </svg> Deposit assets</span
+                  </svg>{$_('deposit-assets')}</span
                 >
-                <span class="K0ypF">Enabled</span>
+                <span class="K0ypF">{$_('g-on')}</span>
               </li>
               <li>
                 <span class="AnUSR">
@@ -77,9 +77,9 @@
                       >
                       </path>
                     </g>
-                  </svg> Withdraw assets</span
+                  </svg>{$_('withdraw-assets')}</span
                 >
-                <span class="K0ypF">Enabled$10000</span>
+                <span class="K0ypF">{$_('enabled-10000')}</span>
               </li>
               <li>
                 <span class="AnUSR">
@@ -95,9 +95,9 @@
                       d="M19,7 C19.5522847,7 20,7.44771525 20,8 L20,8 L20,16 C20,16.5522847 19.5522847,17 19,17 L19,17 L5,17 C4.44771525,17 4,16.5522847 4,16 L4,16 L4,8 C4,7.44771525 4.44771525,7 5,7 L5,7 Z M7.75,14 L6.25,14 C6.11192881,14 6,14.1119288 6,14.25 L6,14.25 L6,14.75 C6,14.8880712 6.11192881,15 6.25,15 L6.25,15 L7.75,15 C7.88807119,15 8,14.8880712 8,14.75 L8,14.75 L8,14.25 C8,14.1119288 7.88807119,14 7.75,14 L7.75,14 Z M10.75,14 L9.25,14 C9.11192881,14 9,14.1119288 9,14.25 L9,14.25 L9,14.75 C9,14.8880712 9.11192881,15 9.25,15 L9.25,15 L10.75,15 C10.8880712,15 11,14.8880712 11,14.75 L11,14.75 L11,14.25 C11,14.1119288 10.8880712,14 10.75,14 L10.75,14 Z M13.75,14 L12.25,14 C12.1119288,14 12,14.1119288 12,14.25 L12,14.25 L12,14.75 C12,14.8880712 12.1119288,15 12.25,15 L12.25,15 L13.75,15 C13.8880712,15 14,14.8880712 14,14.75 L14,14.75 L14,14.25 C14,14.1119288 13.8880712,14 13.75,14 L13.75,14 Z M16.75,14 L15.25,14 C15.1119288,14 15,14.1119288 15,14.25 L15,14.25 L15,14.75 C15,14.8880712 15.1119288,15 15.25,15 L15.25,15 L16.75,15 C16.8880712,15 17,14.8880712 17,14.75 L17,14.75 L17,14.25 C17,14.1119288 16.8880712,14 16.75,14 L16.75,14 Z M8.5,9 L6.5,9 C6.22385763,9 6,9.22385763 6,9.5 L6,9.5 L6,10.5 C6,10.7761424 6.22385763,11 6.5,11 L6.5,11 L8.5,11 C8.77614237,11 9,10.7761424 9,10.5 L9,10.5 L9,9.5 C9,9.22385763 8.77614237,9 8.5,9 L8.5,9 Z"
                     >
                     </path>
-                  </svg> Card purchases(web only)</span
+                  </svg>{$_('card-purchases-web-only')}</span
                 >
-                <span class="K0ypF">Enabled</span>
+                <span class="K0ypF">{$_('g-on')}</span>
               </li>
               <li>
                 <span class="AnUSR">
@@ -121,14 +121,14 @@
                       >
                       </path>
                     </g>
-                  </svg> Futures</span
+                  </svg>{$_('g-futures')}</span
                 >
-                <span class="K0ypF">Enabled</span>
+                <span class="K0ypF">{$_('g-on')}</span>
               </li>
             </ul>
           </div>
           <div class="gVuB4">
-            <div class="-crL-">Level 2</div>
+            <div class="-crL-">{$_('level-2')}</div>
             <ul>
               <li>
                 <span class="AnUSR JaAW5">
@@ -144,10 +144,10 @@
                       d="M12,4 C14.209139,4 16,5.790861 16,8 L16,10 L16.9975267,10 C17.5511774,10 18,10.4463114 18,10.9975446 L18,18.0024554 C18,18.553384 17.544239,19 16.9975267,19 L7.00247329,19 C6.44882258,19 6,18.5536886 6,18.0024554 L6,10.9975446 C6,10.446616 6.45576096,10 7.00247329,10 L8,10 L8,8 C8,5.790861 9.790861,4 12,4 Z M12,6 C10.8954305,6 10,6.8954305 10,8 L10,10 L14,10 L14,8 C14,6.8954305 13.1045695,6 12,6 Z"
                     >
                     </path>
-                  </svg> Increased Withdrawal Limit</span
+                  </svg>{$_('increased-withdrawal-limit')}</span
                 >
                 <div class="ry2P5">
-                  <div>Enable 500000/day</div>
+                  <div>{$_('enable-500000-day')}</div>
                 </div>
               </li>
               <li>
@@ -164,10 +164,10 @@
                       d="M12,4 C14.209139,4 16,5.790861 16,8 L16,10 L16.9975267,10 C17.5511774,10 18,10.4463114 18,10.9975446 L18,18.0024554 C18,18.553384 17.544239,19 16.9975267,19 L7.00247329,19 C6.44882258,19 6,18.5536886 6,18.0024554 L6,10.9975446 C6,10.446616 6.45576096,10 7.00247329,10 L8,10 L8,8 C8,5.790861 9.790861,4 12,4 Z M12,6 C10.8954305,6 10,6.8954305 10,8 L10,10 L14,10 L14,8 C14,6.8954305 13.1045695,6 12,6 Z"
                     >
                     </path>
-                  </svg> Enhanced Account Security</span
+                  </svg>{$_('enhanced-account-security')}</span
                 >
                 <div class="ry2P5">
-                  <div>Enable</div>
+                  <div>{$_('g-enable')}</div>
                 </div>
               </li>
             </ul>
@@ -175,15 +175,12 @@
         </section>
         <div class="Sh9uK">
           <div class="_5b5z-">
-            <p class="wgm9Y">Want higher limits?</p>
-            <p class="XK6wE">
-              Get increased limits and advanced features by providing a bit more
-              profile information.
-            </p>
+            <p class="wgm9Y">{$_('want-higher-limits')}</p>
+            <p class="XK6wE">{$_('get-increased-limits')}</p>
             <div class="-I7Zd">
               <button data-size="small" type="button" class="jRLsY wzmE4">
                 <span>
-                  <!---->Get started<!---->
+                  <!---->{$_('get-started')}<!---->
                 </span>
               </button>
               <svg
@@ -207,10 +204,7 @@
         <!---->
       </div>
     </div>
-    <p class="_3U9RI">
-      Futures trading is not available to anyone who is resident, organized, or
-      located in a restricted region territory.
-    </p>
+    <p class="_3U9RI">{$_('futures-trading-restrictions')}</p>
   </div>
 {:else if $error}
   <div
@@ -223,6 +217,5 @@
     <Loader />
   </div>
 {/if}
-
 <style>
 </style>

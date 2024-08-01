@@ -1,9 +1,9 @@
 <script>
+	import { _ } from 'svelte-i18n';
 	import { slideFade } from "$lib/transitions";
 
   
 </script>
-
 <div class="a773e3aa" transition:slideFade={{ duration: 200 }}>
     <ul>
     <li>
@@ -15,10 +15,10 @@
                 <!---->
             </div>
             <div class="d4ef16dd">
-                <span>Epic Airdrop</span>
+                <span>{$_('airdrop-token-title')}</span>
                 <!----><!---->
             </div>
-            <div class="ddfb18d1">Come and grab your rewards </div>
+            <div class="ddfb18d1">{$_('grab-rewards')}</div>
         </a>
     </li>
     <li>
@@ -28,10 +28,10 @@
             </svg>
             </div>
             <div class="d4ef16dd">
-                <span>Referral</span>
+                <span>{$_('g-referrals')}</span>
                 <!----><!---->
             </div>
-            <div class="ddfb18d1">Invite friends to earn up to 60% commission</div>
+            <div class="ddfb18d1">{$_('referrals-subtitle')}</div>
         </a>
     </li>
     <li>
@@ -43,11 +43,11 @@
                 </svg>
             </div>
             <div class="d4ef16dd">
-                <span>Reward Center</span>
+                <span>{$_('rewardcenter')}</span>
                 <i class="c69ddc99"></i>
                 <!---->
             </div>
-            <div class="ddfb18d1">Complete tasks and get up to 1000 USDT</div>
+            <div class="ddfb18d1">{$_('rewardcenter-subtitle')}</div>
         </a>
     </li>
     <li>
@@ -59,10 +59,10 @@
                 </svg>
             </div>
             <div class="d4ef16dd">
-                <span>Campaigns</span>
+                <span>{$_('leaderboard')}</span>
                 <!----><!---->
             </div>
-            <div class="ddfb18d1">Join in our campaigns and promotions</div>
+            <div class="ddfb18d1">{$_('leaderboard-subtitle')}</div>
         </a>
     </li>
     <li>
@@ -74,10 +74,10 @@
                 </svg>
             </div>
             <div class="d4ef16dd">
-                <span>LaunchBase</span>
+                <span>{$_('launchbase')}</span>
                 <!----><!---->
             </div>
-            <div class="ddfb18d1">Participate in our latest token sale</div>
+            <div class="ddfb18d1">{$_('launchbase-subtitle')}</div>
         </a>
     </li>
     <li>
@@ -89,10 +89,10 @@
                 </svg>
             </div>
             <div class="d4ef16dd">
-                <span>News</span>
+                <span>{$_('g-feed')}</span>
                 <!----><!---->
             </div>
-            <div class="ddfb18d1">Stay up-to-date with the latest crypto trends</div>
+            <div class="ddfb18d1">{$_('feed-subtitle')}</div>
         </a>
     </li>
     <li>
@@ -104,10 +104,10 @@
                 </svg>
             </div>
             <div class="d4ef16dd">
-                <span>Ezcryptox Blog</span>
+                <span>{$_('g-blog')}</span>
                 <!----><!---->
             </div>
-            <div class="ddfb18d1">Learn and stay up-to-date on all things crypto!</div>
+            <div class="ddfb18d1">{$_('blog-subtitle')}</div>
         </a>
     </li>
     <li>
@@ -121,15 +121,14 @@
                 <!---->
             </div>
             <div class="d4ef16dd">
-                <span>SunSwap</span>
+                <span>{$_('justswap')}</span>
                 <!----><!---->
             </div>
-            <div class="ddfb18d1">Trade TRON-based DeFi assets</div>
+            <div class="ddfb18d1">{$_('justswap-subtitle')}</div>
         </a>
     </li>
 </ul>
 </div>
-
 <style>
    
 </style>

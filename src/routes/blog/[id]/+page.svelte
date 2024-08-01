@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
     import "../../../styles/blog/detail.css";
     import { page } from '$app/stores';
 	import { onMount } from 'svelte';
@@ -19,7 +20,6 @@
 			.finally(() => (loading = false));
 	});
 </script>
-
 <div class="Drdk9 IsyAl">
     {#if blog}
         <div class="Dijsp">
@@ -44,7 +44,7 @@
     </div>
     {/if}
     <div class="Nl8X5">
-        <p class="_698nD">Follow Ezcryptox On</p>
+        <p class="_698nD">{$_('follow-ezcryptox-on')}</p>
         <div class="UTyNK">
             <a href="https://twitter.com/Ezcryptox" target="_blank"
                 ><svg
@@ -74,7 +74,7 @@
                         d="M558.28 576l28.44-185.32h-177.82v-120.26c0-50.7 24.84-100.12 104.48-100.12h80.84v-157.78s-73.36-12.52-143.5-12.52c-146.44 0-242.16 88.76-242.16 249.44v141.24h-162.78v185.32h162.78v448h200.34v-448z"
                     ></path></svg
                 ></a
-            ><a href="https://t.me/PoloniexEnglish" target="_blank"
+            ><a href="https://t.me/EzcryptoxEnglish" target="_blank"
                 ><svg
                     version="1.1"
                     fill="currentColor"

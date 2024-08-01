@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
   import Calendar from "./calendar.svelte";
 
   $: calendarOpen = false;
@@ -25,7 +26,6 @@
     calendarOpen = coinIsOpen = fiatIsOpen = false;
   }
 </script>
-
 <div id="el-popper-container-8688">
   <div
     class="el-popper is-pure is-light el-dropdown__popper e-dropdown order-dropdown"
@@ -44,7 +44,7 @@
         <div class="el-scrollbar__view el-dropdown__list" style="">
           <div class="_boxContent_dh5q2_158">
             <dl>
-              <dt>Date</dt>
+              <dt>{$_('date')}</dt>
               <dd>
                 <div
                   class="el-date-editor el-date-editor--daterange el-input__wrapper el-range-editor el-tooltip__trigger el-tooltip__trigger"
@@ -95,7 +95,7 @@
               </dd>
             </dl>
             <dl>
-              <dt>Coin</dt>
+              <dt>{$_('g-currency')}</dt>
               <dd>
                 <div class="el-select">
                   <div
@@ -198,7 +198,7 @@
               </dd>
             </dl>
             <dl>
-              <dt>Fiat Currency</dt>
+              <dt>{$_('fiat-currency')}</dt>
               <dd>
                 <div class="el-select">
                   <div
@@ -262,10 +262,10 @@
                           >
                             <!--v-if-->
                             <li class="el-select-dropdown__item">
-                              <span>USD</span>
+                              <span>{$_('usd')}</span>
                             </li>
                             <li class="el-select-dropdown__item">
-                              <span>SGD</span>
+                              <span>{$_('sgd')}</span>
                             </li>
                             <li class="el-select-dropdown__item">
                               <span>INR</span>
@@ -274,10 +274,10 @@
                               <span>VND</span>
                             </li>
                             <li class="el-select-dropdown__item">
-                              <span>CAD</span>
+                              <span>{$_('cad')}</span>
                             </li>
                             <li class="el-select-dropdown__item">
-                              <span>AUD</span>
+                              <span>{$_('aud')}</span>
                             </li>
                             <li class="el-select-dropdown__item">
                               <span>TWD</span>
@@ -292,16 +292,16 @@
                               <span>HKD</span>
                             </li>
                             <li class="el-select-dropdown__item">
-                              <span>EUR</span>
+                              <span>{$_('eur')}</span>
                             </li>
                             <li class="el-select-dropdown__item">
-                              <span>NGN</span>
+                              <span>{$_('ngn')}</span>
                             </li>
                             <li class="el-select-dropdown__item">
-                              <span>IDR</span>
+                              <span>{$_('idr')}</span>
                             </li>
                             <li class="el-select-dropdown__item">
-                              <span>PHP</span>
+                              <span>{$_('php')}</span>
                             </li>
                             <li class="el-select-dropdown__item">
                               <span>KHR</span>
@@ -334,7 +334,7 @@
                               <span>PKR</span>
                             </li>
                             <li class="el-select-dropdown__item">
-                              <span>MOP</span>
+                              <span>{$_('mop')}</span>
                             </li>
                           </ul>
                         </div>
@@ -369,7 +369,7 @@
               </dd>
             </dl>
             <dl>
-              <dt>Type</dt>
+              <dt>{$_('g-type')}</dt>
               <dd>
                 <div class="el-select">
                   <div
@@ -433,10 +433,10 @@
                           >
                             <!--v-if-->
                             <li class="el-select-dropdown__item">
-                              <span>Buy</span>
+                              <span>{$_('g-buy')}</span>
                             </li>
                             <li class="el-select-dropdown__item">
-                              <span>Sell</span>
+                              <span>{$_('g-sell')}</span>
                             </li>
                           </ul>
                         </div>
@@ -471,16 +471,16 @@
               </dd>
             </dl>
             <dl class="_btnGroup_dh5q2_186">
-              <dt><a href="javascript:;">Clear</a></dt>
+              <dt><a href="javascript:;">{$_('g-clear')}</a></dt>
               <dd>
                 <button
                   class="el-button el-button--info is-plain"
                   aria-disabled="false"
-                  type="button"><!--v-if--><span class="">Cancel</span></button
+                  type="button"><!--v-if--><span class="">{$_('g-cancel')}</span></button
                 ><button
                   class="el-button el-button--success"
                   aria-disabled="false"
-                  type="button"><!--v-if--><span class="">Confirm</span></button
+                  type="button"><!--v-if--><span class="">{$_('g-confirm')}</span></button
                 >
               </dd>
             </dl>

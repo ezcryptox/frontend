@@ -1,9 +1,9 @@
 <script>
+	import { _ } from 'svelte-i18n';
 import { screen } from "$lib/store/screen"
 export let response;
 
 </script>
-
 <div class="d68d17a2 _1e5e2a71">
     <section class="c6e41aee">
         <div class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition _2a39ccb4">
@@ -15,7 +15,7 @@ export let response;
                     <thead class="has-gutter">
                         <tr class="">
                             <th colspan="1" rowspan="1" class="el-table_1_column_1   _8e0516f6  is-leaf is-sortable el-table__cell">
-                                <div class="cell">Pair<span class="caret-wrapper">
+                                <div class="cell">{$_('g-symbol')}<span class="caret-wrapper">
                                     <!-- <i class="sort-caret ascending"></i>
                                     <i class="sort-caret descending"></i> -->
                                 </span>
@@ -23,9 +23,7 @@ export let response;
                             </th>
                             {#if $screen > 550}
                             <th colspan="1" rowspan="1" class="el-table_1_column_2   ba00c845  is-leaf is-sortable el-table__cell">
-                                <div class="cell">
-                                    Price
-                                    <span class="caret-wrapper">
+                                <div class="cell">{$_('g-price')}<span class="caret-wrapper">
                                         <!-- <i class="sort-caret ascending"></i>
                                         <i class="sort-caret descending"></i> -->
                                     </span>
@@ -33,9 +31,7 @@ export let response;
                             </th>
                             {/if}
                             <th colspan="1" rowspan="1" class="el-table_1_column_3  is-middle _582f7adf  is-leaf is-sortable el-table__cell">
-                                <div class="cell">
-                                    24h Change
-                                    <span class="caret-wrapper">
+                                <div class="cell">{$_('24h-change')}<span class="caret-wrapper">
                                         <!-- <i class="sort-caret ascending"></i>
                                         <i class="sort-caret descending"></i> -->
                                     </span>
@@ -43,12 +39,12 @@ export let response;
                             </th>
                             {#if $screen > 1138}
                                 <th colspan="1" rowspan="1" class="el-table_1_column_4  is-middle d1a50393  is-leaf el-table__cell">
-                                    <div class="cell">24h High/Low</div>
+                                    <div class="cell">{$_('24h-high-low')}</div>
                                 </th>
                             {/if}
                             {#if $screen > 750}
                             <th colspan="1" rowspan="1" class="el-table_1_column_5  is-middle d7e432a6  is-leaf is-sortable el-table__cell">
-                                <div class="cell">Volume<span class="caret-wrapper">
+                                <div class="cell">{$_('volume')}<span class="caret-wrapper">
                                     <i class="sort-caret ascending"></i>
                                     <i class="sort-caret descending"></i>
                                 </span>
@@ -56,7 +52,7 @@ export let response;
                             </th>
                             {/if}
                             <th colspan="1" rowspan="1" class="el-table_1_column_6  is-right   is-leaf el-table__cell">
-                                <div class="cell">Action</div>
+                                <div class="cell">{$_('g-action')}</div>
                             </th>
                             <th class="el-table__cell gutter" style="width: 0px; display: none;"></th>
                         </tr>
@@ -104,12 +100,12 @@ export let response;
                             {/if}
                             {#if $screen > 750}
                             <td rowspan="1" colspan="1" class="el-table_1_column_5 is-middle d7e432a6 el-table__cell">
-                                <div class="cell">$68.37M</div>
+                                <div class="cell">{$_('68-37m')}</div>
                             </td>
                             {/if}
                             <td rowspan="1" colspan="1" class="el-table_1_column_6 is-right  el-table__cell">
                                 <div class="cell">
-                                    <a href="/trade/{resp.symbol}_USDT?type=spot" class="_189b2a6c">Trade</a>
+                                    <a href="/trade/{resp.symbol}_USDT?type=spot" class="_189b2a6c">{$_('footer-futures-trade')}</a>
                                 </div>
                             </td>
                         </tr>
@@ -127,7 +123,6 @@ export let response;
         </div>
     </section>
 </div>
-
 <style>
 
 </style>

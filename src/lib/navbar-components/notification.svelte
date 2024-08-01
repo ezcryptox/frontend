@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
 	// @ts-nocheck
 	import {slideFade} from "$lib/transitions"
 	import '../../styles/notification/notification.css';
@@ -29,7 +30,6 @@
 		platformNotifications = data?.notifications ?? [];
 	});
 </script>
-
 <!-- svelte-ignore a11y-unknown-aria-attribute -->
 <div class="c3288ade" aria-is-login={$isLogin} transition:slideFade={{ duration: 200 }}>
 	{#if $isLogin}
@@ -39,13 +39,13 @@
 			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 			<label aria-current={selectedTab === 0 ? 'active' : ''} on:click={() => (selectedTab = 0)}>
 				<!-- svelte-ignore a11y-unknown-aria-attribute -->
-				<span aria-account-unread={accountunreadcount}>Account Activities</span>
+				<span aria-account-unread={accountunreadcount}>{$_('account-activities')}</span>
 			</label>
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 			<label aria-current={selectedTab === 1 ? 'active' : ''} on:click={() => (selectedTab = 1)}
-				><span>Platform Notices</span></label
+				><span>{$_('platform-notices')}</span></label
 			>
 		</div>
 	{/if}
@@ -139,7 +139,7 @@
 	</main>
 	<div class="c22446a5">
 		<a href="/notifications"
-			><span>View All</span><svg fill="currentColor" style="width: 16px; height: 16px;"
+			><span>{$_('g-view-all')}</span><svg fill="currentColor" style="width: 16px; height: 16px;"
 				><use xlink:href="#uniframe-icon-arrow-right-2"></use></svg
 			></a
 		><!---->

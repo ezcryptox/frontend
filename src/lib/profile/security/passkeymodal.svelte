@@ -1,15 +1,15 @@
 <script>
+	import { _ } from 'svelte-i18n';
 import { createEventDispatcher } from "svelte";
 const dispatch = createEventDispatcher()
 
 </script>
-
 <div id="uniframe-dialog" data-v-app="">
     <div class="vfm vfm--fixed vfm--inset" role="dialog" aria-modal="true" style="z-index: 1000101;">
         <div class="vfm__overlay vfm--overlay vfm--absolute vfm--inset vfm--prevent-none uniframe-root" aria-hidden="true"></div>
         <div class="vfm__content vfm--outline-none uniframe-root" >
             <div class="beeac841" component="[object Object]">
-                <h2>Enable Passkey</h2>
+                <h2>{$_('passkey-open')}</h2>
                 <dl><dt>
                     <svg width="20" height="21" viewBox="0 0 20 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.1669 11.3893V12.2227C14.1669 14.5307 13.6137 16.7602 12.5711 18.7606L12.3821 19.1112L10.9263 18.2997C11.893 16.5656 12.4342 14.6241 12.4946 12.6026L12.5002 12.2227V11.3893H14.1669ZM9.16692 8.88932H10.8336V12.2227L10.829 12.5382C10.7627 14.8472 9.97042 17.0336 8.5865
@@ -18,28 +18,28 @@ const dispatch = createEventDispatcher()
                             16.3812L16.8873 16.8297L15.2791 16.392C15.605 15.1945 15.7896 13.9567 15.8266 12.6963L15.8336 12.2227V9.72266C15.8336 6.501 13.2218 3.88932 10.0002 3.88932C8.68992 3.88932 7.48052 4.32133 6.50671 5.05069L5.31923 3.8624C6.60222 2.83625 8.22956 2.22266 10.0002 2.22266ZM4.13995 5.04167L5.32824 6.22916C4.63625
                             7.15309 4.21192 8.28908 4.17026 9.52207L4.16634 9.72182L4.16982 11.3893C4.16982 12.3222 3.94992 13.2248 3.53552 14.037L3.4054 14.2779L1.95801 13.4516C2.27407 12.8979 2.45897 12.2794 2.49616 11.633L2.50315 11.3893L2.50301 9.72266C2.50021 7.95201 3.1138 6.32467 4.13995 5.04167Z"></path>
                     </svg>
-                    <span>Free Yourself from Password Memorization</span>
+                    <span>{$_('passkey-0')}</span>
                 </dt>
-                <dd>Passkey enables you to log in with fingerprint or facial recognition.</dd>
+                <dd>{$_('passkey-1')}</dd>
                 <dt>
                     <svg width="20" height="21" viewBox="0 0 20 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.61648 12.5399L13.8079 8.07204L12.4405 6.78918L9.52258 9.89949L8.13565 8.61723L6.86279 9.99399L9.61648 12.5399Z"></path>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M10 19.3057L17.2266 14.3057V1.80566H2.77344V14.3057L10 19.3057ZM4.64844 3.68066H15.3516V13.3229L10 17.0256L4.64844 13.3229V3.68066Z"></path>
                     </svg>
-                    <span>Secure Your Account</span>
+                    <span>{$_('passkey-2')}</span>
                 </dt>
-                <dd>Passkeys are a state-of-the-art technology resistant to phishing.</dd>
+                <dd>{$_('passkey-3')}</dd>
                 <dt>
                     <svg width="20" height="21" viewBox="0 0 20 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M2.20703 2.68457V14.9307H9.0625V16.4932H6.21094V18.3682H13.7891V16.4932H10.9375V14.9307H17.8125V2.68457H2.20703ZM15.9375 4.55957H4.08203V13.0557H15.9375V4.55957Z"></path>
                     </svg>
-                    <span>Work on All of Your Devices</span>
+                    <span>{$_('passkey-4')}</span>
                 </dt>
-                <dd>Passkeys will automatically be available across all your devices.</dd>
+                <dd>{$_('passkey-5')}</dd>
                 </dl>
                 <div class="c7144b1d">
                     <button on:click={()=> dispatch("close")} data-size="large" type="button" class="ce727619 cb6de6db">
-                        <span>Enable</span>
+                        <span>{$_('g-enable')}</span>
                     </button>
                 </div>
             </div>
@@ -52,7 +52,6 @@ const dispatch = createEventDispatcher()
         </div>
     </div>
 </div>
-
 <style>
 .vfm--inset {
     top: 0;

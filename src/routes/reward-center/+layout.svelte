@@ -1,6 +1,7 @@
 
 
 <script>
+	import { _ } from 'svelte-i18n';
   import "../../styles/reward-center/reward.css";
   import "../../styles/reward-center/tasks.css";
   import "../../styles/reward-center/coupon.css";
@@ -33,10 +34,6 @@
   setContext('toggleRedemptionHistoryModal', toggleRedemptionHistoryModal);
   
 </script>
-
-
-
-
 <body class="v3-body en-us">
   <div class="app-reward-center">
     <div>
@@ -49,7 +46,7 @@
                 ? "router-link-exact-active router-link-active"
                 : ""}
               aria-current={isTabOneSelected ? "page" : undefined}
-              >Reward Center</a
+              >{$_('rewardcenter')}</a
             >
             <a
               href="/reward-center/coupon"
@@ -57,16 +54,14 @@
                 ? "router-link-exact-active router-link-active"
                 : ""}
               aria-current={isTabTwoSelected ? "page" : undefined}
-              >Coupon Center</a
+              >{$_('coupon-center')}</a
             >
           </div>
           {#if isTabOneSelected}
             <div class="_9a458293 _74d3add7">
               <div class="text-cont text-strong">
-                <div class="_8b49229d font-bold">Welcome to Reward Center</div>
-                <div class="text-large">
-                  Complete tasks to win up to 1,000 USDT
-                </div>
+                <div class="_8b49229d font-bold">{$_('welcome-to-reward-center')}</div>
+                <div class="text-large">{$_('complete-tasks-to-win-up-to-1-000-usdt')}</div>
               </div>
 
               <img
@@ -78,8 +73,8 @@
           {:else}
             <dl class="_485c0022 _74d3add7">
               <dt class="text-strong">
-                <div class="_8b49229d font-bold">Coupon Center</div>
-                <div class="text-large">Receive more benefits</div>
+                <div class="_8b49229d font-bold">{$_('coupon-center')}</div>
+                <div class="text-large">{$_('receive-more-benefits')}</div>
               </dt>
               <dd>
                 <svg
@@ -491,131 +486,52 @@
         <div class="bg-card ce3e5c0c">
           <div class="content">
             <div>
-              <div class="a7135efb text-strong font-bold">Q&amp;A</div>
+              <div class="a7135efb text-strong font-bold">{$_('q-a')}</div>
               <div class="text-gray">
-                <p>
-                  Frequently asked questions about the Ezcryptox Reward Center
-                  are as follows:
-                </p>
+                <p>{$_('ezcryptox-faq')}</p>
                 <p>&nbsp;</p>
                 <p>
                   <strong
-                    >1. Where can I view the rewards I have received?</strong
+                    >{$_('view-rewards')}</strong
                   >
                 </p>
-                <p>
-                  A: You can view the task rewards you have obtained in [Reward
-                  Center - Coupon Center].
-                </p>
-                <p><strong>2. How do I use the Spot Coupons?</strong></p>
-                <p>
-                  A: The spot coupons can be used to offset the fees for trading
-                  tokens and Margin transaction fee. The coupon will be refunded
-                  in the form of "first deducted then refunded" when the
-                  transaction fee is deducted.
-                </p>
-                <p><strong>3. How do I use the Margin Coupon?</strong></p>
-                <p>
-                  A: Enabling "Auto-Borrow and Repay" for margin trading allows
-                  you to use margin coupons to offset the interest on borrowed
-                  cryptos, with the interest refunded directly to your account.
-                </p>
-                <p><strong>4. How does the Futures Trial Fund work?</strong></p>
-                <p>
-                  A: The purpose of the Futures Trial Fund Voucher is to allow
-                  new users to experience Ezcryptox's futures products in a real
-                  trading environment and without risk. After the voucher has
-                  been successfully redeemed and activated, the trial fund will
-                  be distributed to your futures account and you can use it for
-                  futures trading. <a
+                <p>{$_('view-task-rewards')}</p>
+                <p><strong>{$_('how-do-i-use-the-spot-coupons')}</strong></p>
+                <p>{$_('spot-coupons-uses')}</p>
+                <p><strong>{$_('how-do-i-use-the-margin-coupon')}</strong></p>
+                <p>{$_('auto-borrow-repay')}</p>
+                <p><strong>{$_('futures-trial-fund')}</strong></p>
+                <p>{$_('futures-trial-found-voucher-uses')}<a
                     href="https://support.poloniex.com/hc/en-us/articles/4403106482711"
-                    ><span class="wysiwyg-underline">Learn more&gt;&gt;</span
+                    ><span class="wysiwyg-underline">{$_('learn-more')}</span
                     ></a
                   >
                 </p>
-                <p><strong>5. How do I use the Futures Coupons?</strong></p>
-                <p>
-                  A: The futures coupon can be used to offset the cost of
-                  trading futures contracts. The coupon will be refunded in the
-                  form of a "first deducted, then refunded" fee when the
-                  transaction fee is deducted. You can check the amount of
-                  credit you have received on the "Wallet-Futures" page or on
-                  the futures trading page, and your futures account will
-                  display information about the "actual amount available". <a
+                <p><strong>{$_('use-futures-coupons')}</strong></p>
+                <p>{$_('futures-coupon')}<a
                     href="https://support.poloniex.com/hc/en-us/articles/10700665983127"
-                    ><span class="wysiwyg-underline">Learn more&gt;&gt;</span
+                    ><span class="wysiwyg-underline">{$_('learn-more')}</span
                     ></a
                   >
                 </p>
-                <p><strong>6. How to use Polo Earn Coupons?</strong></p>
-                <p>
-                  Polo Earn coupons can be used when subscribing to specific
-                  Polo Earn products to help users obtain additional benefits.
-                  For details of applicable conditions, please refer to the
-                  description on the coupon.
-                </p>
+                <p><strong>{$_('how-to-use-polo-earn-coupons')}</strong></p>
+                <p>{$_('polo-earn-coupons-uses')}</p>
               </div>
             </div>
             <div class="d0ca3dbc">
-              <div class="a7135efb text-strong font-bold">Rules</div>
+              <div class="a7135efb text-strong font-bold">{$_('rules')}</div>
               <div class="text-gray">
-                <p>The rules of Ezcryptox Center Center are as follows:</p>
+                <p>{$_('ezcryptox-rules')}</p>
                 <p>&nbsp;</p>
                 <ol>
-                  <li>
-                    10% rebate of handling fee: "Users who register through the
-                    invitation code can enjoy a 10% rebate for Spot, Margin, and
-                    Futures transactions. The rebate is valid within 60 days
-                    from the registration of the Ezcryptox account, and the
-                    rebate will be issued to the spot account. Records can be
-                    viewed in [Activity-Wallet-Other], transaction rebate reward
-                    = net handling fee * rebate ratio".
-                  </li>
-                  <li>
-                    Deposit task: Follow the task requirements to complete the
-                    specified amount of deposits (only on the chain deposit) to
-                    receive deposit rewards, rewards can be viewed in the
-                    [Reward Center – Coupon Center].
-                  </li>
-                  <li>
-                    Spot trading task: To earn spot trading rewards, you must
-                    fulfill the relevant spot trading tasks, with the exclusion
-                    of trading volume using spot coupons, exclude Maker
-                    transactions, and zero transaction fee trading pairs.
-                  </li>
-                  <li>
-                    Futures task: Users need to register and open futures to
-                    receive the trial fund or coupon reward. The part of the
-                    transaction amount offset by using the futures trial fund is
-                    not counted in the futures trading task count.
-                  </li>
-                  <li>
-                    The opening time and validity period of each task may be
-                    different, and the total amount of task rewards for trial
-                    fund and coupon is limited on a first-come-first-served
-                    basis.
-                  </li>
-                  <li>
-                    Each task needs to be collected in the reward center before
-                    completion, in order to be effectively counted by the
-                    system. For tasks such as "cumulative futures account
-                    transfer" or "cumulative spot/margin/futures trading
-                    volume," there may be some delay in displaying the progress
-                    of task completion. For the task of "cumulative active
-                    futures trading," the display delay may be even longer.
-                  </li>
-                  <li>
-                    Ezcryptox reserves the right to revoke any user trial funds
-                    or coupons claimed by users who are found to be cheating,
-                    suspected of cheating, or in violation of any Ezcryptox rules
-                    and regulations. Any attempt to fraudulently in trial funds
-                    or coupons may result in a ban on the account.
-                  </li>
-                  <li>
-                    Ezcryptox reserves the right to have the final decision and
-                    interpretation of the event rules, and to modify the event
-                    rules or rewards at any time without prior notice.
-                  </li>
+                  <li>{$_('rebate-handling-fee')}</li>
+                  <li>{$_('deposit-task')}</li>
+                  <li>{$_('earn-spot-trading-rewards')}</li>
+                  <li>{$_('futures-task-requirements')}</li>
+                  <li>{$_('task-info')}</li>
+                  <li>{$_('reward-center')}</li>
+                  <li>{$_('revoking-funds')}</li>
+                  <li>{$_('event-rules-disclaimer')}</li>
                 </ol>
               </div>
             </div>
@@ -641,5 +557,3 @@
     {/if}
   </div>
 </body>
-
-

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { _ } from 'svelte-i18n';
 	import '../../../../styles/activity.css';
 	import ChevronsUpDown from 'lucide-svelte/icons/chevrons-up-down';
 	import { tick } from 'svelte';
@@ -63,7 +64,7 @@
 									clip-rule="evenodd"
 									d="M16.875 5.87109H15.75V2.49609H1.08984V15.5039H15.75V12.1289H16.875V5.87109ZM2.77734 4.18359H14.0625V5.87109H11.0039C9.27586 5.87109 7.875 7.27195 7.875 9C7.875 10.728 9.27586 12.1289 11.0039 12.1289H14.0625V13.8164H2.77734V4.18359ZM15.1875 7.55859H11.0039C10.2078 7.55859 9.5625 8.20393 9.5625 9C9.5625 9.79607 10.2078 10.4414 11.0039 10.4414H15.1875V7.55859Z"
 								></path></svg
-							><span>Wallet</span></a
+							><span>{$_('g-wallet')}</span></a
 						>
 					</li>
 					<li>
@@ -80,7 +81,7 @@
 									clip-rule="evenodd"
 									d="M15.1881 7.3125C15.1881 8.7343 14.5287 10.0021 13.4991 10.8268C13.4818 11.6081 13.3197 12.3538 13.0386 13.0379C15.2902 12.1126 16.8756 9.89771 16.8756 7.3125C16.8756 3.89524 14.1054 1.125 10.6881 1.125C8.10303 1.125 5.88821 2.7103 4.9628 4.96175C2.71079 5.8869 1.125 8.10201 1.125 10.6875C1.125 14.1048 3.89524 16.875 7.3125 16.875C10.7298 16.875 13.5 14.1048 13.5 10.6875C13.5 7.27024 10.7298 4.5 7.3125 4.5C7.26617 4.5 7.21996 4.50051 7.17388 4.50152C7.99854 3.47188 9.26633 2.8125 10.6881 2.8125C13.1734 2.8125 15.1881 4.82722 15.1881 7.3125ZM11.8125 10.6875C11.8125 13.1728 9.79778 15.1875 7.3125 15.1875C4.82722 15.1875 2.8125 13.1728 2.8125 10.6875C2.8125 8.20222 4.82722 6.1875 7.3125 6.1875C9.79778 6.1875 11.8125 8.20222 11.8125 10.6875Z"
 								></path></svg
-							><span>Spot</span></a
+							><span>{$_('g-spot')}</span></a
 						>
 					</li>
 					<li>
@@ -99,7 +100,7 @@
 									clip-rule="evenodd"
 									d="M1.96875 1.96875H16.0312V16.0312H1.96875V1.96875ZM3.65625 3.65625H14.3438V14.3438H3.65625V3.65625Z"
 								></path></svg
-							><span>Futures</span></a
+							><span>{$_('g-futures')}</span></a
 						>
 					</li>
 					<li>
@@ -118,7 +119,7 @@
 								></path><path
 									d="M12.0937 10.6875C12.5597 10.6875 12.9375 10.3097 12.9375 9.84375C12.9375 9.37776 12.5597 9 12.0937 9C11.6277 9 11.25 9.37776 11.25 9.84375C11.25 10.3097 11.6277 10.6875 12.0937 10.6875Z"
 								></path></svg
-							><span>Earn</span></a
+							><span>{$_('g-earn')}</span></a
 						>
 					</li> -->
 					<li>
@@ -135,7 +136,7 @@
 									clip-rule="evenodd"
 									d="M1.08984 2.49609V15.5039H16.875V2.49609H1.08984ZM15.1875 4.18359H2.77734V6.43359H15.1875V4.18359ZM2.77734 13.8164V8.12109H15.1875V13.8164H2.77734Z"
 								></path></svg
-							><span>Buy Crypto</span></a
+							><span>{$_('g-buy-crypto')}</span></a
 						>
 					</li>
 					<!-- <li>
@@ -156,7 +157,7 @@
 									height="4.62834"
 									transform="rotate(-45 9.81836 13.5)"
 								></rect></svg
-							><span>Copy Trading</span></a
+							><span>{$_('g-copy-trading')}</span></a
 						>
 					</li>
 					<li>
@@ -172,7 +173,7 @@
 								></path><path d="M1.96875 4.5H5.34375V6.1875H1.96875V4.5Z"></path><path
 									d="M9.84375 11.8125H1.96875V13.5H9.84375V15.1875H11.5312V10.125H9.84375V11.8125Z"
 								></path><path d="M12.6562 11.8125V13.5H16.0312V11.8125H12.6562Z"></path></svg
-							><span>Strategy Trading</span></a
+							><span>{$_('g-strategy-trading')}</span></a
 						>
 					</li> -->
 				</ul>
@@ -181,17 +182,17 @@
 		<div class="zyo5p">
 			<div class="TFdqF sOAaO">
 				<div>
-					<h1 class="EqAGa">Buy Crypto</h1>
+					<h1 class="EqAGa">{$_('g-buy-crypto')}</h1>
 					<div class="ArmYq" style="margin-top: 32px;">
 						<ul>
 							<li class="">
 								<a
 									aria-current="page"
 									href="/activity/cards/buy"
-									class="g5GQK router-link-exact-active _5m-Bj">Buy</a
+									class="g5GQK router-link-exact-active _5m-Bj">{$_('g-buy')}</a
 								>
 							</li>
-							<!-- <li class=""><a href="/activity/cards/sell" class="_5m-Bj">Sell</a></li> -->
+							<!-- <li class=""><a href="/activity/cards/sell" class="_5m-Bj">{$_('g-sell')}</a></li> -->
 						</ul>
 					</div>
 					<div style="margin-top: 32px;">
@@ -203,7 +204,7 @@
 								<div class="_1mSet">
 									<div class="iL5vR">
 										<div>
-											<div class="field-header"><label>Fiat Currency</label><!----></div>
+											<div class="field-header"><label>{$_('fiat-currency')}</label><!----></div>
 											<Popover.Root bind:open={fiatOpen} let:ids>
 												<Popover.Trigger asChild let:builder>
 													<Button
@@ -220,7 +221,7 @@
 												<Popover.Content class="w-[200px] p-0">
 													<Command.Root>
 														<Command.Input placeholder="" />
-														<Command.Empty>No currency found.</Command.Empty>
+														<Command.Empty>{$_('no-currency-found-1')}</Command.Empty>
 														<Command.Group class="max-h-80 overflow-y-auto">
 															{#each ['All', 'AUD', 'BGN', 'BRL', 'CAD', 'CHF', 'COP', 'CZK', 'DKK', 'DOP', 'EGP', 'EUR', 'GBP', 'HKD', 'IDR', 'ILS', 'JOD', 'KES', 'KWD', 'LKR', 'MXN', 'NGN', 'NOK', 'NZD', 'OMR', 'PEN', 'PLN', 'RON', 'SEK', 'THB', 'TRY', 'TWD', 'USD', 'VND', 'ZAR'] as fiat}
 																<Command.Item
@@ -239,7 +240,7 @@
 											</Popover.Root>
 										</div>
 										<div>
-											<div class="field-header"><label>Cryptocurrency</label><!----></div>
+											<div class="field-header"><label>{$_('cryptocurrency')}</label><!----></div>
 											<Popover.Root bind:open={cryptoOpen} let:ids>
 												<Popover.Trigger asChild let:builder>
 													<Button
@@ -256,7 +257,7 @@
 												<Popover.Content class="w-[200px] p-0">
 													<Command.Root>
 														<Command.Input placeholder="" />
-														<Command.Empty>No crypto found.</Command.Empty>
+														<Command.Empty>{$_('no-crypto-found-1')}</Command.Empty>
 														<Command.Group>
 															{#each ['All', 'BTC', 'ETH', 'LTC', 'TRX', 'USDC', 'USDT', 'XRP'] as crypto}
 																<Command.Item
@@ -275,7 +276,7 @@
 											</Popover.Root>
 										</div>
 										<div>
-											<div class="field-header"><label>Status</label><!----></div>
+											<div class="field-header"><label>{$_('g-status')}</label><!----></div>
 											<Popover.Root bind:open={statusOpen} let:ids>
 												<Popover.Trigger asChild let:builder>
 													<Button
@@ -310,7 +311,7 @@
 											</Popover.Root>
 										</div>
 										<div>
-											<div class="field-header"><label>Time</label><!----></div>
+											<div class="field-header"><label>{$_('g-date')}</label><!----></div>
 											<Popover.Root openFocus>
 												<Popover.Trigger asChild let:builder>
 													<Button

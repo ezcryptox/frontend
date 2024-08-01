@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
   import "../../../../styles/referral/p_referral.css";
   import Footer from "$lib/footer.svelte";
   import Modal from "$lib/referral/profile/Modals/referral.svelte";
@@ -10,7 +11,6 @@
     isModalOPen = !isModalOPen;
   }
 </script>
-
 {#if isModalOPen}
   <Modal {handleModalOpen} />
 {/if}
@@ -19,14 +19,13 @@
     <div data-v-3399c889="" class="_8948516f">
       <div class="content _5d2808b8">
         <div class="left">
-          <h1>Ezcryptox Referral Center</h1>
-          <p>Earn commissions from your invitees' trades</p>
+          <h1>{$_('ezcryptox-referral-center')}</h1>
+          <p>{$_('earn-commission')}</p>
           <div class="f73f9ec3">
             <!----><a
               href="/referral/"
               class="router-link-active _8dad4db1 _61be5a23"
-            >
-              Check the referral program <svg
+            >{$_('check-the-referral-program')}<svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="14"
@@ -43,23 +42,22 @@
         </div>
         <div class="right">
           <div class="fef54d3a">
-            <div class="flex justify-between _893633d3">
-              Share your referral code <!---->
+            <div class="flex justify-between _893633d3">{$_('share-your-referral-code')}<!---->
             </div>
             <div class="_288b3943">
               <!---->
               <div class="a5fa35fa">
                 <div class="b003f225">
-                  <span>Commission Rate</span><strong>20%</strong>
+                  <span>{$_('commission-rate')}</span><strong>20%</strong>
                 </div>
                 <div class="b003f225">
-                  <span>Total Earnings</span><strong>0.00 USDT</strong>
+                  <span>{$_('total-earnings')}</span><strong>{$_('0-00-usdt')}</strong>
                 </div>
               </div>
             </div>
             <div class="_5370c68a">
               <div class="_830a66f5">
-                <label class="_27004f09">Referral code</label>
+                <label class="_27004f09">{$_('referral-code')}</label>
                 <div class="a7a784a5"><span>EBMJA7QE</span></div>
               </div>
               <div class="bb8d5c1d">
@@ -83,7 +81,7 @@
             </div>
             <div class="_5370c68a">
               <div class="_830a66f5">
-                <label class="_27004f09">Referral link&ZeroWidthSpace;</label>
+                <label class="_27004f09">{$_('referral-link')}</label>
                 <div class="a7a784a5 _21bf3f75">
                   <span
                     >https://poloniex.com/signup?c=EBMJA7QE&amp;r=%2Freferral%2Ftasks</span
@@ -110,9 +108,7 @@
               </div>
             </div>
             <div class="flex justify-between e8611f99">
-              <button class="_1a0f7f35" on:click={handleModalOpen}>
-                Invite Friends Now
-              </button>
+              <button class="_1a0f7f35" on:click={handleModalOpen}>{$_('invite-friends-now')}</button>
               <div class="_99bda4e8 qrcode-button flex">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -154,10 +150,9 @@
           <div class="dd75317f">
             <div class="_859ec72a">
               <div class="d8501248">
-                <span class="_1303b7e3"> Referral Commissions </span><span
+                <span class="_1303b7e3">{$_('referral-commissions')}</span><span
                   class="f321c588">I</span
-                ><span class="_486a1536 ant-dropdown-trigger">
-                  ALL<svg
+                ><span class="_486a1536 ant-dropdown-trigger">{$_('all')}<svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="13"
@@ -171,25 +166,25 @@
                 >
               </div>
               <div class="_95db046e">
-                <strong>0.00 USDT</strong><span> ≈$0.00 </span>
+                <strong>{$_('0-00-usdt')}</strong><span> ≈$0.00 </span>
               </div>
             </div>
             <div class="_85007b83"></div>
             <div class="f583df2e">
               <div class="_6c7773b5">
-                <label>Spot Earnings</label><strong>$0.00</strong>
+                <label>{$_('spot-earnings')}</label><strong>$0.00</strong>
               </div>
               <div class="_6c7773b5">
-                <label>Futures Earnings</label><strong>$0.00</strong>
+                <label>{$_('futures-earnings')}</label><strong>$0.00</strong>
               </div>
               <div data-label="firstInvitees" class="_6c7773b5">
-                <label>Invitees</label><strong>0</strong>
+                <label>{$_('invitees')}</label><strong>0</strong>
               </div>
               <div class="_6c7773b5">
-                <label>Traders</label><strong>0</strong>
+                <label>{$_('traders')}</label><strong>0</strong>
               </div>
               <div class="_6c7773b5">
-                <label>Trade Activation Rate</label><strong>0%</strong>
+                <label>{$_('trade-activation-rate')}</label><strong>0%</strong>
               </div>
               <!---->
             </div>
@@ -199,7 +194,7 @@
       <div data-v-3399c889="" class="content">
         <div data-v-3399c889="" class="_8558e97a">
           <div class="_7d2cefcb">
-            <h2>Referral History</h2>
+            <h2>{$_('referral-history')}</h2>
             <i
               aria-label="icon: question-circle"
               class="anticon anticon-question-circle _5dccde6c"
@@ -226,16 +221,9 @@
                 href="/referral/profile/referrals"
                 aria-current="page"
                 class="router-link-exact-active _042ace51 _5451a841"
-              >
-                Invitees
-              </a><a href="/referral/profile/commissions" class="_5451a841">
-                Commissions
-              </a><a href="/referral/profile/blindbox" class="_5451a841">
-                Mystery Boxes
-              </a>
+              >{$_('invitees')}</a><a href="/referral/profile/commissions" class="_5451a841">{$_('commissions')}</a><a href="/referral/profile/blindbox" class="_5451a841">{$_('mystery-boxes')}</a>
               <div class="_4340d8ff">
-                <span class="_486a1536 ant-dropdown-trigger">
-                  ALL<svg
+                <span class="_486a1536 ant-dropdown-trigger">{$_('all')}<svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="13"
@@ -279,7 +267,7 @@
                                       ><span class="ant-table-header-column"
                                         ><div>
                                           <span class="ant-table-column-title"
-                                            >Email</span
+                                            >{$_('g-email')}</span
                                           ><span class="ant-table-column-sorter"
                                           ></span>
                                         </div></span
@@ -288,7 +276,7 @@
                                       ><span class="ant-table-header-column"
                                         ><div>
                                           <span class="ant-table-column-title"
-                                            >Joined Ezcryptox</span
+                                            >{$_('joined-ezcryptox')}</span
                                           ><span class="ant-table-column-sorter"
                                           ></span>
                                         </div></span
@@ -299,7 +287,7 @@
                                       ><span class="ant-table-header-column"
                                         ><div class="ant-table-column-sorters">
                                           <span class="ant-table-column-title"
-                                            >Spot Commission(USDT)</span
+                                            >{$_('spot-commission-usdt')}</span
                                           ><span class="ant-table-column-sorter"
                                             ><div
                                               title="Sort"
@@ -348,7 +336,7 @@
                                       ><span class="ant-table-header-column"
                                         ><div class="ant-table-column-sorters">
                                           <span class="ant-table-column-title"
-                                            >Futures Commission(USDT)</span
+                                            >{$_('futures-commission-usdt')}</span
                                           ><span class="ant-table-column-sorter"
                                             ><div
                                               title="Sort"
@@ -398,7 +386,7 @@
                                       ><span class="ant-table-header-column"
                                         ><div class="ant-table-column-sorters">
                                           <span class="ant-table-column-title"
-                                            >Total Commission(USDT)</span
+                                            >{$_('total-commission-usdt')}</span
                                           ><span class="ant-table-column-sorter"
                                             ><div
                                               title="Sort"
@@ -502,9 +490,7 @@
                                     class="empty-button polo-btn polo-btn-button polo-btn-primary polo-btn-medium"
                                     on:click={handleModalOpen}
                                     ><!---->
-                                    <div class="btn-sp">
-                                      Invite Friends Now
-                                    </div></button
+                                    <div class="btn-sp">{$_('invite-friends-now')}</div></button
                                   >
                                 </div>
                               </div>
@@ -517,16 +503,13 @@
                 </div>
               </div>
             </div>
-            <div class="_3e06ff50">
-              *Only displays data of the last 180 days. Please contact Support
-              if you need more records.
-            </div>
+            <div class="_3e06ff50">{$_('only-displays-180')}</div>
           </section>
         </div>
       </div>
       <!---->
       <div data-v-3399c889="" class="content">
-        <h2 data-v-3399c889="">Top Inviters</h2>
+        <h2 data-v-3399c889="">{$_('top-inviters')}</h2>
         <div data-v-3399c889="" class="card">
           <div data-v-3399c889="" class="_86658441" hasdarkmode="true">
             <div class="_0e963cf4">
@@ -556,7 +539,7 @@
                                   ><span class="ant-table-header-column"
                                     ><div>
                                       <span class="ant-table-column-title"
-                                        >Ranking</span
+                                        >{$_('ranking')}</span
                                       ><span class="ant-table-column-sorter"
                                       ></span>
                                     </div></span
@@ -567,7 +550,7 @@
                                   ><span class="ant-table-header-column"
                                     ><div>
                                       <span class="ant-table-column-title"
-                                        >Email</span
+                                        >{$_('g-email')}</span
                                       ><span class="ant-table-column-sorter"
                                       ></span>
                                     </div></span
@@ -578,7 +561,7 @@
                                   ><span class="ant-table-header-column"
                                     ><div>
                                       <span class="ant-table-column-title"
-                                        >Invitees</span
+                                        >{$_('invitees')}</span
                                       ><span class="ant-table-column-sorter"
                                       ></span>
                                     </div></span
@@ -590,7 +573,7 @@
                                   ><span class="ant-table-header-column"
                                     ><div>
                                       <span class="ant-table-column-title"
-                                        >Earnings (USDT)</span
+                                        >{$_('earnings-usdt')}</span
                                       ><span class="ant-table-column-sorter"
                                       ></span>
                                     </div></span
@@ -933,53 +916,28 @@
       </div>
       <div data-v-3399c889="" class="content">
         <div data-v-3399c889="">
-          <div class="_4c45e0b0"><div class="ec58a5fa">FAQs<!----></div></div>
+          <div class="_4c45e0b0"><div class="ec58a5fa">{$_('faqs')}<!----></div></div>
           <ol class="e07c7627">
             <li>
-              <p class="c81146a0">
-                What kind of rewards can I receive by inviting friends to sign
-                up on Ezcryptox?
-              </p>
-              <p class="_8857ec87">
-                Ezcryptox Referral Program has undergone a major update! Each
-                time you invite a friend to register and log in to the Ezcryptox
-                App, you will receive a Mystery Box worth up to <strong
-                  >10,000 USDT</strong
-                >. When your invitee achieves a spot trading volume of
-                <strong>≥ -- USDT</strong>, both you and the invitee will get a
-                Mystery Box each. Additionally, you'll also enjoy up to
-                <strong>60%</strong> commission.
-              </p>
+              <p class="c81146a0">{$_('what-kind-of-rewards')}</p>
+              <p class="_8857ec87">{$_('referral-program-update')}<strong
+                  >{$_('10-000-usdt')}</strong
+                >{$_('invitee-achieves-spot-volume')}<strong>≥ -- USDT</strong>{$_('both-mystery-box')}<strong>60%</strong>{$_('commission')}</p>
             </li>
             <li>
-              <p class="c81146a0">
-                What is the maximum amount of referral rewards I can receive?
-              </p>
-              <p class="_8857ec87">
-                You can invite an unlimited number of friends and enjoy infinite
-                commission rewards. Moreover, each month, you'll receive
-                additional Mystery Box rewards. The more friends you invite, the
-                more Mystery Boxes you'll win.
-              </p>
+              <p class="c81146a0">{$_('max-referral-rewards')}</p>
+              <p class="_8857ec87">{$_('unlimited-invites')}</p>
             </li>
             <li>
-              <p class="c81146a0">When will I receive the referral rewards?</p>
-              <p class="_8857ec87">
-                To ensure the fairness and integrity of the event, we will
-                carefully examine your invitee's account status. If there are no
-                abnormal conditions with your invitee's account, both you and
-                your invitee can check and claim the referral rewards via Wallet
-                or Coupon Center.
-              </p>
+              <p class="c81146a0">{$_('when-will-i-receive-the-referral-rewards')}</p>
+              <p class="_8857ec87">{$_('fairness-integrity')}</p>
             </li>
           </ol>
           <a
             href="https://support.poloniex.com/hc/en-us/articles/6571052590999"
             target="_blank"
             class="_9dc1def7"
-          >
-            View more
-          </a>
+          >{$_('comments-expand')}</a>
         </div>
       </div>
     </main>

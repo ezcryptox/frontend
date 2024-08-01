@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { articleDetail, likeArticle } from '$lib/news-components/article';
@@ -25,12 +26,11 @@
     function handleReport() {}
 
 </script>
-
 <div id="root" data-v-app="">
 	<div class="Il1dc">
 		<div class="el-breadcrumb hX2oX" aria-label="Breadcrumb" role="navigation">
 			<span class="el-breadcrumb__item"
-				><a class="el-breadcrumb__inner is-link" href="/feed/news/1">News</a><i
+				><a class="el-breadcrumb__inner is-link" href="/feed/news/1">{$_('g-feed')}</a><i
 					class="el-icon el-breadcrumb__separator"
 					><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"
 						><path
@@ -40,7 +40,7 @@
 					></i
 				></span
 			><span class="el-breadcrumb__item" aria-current="page"
-				><span class="el-breadcrumb__inner" role="link">Details</span><i
+				><span class="el-breadcrumb__inner" role="link">{$_('g-detail')}</span><i
 					class="el-icon el-breadcrumb__separator"
 					><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"
 						><path
@@ -71,14 +71,11 @@
 				<div on:click={handleReport} class="KEyiL">
 					<svg fill="currentColor" class="" style="width: 20px; height: 20px;"
 						><use xlink:href="#web-core-icon-outline-warning"></use></svg
-					><span class="ecv38">Report</span>
+					><span class="ecv38">{$_('comments-report')}</span>
 				</div>
 			</div>
 		{/if}
-		<div class="kOJzA pwiIS">
-			Disclaimer: The above content does not represent any position of Ezcryptox, and does not serve
-			as suggestions for any trading-related decisions.
-		</div>
+		<div class="kOJzA pwiIS">{$_('trading-disclaimer')}</div>
 	</div>
 	<!---->
 </div>

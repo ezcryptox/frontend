@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
 	import '../../../styles/login.css';
 	const google = new URL('./google.svg', import.meta.url).href;
 	import { handleLoginUser } from '$lib/auth/index';
@@ -24,19 +25,18 @@
 		}
 	};
 </script>
-
 <svelte:head>
-	<title>Ezcryptox Login</title>
+	<title>{$_('ezcryptox-login')}</title>
 	<meta name="description" content="Login to Ezcryptox exchange " />
 </svelte:head>
 
 <div class="wc-login">
 	<div class="_2b9df342 _1293a69e">
 		<div class="bc498c42">
-			<p class="a7ae4372">Welcome back</p>
+			<p class="a7ae4372">{$_('welcome-back')}</p>
 			<div data-v-39752d79="" class="order-form">
 				<div data-key="email" class="form-item" data-v-39752d79="">
-					<div class="item-label-title">Email / Phone Number</div>
+					<div class="item-label-title">{$_('email-phone-number')}</div>
 					<div class="form-item-content">
 						<div class="_634393df">
 							<div class="polo-input left polo-input-large polo-input-button" width="100%">
@@ -59,7 +59,7 @@
 				</div>
 
 				<div data-key="password" class="form-item" data-v-39752d79="">
-					<div class="item-label-title">Password</div>
+					<div class="item-label-title">{$_('password')}</div>
 					<div class="form-item-content">
 						<div class="_634393df">
 							<div class="polo-input left polo-input-large polo-input-button" width="100%">
@@ -91,14 +91,13 @@
 						<!---->
 						<div class="btn-sp">{$loading ? 'Loading...' : 'Next'}</div>
 					</button>
-					<p data-v-39752d79="" class="_81d1884f">
-						Don't have an account? <a href="/signup">Sign up</a>
+					<p data-v-39752d79="" class="_81d1884f">{$_('dont-have-an-account')}<a href="/signup">{$_('sign-up-1')}</a>
 					</p>
 				</div>
 			</div>
 			<div class="_8f585bdf">
 				<div class="dec00f0a">
-					<span>Or </span>
+					<span>{$_('or')}</span>
 				</div>
 				<div class="cc314366">
 					<button
@@ -120,6 +119,5 @@
 		</div>
 	</div>
 </div>
-
 <style>
 </style>

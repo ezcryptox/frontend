@@ -1,5 +1,8 @@
+<script>
+	import { _ } from 'svelte-i18n';
+</script>
 <div class="_quickOrder_ttr9n_9">
-    <div class="_head_ttr9n_32">Orders in Progress</div>
+    <div class="_head_ttr9n_32">{$_('orders-in-progress')}</div>
     <div class="_content_ttr9n_47">
       <div class="_noData_ttr9n_52">
         <svg
@@ -36,10 +39,10 @@
             ></path></g
           ></svg
         >
-        <p>No orders</p>
+        <p>{$_('no-orders')}</p>
       </div>
     </div>
     <div class="_foot_ttr9n_221">
-      <a href="/p2p/orders/" class="">View all orders</a>
+      <a href="/p2p/orders/" class="">{$_('view-all-orders')}</a>
     </div>
   </div>

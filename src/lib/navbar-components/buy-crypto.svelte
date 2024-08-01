@@ -1,7 +1,7 @@
 <script>
+	import { _ } from 'svelte-i18n';
 	import { slideFade } from '$lib/transitions';
 </script>
-
 <div class="a773e3aa" transition:slideFade={{ duration: 200 }}>
 	<ul>
 		<li>
@@ -13,10 +13,10 @@
 					</svg>
 				</div>
 				<div class="d4ef16dd">
-					<span>Buy Crypto</span>
+					<span>{$_('g-buy-crypto')}</span>
 					<!----><!---->
 				</div>
-				<div class="ddfb18d1">MoonPay</div>
+				<div class="ddfb18d1">{$_('moonpay')}</div>
 			</a>
 		</li>
 		<li>
@@ -28,10 +28,10 @@
 					</svg>
 				</div>
 				<div class="d4ef16dd">
-					<span>P2P</span>
+					<span>{$_('c2c-crypto')}</span>
 					<!----><!---->
 				</div>
-				<div class="ddfb18d1">Match the best price with zero fees</div>
+				<div class="ddfb18d1">{$_('match-best-price')}</div>
 			</a>
 		</li>
 	</ul>

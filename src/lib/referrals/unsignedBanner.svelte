@@ -1,26 +1,24 @@
 <script>
+	import { _ } from 'svelte-i18n';
   import Footer from "$lib/footer.svelte";
   import "../../styles/referral.css";
 
   export let showLeaderboard;
 </script>
-
-
-
 <div data-v-1ed24750="" class="banner">
   <div data-v-1ed24750="" class="_8ca0ec16 fe217ee2">
     <div class="content da84151d">
       <div class="_10f77353">
         <div>
-          <h1>Refer friends and earn easily</h1>
-          <p>Earn commissions from your invitees' trades</p>
+          <h1>{$_('refer-friends-and-earn-easily')}</h1>
+          <p>{$_('earn-commission')}</p>
         </div>
         <div class="_14f6f023">
           <!----><!----><a
             href="https://support.poloniex.com/hc/en-us/articles/6571052590999"
             target="_blank"
             class="be65d88a e553ff25"
-            >View the rules <svg
+            >{$_('view-the-rules')}<svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="14"
@@ -129,7 +127,7 @@
               ></defs
             ></svg
           ><span
-            ><strong>$</strong> commissions have been refunded to users</span
+            ><strong>$</strong>{$_('commissions-have-been-refunded-to-users')}</span
           ><span class="_5e79b267"
             on:click={showLeaderboard}
             role="button"
@@ -147,8 +145,7 @@
                 d="M4 8H7"
                 stroke="#E59940"
               ></path></svg
-            >View leaderboard
-          </span>
+            >{$_('view-leaderboard')}</span>
         </div>
       </div>
       <!---->

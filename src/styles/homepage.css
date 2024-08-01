@@ -276,7 +276,7 @@ body.v3-body .app-homepage {
     top: 0;
     left: 0;
     right: 0;
-    background: #fff;
+    /* background: #fff; */
     height: 48px;
 }
 .w768 .aefdbb77, .w1024 .aefdbb77 {
@@ -763,10 +763,12 @@ svg:not(:root) {
     color: #2c6ccc;
     margin: 0 12px;
 }
+body.dark-theme .d4ced24e h3._0b275020, body.dark-theme .d4ced24e .ce33e2f7 .bfdc8ba7 ._5eaa08ba {
+    color: white!important;
+}
 .d4ced24e {
     padding-top: 120px;
     padding-bottom: 80px;
-    background: #fafafa;
 }
 .w1200 .d4ced24e ._0afb5503 {
     max-width: 1136px;

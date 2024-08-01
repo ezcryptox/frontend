@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { _ } from 'svelte-i18n';
 	import { createTable, Render, Subscribe } from 'svelte-headless-table';
 	import axios from 'axios';
 	import { ServerURl } from '$lib/backendUrl';
@@ -73,7 +74,6 @@
 		loadOrders(filters);
 	});
 </script>
-
 <div class="rounded-md border">
 	<Table.Root {...$tableAttrs}>
 		<Table.Header>
@@ -110,7 +110,7 @@
 					<td colspan="6">
 						<div class="qqWi0">
 							<div class="YSmmf dark:text-white">
-								<div>No records</div>
+								<div>{$_('g-nodata')}</div>
 								<!---->
 							</div>
 						</div>
@@ -120,7 +120,6 @@
 		</Table.Body>
 	</Table.Root>
 </div>
-
 <style>
 	.qqWi0 {
 		padding: 10px;

@@ -1,4 +1,5 @@
 <script>
+	import { _ } from 'svelte-i18n';
   import BeginnerTasks from "./beginner-tasks.svelte";
   import ChallengeTasks from "./challenge-tasks.svelte";
   import SignupBonus from "./sign-up-bonus.svelte";
@@ -10,9 +11,8 @@
     contentTabIndex = index;
   };
 </script>
-
 <div class="_91205fc5 content">
-  {#if !isLogin}
+  {#if !$isLogin}
     <SignupBonus />
   {:else}
     <RewardOverview on:click={()=>  onContentTabChanged(1)} />
@@ -83,7 +83,7 @@
                   <!-- svelte-ignore a11y-unknown-aria-attribute -->
                   <!-- svelte-ignore a11y-no-static-element-interactions -->
                   <span aria-new="0" on:click={() => onContentTabChanged(0)}
-                    >Beginner's Tasks</span
+                    >{$_('beginners-tasks')}</span
                   >
                 </div>
                 <div
@@ -101,7 +101,7 @@
                     aria-new="0"
                     class="_866e3f55"
                     on:click={() => onContentTabChanged(1)}
-                    >Challenge Tasks</span
+                    >{$_('challenge-tasks')}</span
                   >
                 </div>
               </div>
