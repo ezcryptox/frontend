@@ -1073,7 +1073,13 @@ body.dark-theme ._9df3dcbf .d7b95752 {
 body.dark-theme ._2a39ccb4 ._9675cf33 > svg {
   color: rgb(97, 97, 97);
 }
-body.dark-theme ._2a39ccb4, body.dark-theme .el-table__cell.s-guSh31W10KgX {
+body.dark-theme ._2a39ccb4 {
+  background-color: transparent;
+}
+body.dark-theme th.el-table__cell {
+    color: white;
+}
+body.dark-theme ._2a39ccb4, body.dark-theme td.el-table__cell {
     color: #fff;
 }
 body.dark-theme ._2a39ccb4 ._9675cf33.e7cdbc9f > svg {
