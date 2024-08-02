@@ -3,6 +3,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import { toggleMode, mode } from 'mode-watcher';
 	import { _ } from 'svelte-i18n';
+	import { isLogin } from './store/profile';
 	const dispatch = createEventDispatcher();
 
 	$: showBuyCrypto = false;
@@ -11,7 +12,7 @@
 	$: showExploire = false;
 </script>
 <div class="ccf482a6">
-	{#if $screen < 500}
+	{#if $screen < 500 && !$isLogin}
 		<div style="padding: 0px 12px 12px;">
 			<div class="b6d9e754 f132e3fe">
 				<a

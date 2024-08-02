@@ -763,9 +763,7 @@ svg:not(:root) {
     color: #2c6ccc;
     margin: 0 12px;
 }
-body.dark-theme .d4ced24e h3._0b275020, body.dark-theme .d4ced24e .ce33e2f7 .bfdc8ba7 ._5eaa08ba {
-    color: white!important;
-}
+
 .d4ced24e {
     padding-top: 120px;
     padding-bottom: 80px;
@@ -948,7 +946,7 @@ body.dark-theme .d4ced24e h3._0b275020, body.dark-theme .d4ced24e .ce33e2f7 .bfd
     font-size: 18px;
     padding: 8px;
     box-shadow: none !important;
-    background-color: field !important;
+    background-color: white !important;
 }
 ._4aaab2bd ._73a8d391>.polo-btn {
     font-weight: 600;
@@ -1435,4 +1433,60 @@ body.dark-theme .d4ced24e h3._0b275020, body.dark-theme .d4ced24e .ce33e2f7 .bfd
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
+}
+body.dark-theme ._255e9084 .a3617e13 {
+  fill: rgb(250, 250, 250);
+}
+
+body.dark-theme ._255e9084 ._41e1a2cb {
+  fill: rgb(31, 31, 36);
+}
+
+body.dark-theme .eb7abe53 ._97aa1235 {
+  stroke: rgb(43, 43, 46);
+}
+
+body.dark-theme ._5431dfec {
+  background: rgb(19, 19, 22);
+}
+
+body.dark-theme ._5431dfec ._8bd923f7 {
+  color: rgb(255, 255, 255);
+}
+
+body.dark-theme ._5431dfec ._699f5219 {
+  color: rgb(184, 184, 184);
+}
+
+body.dark-theme ._5431dfec .cd08fd85 .abfe67fb {
+  background-color: rgb(31, 31, 36);
+}
+
+body.dark-theme ._5431dfec .cd08fd85 .abfe67fb:hover {
+  background-color: rgb(43, 43, 46);
+}
+
+body.dark-theme ._5431dfec .cd08fd85 .abfe67fb > svg, body.dark-theme ._2f588215 .b0673997, body.dark-theme ._394bd770 ._2f588215 ._12d43166 {
+  color: rgb(242, 242, 242);
+}
+body.dark-theme ._394bd770 ._2f588215 ._12d43166>b {
+    color: white;
+}
+body.dark-theme ._394bd770 ._2f588215 ._580e1c84 {
+    color: rgb(184, 184, 184);
+}
+body.dark-theme ._842ffea0 {
+    color: white;
+}
+body.dark-theme .d4ced24e, body.dark-theme ._2f588215 {
+  background: rgb(31, 31, 36);
+  
+}
+
+body.dark-theme .d4ced24e .ce33e2f7 > .bfdc8ba7 ._5eaa08ba, body.dark-theme .d4ced24e h3._0b275020 {
+  color: rgb(255, 255, 255);
+}
+
+body.dark-theme .d4ced24e .ce33e2f7 > .bfdc8ba7 .c40d812e {
+  color: rgb(204, 204, 204);
 }

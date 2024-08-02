@@ -1,4 +1,7 @@
-<div class="sc-gKclnd sc-furwcr keuypW hTWjOR loading">
+<script>
+	export let height = '';
+</script>
+<div style="{height ? `min-height: ${height}` :''}" class="sc-gKclnd sc-furwcr keuypW hTWjOR loading">
 	<svg viewBox="0 0 84 24" fill="#2c6ccc"
 		><circle cx="18" cy="12" r="6"></circle>
 		<circle cx="18" cy="12" r="6"></circle>
