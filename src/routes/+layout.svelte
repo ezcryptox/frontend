@@ -82,7 +82,7 @@
 	{#if !$screen}
 		<div class="preload">
 			<div class="prewsUBw">
-				<Loader></Loader>
+				<Loader height='100vh'></Loader>
 			</div>
 		</div>
 	{:else}

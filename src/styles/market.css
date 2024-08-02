@@ -1070,7 +1070,30 @@ body.dark-theme ._9df3dcbf .d7b95752 {
   margin: 0px auto;
 }
 
+body.dark-theme ._2a39ccb4 ._9675cf33 > svg {
+  color: rgb(97, 97, 97);
+}
+body.dark-theme ._2a39ccb4, body.dark-theme .el-table__cell.s-guSh31W10KgX {
+    color: #fff;
+}
+body.dark-theme ._2a39ccb4 ._9675cf33.e7cdbc9f > svg {
+  color: rgb(17, 158, 95);
+}
+body.dark-theme ._2a39ccb4 button._4b08f476 {
+  color: rgb(184, 184, 184);
+}
+body.dark-theme ._2a39ccb4 button._4b08f476:hover {
+  color: rgb(17, 158, 95);
+}
 
+body.dark-theme ._2a39ccb4 a._189b2a6c {
+  color: rgb(255, 255, 255);
+  background-color: rgb(43, 43, 46);
+}
+
+body.dark-theme ._2a39ccb4 a._189b2a6c:hover {
+  background-color: rgb(17, 158, 95);
+}
 
 @media screen and (max-width: 1440px) {
     ._1e5e2a71 {
