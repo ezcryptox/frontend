@@ -2957,7 +2957,6 @@ table {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #fff;
 }
 .el-checkbox, .el-checkbox-button__inner, .el-table th.el-table__cell {
     -webkit-user-select: none;
