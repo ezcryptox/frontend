@@ -1,12 +1,13 @@
 <script>
   import SocketManager from "$lib/socket/Socketmanager";
   import {ServerURl} from "$lib/backendUrl"
-	import { cryptoQuotes } from "./store";
+	import { cryptoQuotes, socketRequest } from "./store";
    const socket = SocketManager.socket(ServerURl());
-  const socketRequest = SocketManager.socketRequestBind(socket);
+  const sr = SocketManager.socketRequestBind(socket);
 
   socket.on("connect", () => {
-    socketRequest("join-ticker");
+    // @ts-ignore
+    socketRequest.set(sr)
   })
 
   socket.on("quotes", (data) => {
