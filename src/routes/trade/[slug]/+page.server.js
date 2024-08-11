@@ -1,13 +1,16 @@
-import { error } from '@sveltejs/kit';
+import { error,redirect } from '@sveltejs/kit';
+import axios from 'axios'
+import { ServerURl } from '$lib/backendUrl'
 
 /** @type {import('./$types').PageServerLoad} */
-export function load({ params }) {
-  if (params.slug === 'hello-world') {
+export async function load({ params }) {
+  const { pairs } = (await axios.get(`${ServerURl()}/api/market/pairs`)).data;
+  if (params.slug && pairs.map(p => p.symbol.toLowerCase()).includes(params.slug.toLowerCase())) {
+    const pair = pairs.find(p => p.symbol.toLowerCase() === params.slug.toLowerCase())
     return {
-      title: 'Hello world!',
-      content: 'Welcome to our blog. Lorem ipsum dolor sit amet...'
+      slug: params.slug,
+      pair,
+      pairs: pairs.sort((a, b) => b.price - a.price).slice(0, 50),
     };
-  }
-
-  error(404, 'Not found');
+  } else error(404, 'Page Not found')
 }
