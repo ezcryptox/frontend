@@ -2,16 +2,26 @@
 	import { _ } from 'svelte-i18n';
 	/** @type {import('./$types').PageData} */
 	import '../../../styles/trade.css';
+	import VirtualList from '@sveltejs/svelte-virtual-list';
 	import Tradingview from '$lib/components/tradingview/tradingview.svelte';
-	import { cryptoQuotes } from '../store';
+	import { cryptoQuotes, socketRequest } from '../store';
 	import pkg from 'lodash';
+	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 	const { debounce } = pkg;
 	export let data;
 
 	let falling = false;
 
 	let quotes = data.pair;
-	$: pairs = data.pairs;
+	let pairs = data.pairs;
+	const indexMap = {};
+	function assignIndex() {
+		data.pairs.forEach((p, index) => {
+			indexMap[p.symbol] = index;
+		})
+	}
+	assignIndex();
 	$: showCryptoDialog = false;
 
 	function abbreviateNumber(number) {
@@ -31,70 +41,208 @@
 			return parseFloat(number.toFixed(2)).toLocaleString();
 		}
 	}
-
 	cryptoQuotes.subscribe((q) => {
-    if (!q) return;
-    // console.log(q);
-    if (quotes && quotes.price > q[data.slug.toUpperCase()].price) {
+		if (!q) return;
+		// console.log(q);
+		if (quotes && quotes.price > q[data.slug.toUpperCase()].price) {
 			falling = true;
 		} else {
 			falling = false;
 		}
-    if (q[data.pair.symbol])
- {
-      const p = data.pair;
-     quotes = {...quotes, changePercent: q[p.symbol].changePercent,
-			  volumeFrom: q[p.symbol].volumeFrom,
-			  price: q[p.symbol].price}
- }		
- pairs = (pairs || data.pairs).map((p) => ({
+		if (q[data.pair.symbol]) {
+			const p = data.pair;
+			quotes = {
+				...quotes,
+				changePercent: q[p.symbol].changePercent,
+				volumeFrom: q[p.symbol].volumeFrom,
+				price: q[p.symbol].price
+			};
+		}
+		pairs = (pairs || data.pairs).map((p) => ({
 			...p,
-      price: p.price || 0,
-      ...(q[p.symbol] ? {
-        changePercent: q[p.symbol].changePercent,
-			  volumeFrom: q[p.symbol].volumeFrom,
-			  price: q[p.symbol].price || p.price || 0
-      } : {})
+			price: p.price || 0,
+			...(q[p.symbol]
+				? {
+						changePercent: q[p.symbol].changePercent,
+						volumeFrom: q[p.symbol].volumeFrom,
+						price: q[p.symbol].price || p.price || 0
+					}
+				: {})
 		}));
 	});
 
-	const handleSearch = (ev) => {
-		const value = ev.target.value;
-		if (!value) pairs = data.pairs;
-    const q = $cryptoQuotes;
-		pairs = data.pairs
-			.filter(({ symbol }) => {
-				const p = symbol.split('_');
-				return (
-					p[0].toLowerCase().includes(value.toLowerCase()) ||
-					p[1].toLowerCase().includes(value.toLowerCase())
-				);
+	$: listSorter = {};
+	$: listToFilter = 'USDT';
+	const applySort = (list = pairs) => {
+		let temp = [...list];
+		
+		Object.keys(listSorter).forEach(k => {
+			const order = listSorter[k].trim();
+			temp = [...temp].sort((a, b) => {
+				if (order === 'asc') return a[k] < b[k] ? -1 : 1
+				else if (order === 'desc') return a[k] > b[k] ? -1 : 1
+				else return temp.indexOf(a) - temp.indexOf(b);//indexMap[a.symbol] - indexMap[b.symbol]
 			})
-			.map((p) => ({
-				...p,
-        price: p.price || 0,
-				 ...(q && q[p.symbol] ? {
-        changePercent: q[p.symbol].changePercent,
-			  volumeFrom: q[p.symbol].volumeFrom,
-			  price: q[p.symbol].price || p.price || 0
-      } : {})
-			}));
+		})
+		return [...temp]
+	}
+	const applyFilter = (list = pairs) => {
+		if (!listToFilter) return list;
+		return list.filter(i => i.symbol.split('_')[1] === listToFilter)
+	}
+	function updateList(p) {
+		const q = $cryptoQuotes;
+		return {
+			...p,
+				price: p.price || 0,
+				...(q && q[p.symbol]
+					? {
+							changePercent: q[p.symbol].changePercent,
+							volumeFrom: q[p.symbol].volumeFrom,
+							price: q[p.symbol].price || p.price || 0
+						}
+					: {})
+		}
+	}
+	let searchQuery = '';
+	const applySearch = (value = searchQuery) => {
+		if (!value) {
+			return data.pairs.map(updateList);
+		}
+		return data.pairs
+			.filter(({ symbol }) => {
+				return symbol.toLowerCase().includes(value.toLowerCase());
+			})
+			.map(updateList)
+	}
+	const handleSearch = (ev) => {
+		const value = ev.target.value.trim();
+		searchQuery = value
+		pairs =  applyFilter(applySort(applySearch(value))).map(updateList)
 	};
 	const debouncedHandleInputChange = debounce(handleSearch, 300);
+
+	let joined = false;
+	socketRequest.subscribe(sr => {
+		if (sr && !joined) {
+			joined = true;
+			const [from, to] = data.pair.symbol.split('_');
+			sr("join-ticker", {from, to})
+		}
+	})
+
+	const handleSort = (sortBy) => {
+		const tempSort = {...listSorter};
+		if (!tempSort[sortBy]) tempSort[sortBy] = ' asc'
+		else if (tempSort[sortBy] === ' asc') tempSort[sortBy] = ' desc'
+		else tempSort[sortBy] = ''
+		listSorter = {...tempSort}
+
+		pairs = applyFilter(applySort(applySearch()));
+	}
+
+	let currentTab = 1;
+	
+	let tabs = [{
+		label: $_('favorites'),
+		sub: [],
+	},{
+		label: $_('usd'),
+		sub: ['USDT', 'USDC', 'USDD']
+	},
+	{label: 'BTC', sub: []}
+	, {
+		label: $_('ordinals'),
+		sub: []
+	}, {
+		label:  $_('trx'),
+		sub: []
+	}, {
+		label: $_('margin'),
+		sub: []
+	}, {
+		label: $_('alts'),
+		sub: []
+	}, {
+		label: $_('innov'),
+		sub: []
+	}, {
+		label: $_('meme'),
+		sub: []
+	}, {
+		label: $_('shanghai-upgrade'),
+		sub: []
+	}, {
+		label: $_('hong-kong'),
+		sub: []
+	}, {
+		label: $_('arbitrum'),
+		sub: []
+	}, {
+		label:  $_('ai'),
+		sub: [],
+	}, {label:  $_('fan-token'),
+		sub: []
+	} ]
+
+	let favList = {};
+	onMount(() => {
+		if(browser) {
+			const favs = localStorage.getItem('favs_list');
+			if (favs) {
+				favList = JSON.parse(favs)
+			}
+		}
+	})
+	const handleFav = (pair) => {
+		const temp = {...favList};
+		if (temp[pair.symbol]) {
+			delete temp[pair.symbol]
+		} else {
+			temp[pair.symbol] = true
+		}
+		localStorage.setItem('favs_list', JSON.stringify(temp))
+		favList = {...temp}
+	}
+	const handleTabChange = (tab, index) =>{
+															listToFilter = tab.sub[0] || "";
+															currentTab = index
+															if (index === 0) {
+																pairs = [...applyFilter(applySort(applySearch())).filter(p => Object.keys(favList).includes(p.symbol))]
+															} else {
+																pairs = [...applyFilter(applySort(applySearch()))]
+															}
+														}
+	const handleSubTabChange = (filter) => {
+		listToFilter = filter
+		pairs = [...applyFilter(applySort(applySearch()))]
+	}
 </script>
 
-<div class="app-trade mt-[64px]" on:click={() => {
-  showCryptoDialog = false;
-}}>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<div
+	class="app-trade mt-[64px]"
+	on:click={() => {
+		showCryptoDialog = false;
+	}}
+>
 	<main class="_99ca71d3">
 		<!---->
 		<section class="e94bdc41">
 			<div class="_61aea1ce">
 				<section class="_49567930">
-					<div user-guide="1" class="_90e8af53" style="" on:click={(ev) => {
-            showCryptoDialog = !showCryptoDialog;
-            ev.stopPropagation()
-          }}>
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<!-- svelte-ignore a11y-no-static-element-interactions -->
+					<div
+						data-user-guide="1"
+						class="_90e8af53"
+						style=""
+						on:click={(ev) => {
+							showCryptoDialog = !showCryptoDialog;
+							ev.stopPropagation();
+						}}
+					>
 						<div class="ef057bf0">
 							<i
 								class="_9b33bef0 _3b46d5a7"
@@ -133,7 +281,13 @@
 							</div>
 						</div>
 						{#if showCryptoDialog}
-							<div on:click={ev => ev.stopPropagation()} class="_64aeb761" style="height: 540px; display: block">
+							<!-- svelte-ignore a11y-click-events-have-key-events -->
+							<!-- svelte-ignore a11y-no-static-element-interactions -->
+							<div
+								on:click={(ev) => ev.stopPropagation()}
+								class="_64aeb761"
+								style="height: calc(100vh - 155px); display: block"
+							>
 								<section class="eccdf1e6 _66ad3486">
 									<div class="d08552a7">
 										<div class="polo-input left polo-input-medium polo-input-default">
@@ -144,9 +298,11 @@
 													style="width: 16px; height: 16px; min-width: 16px;"
 													><use xlink:href="#search"></use></svg
 												></span
-											><input type="text" on:input={debouncedHandleInputChange} placeholder="Search" /><span
-												class="_897d4943"
-												style="display: none;"
+											><input
+												type="text"
+												on:input={debouncedHandleInputChange}
+												placeholder="Search"
+											/><span class="_897d4943" style="display: none;"
 												><svg
 													aria-hidden="true"
 													class="svgicon"
@@ -160,38 +316,35 @@
 										<div class="bbb02be1">
 											<div class="_3bc72d58">
 												<div class="c1fa951e">
-													<span class="a8b135af">{$_('favorites')}</span><span
-														class="a8b135af _606d29e6">{$_('usd')}</span
-													><span class="a8b135af">BTC</span><span class="a8b135af"
-														>{$_('ordinals')}</span
-													><span class="a8b135af">{$_('trx')}</span><span class="a8b135af"
-														>{$_('margin')}</span
-													><span class="a8b135af">{$_('alts')}</span><span class="a8b135af"
-														>{$_('innov')}</span
-													><span class="a8b135af">{$_('meme')}</span><span class="a8b135af"
-														>{$_('shanghai-upgrade')}</span
-													><span class="a8b135af">{$_('hong-kong')}</span><span class="a8b135af"
-														>{$_('arbitrum')}</span
-													><span class="a8b135af">{$_('ai')}</span><span class="a8b135af"
-														>{$_('fan-token')}</span
-													>
+													{#each tabs as tab, index}
+														<span on:click={() => handleTabChange(tab, index)} class="a8b135af{index === currentTab ? ' _606d29e6': ''}">{tab.label}</span>
+													{/each}
 												</div>
 											</div>
 										</div>
-										<!-- <div class="_896a701d" style="">
-											<span class="_606d29e6">USDT</span><span class="">{$_('usdd')}</span><span
-												class="">{$_('usdc')}</span
-											><span class="">{$_('tusd')}</span>
-										</div> -->
+										{#if tabs[currentTab].sub.length}
+											<div class="_896a701d" style="">
+												{#each tabs[currentTab].sub as subTab}
+													<span on:click={() => handleSubTabChange(subTab)} class="{subTab === listToFilter ? '_606d29e6' : ''}">{subTab}</span>
+												{/each}
+										</div>
+										{/if}
+										
 									</nav>
 									<div class="de0a0725">
 										<dl class="abc336e7 _0fae74ff">
+											
 											<dd>
-												<em data-v-102823d5="" class="sort"
+												<!-- svelte-ignore a11y-click-events-have-key-events -->
+											<!-- svelte-ignore a11y-no-static-element-interactions -->
+											<!-- svelte-ignore missing-declaration -->
+											<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+												<em on:click={() => handleSort('symbol')} data-v-102823d5="" class="sort"
 													>{$_('g-symbol')}<svg
 														data-v-102823d5=""
 														width="14"
 														height="12"
+														class="{listSorter['symbol'] || ''}"
 														viewBox="-2 -1 8 12"
 														><path
 															data-v-102823d5=""
@@ -205,8 +358,14 @@
 															fill="#878787"
 														></path></svg
 													></em
-												><em data-v-102823d5="" class="sort"
+												>
+													<!-- svelte-ignore a11y-click-events-have-key-events -->
+											<!-- svelte-ignore a11y-no-static-element-interactions -->
+											<!-- svelte-ignore missing-declaration -->
+											<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+												<em data-v-102823d5="" on:click={() => handleSort('volumeFrom')} class="sort"
 													>{$_('vol')}<svg
+													class="{listSorter['volumeFrom'] || ''}"
 														data-v-102823d5=""
 														width="14"
 														height="12"
@@ -225,9 +384,15 @@
 													></em
 												>
 											</dd>
+											
 											<dd>
-												<em data-v-102823d5="" class="sort"
+											<!-- svelte-ignore a11y-click-events-have-key-events -->
+											<!-- svelte-ignore a11y-no-static-element-interactions -->
+											<!-- svelte-ignore missing-declaration -->
+											<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+												<em on:click={() => handleSort('price')} data-v-102823d5="" class="sort"
 													>{$_('g-price')}<svg
+													class="{listSorter['price'] || ''}"
 														data-v-102823d5=""
 														width="14"
 														height="12"
@@ -246,9 +411,15 @@
 													></em
 												>
 											</dd>
+											
 											<dd>
-												<em data-v-102823d5="" class="sort"
+												<!-- svelte-ignore a11y-click-events-have-key-events -->
+												<!-- svelte-ignore a11y-no-static-element-interactions -->
+												<!-- svelte-ignore missing-declaration -->
+												<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+												<em on:click={() => handleSort('change')} data-v-102823d5="" class="sort"
 													>{$_('24h-change')}<svg
+													class="{listSorter['change'] || ''}"
 														data-v-102823d5=""
 														width="14"
 														height="12"
@@ -269,53 +440,8 @@
 											</dd>
 										</dl>
 										<div class="_0f4459a3">
-											<div class="_00761050" style="overflow-y: auto">
-												<!---->
-                        {#each pairs as pair, index}
-														<dl class="abc336e7 _1d9ddf38" style="min-height: 52px;">
-																<dd>
-																	<span class="_8f210f7a _1d9ddf38"
-																		><svg
-																			aria-hidden="true"
-																			class="svgicon"
-																			style="width: 16px; height: 16px; min-width: 16px;"
-																			><use xlink:href="#star"></use></svg
-																		></span
-																	><a
-																		href="/trade/{pair.symbol}/?type=spot"
-																		class="router-link-exact-active router-link-active"
-																		aria-current="page"
-																		><i class="_9b33bef0 _66bb57cd"
-																			><img
-																				loading="lazy"
-																				src="{pair.fromIcon}"
-																				class="_6197556c"
-																			/></i
-																		><span class="f1e17be0"
-																			><span>{pair.symbol.replace('_', '/')}<i class="_6e4b4277">3X</i></span><span>
-																				Vol ${abbreviateNumber(pair.volumeFrom)}
-																			</span></span
-																		></a
-																	>
-																</dd>
-																<dd>
-																	<a
-																		href="/trade/{pair.symbol}/?type=spot"
-																		class="router-link-exact-active router-link-active"
-																		aria-current="page">{parseFloat(pair.price?.toFixed(2) || '0').toLocaleString()}</a
-																	>
-																</dd>
-																<dd>
-																	<a
-																		href="/trade/ETH_USDT/?type=spot"
-																		class="router-link-exact-active router-link-active"
-																		aria-current="page"
-																		><span class="_7cb43809 {pair.change < 0 ? '_65a0ee45' : '_9b99c5d7'}"> {parseFloat(pair.changePercent?.toFixed(2) || '0')}% </span></a
-																	>
-																</dd>
-															</dl>
-													{/each}
-												<!---->
+											<div class="_00761050" style="height: calc((100vh - 155px) - 110px)">
+												
 												{#if !pairs.length}
 													<div class="_20a38d89 bdb62701">
 														<svg
@@ -352,6 +478,54 @@
 														<p>No results found</p>
 													</div>
 												{:else}
+												<VirtualList itemHeight={52} items={pairs} let:item>
+													<dl class="abc336e7 _1d9ddf38" style="min-height: 52px;">
+														<dd>
+															<span on:click={() => handleFav(item)} class="_8f210f7a {favList[item.symbol] ? '_1d9ddf38' : ''}"
+																><svg
+																	aria-hidden="true"
+																	class="svgicon"
+																	style="width: 16px; height: 16px; min-width: 16px;"
+																	><use xlink:href="#star"></use></svg
+																></span
+															><a
+																href="/trade/{item.symbol}/?type=spot"
+																class="router-link-exact-active router-link-active"
+																aria-current="page"
+																><i class="_9b33bef0 _66bb57cd"
+																	><img loading="lazy" src={item.fromIcon} class="_6197556c" /></i
+																><span class="f1e17be0"
+																	><span
+																		>{item.symbol.replace('_', '/')}<i class="_6e4b4277">3X</i
+																		></span
+																	><span>
+																		Vol ${abbreviateNumber(item.volumeFrom)}
+																	</span></span
+																></a
+															>
+														</dd>
+														<dd>
+															<a
+																href="/trade/{item.symbol}/?type=spot"
+																class="router-link-exact-active router-link-active"
+																aria-current="page"
+																>{parseFloat(item.price?.toFixed(2) || '0').toLocaleString()}</a
+															>
+														</dd>
+														<dd>
+															<a
+																href="/trade/ETH_USDT/?type=spot"
+																class="router-link-exact-active router-link-active"
+																aria-current="page"
+																><span
+																	class="_7cb43809 {item.change < 0 ? '_65a0ee45' : '_9b99c5d7'}"
+																>
+																	{parseFloat(item.changePercent?.toFixed(2) || '0')}%
+																</span></a
+															>
+														</dd>
+													</dl>
+												</VirtualList>
 													<div data-v-b329ee4c="" tabindex="-1" class="resize-observer">
 														<!-- svelte-ignore a11y-missing-attribute -->
 														<object
@@ -411,7 +585,7 @@
 									><use xlink:href="#hand"></use></svg
 								>{$_('borrow-repay-guide')}
 							</div>
-							<div user-guide="-1" class="fd46d498 _127af464">
+							<div data-user-guide="-1" class="fd46d498 _127af464">
 								<svg
 									aria-hidden="true"
 									class="svgicon"
@@ -775,7 +949,7 @@
 					<div class="_15e27295">
 						<section class="_96f68a1c">
 							<div class="_43a2945c">
-								<div user-guide="6" class="_6bf69178" style="">
+								<div data-user-guide="6" class="_6bf69178" style="">
 									<span class="_667a0527">{$_('open-orders')}</span><span class=""
 										>{$_('order-history')}</span
 									><span class="">{$_('trade-history')}</span><span class="">{$_('assets')}</span>
@@ -987,14 +1161,16 @@
 									>{$_('g-sell')}</button
 								>
 							</nav>
-							<div user-guide="4" class="" style="">
-								<div user-guide-4="" class="_9654432c">
+							<div data-user-guide="4" class="" style="">
+								<div data-user-guide-4="" class="_9654432c">
 									<div class="_19abeeda">
 										<span class="polo-switch polo-switch-middle is-disabled"
 											><span class="polo-switch-box"
-												><input type="checkbox" true-value="true" disabled="disabled" /></span
-											><!----></span
-										><span
+												><input type="checkbox" true-value="true" disabled={true} /></span
+											></span
+										>
+										<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+										<span
 											class="el-tooltip tips-text _13a24dcf _5ee158b0"
 											aria-describedby="el-tooltip-2434"
 											tabindex="0">{$_('g-autoborrow')}</span
@@ -1002,7 +1178,7 @@
 									</div>
 									<div class="el-dropdown">
 										<div
-											user-guide="7"
+											data-user-guide="7"
 											class="_54b36967 el-dropdown-selfdefine"
 											aria-haspopup="list"
 											aria-controls="dropdown-menu-6203"
@@ -1014,7 +1190,7 @@
 										</div>
 									</div>
 								</div>
-								<div user-guide="3" class="" style="">
+								<div data-user-guide="3" class="" style="">
 									<div class="_0fbcf1c2">
 										<div class="_724c340a">
 											<span class="e0093a3f _8c3dc366">{$_('g-limit')}</span><span class="e0093a3f"
@@ -1102,7 +1278,7 @@
 														</dt>
 														<dd>
 															<span class="dcf97881">--</span><span>USDT</span><a
-																user-guide="2"
+																data-user-guide="2"
 																href="/wallet/deposit/ETH/"
 																class="dfad9a60"
 																style=""
@@ -1228,7 +1404,7 @@
 					</div>
 					<div class="bf4db17d">
 						<section class="b44d3422">
-							<div user-guide="5" class="" style="">
+							<div data-user-guide="5" class="" style="">
 								<div class="_43fe473e">{$_('assets')}<!----></div>
 								<div class="c9ee1d63">
 									<div class="_596549f7">

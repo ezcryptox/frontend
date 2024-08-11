@@ -41,6 +41,7 @@
 		"@benzara/svelte-animated-counter": "^0.0.3",
 		"@internationalized/date": "^3.5.5",
 		"@moonpay/moonpay-js": "^0.6.1",
+		"@sveltejs/svelte-virtual-list": "^3.0.1",
 		"axios": "^1.5.0",
 		"bits-ui": "^0.21.12",
 		"canvas": "^2.11.2",
