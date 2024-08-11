@@ -19,7 +19,7 @@
 	function assignIndex() {
 		data.pairs.forEach((p, index) => {
 			indexMap[p.symbol] = index;
-		})
+		});
 	}
 	assignIndex();
 	$: showCryptoDialog = false;
@@ -75,34 +75,34 @@
 	$: listToFilter = 'USDT';
 	const applySort = (list = pairs) => {
 		let temp = [...list];
-		
-		Object.keys(listSorter).forEach(k => {
+
+		Object.keys(listSorter).forEach((k) => {
 			const order = listSorter[k].trim();
 			temp = [...temp].sort((a, b) => {
-				if (order === 'asc') return a[k] < b[k] ? -1 : 1
-				else if (order === 'desc') return a[k] > b[k] ? -1 : 1
-				else return temp.indexOf(a) - temp.indexOf(b);//indexMap[a.symbol] - indexMap[b.symbol]
-			})
-		})
-		return [...temp]
-	}
+				if (order === 'asc') return a[k] < b[k] ? -1 : 1;
+				else if (order === 'desc') return a[k] > b[k] ? -1 : 1;
+				else return temp.indexOf(a) - temp.indexOf(b); //indexMap[a.symbol] - indexMap[b.symbol]
+			});
+		});
+		return [...temp];
+	};
 	const applyFilter = (list = pairs) => {
 		if (!listToFilter) return list;
-		return list.filter(i => i.symbol.split('_')[1] === listToFilter)
-	}
+		return list.filter((i) => i.symbol.split('_')[1] === listToFilter);
+	};
 	function updateList(p) {
 		const q = $cryptoQuotes;
 		return {
 			...p,
-				price: p.price || 0,
-				...(q && q[p.symbol]
-					? {
-							changePercent: q[p.symbol].changePercent,
-							volumeFrom: q[p.symbol].volumeFrom,
-							price: q[p.symbol].price || p.price || 0
-						}
-					: {})
-		}
+			price: p.price || 0,
+			...(q && q[p.symbol]
+				? {
+						changePercent: q[p.symbol].changePercent,
+						volumeFrom: q[p.symbol].volumeFrom,
+						price: q[p.symbol].price || p.price || 0
+					}
+				: {})
+		};
 	}
 	let searchQuery = '';
 	const applySearch = (value = searchQuery) => {
@@ -113,110 +113,125 @@
 			.filter(({ symbol }) => {
 				return symbol.toLowerCase().includes(value.toLowerCase());
 			})
-			.map(updateList)
-	}
+			.map(updateList);
+	};
 	const handleSearch = (ev) => {
 		const value = ev.target.value.trim();
-		searchQuery = value
-		pairs =  applyFilter(applySort(applySearch(value))).map(updateList)
+		searchQuery = value;
+		pairs = applyFilter(applySort(applySearch(value))).map(updateList);
 	};
 	const debouncedHandleInputChange = debounce(handleSearch, 300);
 
 	let joined = false;
-	socketRequest.subscribe(sr => {
+	socketRequest.subscribe((sr) => {
 		if (sr && !joined) {
 			joined = true;
 			const [from, to] = data.pair.symbol.split('_');
-			sr("join-ticker", {from, to})
+			sr('join-ticker', { from, to });
 		}
-	})
+	});
 
 	const handleSort = (sortBy) => {
-		const tempSort = {...listSorter};
-		if (!tempSort[sortBy]) tempSort[sortBy] = ' asc'
-		else if (tempSort[sortBy] === ' asc') tempSort[sortBy] = ' desc'
-		else tempSort[sortBy] = ''
-		listSorter = {...tempSort}
+		const tempSort = { ...listSorter };
+		if (!tempSort[sortBy]) tempSort[sortBy] = ' asc';
+		else if (tempSort[sortBy] === ' asc') tempSort[sortBy] = ' desc';
+		else tempSort[sortBy] = '';
+		listSorter = { ...tempSort };
 
 		pairs = applyFilter(applySort(applySearch()));
-	}
+	};
 
 	let currentTab = 1;
-	
-	let tabs = [{
-		label: $_('favorites'),
-		sub: [],
-	},{
-		label: $_('usd'),
-		sub: ['USDT', 'USDC', 'USDD']
-	},
-	{label: 'BTC', sub: []}
-	, {
-		label: $_('ordinals'),
-		sub: []
-	}, {
-		label:  $_('trx'),
-		sub: []
-	}, {
-		label: $_('margin'),
-		sub: []
-	}, {
-		label: $_('alts'),
-		sub: []
-	}, {
-		label: $_('innov'),
-		sub: []
-	}, {
-		label: $_('meme'),
-		sub: []
-	}, {
-		label: $_('shanghai-upgrade'),
-		sub: []
-	}, {
-		label: $_('hong-kong'),
-		sub: []
-	}, {
-		label: $_('arbitrum'),
-		sub: []
-	}, {
-		label:  $_('ai'),
-		sub: [],
-	}, {label:  $_('fan-token'),
-		sub: []
-	} ]
+
+	let tabs = [
+		{
+			label: $_('favorites'),
+			sub: []
+		},
+		{
+			label: $_('usd'),
+			sub: ['USDT', 'USDC', 'USDD']
+		},
+		{ label: 'BTC', sub: [] },
+		{
+			label: $_('ordinals'),
+			sub: []
+		},
+		{
+			label: $_('trx'),
+			sub: []
+		},
+		{
+			label: $_('margin'),
+			sub: []
+		},
+		{
+			label: $_('alts'),
+			sub: []
+		},
+		{
+			label: $_('innov'),
+			sub: []
+		},
+		{
+			label: $_('meme'),
+			sub: []
+		},
+		{
+			label: $_('shanghai-upgrade'),
+			sub: []
+		},
+		{
+			label: $_('hong-kong'),
+			sub: []
+		},
+		{
+			label: $_('arbitrum'),
+			sub: []
+		},
+		{
+			label: $_('ai'),
+			sub: []
+		},
+		{ label: $_('fan-token'), sub: [] }
+	];
 
 	let favList = {};
 	onMount(() => {
-		if(browser) {
+		if (browser) {
 			const favs = localStorage.getItem('favs_list');
 			if (favs) {
-				favList = JSON.parse(favs)
+				favList = JSON.parse(favs);
 			}
 		}
-	})
+	});
 	const handleFav = (pair) => {
-		const temp = {...favList};
+		const temp = { ...favList };
 		if (temp[pair.symbol]) {
-			delete temp[pair.symbol]
+			delete temp[pair.symbol];
 		} else {
-			temp[pair.symbol] = true
+			temp[pair.symbol] = true;
 		}
-		localStorage.setItem('favs_list', JSON.stringify(temp))
-		favList = {...temp}
-	}
-	const handleTabChange = (tab, index) =>{
-															listToFilter = tab.sub[0] || "";
-															currentTab = index
-															if (index === 0) {
-																pairs = [...applyFilter(applySort(applySearch())).filter(p => Object.keys(favList).includes(p.symbol))]
-															} else {
-																pairs = [...applyFilter(applySort(applySearch()))]
-															}
-														}
+		localStorage.setItem('favs_list', JSON.stringify(temp));
+		favList = { ...temp };
+	};
+	const handleTabChange = (tab, index) => {
+		listToFilter = index === 1 ? 'USDT' : index === 2 ? 'BTC' : index === 4 ? 'TRX' : '';
+		currentTab = index;
+		if (index === 0) {
+			pairs = [
+				...applyFilter(applySort(applySearch())).filter((p) =>
+					Object.keys(favList).includes(p.symbol)
+				)
+			];
+		} else {
+			pairs = [...applyFilter(applySort(applySearch()))];
+		}
+	};
 	const handleSubTabChange = (filter) => {
-		listToFilter = filter
-		pairs = [...applyFilter(applySort(applySearch()))]
-	}
+		listToFilter = filter;
+		pairs = [...applyFilter(applySort(applySearch()))];
+	};
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -317,7 +332,11 @@
 											<div class="_3bc72d58">
 												<div class="c1fa951e">
 													{#each tabs as tab, index}
-														<span on:click={() => handleTabChange(tab, index)} class="a8b135af{index === currentTab ? ' _606d29e6': ''}">{tab.label}</span>
+														<span
+															on:click={() => handleTabChange(tab, index)}
+															class="a8b135af{index === currentTab ? ' _606d29e6' : ''}"
+															>{tab.label}</span
+														>
 													{/each}
 												</div>
 											</div>
@@ -325,26 +344,27 @@
 										{#if tabs[currentTab].sub.length}
 											<div class="_896a701d" style="">
 												{#each tabs[currentTab].sub as subTab}
-													<span on:click={() => handleSubTabChange(subTab)} class="{subTab === listToFilter ? '_606d29e6' : ''}">{subTab}</span>
+													<span
+														on:click={() => handleSubTabChange(subTab)}
+														class={subTab === listToFilter ? '_606d29e6' : ''}>{subTab}</span
+													>
 												{/each}
-										</div>
+											</div>
 										{/if}
-										
 									</nav>
 									<div class="de0a0725">
 										<dl class="abc336e7 _0fae74ff">
-											
 											<dd>
 												<!-- svelte-ignore a11y-click-events-have-key-events -->
-											<!-- svelte-ignore a11y-no-static-element-interactions -->
-											<!-- svelte-ignore missing-declaration -->
-											<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+												<!-- svelte-ignore a11y-no-static-element-interactions -->
+												<!-- svelte-ignore missing-declaration -->
+												<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 												<em on:click={() => handleSort('symbol')} data-v-102823d5="" class="sort"
 													>{$_('g-symbol')}<svg
 														data-v-102823d5=""
 														width="14"
 														height="12"
-														class="{listSorter['symbol'] || ''}"
+														class={listSorter['symbol'] || ''}
 														viewBox="-2 -1 8 12"
 														><path
 															data-v-102823d5=""
@@ -359,13 +379,16 @@
 														></path></svg
 													></em
 												>
-													<!-- svelte-ignore a11y-click-events-have-key-events -->
-											<!-- svelte-ignore a11y-no-static-element-interactions -->
-											<!-- svelte-ignore missing-declaration -->
-											<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-												<em data-v-102823d5="" on:click={() => handleSort('volumeFrom')} class="sort"
+												<!-- svelte-ignore a11y-click-events-have-key-events -->
+												<!-- svelte-ignore a11y-no-static-element-interactions -->
+												<!-- svelte-ignore missing-declaration -->
+												<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+												<em
+													data-v-102823d5=""
+													on:click={() => handleSort('volumeFrom')}
+													class="sort"
 													>{$_('vol')}<svg
-													class="{listSorter['volumeFrom'] || ''}"
+														class={listSorter['volumeFrom'] || ''}
 														data-v-102823d5=""
 														width="14"
 														height="12"
@@ -384,15 +407,15 @@
 													></em
 												>
 											</dd>
-											
+
 											<dd>
-											<!-- svelte-ignore a11y-click-events-have-key-events -->
-											<!-- svelte-ignore a11y-no-static-element-interactions -->
-											<!-- svelte-ignore missing-declaration -->
-											<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+												<!-- svelte-ignore a11y-click-events-have-key-events -->
+												<!-- svelte-ignore a11y-no-static-element-interactions -->
+												<!-- svelte-ignore missing-declaration -->
+												<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 												<em on:click={() => handleSort('price')} data-v-102823d5="" class="sort"
 													>{$_('g-price')}<svg
-													class="{listSorter['price'] || ''}"
+														class={listSorter['price'] || ''}
 														data-v-102823d5=""
 														width="14"
 														height="12"
@@ -411,7 +434,7 @@
 													></em
 												>
 											</dd>
-											
+
 											<dd>
 												<!-- svelte-ignore a11y-click-events-have-key-events -->
 												<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -419,7 +442,7 @@
 												<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 												<em on:click={() => handleSort('change')} data-v-102823d5="" class="sort"
 													>{$_('24h-change')}<svg
-													class="{listSorter['change'] || ''}"
+														class={listSorter['change'] || ''}
 														data-v-102823d5=""
 														width="14"
 														height="12"
@@ -441,7 +464,6 @@
 										</dl>
 										<div class="_0f4459a3">
 											<div class="_00761050" style="height: calc((100vh - 155px) - 110px)">
-												
 												{#if !pairs.length}
 													<div class="_20a38d89 bdb62701">
 														<svg
@@ -478,54 +500,56 @@
 														<p>No results found</p>
 													</div>
 												{:else}
-												<VirtualList itemHeight={52} items={pairs} let:item>
-													<dl class="abc336e7 _1d9ddf38" style="min-height: 52px;">
-														<dd>
-															<span on:click={() => handleFav(item)} class="_8f210f7a {favList[item.symbol] ? '_1d9ddf38' : ''}"
-																><svg
-																	aria-hidden="true"
-																	class="svgicon"
-																	style="width: 16px; height: 16px; min-width: 16px;"
-																	><use xlink:href="#star"></use></svg
-																></span
-															><a
-																href="/trade/{item.symbol}/?type=spot"
-																class="router-link-exact-active router-link-active"
-																aria-current="page"
-																><i class="_9b33bef0 _66bb57cd"
-																	><img loading="lazy" src={item.fromIcon} class="_6197556c" /></i
-																><span class="f1e17be0"
-																	><span
-																		>{item.symbol.replace('_', '/')}<i class="_6e4b4277">3X</i
-																		></span
-																	><span>
-																		Vol ${abbreviateNumber(item.volumeFrom)}
-																	</span></span
-																></a
-															>
-														</dd>
-														<dd>
-															<a
-																href="/trade/{item.symbol}/?type=spot"
-																class="router-link-exact-active router-link-active"
-																aria-current="page"
-																>{parseFloat(item.price?.toFixed(2) || '0').toLocaleString()}</a
-															>
-														</dd>
-														<dd>
-															<a
-																href="/trade/ETH_USDT/?type=spot"
-																class="router-link-exact-active router-link-active"
-																aria-current="page"
-																><span
-																	class="_7cb43809 {item.change < 0 ? '_65a0ee45' : '_9b99c5d7'}"
+													<VirtualList itemHeight={52} items={pairs} let:item>
+														<dl class="abc336e7 _1d9ddf38" style="min-height: 52px;">
+															<dd>
+																<span
+																	on:click={() => handleFav(item)}
+																	class="_8f210f7a {favList[item.symbol] ? '_1d9ddf38' : ''}"
+																	><svg
+																		aria-hidden="true"
+																		class="svgicon"
+																		style="width: 16px; height: 16px; min-width: 16px;"
+																		><use xlink:href="#star"></use></svg
+																	></span
+																><a
+																	href="/trade/{item.symbol}/?type=spot"
+																	class="router-link-exact-active router-link-active"
+																	aria-current="page"
+																	><i class="_9b33bef0 _66bb57cd"
+																		><img loading="lazy" src={item.fromIcon} class="_6197556c" /></i
+																	><span class="f1e17be0"
+																		><span
+																			>{item.symbol.replace('_', '/')}<i class="_6e4b4277">3X</i
+																			></span
+																		><span>
+																			Vol ${abbreviateNumber(item.volumeFrom)}
+																		</span></span
+																	></a
 																>
-																	{parseFloat(item.changePercent?.toFixed(2) || '0')}%
-																</span></a
-															>
-														</dd>
-													</dl>
-												</VirtualList>
+															</dd>
+															<dd>
+																<a
+																	href="/trade/{item.symbol}/?type=spot"
+																	class="router-link-exact-active router-link-active"
+																	aria-current="page"
+																	>{parseFloat(item.price?.toFixed(2) || '0').toLocaleString()}</a
+																>
+															</dd>
+															<dd>
+																<a
+																	href="/trade/ETH_USDT/?type=spot"
+																	class="router-link-exact-active router-link-active"
+																	aria-current="page"
+																	><span
+																		class="_7cb43809 {item.change < 0 ? '_65a0ee45' : '_9b99c5d7'}"
+																	>
+																		{parseFloat(item.changePercent?.toFixed(2) || '0')}%
+																	</span></a
+																>
+															</dd>
+														</dl>
+													</VirtualList>
 													<div data-v-b329ee4c="" tabindex="-1" class="resize-observer">
 														<!-- svelte-ignore a11y-missing-attribute -->
 														<object
