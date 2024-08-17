@@ -14,6 +14,9 @@
 	import Navbar from '$lib/navbar.svelte';
 	import Loader from '$lib/loader.svelte';
 	import { ModeWatcher, mode } from 'mode-watcher';
+	import { socketData } from '$lib/store/socket';
+	import SocketManager from '$lib/socket/Socketmanager';
+	import { ServerURl } from '$lib/backendUrl';
 	$: url.set($page.url.pathname);
 
 	$: urlString = $page.url.href;
@@ -69,6 +72,14 @@
 	onMount(() => {
 		ens = browser && window.innerWidth;
 		screen.set(ens || 0);
+
+		if (browser) {
+			const io = SocketManager.socket(ServerURl());
+			socketData.set({
+				io,
+				request: SocketManager.socketRequestBind(io)
+			})
+		}
 	});
 
 	$: {

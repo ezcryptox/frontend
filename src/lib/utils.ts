@@ -60,3 +60,23 @@ export const flyAndScale = (
 		easing: cubicOut
 	};
 };
+
+export function abbreviateNumber(number) {
+  number = parseFloat(number)
+	if (!number) return 0;
+	if (number >= 1e12) {
+		// Trillion
+		return parseFloat((number / 1e12).toFixed(2)).toLocaleString() + 'T';
+	} else if (number >= 1e9) {
+		// Billion
+		return parseFloat((number / 1e9).toFixed(2)).toLocaleString() + 'B';
+	} else if (number >= 1e6) {
+		// Million
+		return parseFloat((number / 1e6).toFixed(2)).toLocaleString() + 'M';
+	} else if (number >= 1e3) {
+		// Thousand
+		return parseFloat((number / 1e3).toFixed(2)).toLocaleString() + 'K';
+	} else {
+		return parseFloat(number.toFixed(2) || '0').toLocaleString();
+	}
+}
