@@ -1,90 +1,56 @@
 import {
 	makeApiRequest,
-	generateSymbol,
-	parseFullSymbol,
 } from './helpers.js';
 import {
 	subscribeOnStream,
 	unsubscribeFromStream,
 } from './streaming.js';
 
+import {browser} from '$app/environment'
+import {RESOLUTION_MAP} from './helpers';
+
 const lastBarsCache = new Map();
 
 // DatafeedConfiguration implementation
 const configurationData = {
-	supported_resolutions: ['1', '5', '15', '10', '30', '60', '120', '180', '1D', '3D', '1W', '1M'],
+	supported_resolutions: ['1', '5', '15', '10', '30', '60', '240', '360', '1D', '3D', '1W', '1M'],
 	supports_group_request: false,
 	has_intraday: true,
 	supports_marks: false,
 	supports_search: true,
 	supports_timescale_marks: false,
 	symbols_types: [{
-		name: 'crypto',
-		value: 'crypto',
+		name: 'bitcoin',
+		value: 'bitcoin',
 	},],
 	// The `exchanges` arguments are used for the `searchSymbols` method if a user selects the exchange
 	exchanges: [{
-		value: 'Coinbase',
-		name: 'Coinbase',
-		desc: 'Coinbase',
-	},
-	{
-		value: 'Kraken',
-		// Filter name
-		name: 'Kraken',
-		// Full exchange name displayed in the filter popup
-		desc: 'Kraken bitcoin exchange',
+		value: 'Binance',
+		name: 'Binance',
+		desc: 'Binance',
 	},
 	],
 };
 
 // Obtains all symbols for all exchanges supported by CryptoCompare API
 async function getAllSymbols() {
-	const data = await makeApiRequest('data/v3/all/exchanges');
-	let allSymbols = [];
-
-	for (const exchange of configurationData.exchanges) {
-		const pairs = data.Data[exchange.value].pairs;
-
-		for (const leftPairPart of Object.keys(pairs)) {
-			const symbols = pairs[leftPairPart].map(rightPairPart => {
-				const symbol = generateSymbol(exchange.value, leftPairPart, rightPairPart);
-				return {
-					symbol: symbol.short,
-					full_name: symbol.full,
-					description: symbol.short,
-					exchange: exchange.value,
-					type: 'crypto',
-				};
-			});
-			allSymbols = [...allSymbols, ...symbols];
-		}
-	}
-	return allSymbols;
+	if (!browser) return [];
+	const dataString = localStorage.getItem('x-currency-list') || '[]';
+	const data = JSON.parse(dataString)
+	return data.map(s => ({
+		symbol: s.symbol,
+		full_name: s.displayName,
+		description: s.symbol,
+		type: 'bitcoin',
+		priceScale: s.tradeLimit.priceScale,
+		quantityScale: s.tradeLimit.quantityScale
+	}));
 }
 
 export default {
 	onReady: (callback) => {
-		console.log('[onReady]: Method call');
+		// console.log('[onReady]: Method call');
 		setTimeout(() => callback(configurationData));
-	},
-
-	searchSymbols: async (
-		userInput,
-		exchange,
-		symbolType,
-		onResultReadyCallback,
-	) => {
-		console.log('[searchSymbols]: Method call');
-		const symbols = await getAllSymbols();
-		const newSymbols = symbols.filter(symbol => {
-			const isExchangeValid = exchange === '' || symbol.exchange === exchange;
-			const isFullSymbolContainsInput = symbol.full_name
-				.toLowerCase()
-				.indexOf(userInput.toLowerCase()) !== -1;
-			return isExchangeValid && isFullSymbolContainsInput;
-		});
-		onResultReadyCallback(newSymbols);
 	},
 
 	resolveSymbol: async (
@@ -93,56 +59,52 @@ export default {
 		onResolveErrorCallback,
 		extension
 	) => {
-		console.log('[resolveSymbol]: Method call', symbolName);
+		// console.log('[resolveSymbol]: Method call', symbolName);
 		const symbols = await getAllSymbols();
 		const symbolItem = symbols.find(({
 			full_name,
 		}) => full_name === symbolName);
 		if (!symbolItem) {
-			console.log('[resolveSymbol]: Cannot resolve symbol', symbolName);
 			onResolveErrorCallback('cannot resolve symbol');
 			return;
 		}
-		// Symbol information object
+		
 		const symbolInfo = {
 			ticker: symbolItem.full_name,
 			name: symbolItem.symbol,
 			description: symbolItem.description,
 			type: symbolItem.type,
 			session: '24x7',
-			timezone: 'Etc/UTC',
-			exchange: symbolItem.exchange,
+			timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 			minmov: 1,
-			pricescale: 100,
-			has_intraday: false,
-			has_no_volume: true,
-			has_weekly_and_monthly: false,
+			pricescale: Number("1e".concat(symbolItem.priceScale)),
+			has_intraday: true,
+			has_daily: true,
+			has_weekly_and_monthly: true,
 			supported_resolutions: configurationData.supported_resolutions,
-			volume_precision: 2,
+			volume_precision: Number(symbolItem.quantityScale),
 			data_status: 'streaming',
 		};
 
-		console.log('[resolveSymbol]: Symbol resolved', symbolName);
 		onSymbolResolvedCallback(symbolInfo);
 	},
 
 	getBars: async (symbolInfo, resolution, periodParams, onHistoryCallback, onErrorCallback) => {
-		const { from, to, firstDataRequest } = periodParams;
-		console.log('[getBars]: Method call', symbolInfo, resolution, from, to);
-		const parsedSymbol = parseFullSymbol(symbolInfo.full_name);
+		const { from, to, firstDataRequest, countback } = periodParams;
+		// console.log('[getBars]: Method call', symbolInfo, resolution, from, to);
 		const urlParameters = {
-			e: parsedSymbol.exchange,
-			fsym: parsedSymbol.fromSymbol,
-			tsym: parsedSymbol.toSymbol,
-			toTs: to,
-			limit: 2000,
+			symbol: symbolInfo.name.replace('_', ''),
+			interval: RESOLUTION_MAP[resolution],
+			startTime: from * 1000,
+			endTime: to * 1000,
+			limit: countback || 500,
 		};
 		const query = Object.keys(urlParameters)
 			.map(name => `${name}=${encodeURIComponent(urlParameters[name])}`)
 			.join('&');
 		try {
-			const data = await makeApiRequest(`data/histoday?${query}`);
-			if (data.Response && data.Response === 'Error' || data.Data.length === 0) {
+			const data = await makeApiRequest(`api/market/klines?${query}`);
+			if (data.length === 0) {
 				// "noData" should be set if there is no data in the requested period
 				onHistoryCallback([], {
 					noData: true,
@@ -150,14 +112,15 @@ export default {
 				return;
 			}
 			let bars = [];
-			data.Data.forEach(bar => {
-				if (bar.time >= from && bar.time < to) {
+			data.forEach(([time,open,high,low,close,volume]) => {
+				if ((time/1000) >= from && (time/1000) < to) {
 					bars = [...bars, {
-						time: bar.time * 1000,
-						low: bar.low,
-						high: bar.high,
-						open: bar.open,
-						close: bar.close,
+						time,
+						low: parseFloat(low),
+						high: parseFloat(high),
+						open: parseFloat(open),
+						close: parseFloat(close),
+						volume: parseFloat(volume)
 					}];
 				}
 			});
@@ -166,7 +129,6 @@ export default {
 					...bars[bars.length - 1],
 				});
 			}
-			console.log(`[getBars]: returned ${bars.length} bar(s)`);
 			onHistoryCallback(bars, {
 				noData: false,
 			});
@@ -183,7 +145,7 @@ export default {
 		subscriberUID,
 		onResetCacheNeededCallback,
 	) => {
-		console.log('[subscribeBars]: Method call with subscriberUID:', subscriberUID);
+		// console.log('[subscribeBars]: Method call with subscriberUID:', subscriberUID);
 		subscribeOnStream(
 			symbolInfo,
 			resolution,
@@ -195,7 +157,7 @@ export default {
 	},
 
 	unsubscribeBars: (subscriberUID) => {
-		console.log('[unsubscribeBars]: Method call with subscriberUID:', subscriberUID);
+		// console.log('[unsubscribeBars]: Method call with subscriberUID:', subscriberUID);
 		unsubscribeFromStream(subscriberUID);
 	},
 };

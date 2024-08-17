@@ -1,75 +1,60 @@
-import { parseFullSymbol, apiKey } from './helpers.js';
-import { io } from 'socket.io-client'; // Import socket.io-client
-
-const socket = io(`wss://streamer.cryptocompare.com/v2?api_key=${apiKey}`);
+import { RESOLUTION_MAP, splitSymbolName } from './helpers.js';
+import { socketData } from '$lib/store/socket';
+import {get} from 'svelte/store'
 const channelToSubscription = new Map();
+socketData.subscribe(data => {
+	if (!data) return;
+	const { io } = data;
+	io.on('ks', data => {
+		// console.log('ON KLINE DATA => ', data)
+		const kline = data.data.k; // Access the Kline data
+		if (!kline || !kline.x) return; 
+		const { o: open, h: high, l: low, c: close, i: interval } = kline;
+		const tradePrice = parseFloat(kline.c); // Closing price
+		const { base, quote } = splitSymbolName(kline.s)
+		const tradeTime = kline.t; // Kline open time
+		const tradeVolume = parseFloat(kline.v);
+		const channelString = `${base.toLowerCase()}${quote.toLowerCase()}@kline_${interval}`; // Symbol channel string
+		const subscriptionItem = channelToSubscription.get(channelString);
+		// console.log('SUB ITEM> ', subscriptionItem, channelString)
+		if (subscriptionItem === undefined) {
+			return;
+		}
+		const lastDailyBar = subscriptionItem.lastDailyBar;
+		const nextDailyBarTime = getNextDailyBarTime(lastDailyBar.time);
 
-socket.on('connect', () => {
-	console.log('[socket] Connected');
-});
+		let bar;
+		if (tradeTime >= nextDailyBarTime) {
+			bar = {
+				time: nextDailyBarTime,
+				open: parseFloat(open),
+				high: parseFloat(high),
+				low: parseFloat(low),
+				close: parseFloat(close),
+				volume: tradeVolume
+			};
+		
+			// console.log('[socket] Generate new bar', bar);
+		} else if (tradeTime  > lastDailyBar.time) {
+			bar = {
+				...lastDailyBar,
+				high: Math.max(lastDailyBar.high, tradePrice),
+				low: Math.min(lastDailyBar.low, tradePrice),
+				close: tradePrice,
+				volume: Math.max(lastDailyBar.volume, tradeVolume)
+			};
+			// console.log('[socket] Update the latest bar by price', tradePrice);
+		} else {
+			// Ignore out-of-order data
+			return;
+		}
+		subscriptionItem.lastDailyBar = bar;
 
-socket.on('disconnect', (reason) => {
-	console.log('[socket] Disconnected:', reason);
-});
-
-socket.on('error', (error) => {
-	console.log('[socket] Error:', error);
-});
-socket.on('message', (data) => {
-	console.log('[socket] Message1:', data);
+		// Send data to every subscriber of that symbol
+		subscriptionItem.handlers.forEach((handler) => handler.callback(bar));
+	})
 })
-socket.on('m', (data) => { 
-	console.log('[socket] Message:', data);
-	const [
-		eventTypeStr,
-		exchange,
-		fromSymbol,
-		toSymbol,
-		,
-		,
-		tradeTimeStr,
-		,
-		tradePriceStr,
-	] = data.split('~');
 
-	if (parseInt(eventTypeStr) !== 0) {
-		// Skip all non-trading events
-		return;
-	}
-	const tradePrice = parseFloat(tradePriceStr);
-	const tradeTime = parseInt(tradeTimeStr);
-	const channelString = `0~${exchange}~${fromSymbol}~${toSymbol}`;
-	const subscriptionItem = channelToSubscription.get(channelString);
-	if (subscriptionItem === undefined) {
-		return;
-	}
-	const lastDailyBar = subscriptionItem.lastDailyBar;
-	const nextDailyBarTime = getNextDailyBarTime(lastDailyBar.time);
-
-	let bar;
-	if (tradeTime >= nextDailyBarTime) {
-		bar = {
-			time: nextDailyBarTime,
-			open: tradePrice,
-			high: tradePrice,
-			low: tradePrice,
-			close: tradePrice,
-		};
-		console.log('[socket] Generate new bar', bar);
-	} else {
-		bar = {
-			...lastDailyBar,
-			high: Math.max(lastDailyBar.high, tradePrice),
-			low: Math.min(lastDailyBar.low, tradePrice),
-			close: tradePrice,
-		};
-		console.log('[socket] Update the latest bar by price', tradePrice);
-	}
-	subscriptionItem.lastDailyBar = bar;
-
-	// Send data to every subscriber of that symbol
-	subscriptionItem.handlers.forEach((handler) => handler.callback(bar));
-});
 
 function getNextDailyBarTime(barTime) {
 	const date = new Date(barTime * 1000);
@@ -85,8 +70,14 @@ export function subscribeOnStream(
 	onResetCacheNeededCallback,
 	lastDailyBar
 ) {
-	const parsedSymbol = parseFullSymbol(symbolInfo.full_name) || {exchange: "", fromSymbol: "", toSymbol: ""};
-	const channelString = `0~${parsedSymbol.exchange}~${parsedSymbol.fromSymbol}~${parsedSymbol.toSymbol}`;
+	const [base, quote] = symbolInfo.name.split('_');
+	if (!base) {
+		// console.log(
+		// 	'[subscribeBars]: No symbol Info:',
+		// 	symbolInfo
+		// );
+	}
+	const channelString = `${base.toLowerCase()}${quote.toLowerCase()}@kline_${RESOLUTION_MAP[resolution]}`; // Update for Binance Kline stream
 	const handler = {
 		id: subscriberUID,
 		callback: onRealtimeCallback,
@@ -97,26 +88,38 @@ export function subscribeOnStream(
 		subscriptionItem.handlers.push(handler);
 		return;
 	}
+
+	const sd = get(socketData);
+	if (!sd) {
+		console.log(
+			'[subscribeBars]: No socket Data',
+			channelString
+		);
+		return;
+	}
+
 	subscriptionItem = {
 		subscriberUID,
 		resolution,
 		lastDailyBar,
 		handlers: [handler],
 	};
+
+
 	channelToSubscription.set(channelString, subscriptionItem);
-	console.log(
-		'[subscribeBars]: Subscribe to streaming. Channel:',
-		channelString
-	);
-	const subRequest = {
-		action: 'SubAdd',
-		subs: [channelString],
-	};
-	socket.emit(JSON.stringify(subRequest));
+	
+	sd.request('sub-klines', {
+		symbol: symbolInfo.name,
+		interval: RESOLUTION_MAP[resolution]
+	});
+	// console.log(
+	// 	'[subscribeBars]: Subscribe to streaming. Channel:',
+	// 	channelString
+	// );
 }
 
+
 export function unsubscribeFromStream(subscriberUID) {
-	// Find a subscription with id === subscriberUID
 	for (const channelString of channelToSubscription.keys()) {
 		const subscriptionItem = channelToSubscription.get(channelString);
 		const handlerIndex = subscriptionItem.handlers.findIndex(
@@ -128,16 +131,13 @@ export function unsubscribeFromStream(subscriberUID) {
 			subscriptionItem.handlers.splice(handlerIndex, 1);
 
 			if (subscriptionItem.handlers.length === 0) {
+				
 				// Unsubscribe from the channel if it was the last handler
-				console.log(
-					'[unsubscribeBars]: Unsubscribe from streaming. Channel:',
-					channelString
-				);
-				const subRequest = {
-					action: 'SubRemove',
-					subs: [channelString],
-				};
-				socket.emit(JSON.stringify(subRequest));
+				// console.log(
+				// 	'[unsubscribeBars]: Unsubscribe from streaming. Channel:',
+				// 	channelString
+				// );
+				// Unsubcribing is now handle on the server
 				channelToSubscription.delete(channelString);
 				break;
 			}

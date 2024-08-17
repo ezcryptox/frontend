@@ -1,18 +1,28 @@
-// Get a CryptoCompare API key CryptoCompare https://www.cryptocompare.com/coins/guides/how-to-use-our-api/
-export const apiKey =
-"64f013392bc2da9a730aef2add60c8f3b69e502e8d65899ccafbfee2bd8000ef";
-// Makes requests to CryptoCompare API
+
+import { ServerURl } from '$lib/backendUrl'
 export async function makeApiRequest(path) {
 	try {
-		const url = new URL(`https://min-api.cryptocompare.com/${path}`);
-		url.searchParams.append('api_key',apiKey)
+		const url = new URL(`${ServerURl()}/${path}`);
 		const response = await fetch(url.toString());
 		return response.json();
 	} catch (error) {
-		throw new Error(`CryptoCompare request error: ${error.status}`);
+		throw new Error(`API request error: ${error.status}`);
 	}
 }
-
+export const RESOLUTION_MAP = {
+	'1': '1m',
+	'5': '5m',
+	'15': '15m',
+	'10': '5m',
+	'30': '30m',
+	'60': '1h',
+	'120': '2h',
+	'180': '2h',
+	'1D': '1d',
+	'3D': '3d',
+	'1W': '1w',
+	'1M': '1M'
+}
 // Generates a symbol ID from a pair of the coins
 export function generateSymbol(exchange, fromSymbol, toSymbol) {
 	const short = `${fromSymbol}/${toSymbol}`;
@@ -21,8 +31,18 @@ export function generateSymbol(exchange, fromSymbol, toSymbol) {
 		full: `${exchange}:${short}`,
 	};
 }
+export function splitSymbolName(symbol) {
+	const supportedQuotes = [
+		'USDT', 'USDC',
+		'BTC', 'TRX',
+		'BNB', 'USDD',
+		'ETH', 'BFIC'
+	];
 
-// Returns all parts of the symbol
+	const quote = supportedQuotes.find(q => symbol.toLowerCase().endsWith(q.toLowerCase())) || '';
+	const base = symbol.substring(0, symbol.lastIndexOf(quote))
+	return { base, quote }
+}
 export function parseFullSymbol(fullSymbol) {
 	const match = fullSymbol.match(/^(\w+):(\w+)\/(\w+)$/);
 	if (!match) {
@@ -31,7 +51,7 @@ export function parseFullSymbol(fullSymbol) {
 
 	return {
 		exchange: match[1],
-		fromSymbol: match[2],
-		toSymbol: match[3],
+		base: match[2],
+		quote: match[3],
 	};
 }

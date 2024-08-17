@@ -2,7 +2,9 @@
 .errorCardRendererContainer-1ZTLibqo {
   display: none;
 }
-
+.legendMainSourceWrapper-l31H9iuA .titlesWrapper-l31H9iuA, .legendMainSourceWrapper-l31H9iuA .buttonsWrapper-l31H9iuA {
+  display: none!important;
+}
 #drawing-toolbar {
   border-right: 1px solid transparent;
 }
