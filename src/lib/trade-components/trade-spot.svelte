@@ -72,7 +72,7 @@
 				};
 	};
 	setContext('toggleOnBoarding', (finished) => {
-		if (finished) localStorage.setItem('x-onboarding-state', 1)
+		if (finished) localStorage.setItem('x-onboarding-state', 1);
 		toggleOnBoarding();
 	});
 

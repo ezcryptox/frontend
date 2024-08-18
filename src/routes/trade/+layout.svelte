@@ -2,6 +2,7 @@
 	import {
 		cryptoQuotes,
 		currentSelectedPair,
+		depthChartList,
 		marketTrades,
 		orderBook,
 	} from '$lib/store/marketdata';
@@ -32,6 +33,18 @@
 		
 		io.on('obs', (data) => {
 			orderBook.set(data);
+			const symbol = $currentSelectedPair?.symbol;
+			const orderbook = data.orderbook;
+			if (symbol && orderbook) {
+				depthChartList.set({
+					// @ts-ignore
+					bids: Object.entries(orderbook['bids']).slice(0, 13).map(([price, amount]) => ([parseFloat(price), parseFloat(amount)])),
+					// @ts-ignore
+					asks: Object.entries(orderbook['asks']).slice(0,13).map(([price, amount]) => ([parseFloat(price), parseFloat(amount)])),
+					symbol,
+					length: orderbook['bids'].length + orderbook['asks'].length
+				})
+			}
 		});
 
 		io.on('ts', (data) => {

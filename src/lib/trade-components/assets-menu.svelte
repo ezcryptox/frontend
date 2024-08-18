@@ -415,10 +415,6 @@
 							</dd>
 						</dl>
 					</VirtualList>
-					<div data-v-b329ee4c="" tabindex="-1" class="resize-observer">
-						<!-- svelte-ignore a11y-missing-attribute -->
-						<object aria-hidden="true" tabindex="-1" type="text/html" data="about:blank"></object>
-					</div>
 				{/if}
 			</div>
 		</div>

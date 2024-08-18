@@ -7,6 +7,9 @@ export const cryptoQuotes = writable <Quote|null>(_quotes)
 const _orderBook: {[k:string]: unknown} | null = null;
 export const orderBook = writable(_orderBook)
 
+const _depthChartList: { bids: [][], asks: [][], symbol: string, length: number } = {bids: [], asks: [], symbol: 'ETH_USDT', length: 0};
+export const depthChartList = writable(_depthChartList)
+
 const _marketTrades: { [k: string]: unknown } | null = null;
 export const marketTrades = writable(_marketTrades)
 
@@ -60,7 +63,5 @@ export const currentSelectedPair = writable<CryptoPair|null>(_currentSelectedPai
 const _tradePairs: CryptoPair[] = [];
 export const tradePairs = writable <CryptoPair[]>(_tradePairs);
 
-
-type TradeTabs = {baseCurrencyName: string, quoteCurrencyName: string, symbol: string, price: number}[]
-const _tradeTabs: TradeTabs = [];
-export const tradeTabs = writable<TradeTabs>(_tradeTabs);
+const _exchangeChartType: 'kline' | 'depth' = 'kline';
+export const exchangeChartType = writable<'kline' | 'depth'>(_exchangeChartType);
