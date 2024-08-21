@@ -13,7 +13,7 @@ const lastBarsCache = new Map();
 
 // DatafeedConfiguration implementation
 const configurationData = {
-	supported_resolutions: ['1', '5', '15', '10', '30', '60', '240', '360', '1D', '3D', '1W', '1M'],
+	supported_resolutions: ['1', '5', '15', '10', '30', '60', '120', '240', '360', '720', '1D', '3D', '1W', '1M'],
 	supports_group_request: false,
 	has_intraday: true,
 	supports_marks: false,

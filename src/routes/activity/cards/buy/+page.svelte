@@ -50,7 +50,7 @@
 		<div class="_0zlMs">
 			<div class="_1715a">
 				<ul>
-					<!-- <li>
+					<li>
 						<a href="/activity/wallet/" class=""
 							><svg
 								width="18"
@@ -66,7 +66,7 @@
 								></path></svg
 							><span>{$_('g-wallet')}</span></a
 						>
-					</li>
+					</li><!-- 
 					<li>
 						<a href="/activity/spot/" class=""
 							><svg

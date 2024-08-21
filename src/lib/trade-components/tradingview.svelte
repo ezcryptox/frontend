@@ -14,6 +14,7 @@
 	const supportedIntervals = [
 		'1min',
 		'5min',
+		'10min',
 		'15min',
 		'30min',
 		'1hour',
@@ -26,15 +27,17 @@
 		'1week',
 		'1month'
 	];
-
 	const resolutionMap = {
 		'1min': '1',
 		'5min': '5',
+		'10min': '15',
+		'15min': '15',
 		'30min': '30',
 		'1hour': '60',
 		'2hour': '120',
 		'4hour': '240',
 		'6hour': '360',
+		'12hour': '720',
 		'1day': '1D',
 		'3day': '3D',
 		'1week': '1W',
