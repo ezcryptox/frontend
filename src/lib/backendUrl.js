@@ -4,10 +4,10 @@ export const ServerURl = () => {
     if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
       return "http://localhost:8000";
     } else {
-      return "https://ezcryptox.onrender.com";
+      return "https://backend-8wyk.onrender.com";
     }
   }
-  return "https://ezcryptox.onrender.com";
+  return "https://backend-8wyk.onrender.com";
 };
 
 export const pageURL = () => {

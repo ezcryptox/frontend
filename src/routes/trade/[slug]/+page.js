@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 import axios from 'axios'
 import { ServerURl } from '$lib/backendUrl'
 import { browser } from '$app/environment';
-import { currentSelectedPair, tradePairs } from '$lib/store/marketdata';
+import { tradePairs } from '$lib/store/marketdata';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {

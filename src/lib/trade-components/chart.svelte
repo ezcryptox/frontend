@@ -103,7 +103,7 @@
 					class="afed7137 {tb.symbol === $currentSelectedPair?.symbol ? '_54ffc89b' : ''}"
 				>
 					<a
-						href="/trade/${tb.symbol}/?type=spot"
+						href="/trade/{tb.symbol}/?type=spot"
 						aria-current="page"
 						on:click={handleAssetSelected(tb)}
 						class="router-link-exact-active router-link-active"

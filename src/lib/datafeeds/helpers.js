@@ -9,15 +9,17 @@ export async function makeApiRequest(path) {
 		throw new Error(`API request error: ${error.status}`);
 	}
 }
+
 export const RESOLUTION_MAP = {
 	'1': '1m',
 	'5': '5m',
 	'15': '15m',
-	'10': '5m',
+	'10': '15m',
 	'30': '30m',
 	'60': '1h',
-	'120': '2h',
-	'180': '2h',
+	'240': '4h',
+	'360': '6h',
+	'720': '12h',
 	'1D': '1d',
 	'3D': '3d',
 	'1W': '1w',
