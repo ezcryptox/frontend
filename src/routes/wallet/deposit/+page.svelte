@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import '../../../styles/wallet/deposit.css';
+	import '../../../styles/wallet/deposit_withdrawal.css';
 	import { DataListTable } from '$lib/components/ui/datatable';
 	import { onMount } from 'svelte';
 	import QRCode from 'qrcode';
@@ -45,14 +45,6 @@
 		type: string;
 		suspended: boolean;
 		chainUrl: string;
-	};
-	type Currency = {
-		name: string;
-		fullName: string;
-		icon: string;
-		suspended: boolean;
-		depositAddress: string;
-		blockchains: BlockChain[];
 	};
 	$: loading = true;
 
