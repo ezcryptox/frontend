@@ -3,6 +3,7 @@
 	import '../../../styles/wallet/deposit_withdrawal.css';
 	import { DataListTable } from '$lib/components/ui/datatable';
 	import { onMount } from 'svelte';
+	import {mode} from 'mode-watcher';
 	import QRCode from 'qrcode';
 	import axios from 'axios';
 	import VirtualList from '@sveltejs/svelte-virtual-list';
@@ -191,7 +192,7 @@
 		<!-- svelte-ignore a11y-invalid-attribute -->
 		<a href="javascript:;" class="-pl-z">Deposit</a>
 	</h3>
-	<div class="f7TBC aOozD">
+	<div class="f7TBC aOozD {!currencies.length ? 'opacity-45 pointer-events-none' : ''}">
 		<div class="qnl7D">
 			<h3 class="i7xy1">Deposit</h3>
 			<div class="el-steps el-steps--vertical tNp4k">
@@ -229,7 +230,7 @@
 										{#if selectedCurrency && !cryptoMenuOpen}
 											<span
 												class="_3Fw8O"
-												style="width: 20px; height: 20px; background-image: url(&quot;{selectedCurrency.icon}&quot;); margin-right: 4px;"
+												style="width: 20px; height: 20px; background-image: url(&quot;{selectedCurrency.icon || `/svgs/currency-${$mode}.svg` }&quot;); margin-right: 4px;"
 											></span><strong>{selectedCurrency.name}</strong
 											>{selectedCurrency.fullName}<svg
 												fill="currentColor"
@@ -299,7 +300,6 @@
 															style="outline: none;"
 														>
 															<div style="padding: 0px 12px;">
-																<!----><!---->
 																<p>Frequently Used</p>
 																<ul class="yB0oP">
 																	{#each popular as currency}
@@ -328,14 +328,17 @@
 																		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 																		<!-- svelte-ignore a11y-click-events-have-key-events -->
 																		<dl
-																			on:click={() =>
-																				!item.suspended && handleSetSelectedCurrency(item.name)}
-																			class=""
+																			on:click={(ev) =>
+																				{
+																					ev.stopPropagation();
+																					!item.suspended && handleSetSelectedCurrency(item.name)}
+																				}
+																			class="{item.suspended ? 'Gy-yk' : ''}"
 																		>
 																			<dt class="DfPKc">
 																				<span
 																					class="_3Fw8O"
-																					style="width: 24px; height: 24px; background-image: url(&quot;{item.icon}&quot;);"
+																					style="width: 24px; height: 24px; background-image: url(&quot;{item.icon || `/svgs/currency-${$mode}.svg`}&quot;);"
 																				></span><strong>{item.name}</strong>
 																				{item.fullName}
 																			</dt>
@@ -469,7 +472,6 @@
 													> Please make sure you select the same network as on the withdrawal platform
 													to avoid asset loss.
 												</p>
-												<!---->
 												<ul class="prRS8" style="max-height: 300px;">
 													{#each selectedCurrency?.blockchains || [] as blockchain}
 														<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -480,16 +482,20 @@
 																handleSetSelectedBlockchain(blockchain);
 															}}
 														>
-															<dl class="">
+															<dl class="{blockchain.suspended ? 'Gy-yk' : ''}">
 																<dt>
 																	<strong style="line-height: 26px;">{blockchain.fullName}</strong
 																	><span>{blockchain.name} ({blockchain.type})</span>
 																</dt>
-																<dd class="_2HHAg">
-																	<!----><span
+																{#if blockchain.suspended}
+																	<dd>Suspended</dd>
+																	{:else}
+																	<dd class="_2HHAg">
+																	<span
 																		>{blockchain.confirmations} block confirmation(s)</span
 																	>
 																</dd>
+																{/if}
 															</dl>
 														</li>
 													{/each}
@@ -497,7 +503,6 @@
 											</div>
 										{/if}
 									</div>
-									<!---->
 								</div>
 							{/if}
 						</div>

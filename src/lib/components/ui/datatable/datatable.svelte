@@ -5,7 +5,7 @@
   import {writable} from 'svelte/store';
 	import { onMount } from 'svelte';
 
-	export let dataListColumns: {accessor: string, header: string}[] = [];
+	export let dataListColumns: {accessor: string, header: string, cell?: (value: any) => any}[] = [];
 	export let dataListFetcher = () => Promise.resolve([]);
 
   $: loading = true;
@@ -13,10 +13,11 @@
 	// @ts-ignore
 	let table = createTable(dataList);
 
-	const columns = table.createColumns(dataListColumns.map(({ accessor, header }) =>
+	const columns = table.createColumns(dataListColumns.map(({ accessor, header, cell }) =>
 			table.column({
 				accessor,
-				header
+				header,
+				cell: ({value}) => cell ? cell(value) : value
 			})
 		));
 

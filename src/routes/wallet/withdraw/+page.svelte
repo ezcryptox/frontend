@@ -10,9 +10,10 @@
 	import { handleAuthToken } from '$lib/store/routes';
 	import pkg from 'lodash';
 	const { debounce } = pkg;
+	import { mode } from 'mode-watcher';
+	import * as Tooltip from '$lib/components/ui/tooltip';
 	import { toast } from 'svelte-sonner';
 
-	
 	type BlockChain = {
 		name: string;
 		fullName: string;
@@ -28,7 +29,7 @@
 	$: currencies = [];
 
 	$: filteredCurrencies = [];
-	let assetBalances: { [k: string]: {balance: number} } = {};
+	let assetBalances: { [k: string]: { balance: number } } = {};
 	let searchQuery = '';
 	const handleSearch = (ev: any) => {
 		const value = ev.target.value.trim();
@@ -43,6 +44,46 @@
 		];
 	};
 	const debouncedHandleInputChange = debounce(handleSearch, 300);
+
+	$: walletAddressValid = true;
+	$: walletAddress = '';
+
+	const handleAddressInput = (ev: any) => {
+		if (!selectedBlockchain) return;
+		const { name, type } = selectedBlockchain;
+		walletAddress = ev.target.value;
+
+		if (type === 'ERC20') {
+			walletAddressValid = /^0x[a-fA-F0-9]{40}$/.test(walletAddress);
+		} else if (name === 'BTC') {
+			walletAddressValid =
+				/^(1[1-9A-HJ-NP-Za-km-z]{25,34}|3[1-9A-HJ-NP-Za-km-z]{25,34}|bc1[a-zA-HJ-NP-Z0-9]{39,59})$/.test(
+					walletAddress
+				);
+		} else if (name === 'LTC') {
+			walletAddressValid = /^(L[1-9A-HJ-NP-Za-km-z]{25,34}|M[1-9A-HJ-NP-Za-km-z]{25,34})$/.test(
+				walletAddress
+			);
+		} else if (name === 'XRP') {
+			walletAddressValid = /^r[1-9A-HJ-NP-Za-km-z]{25,34}$/.test(walletAddress);
+		} else if (name === 'BCH') {
+			walletAddressValid = /^(bitcoincash:|q|p)[pqz][1-9A-HJ-NP-Za-km-z]{25,39}$/.test(
+				walletAddress
+			);
+		} else if (name === 'TRX') {
+			walletAddressValid = /^T[a-zA-HJ-NP-Z0-9]{33}$/.test(walletAddress);
+		} else walletAddressValid = false;
+
+		if (walletAddressValid) {
+			currentStep = 3;
+		} else currentStep = 2;
+	};
+
+	const debounceHandleAddressChange = debounce(handleAddressInput, 300);
+
+	$: withdrawalAmount = 0;
+	$: withdrawalAmountValid = true;
+
 	$: selectedCurrency = null;
 	$: selectedBlockchain = null;
 	$: networkOpen = false;
@@ -67,8 +108,10 @@
 	const handleSetSelectedCurrency = (currency: string) => {
 		selectedCurrency = currencies.find((c) => c.name === currency);
 		selectedBlockchain = null;
+		handleChangeWMTap(0)({})
 		if (selectedCurrency) currentStep = 2;
 		searchQuery = selectedCurrency?.name || '';
+		
 		if (!selectedCurrency) {
 			currentStep = 1;
 			selectedBlockchain = null;
@@ -95,26 +138,159 @@
 		if (blockchain.suspended) return;
 		selectedBlockchain = blockchain;
 		networkOpen = false;
-		currentStep++;
+		walletAddressValid = true;
+		walletAddress = '';
 		setTimeout(() => {
 			if (blockchain) riskDialogOpen = true;
 		}, 200);
 	};
+
+	$: currentWMTab = 0;
+	const handleChangeWMTap = (tab: number) => (ev: any) => {
+		currentWMTab = tab;
+		selectedBlockchain = null;
+
+
+		walletAddress = '';
+		walletAddressValid = true;
+		
+
+
+		accountMethodValueValid = true;
+		selectedAccountMethod = '';
+		selectedAccountMethodValue = '';
+
+		withdrawalAmountValid = true;
+		withdrawalAmount = 0;
+	};
+
+	const handleWithdrawalAmountInput = (ev: any) => {
+		const value = ev.target.value;
+		if (value?.trim() === '') return;
+		const numericValue = parseFloat(value);
+		if (
+			isNaN(numericValue) ||
+			value.trim() === '' ||
+			value.split('.').length > 2 ||
+			/[^0-9.]/.test(value)
+		) {
+			ev.target.value = withdrawalAmount;
+		} else withdrawalAmount = numericValue
+	};
+	const handleFormatAmount = () => {
+		if (!selectedCurrency) return;
+		const availableBalance = assetBalances[selectedCurrency.name].balance;
+		if (availableBalance < withdrawalAmount) withdrawalAmount = availableBalance;
+		withdrawalAmountValid = withdrawalAmount > 0;
+	};
+
+
+	$: selectedAccountMethod = '';
+	$: selectedAccountMethodValue = '';
+	$: accountMethodValueValid = true;
+	$: accountMethodOpen = false;
+
+	const handleAccountMethodChange = (ev: any) => {
+		if (!selectedAccountMethod) return;
+		const value = ev.target.value.trim();
+		selectedAccountMethodValue = value;
+
+		if (selectedAccountMethod === 'email' && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+			accountMethodValueValid = false
+		} else accountMethodValueValid = true
+
+
+		if (accountMethodValueValid) currentStep++
+		else currentStep = 2;
+
+	}
+	const debounceHandleAccountMethodChange = debounce(handleAccountMethodChange, 300);
+
+
+	const handleSelectAccountMethod = (method: 'email' | 'uid') => (ev: any) => {
+		ev.stopPropagation()
+		accountMethodOpen = false;
+		selectedAccountMethod=method;
+	}
+
+
+	$: processingWithdrawal = false;
+
+	const handleProcessWithdrawal = async () => {
+		if (processingWithdrawal || !withdrawalAmountValid || currentStep < 3) return;
+		try {
+			processingWithdrawal = true;
+
+		  (await axios.post(`${ServerURl()}/api/assets/withdraw`, {
+				amount: withdrawalAmount,
+				chain: selectedBlockchain?.name,
+				asset: selectedCurrency?.name,
+				...(!currentWMTab ? {
+					type: 'on-chain',
+					walletAddress: walletAddress 
+				} : {
+					type: 'account',
+					method: selectedAccountMethod,
+					methodValue: selectedAccountMethodValue
+				})
+			}, {
+				headers: {
+					'Content-type': 'application/json',
+					Authorization: `Bearer ${$handleAuthToken}`
+				}
+			}))
+			//@ts-ignore
+			assetBalances = {...assetBalances, [selectedCurrency.name]: {
+				//@ts-ignore
+				...assetBalances[selectedCurrency.name],
+				//@ts-ignore
+				balance: assetBalances[selectedCurrency.name] - withdrawalAmount
+			}}
+			toast.success('Withdrawal Successful')
+		} catch (error) {}
+		finally {
+			processingWithdrawal = false;
+		}
+	};
+	const handleSetMaxAmount = (ev: any) => {
+		ev.preventDefault();
+		withdrawalAmount = assetBalances[selectedCurrency?.name]?.balance;
+		handleFormatAmount();
+	};
+	async function loadBalances() {
+		const { balances } = (
+			await axios.get(`${ServerURl()}/api/assets/wallet-balance`, {
+				headers: {
+					'Content-type': 'application/json',
+					Authorization: `Bearer ${$handleAuthToken}`
+				}
+			})
+		).data;
+		return balances;
+	}
+
+	$: transTab = 0;
 	onMount(async () => {
-		currencies = [...(await loadCurrencies())];
-		filteredCurrencies = [...currencies];
-		loading = false;
+		try {
+			const [balances, _list] = await Promise.all([loadBalances(), loadCurrencies()]);
+			currencies = [..._list];
+			filteredCurrencies = [...currencies];
+			assetBalances = balances;
+			loading = false;
+		} catch (err: any) {
+			console.log('Error > ', err.message);
+		}
 
 		const hideDialogs = () => {
 			cryptoMenuOpen = false;
 			networkOpen = false;
+			accountMethodOpen = false;
 		};
 		document.body.addEventListener('click', hideDialogs);
 		return () => {
 			document.body.removeEventListener('click', hideDialogs);
 		};
 	});
-
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -133,7 +309,11 @@
 		<!-- svelte-ignore a11y-invalid-attribute -->
 		<a href="javascript:;" class="-pl-z">Withdraw</a>
 	</h3>
-	<div class="f7TBC aOozD">
+	<div
+		class="f7TBC aOozD {!currencies.length || loading || processingWithdrawal
+			? 'pointer-events-none opacity-45'
+			: ''}"
+	>
 		<div class="qnl7D">
 			<h3 class="i7xy1">Withdraw</h3>
 			<div class="el-steps el-steps--vertical tNp4k">
@@ -171,7 +351,8 @@
 										{#if selectedCurrency && !cryptoMenuOpen}
 											<span
 												class="_3Fw8O"
-												style="width: 20px; height: 20px; background-image: url(&quot;{selectedCurrency.icon}&quot;); margin-right: 4px;"
+												style="width: 20px; height: 20px; background-image: url(&quot;{selectedCurrency.icon ||
+													`/svgs/currency-${$mode}.svg`}&quot;); margin-right: 4px;"
 											></span><strong>{selectedCurrency.name}</strong
 											>{selectedCurrency.fullName}<svg
 												fill="currentColor"
@@ -270,19 +451,24 @@
 																		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 																		<!-- svelte-ignore a11y-click-events-have-key-events -->
 																		<dl
-																			on:click={() =>
-																				!item.suspended && handleSetSelectedCurrency(item.name)}
-																			class=""
+																			on:click={(ev) => {
+																				ev.stopPropagation();
+																				!item.suspended && handleSetSelectedCurrency(item.name);
+																			}}
+																			class={item.suspended ? 'Gy-yk' : ''}
 																		>
 																			<dt class="DfPKc">
 																				<span
 																					class="_3Fw8O"
-																					style="width: 24px; height: 24px; background-image: url(&quot;{item.icon}&quot;);"
+																					style="width: 24px; height: 24px; background-image: url(&quot;{item.icon ||
+																						`/svgs/currency-${$mode}.svg`}&quot;);"
 																				></span><strong>{item.name}</strong>
 																				{item.fullName}
 																			</dt>
 																			{#if item.suspended}
 																				<dd><span class="_2gAQg">Suspended</span></dd>
+																			{:else}
+																			<dd><strong class="block">{(assetBalances[item.name]?.balance || 0).toFixed(2)}</strong></dd>
 																			{/if}
 																		</dl>
 																	</VirtualList>
@@ -334,23 +520,417 @@
 						<div class="el-step__title {getStepState(2)}">Withdrawal Methods</div>
 						<div class="el-step__description {getStepState(2)}">
 							{#if currentStep >= 2}
-								
+								<div class="withdrawTabWraper" style="padding-bottom: 40px;">
+									<div class="el-tabs el-tabs--top" style="width: 538px;">
+										<div class="el-tabs__header is-top">
+											<div class="el-tabs__nav-wrap is-top">
+												<div class="el-tabs__nav-scroll">
+													<div
+														class="el-tabs__nav is-top"
+														role="tablist"
+														style="transform: translateX(0px);"
+													>
+														<div
+															class="el-tabs__active-bar is-top"
+															style="width: 53px; transform: translateX(0px);"
+														></div>
+														<div
+															on:click={handleChangeWMTap(0)}
+															class="el-tabs__item is-top {!currentWMTab ? 'is-active' : ''}"
+															id="tab-onLine"
+															aria-controls="pane-onLine"
+															role="tab"
+															aria-selected="true"
+															tabindex="0"
+														>
+															On-chain
+														</div>
+														<div
+															on:click={handleChangeWMTap(1)}
+															class="el-tabs__item is-top {!!currentWMTab ? 'is-active' : ''}"
+															id="tab-inHome"
+															aria-controls="pane-inHome"
+															role="tab"
+															aria-selected="false"
+															tabindex="-1"
+														>
+															Ezcryptox Accounts
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="el-tabs__content">
+											{#if !currentWMTab}
+												<div
+													id="pane-onLine"
+													class="el-tab-pane"
+													role="tabpanel"
+													aria-hidden="false"
+													aria-labelledby="tab-onLine"
+													style=""
+												>
+													<span class="JTqe3">Network</span>
+													<div
+														on:click={(ev) => {
+															ev.stopPropagation();
+															networkOpen = !networkOpen;
+														}}
+														class="_3Johe Bte5E currencySelectInput eEaok _2Kc0F"
+														style="width: 538px;"
+													>
+														<span
+															class="z6d5D {networkOpen ? 'CFwKl' : ''} {!!selectedBlockchain
+																? 'v1WVj'
+																: ''}"
+															data-size="large"
+															><span class="KwkiX"
+																>{selectedBlockchain?.fullName || 'Select Network'}</span
+															><span
+																style="color: rgb(135, 135, 135); font-weight: 400; margin-left: 4px;"
+																>{selectedBlockchain
+																	? `${selectedBlockchain.name} (${selectedBlockchain?.type})`
+																	: ''}</span
+															><span class="NiKDB"
+																><svg fill="currentColor" style="width: 16px; height: 16px;"
+																	><use xlink:href="#web-core-icon-reverse-close"></use></svg
+																></span
+															><svg
+																fill="currentColor"
+																class="imI90"
+																style="width: 16px; height: 16px;"
+																><use xlink:href="#web-core-icon-arrow-down"></use></svg
+															></span
+														>
+														{#if networkOpen}
+															<div class="_2UN76 CFwKl" style="width: 100%;">
+																<p class="DfPKc hpd-X">
+																	<svg
+																		width="22"
+																		height="22"
+																		viewBox="0 0 22 22"
+																		fill="none"
+																		xmlns="http://www.w3.org/2000/svg"
+																		style="margin-right: 4px;"
+																		><rect
+																			x="10.5"
+																			y="7.5"
+																			width="1"
+																			height="4"
+																			fill="#E59940"
+																			stroke="#E59940"
+																		></rect><rect
+																			x="10.5"
+																			y="13.5"
+																			width="1"
+																			height="1"
+																			fill="#E59940"
+																			stroke="#E59940"
+																		></rect><circle
+																			cx="8"
+																			cy="8"
+																			r="7.25"
+																			transform="matrix(1 0 0 -1 3 19)"
+																			stroke="#E59940"
+																			stroke-width="1.5"
+																		></circle></svg
+																	> Please make sure you select the same network as on the withdrawal
+																	platform to avoid asset loss.
+																</p>
+																<ul class="prRS8" style="max-height: 300px;">
+																	{#each selectedCurrency?.blockchains || [] as blockchain}
+																		<!-- svelte-ignore a11y-click-events-have-key-events -->
+																		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+																		<li
+																			on:click={(ev) => {
+																				ev.stopPropagation();
+																				handleSetSelectedBlockchain(blockchain);
+																			}}
+																		>
+																			<dl class={blockchain.suspended ? 'Gy-yk' : ''}>
+																				<dt>
+																					<strong style="line-height: 26px;"
+																						>{blockchain.fullName}</strong
+																					><span>{blockchain.name} ({blockchain.type})</span>
+																				</dt>
+																				{#if blockchain.suspended}
+																					<dd>Suspended</dd>
+																				{:else}
+																					<dd class="_2HHAg">
+																						<span style="line-height: 26px;"
+																							>Est. Arrival <strong style="font-weight: 400;"
+																								>{blockchain.estArrival < 60
+																									? blockchain.estArrival
+																									: blockchain.estArrival < 3600
+																										? ~~(blockchain.estArrival / 60)
+																										: ~~(blockchain.estArrival / 3600)}
+																								{blockchain.estArrival < 60
+																									? 'sec'
+																									: blockchain.estArrival < 3600
+																										? 'min'
+																										: 'hr'}</strong
+																							></span
+																						><span
+																							>Fee <strong
+																								style="font-weight: 400; margin-left: 1px;"
+																								>{blockchain.fee.toFixed(8)}
+																								{blockchain.name}</strong
+																							>
+																							(≈${(blockchain.fee * blockchain.usdRate).toFixed(2)})
+																						</span>
+																					</dd>
+																				{/if}
+																			</dl>
+																		</li>
+																	{/each}
+																</ul>
+															</div>
+														{/if}
+													</div>
+													<span class="JTqe3">Address</span>
+													<div
+														data-size="large"
+														class="gs2D2 SKd74 currencySelectInput IVSD3 {walletAddressValid
+															? ''
+															: 'FNAG2'} {selectedBlockchain
+															? ''
+															: 'pointer-events-none opacity-45'}"
+													>
+														<div class="ZT1pJ -KOfC">
+															<!--ECYDD-->
+															<input
+																class="currencySelectInput IVSD3 x2zYL"
+																on:input={debounceHandleAddressChange}
+																type="text"
+																value={walletAddress}
+																autocomplete="off"
+																id="web-core-input-2"
+																placeholder="Enter address"
+															/>
+														</div>
+													</div>
+													{#if !walletAddressValid}
+														<p class="FNAG2">
+															The withdrawal address format is incorrect. Please check the
+															withdrawal address length and character content and try again.
+														</p>
+													{/if}
+												</div>
+											{:else}
+												<div
+													id="pane-inHome"
+													class="el-tab-pane"
+													role="tabpanel"
+													aria-labelledby="tab-inHome"
+												>
+													<div>
+														<p class="v6ZL5">Select Method</p>
+														<div on:click={(ev) => {
+															ev.stopPropagation()
+															accountMethodOpen = true;
+														}} class="_3Johe Bte5E currencySelectInput" style="width: 538px;">
+															<span class="z6d5D v1WVj" data-size="large"
+																><span class="KwkiX">{selectedAccountMethod === 'email' ? 'Email Address' : selectedAccountMethod === 'uid' ? 'Ezcryptox UUID' : 'Select Method'}</span><span class="NiKDB"
+																	><svg fill="currentColor" style="width: 16px; height: 16px;"
+																		><use xlink:href="#web-core-icon-reverse-close"></use></svg
+																	></span
+																><svg
+																	fill="currentColor"
+																	class="imI90"
+																	style="width: 16px; height: 16px;"
+																	><use xlink:href="#web-core-icon-arrow-down"></use></svg
+																></span
+															>
+															<!-- svelte-ignore missing-declaration -->
+															<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+															{#if accountMethodOpen}
+																<div class="_2UN76 CFwKl" style="width: 100%;">
+																	<ul class="prRS8" style="max-height: 300px;">
+																		<!-- svelte-ignore missing-declaration -->
+																		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+																		<li on:click={handleSelectAccountMethod('email')}>
+																			<div
+																				class="_0dpVu {selectedAccountMethod === 'email'
+																					? 'tZytM'
+																					: ''}"
+																			>
+																				<span class="KuoRC">Email Address</span>
+																			</div>
+																		</li>
+																		<!-- svelte-ignore missing-declaration -->
+																		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+																		<li on:click={handleSelectAccountMethod('uid')}>
+																			<div
+																				class="_0dpVu {selectedAccountMethod === 'uid'
+																					? 'tZytM'
+																					: ''}"
+																			>
+																				<span class="KuoRC">Ezcryptox UUID</span>
+																			</div>
+																		</li>
+																	</ul>
+																</div>
+															{/if}
+														</div>
+														<p class="v6ZL5">{selectedAccountMethod === 'email' ? 'Email Address' : 'Ezcrypto UUID'}</p>
+														<div
+															data-size="large"
+															class="gs2D2 SKd74 currencySelectInput {accountMethodValueValid ? '' : 'FNAG2'} {!selectedAccountMethod ? 'opacity-45 pointer-events-none' : ''}"
+															style="width: 540px;"
+														>
+															<div class="ZT1pJ -KOfC">
+																<input
+																	class="currencySelectInput x2zYL"
+																	type="text"
+																	on:input={debounceHandleAccountMethodChange}
+																	autocomplete="off"
+																	id="web-core-input-6"
+																	value={selectedAccountMethodValue}
+																	placeholder="Receiver's {selectedAccountMethod === 'email' ? ' email address' : 'Ezcrypto UUID'}"
+																	style="width: 540px;"
+																/>
+																{#if selectedAccountMethodValue}
+																	<button on:click={() => selectedAccountMethodValue = ''} class="gti-O"
+																		><svg fill="currentColor" style="width: 16px; height: 16px;"
+																			><use xlink:href="#web-core-icon-reverse-close"></use></svg
+																		></button
+																	>
+																{/if}
+															</div>
+														</div>
+														{#if !accountMethodValueValid && selectedAccountMethod === 'email'}
+															<p class="FNAG2">Please enter a valid email address</p>
+														{/if}
+													</div>
+												</div>
+											{/if}
+										</div>
+									</div>
+								</div>
 							{/if}
 						</div>
 					</div>
 				</div>
 				<div class="el-step is-vertical is-flex" style="flex-basis: 50%;">
-					<!-- icon & line -->
 					<div class="el-step__head {getStepState(3)}">
 						<div class="el-step__line"><i class="el-step__line-inner"></i></div>
 						<div class="el-step__icon is-text"><div class="el-step__icon-inner">3</div></div>
 					</div>
-					<!-- title & description -->
 					<div class="el-step__main">
 						<div class="el-step__title {getStepState(3)}">Withdraw Amount</div>
 						<div class="el-step__description {getStepState(3)}">
 							{#if currentStep >= 3}
-								
+								<div class="qtsYk">
+									<div
+										data-size="large"
+										class="gs2D2 SKd74 {!withdrawalAmountValid ? 'rndsC' : ''}"
+										style="z-index: 2; position: relative;"
+									>
+										<div class="ZT1pJ -KOfC">
+											<input
+												class="x2zYL"
+												on:input={handleWithdrawalAmountInput}
+												on:blur={handleFormatAmount}
+												autocomplete="off"
+												value={withdrawalAmount}
+												type="text"
+												data-min="-1"
+												data-max="-1"
+												id="web-core-input-7"
+												data-fixed="8"
+												data-negative="false"
+												style="z-index: 2; position: relative;"
+											/><span class="dCa74"
+												>{selectedCurrency?.name}
+												<a on:click={handleSetMaxAmount} href="javascript:;">Max</a></span
+											>
+										</div>
+									</div>
+									<div class="FW379 lqZuR">
+										Max Amount Per Withdrawal <strong
+											>{selectedBlockchain?.maxWithdrawal} {selectedBlockchain?.name}</strong
+										>
+									</div>
+									{#if !withdrawalAmountValid}
+										<p class="rndsC">
+											The amount must be no less than {selectedBlockchain?.fee?.toFixed(
+												8
+											)}{selectedCurrency?.name}.
+										</p>
+									{/if}
+									<div class="MhbUH">
+										<dl>
+											<dt class="lqZuR">
+												24h Limit <span style="margin-left: 4px;">0 / $ 10,000</span>
+											</dt>
+											<dd class="lqZuR">
+												<Tooltip.Root>
+													<Tooltip.Trigger>
+														<span class="-m6DU el-tooltip__trigger el-tooltip__trigger"
+															>Available</span
+														>
+													</Tooltip.Trigger>
+													<Tooltip.Content class="">
+														<p class="max-w-40 text-[10px]">
+															The amount of the chosen crypto that can be withdrawn or transferred
+															out, with no borrowings and excluding the assets in use.<br/> The
+															withdrawable amount may be less than the available balance when your
+															account has borrowings, as withdrawing in this case will increase the
+															risk of liquidation.
+														</p>
+													</Tooltip.Content>
+												</Tooltip.Root>
+												<strong style="margin: 0px 4px;"
+													>{assetBalances[selectedCurrency?.name]?.balance?.toFixed(8)}
+													{selectedCurrency?.name}</strong
+												><svg fill="currentColor" style="width: 16px; height: 16px;"
+													><use xlink:href="#web-core-icon-transfer"></use></svg
+												>
+											</dd>
+										</dl>
+									</div>
+									<div class="_9truM">
+										{#if !currentWMTab}
+										<dl>
+											<dt>Fee</dt>
+											<dd>
+												<strong
+													>{selectedBlockchain?.fee?.toFixed(8)} {selectedCurrency?.name}</strong
+												>
+											</dd>
+										</dl>
+										{/if}
+										<dl>
+											<dt>To Receive</dt>
+											<dd>
+												<strong
+													>{(withdrawalAmount - (!currentWMTab ? selectedBlockchain?.fee : 0)).toFixed(8)}
+													{selectedCurrency?.name}</strong
+												>
+											</dd>
+										</dl>
+										{#if !!currentWMTab}
+										<dl><dt>No fees will be charged for transfers between Ezcryptox accounts.</dt></dl>
+										{/if}
+									</div>
+									<button
+										data-size="large"
+										type="button"
+										on:click={handleProcessWithdrawal}
+										disabled={!withdrawalAmount || !withdrawalAmountValid}
+										class="jRLsY SOUdU"
+										style="width: 100%; margin-top: 24px;"
+										><span>{processingWithdrawal ? 'Please Wait...' : 'Withdraw'}</span></button
+									>
+									{#if selectedBlockchain?.withdrawalInstruction}
+										<ol class="s-s-w">
+										<li>
+											{ selectedBlockchain?.withdrawalInstruction || ''}
+										</li>
+									</ol>
+									{/if}
+									
+								</div>
 							{/if}
 						</div>
 					</div>
@@ -461,7 +1041,8 @@
 									style="width: 55px; transform: translateX(0px);"
 								></div>
 								<div
-									class="el-tabs__item is-top is-active"
+									on:click={() => transTab = 2}
+									class="el-tabs__item is-top {!transTab ? "is-active" : ""}"
 									id="tab-onLine"
 									aria-controls="pane-onLine"
 									role="tab"
@@ -471,7 +1052,8 @@
 									On-chain
 								</div>
 								<div
-									class="el-tabs__item is-top"
+									on:click={() => transTab = 1}
+									class="el-tabs__item is-top {!!transTab ? "is-active" : ""}"
 									id="tab-inHome"
 									aria-controls="pane-inHome"
 									role="tab"
@@ -485,17 +1067,51 @@
 					</div>
 				</div>
 				<div class="el-tabs__content">
-					<DataListTable
+					{#if !transTab}
+						<DataListTable
+							dataListColumns={[
+								{ accessor: 'time', header: 'Time', cell: value => new Date(value).toLocaleDateString() },
+								{ accessor: 'address', header: 'Address' },
+								{ accessor: 'trans_id', header: 'Transaction ID' },
+								{ accessor: 'coin', header: 'Coin' },
+								{ accessor: 'fee', header: 'Fee', cell: value => value.toFixed(4) },
+								{ accessor: 'receiver', header: 'Address' },
+								{ accessor: 'amount', header: 'Amount', cell: value => value.toFixed(2) },
+								{ accessor: 'network', header: 'Network' },
+								{ accessor: 'status', header: 'Status' }
+							]}
+
+							dataListFetcher={() => {
+							return axios.get(`${ServerURl()}/api/assets/transactions?mode=withdrawal&type=onchain`, {
+								headers: {
+									'Content-type': 'application/json',
+									Authorization: `Bearer ${$handleAuthToken}`
+								}
+							}).then(r => r.data.transactions)
+						}}
+						/>
+						{:else}
+						<DataListTable
 						dataListColumns={[
-							{ accessor: 'time', header: 'Time' },
-							{ accessor: 'address', header: 'Address' },
+							{ accessor: 'time', header: 'Time', cell: value => new Date(value).toLocaleDateString() },
+							{ accessor: 'receiver', header: 'Receiver' },
 							{ accessor: 'trans_id', header: 'Transaction ID' },
 							{ accessor: 'coin', header: 'Coin' },
-							{ accessor: 'amount', header: 'Amount' },
-							{ accessor: 'network', header: 'Network' },
+							{ accessor: 'amount', header: 'Amount', cell: value => value.toFixed(2) },
+							{ accessor: 'trans_id', header: 'Order ID' },
 							{ accessor: 'status', header: 'Status' }
 						]}
+
+						dataListFetcher={() => {
+							return axios.get(`${ServerURl()}/api/assets/transactions?mode=withdrawal&type=account`, {
+								headers: {
+									'Content-type': 'application/json',
+									Authorization: `Bearer ${$handleAuthToken}`
+								}
+							}).then(r => r.data.transactions)
+						}}
 					/>
+					{/if}
 				</div>
 			</div>
 		</div>

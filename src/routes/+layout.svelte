@@ -17,6 +17,7 @@
 	import { socketData } from '$lib/store/socket';
 	import SocketManager from '$lib/socket/Socketmanager';
 	import { ServerURl } from '$lib/backendUrl';
+	import  {Toaster}  from '$lib/components/ui/sonner';
 	$: url.set($page.url.pathname);
 
 	$: urlString = $page.url.href;
@@ -144,6 +145,7 @@
         </div> -->
 	{/if}
 </div>
+<Toaster/>
 <!--
 <style>
 	.preload {
