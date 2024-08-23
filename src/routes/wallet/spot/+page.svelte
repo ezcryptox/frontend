@@ -32,11 +32,11 @@
 			walletBalance = {
 				btcUsdRate: btcUsdRate,
 				estimated: Object.keys(balances).reduce(
-					(prev, current) => prev + (balances[current].btc * balances[current].balance),
+					(prev, current) => prev + (balances[current].balance / balances[current].btc),
 					0
 				),
 				spot: Object.keys(balances).reduce(
-					(prev, current) => prev + (balances[current].btc * balances[current].balance),
+					(prev, current) => prev + (balances[current].balance / balances[current].btc),
 					0
 				),
 				futures: 0,
@@ -59,7 +59,7 @@
 		masked = !masked;
 	};
 
-	$: getDisplayValue = (key: string, usd: string) => {
+	$: getDisplayValue = (key: string, usd: boolean = false) => {
 		if (masked) return '********';
 		if (usd)
 			return (
