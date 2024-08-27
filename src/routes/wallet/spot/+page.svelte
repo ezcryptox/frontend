@@ -353,7 +353,7 @@
 							<div class="dd466019">
 								<span class="ebff5032 _5a4e75d5 _2c143edc">
 									Trade <ul class="e643ae4b"></ul>
-								</span><!----><!----><a href="/wallet/deposit?asset={asset.symbol}" class="ebff5032"> Deposit </a><a
+								</span><!----><!----><a href="/wallet/deposit/{asset.symbol}" class="ebff5032"> Deposit </a><a
 									href="/wallet/withdraw?asset={asset.symbol}"
 									class="ebff5032"
 								>

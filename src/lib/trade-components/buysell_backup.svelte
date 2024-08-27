@@ -8,11 +8,7 @@
 	import MarketOrder from './executions/market-order.svelte';
 	import StopMarket from './executions/stop-market.svelte';
 	import TrailingOrder from './executions/trailing-order.svelte';
-	import { cryptoQuotes, currentSelectedPair } from '$lib/store/marketdata';
-	import { ServerURl } from '$lib/backendUrl';
-	import { handleAuthToken } from '$lib/store/routes';
-	import axios from 'axios';
-	import { tradeBalance, tradeConfig } from './store';
+	import { currentSelectedPair } from '$lib/store/marketdata';
 	 
 
 	export let onboardingData;
@@ -21,26 +17,48 @@
 		base:'--',
 		quote:'--'
 	};
+	$: buyAsset = true;
+	$: sellAsset = false;
 	$: autoBurrow = false;
 
 	$: showDropDownMenu = false;
+	$: showStopLimitMenu = false;
+
 	const DISMISS_DURATION = 300;
 	let showDropDownMenuId;
+	let showStopLimitMenuId;
 	let drapDownMenuCoordinate = 0;
 
-	$: orderType =  'limit';
-	$: tradeSide = 'buy'
+	const stopOrders = [
+		{
+			name: 'Stop-Limit',
+			info: 'When the latest market price reaches the trigger price, the order will be placed automatically according to the preset price and amount.'
+		},
+		{
+			name: 'Stop-Market',
+			info: 'Market TP/SL orders will be automatically executed at the market price only when a specific price is reached. Therefore, traders must specify a trigger price to activate these orders.'
+		},
+		{
+			name: 'Trailling Stop',
+			info: 'A Trailing Stop order is a type of take profit and stop loss order that tracks the market price. It allows you to place a preset limit or market order with a trailing delta (i.e. a percentage level or certain amount of points away from the market price). When the market price reaches the predetermined percentage or constant, your preset order will be placed. Learn More'
+		}
+	];
+	$: selectedStopOrder = 0;
+	$: selectedExecutionIndex =
+		autoBurrow && selectedExecutionIndex === 2 ? 0 : selectedExecutionIndex || 0;
 
-	const onOrderTypeSelected = (type) => {
-		orderType = type;
-		tradeConfig.update(prev => ({...prev, orderType: type}))
+	const onExecutionTypeSelected = (index) => {
+		selectedExecutionIndex = index;
 	};
 
-	const onSideChange = (side) => {
-		tradeSide = side;
-		tradeConfig.update(prev => ({...prev, side}))
-	}
-	
+	const onBuyAsset = () => {
+		buyAsset = true;
+		sellAsset = false;
+	};
+	const onSellAsset = () => {
+		sellAsset = true;
+		buyAsset = false;
+	};
 
 	const toggleOrderModal = getContext('toggleOrderModal');
 	const toggleRedeemModal = getContext('toggleRedeemModal');
@@ -59,29 +77,12 @@
 			base: pair.baseCurrencyName,
 			quote: pair.quoteCurrencyName
 		}
-		tradeConfig.update(prev => ({
-			...prev,
-			amount: 0,
-			orderType,
-			pair: `${asset.base}/${asset.quote}`,
-			side: tradeSide
-		}))
+		//TODO: Fetch assets balances Here!
 	})
-	tradeBalance.subscribe(balances => {
-		if (!balances || balances.base.symbol !== $currentSelectedPair?.baseCurrencyName || balances.quote.symbol !== $currentSelectedPair.quoteCurrencyName) return;
-		tradeConfig.update(prev => ({...prev, quotePrice: balances.base.usd / balances.quote.usd}))
-	});
-	cryptoQuotes.subscribe((q) => {
-		const pair = $currentSelectedPair;
-		if (!q || !pair) return;
-		if (q[pair.symbol] && orderType !== 'limit') {
-			tradeConfig.update(prev => ({...prev, quotePrice: q[pair.symbol].price}));
-		}
-	});
 	$: {
 		if (onboardingData && (_onboardingFocusRef || _onboardingFocusRef2)) {
 			if (onboardingData.show){
-				onOrderTypeSelected(0);
+				onExecutionTypeSelected(0);
 				autoBurrow = true;
 			}
 			else autoBurrow = false;
@@ -119,10 +120,10 @@
 </script>
 
 <div class="d568c879">
-	<section class="_23f4b355 {$tradeConfig.placingOrder ? 'pointer-events-none opacity-45' : ''}">
+	<section class="_23f4b355">
 		<nav class="_3f2fed70">
-			<button on:click={() => onSideChange('buy')} class={tradeSide === 'buy' ? 'ad797042' : ''}> Buy </button>
-			<button on:click={() => onSideChange('sell')} class={tradeSide === 'sell' ? 'ad797042' : ''}> Sell </button>
+			<button on:click={() => onBuyAsset()} class={buyAsset ? 'ad797042' : ''}> Buy </button>
+			<button on:click={() => onSellAsset()} class={sellAsset ? 'ad797042' : ''}> Sell </button>
 		</nav>
 		<div
 			user-guide="4"
@@ -135,13 +136,13 @@
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<div class="_19abeeda">
 					<span
-						disabled={true}
+						disabled={!isLogin}
 						bind:this={_onboardingFocusRef2}
 						class="polo-switch polo-switch-middle {autoBurrow ? 'is-checked' : ''}"
 					>
 						<span class="polo-switch-box">
 							<input
-								disabled={true}
+								disabled={!isLogin}
 								type="checkbox"
 								on:change={(e) => {
 									if (e.target.checked && !marginTradingEnabled) {
@@ -278,8 +279,8 @@
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<span
 							style="font-size: small;"
-							class="e0093a3f {orderType === 'limit' ? '_8c3dc366' : ''}"
-							on:click={() => onOrderTypeSelected("limit")}
+							class="e0093a3f {selectedExecutionIndex === 0 ? '_8c3dc366' : ''}"
+							on:click={() => onExecutionTypeSelected(0)}
 						>
 							Limit
 						</span>
@@ -287,23 +288,134 @@
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<span
 							style="font-size: small;"
-							class="e0093a3f {orderType === 'market' ? '_8c3dc366' : ''}"
-							on:click={() => onOrderTypeSelected("market")}
+							class="e0093a3f {selectedExecutionIndex === 1 ? '_8c3dc366' : ''}"
+							on:click={() => onExecutionTypeSelected(1)}
 						>
 							Market
 						</span>
+						{#if !autoBurrow}
+							<div class="el-dropdown _11f0f85e">
+								<!-- svelte-ignore a11y-incorrect-aria-attribute-type -->
+								<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+								<span
+									style="font-size: small;"
+									class="e0093a3f el-dropdown-selfdefine {selectedExecutionIndex === 2
+										? '_8c3dc366'
+										: ''}"
+									aria-haspopup="list"
+									aria-controls="dropdown-menu-6554"
+									role="button"
+									tabindex="0"
+									on:mouseover={() => {
+										showStopLimitMenu = true;
+										clearTimeout(showStopLimitMenuId);
+									}}
+									on:mouseleave={() => {
+										showStopLimitMenuId = setTimeout(() => {
+											showStopLimitMenu = false;
+											clearTimeout(showStopLimitMenuId);
+										}, DISMISS_DURATION);
+									}}
+								>
+									{stopOrders[selectedStopOrder].name}
+									<svg
+										style="transform: rotate({showStopLimitMenu ? 180 : 0}deg);"
+										class="svgicon d4379d29"
+										width="12px"
+										height="12px"
+										x="0"
+										y="0"
+										viewBox="0 0 32 32"
+										><g
+											><path
+												d="M29.604 10.528 17.531 23.356a2.102 2.102 0 0 1-3.062 0L2.396 10.528c-.907-.964-.224-2.546 1.1-2.546h25.008c1.324 0 2.007 1.582 1.1 2.546z"
+											></path></g
+										></svg
+									>
+								</span>
+								<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+								{#if showStopLimitMenu}
+									<ul
+										transition:slideFade={{ duration: 200 }}
+										class="el-dropdown-menu el-popper b408bec8"
+										id="dropdown-menu-6554"
+										style="transform-origin: center top; z-index: 1020035; {showStopLimitMenu
+											? 'position: absolute; top: auto;'
+											: 'display: none;'}"
+										on:mouseover={() => {
+											showStopLimitMenu = true;
+											clearTimeout(showStopLimitMenuId);
+										}}
+										on:mouseleave={() => {
+											showStopLimitMenuId = setTimeout(() => {
+												showStopLimitMenu = false;
+												clearTimeout(showStopLimitMenuId);
+											}, DISMISS_DURATION);
+										}}
+									>
+										{#each stopOrders as order, index}
+											<!-- svelte-ignore a11y-click-events-have-key-events -->
+											<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+											<li
+												on:click={() => {
+													selectedStopOrder = index;
+													showStopLimitMenu = false;
+													onExecutionTypeSelected(2);
+												}}
+												class="d911f463"
+											>
+												{order.name}
+											</li>
+										{/each}
+									</ul>
+								{/if}
+							</div>
+						{/if}
 					</div>
+					<!-- svelte-ignore a11y-no-static-element-interactions -->
+					<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+
+					{#if !autoBurrow}
+						<span
+							class="_9d87404a tooltip tooltip-left"
+							data-tip={stopOrders[selectedStopOrder].info}
+						>
+							<svg
+								class="svgicon el-tooltip"
+								width="12px"
+								height="12px"
+								x="0"
+								y="0"
+								viewBox="0 0 512 512"
+								><g
+									><path
+										d="M256 0C114.509 0 0 114.496 0 256c0 141.489 114.496 256 256 256 141.491 0 256-114.496 256-256C512 114.509 397.504 0 256 0zm0 476.279c-121.462 0-220.279-98.816-220.279-220.279S134.538 35.721 256 35.721c121.463 0 220.279 98.816 220.279 220.279S377.463 476.279 256 476.279z"
+									></path><path
+										d="M248.425 323.924c-14.153 0-25.61 11.794-25.61 25.946 0 13.817 11.12 25.948 25.61 25.948s25.946-12.131 25.946-25.948c0-14.152-11.794-25.946-25.946-25.946zM252.805 127.469c-45.492 0-66.384 26.959-66.384 45.155 0 13.142 11.12 19.208 20.218 19.208 18.197 0 10.784-25.948 45.155-25.948 16.848 0 30.328 7.414 30.328 22.915 0 18.196-18.871 28.642-29.991 38.077-9.773 8.423-22.577 22.24-22.577 51.22 0 17.522 4.718 22.577 18.533 22.577 16.511 0 19.881-7.413 19.881-13.817 0-17.522.337-27.631 18.871-42.121 9.098-7.076 37.74-29.991 37.74-61.666s-28.642-55.6-71.774-55.6z"
+									></path></g
+								></svg
+							>
+						</span>
+					{/if}
 				</div>
 
-				{#if orderType === 'limit'}
+				{#if selectedExecutionIndex === 0}
 					<LimitOrder
 						{onboardingData}
-						autoBorrow={false}
-						isBuying={tradeSide === 'buy'}
+						autoBorrow={autoBurrow}
+						isBuying={buyAsset}
 						{asset}
 					/>
-				{:else }
-					<MarketOrder autoBorrow={false} isBuying={tradeSide === 'buy'} {asset}/>
+				{:else if selectedExecutionIndex === 1}
+					<MarketOrder autoBorrow={autoBurrow} isBuying={buyAsset} {asset} />
+				{:else if selectedExecutionIndex === 2}
+					{#if selectedStopOrder === 0}
+						<StopLimit autoBorrow={autoBurrow} isBuying={buyAsset} {asset} />
+					{:else if selectedStopOrder === 1}
+						<StopMarket autoBorrow={autoBurrow} isBuying={buyAsset} {asset} />
+					{:else if selectedStopOrder === 2}
+						<TrailingOrder autoBorrow={autoBurrow} isBuying={buyAsset} {asset} />
+					{/if}
 				{/if}
 			</div>
 		</div>

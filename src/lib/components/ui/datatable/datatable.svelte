@@ -1,37 +1,44 @@
 <script lang="ts">
-  import { _ } from 'svelte-i18n';
+	import { _ } from 'svelte-i18n';
 	import { createTable, Render, Subscribe } from 'svelte-headless-table';
 	import * as Table from '$lib/components/ui/table';
-  import {writable} from 'svelte/store';
-	import { onMount } from 'svelte';
+	import { writable } from 'svelte/store';
 
-	export let dataListColumns: {accessor: string, header: string, cell?: (value: any) => any}[] = [];
+	export let embeded = true;
+	export let hasContent = false;
+	export let dataListColumns: { accessor: string; header: string; cell?: (value: any) => any }[] =
+		[];
 	export let dataListFetcher = () => Promise.resolve([]);
 
-  $: loading = true;
-  const dataList = writable<{[k:string]: any}[]>([]);
+	$: loading = true;
+	const dataList = writable<{ [k: string]: any }[]>([]);
 	// @ts-ignore
 	let table = createTable(dataList);
 
-	const columns = table.createColumns(dataListColumns.map(({ accessor, header, cell }) =>
+	const columns = table.createColumns(
+		dataListColumns.map(({ accessor, header, cell }) =>
 			table.column({
 				accessor,
 				header,
-				cell: ({value}) => cell ? cell(value) : value
+				cell: ({ value }) => (cell ? cell(value) : value)
 			})
-		));
+		)
+	);
 
 	const { headerRows, pageRows, tableAttrs, tableBodyAttrs } = table.createViewModel(columns);
-  onMount(() => {
-    	// @ts-ignore
-   dataListFetcher().then(data => dataList.set(data)).finally(() => {
-      loading = false;
-    })
-  })
+
+	$: {
+		loading = true;
+		dataListFetcher()
+			.then((data) => dataList.set(data))
+			.finally(() => {
+				loading = false;
+			});
+	}
 </script>
 
-<div class="rounded-md border">
-	<Table.Root {...$tableAttrs}>
+<div class="{!embeded ? 'rounded-md border' : ''}">
+	<Table.Root {...$tableAttrs} class="min-h-[350px]">
 		<Table.Header>
 			{#each $headerRows as headerRow}
 				<Subscribe rowAttrs={headerRow.attrs()}>
@@ -47,37 +54,108 @@
 				</Subscribe>
 			{/each}
 		</Table.Header>
-		<Table.Body {...$tableBodyAttrs}>
-			{#each $pageRows as row (row.id)}
-				<Subscribe rowAttrs={row.attrs()} let:rowAttrs>
-					<Table.Row {...rowAttrs}>
-						{#each row.cells as cell (cell.id)}
-							<Subscribe attrs={cell.attrs()} let:attrs>
-								<Table.Cell {...attrs}>
-									<Render of={cell.render()} />
-								</Table.Cell>
-							</Subscribe>
-						{/each}
-					</Table.Row>
-				</Subscribe>
-			{/each}
-			{#if !loading && !$dataList.length}
+		<Table.Body {...$tableBodyAttrs} class="min-h-56">
+			{#if hasContent}
 				<tr>
-					<td colspan="{dataListColumns.length}">
-						<div class="qqWi0">
-							<div class="YSmmf dark:text-white">
-								<div>{$_('g-nodata')}</div>
-								<!---->
+					<td colspan={dataListColumns.length}>
+						<div class="el-table__empty-block" style="height: 100%; width: 100%;">
+								<span class="el-table__empty-text">
+									<slot></slot>
+								</span>
 							</div>
-						</div>
 					</td>
 				</tr>
+			{:else}
+				{#each $pageRows as row (row.id)}
+					<Subscribe rowAttrs={row.attrs()} let:rowAttrs>
+						<Table.Row {...rowAttrs} style="height: 54px!important" class="h-[54px]">
+							{#each row.cells as cell (cell.id)}
+								<Subscribe attrs={cell.attrs()} let:attrs>
+									<Table.Cell {...attrs}>
+										<Render of={cell.render()} />
+									</Table.Cell>
+								</Subscribe>
+							{/each}
+						</Table.Row>
+					</Subscribe>
+				{/each}
+				{#if loading}
+					<tr>
+						<td colspan={dataListColumns.length}>
+							<div class="el-table__empty-block" style="height: 100%; width: 100%;">
+								<span class="el-table__empty-text">
+									<div class="e0263add">
+										<i class="e369efc5"></i>
+									</div>
+								</span>
+							</div>
+						</td>
+					</tr>
+				{/if}
+				{#if !loading && !$dataList.length}
+					<tr>
+						<td colspan={dataListColumns.length}>
+							<div class="qqWi0">
+								<div class="YSmmf dark:text-white">
+									<div>{$_('g-nodata')}</div>
+									<!---->
+								</div>
+							</div>
+						</td>
+					</tr>
+				{/if}
 			{/if}
 		</Table.Body>
 	</Table.Root>
 </div>
 
 <style>
+	.el-table__empty-block {
+		min-height: 60px;
+		text-align: center;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.el-table__empty-text {
+		line-height: 60px;
+		width: 50%;
+		color: #909399;
+	}
+	.e0263add {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.e369efc5 {
+		width: 20px;
+		height: 20px;
+		border-width: 3px;
+		position: relative;
+		border-radius: 50%;
+		border-style: solid;
+		display: inline-block;
+		vertical-align: middle;
+		-webkit-animation: f14dfab4 1s linear infinite;
+		animation: f14dfab4 1s linear infinite;
+		border-left-color: #131316;
+		border-right-color: #131316;
+		border-top-color: transparent;
+		border-bottom-color: transparent;
+	}
+	body.dark-theme .e369efc5 {
+		border-left-color: #fff;
+		border-right-color: #fff;
+	}
+	@keyframes f14dfab4 {
+		0% {
+			transform: rotate(0);
+		}
+		100% {
+			transform: rotate(1turn);
+		}
+	}
 	.qqWi0 {
 		padding: 10px;
 		display: flex;

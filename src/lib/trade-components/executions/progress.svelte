@@ -1,20 +1,23 @@
 <script>
 	import { getContext, onMount } from 'svelte';
 	import { calculateTextWidth, findPos } from '../utils';
+	import { currentSelectedPair } from '$lib/store/marketdata';
+	import { tradeBalance } from '../store';
 	export let autoBorrow = false;
 	export let progress;
+	export let onProgressUpdate = (progress) => {};
 	let startX;
 	let progressDiv;
 	$: currentX = 0;
 	$: percentage = 0;
 	$: isDragging = false;
 	onMount(() => {
-		setProgress(progress);
+		setProgress(progress, false);
 	});
-	function setProgress(progress) {
+	function setProgress(progress, notify = true) {
 		if (!progressDiv) return;
 		const maxWidth = progressDiv.clientWidth;
-		updateProgress((maxWidth * progress) / 100, maxWidth);
+		updateProgress((maxWidth * progress) / 100, maxWidth, notify);
 	}
 
 	function handleDrag(event) {
@@ -30,9 +33,10 @@
 		const maxWidth = progressDiv.clientWidth;
 		updateProgress(maxWidth * (0.25 * step), maxWidth);
 	}
-	function updateProgress(progress, max) {
+	function updateProgress(progress, max, notify = true) {
 		currentX = progress;
 		percentage = Math.round((currentX / max) * 100);
+		if (notify) onProgressUpdate(percentage)
 	}
 
 	function handleMouseDown(event) {
@@ -46,7 +50,7 @@
 		document.removeEventListener('mouseup', handleMouseUp);
 		isDragging = false;
 	}
-	export let onboardingData;
+	export let onboardingData = {};
 	$: onboarding = false;
 	let _onboardingFocusRef = null;
 	const updateData = getContext('updateOnboardingData');
@@ -78,6 +82,7 @@
 	<div class="form-item-content">
 		<div class="c1494ea4">
 			<dl>
+				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 				<dt
 					class="el-tooltip tips-text _69279727 tooltip"
 					data-tip="The amount of the chosen currency you can trade without borrowing, excluding the assets in use."
@@ -86,23 +91,22 @@
 					Available
 				</dt>
 				<dd>
-					<span class="dcf97881">0.00</span><span>USDT</span>
-					<a
+						<span class="dcf97881">{($tradeBalance.quote.balance || 0).toFixed(2)}</span><span>{$currentSelectedPair?.quoteCurrencyName || '--'}</span>
+						<a
 						bind:this={_onboardingFocusRef}
-						user-guide="2"
-						href="/wallet/deposit/BTC/"
-						style={onboarding ? 'pointer-events: none; z-index: 1000002; position: relative;' : ''}
+							user-guide="2"
+							href="/wallet/deposit/{$currentSelectedPair?.baseCurrencyName}/"
+							style={onboarding ? 'pointer-events: none; z-index: 1000002; position: relative;' : ''}
 						class="dfad9a60 {onboarding ? 'c806c316' : ''}"
-					>
-						<svg width="14" height="14" x="0" y="0" viewBox="0 0 6.35 6.35" fill="#1a8f5c"
+							><svg width="14" height="14" x="0" y="0" viewBox="0 0 6.35 6.35" fill="#1a8f5c"
 							><g
 								><path
 									d="M3.174.202C1.535.202.202 1.537.202 3.176s1.333 2.972 2.972 2.972 2.975-1.333 2.975-2.972S4.813.202 3.174.202zm0 .529a2.442 2.442 0 0 1 2.445 2.445c0 1.353-1.092 2.443-2.445 2.443S.731 4.53.731 3.176A2.44 2.44 0 0 1 3.174.731zM3.17 1.848a.265.265 0 0 0-.26.27v.792h-.792a.265.265 0 0 0 0 .53h.792v.792a.265.265 0 1 0 .53 0V3.44h.793a.265.265 0 0 0 0-.53H3.44v-.793a.265.265 0 0 0-.27-.27z"
 								></path></g
 							></svg
+						></a
 						>
-					</a>
-				</dd>
+					</dd>
 			</dl>
 		</div>
 		<!---->

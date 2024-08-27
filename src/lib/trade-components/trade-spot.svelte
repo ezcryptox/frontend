@@ -22,6 +22,11 @@
 	import MarginRatioModal from '$lib/trade-components/modals/margin-ratio.svelte';
 	import Onboarding from './onboarding.svelte';
 	import { browser } from '$app/environment';
+	import { tradeBalance } from './store';
+	import { currentSelectedPair } from '$lib/store/marketdata';
+	import { handleAuthToken } from '$lib/store/routes';
+	import axios from 'axios';
+	import { ServerURl } from '$lib/backendUrl';
 	$: selectedAsset = null;
 	$: showBorrowModal = false;
 	$: showOrderModal = false;
@@ -79,6 +84,40 @@
 	setContext('updateOnboardingData', (data) => {
 		onboardingData = data;
 	});
+
+	
+	async function getAssetBalance(asset) {
+		const {balances} = await axios.get(
+				`${ServerURl()}/api/assets/trade-balance?base=${asset.base}&quote=${asset.quote}`,
+				{
+					headers: {
+						'Content-type': 'application/json',
+						Authorization: `Bearer ${$handleAuthToken}`
+					}
+				}
+			).then(d => d.data)
+
+		tradeBalance.set({
+				base: {
+					symbol: asset.base,
+					balance: balances[asset.base.toUpperCase()].balance,
+					usd: balances[asset.base.toUpperCase()].usd
+				},
+				quote: {
+					symbol: asset.quote,
+					balance: balances[asset.quote.toUpperCase()].balance,
+					usd: balances[asset.quote.toUpperCase()].usd
+				}
+			})
+	}
+
+	currentSelectedPair.subscribe(pair => {
+		if (!pair) return
+		getAssetBalance({
+			base: pair.baseCurrencyName,
+			quote: pair.quoteCurrencyName
+		}).catch(err => console.log('Error getting balance => ', err))
+	})
 
 	onMount(() => {
 		if (browser) {

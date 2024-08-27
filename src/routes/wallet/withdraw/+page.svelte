@@ -1120,3 +1120,25 @@
 {#if riskDialogOpen}
 	<RiskDialog currency={selectedCurrency?.name} on:close={() => (riskDialogOpen = false)} />
 {/if}
+<style>
+	
+	@media only screen and (max-width:1000px) {
+		.f7TBC.aOozD {
+			flex-wrap: wrap;
+		}
+	}
+	@media only screen and (max-width:590px) {
+		.currencySelectInputBorderBox  {
+			width: 100%!important;
+		}
+		.f7TBC .JuvZU>div {
+			width: 100%!important;
+		}
+		.s-DPKYDpRWHKRN {
+			flex-wrap: wrap;
+		}
+		.depositWithdrawDropdown.el-dropdown__popper {
+			width: 100%!important;
+		}
+	}
+</style>
