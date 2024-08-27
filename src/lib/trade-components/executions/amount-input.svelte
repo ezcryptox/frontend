@@ -2,6 +2,7 @@
 	import { slideFade } from '$lib/transitions';
 	import { onMount } from 'svelte';
 	import { findPos } from '../utils';
+	import { number } from 'svelte-i18n';
 	export let style = '';
 	export let assetLabel;
 	export let placeholder = 'Amount';
@@ -18,6 +19,7 @@
 	$: showDropdownMenu = false; 
 	let divRef;
 	let drowdownMenuId;
+	export let decimal = 8;
 	export let disableInput = false;
 	export let onAmountChanged = (value) => {};
 	export let isInsufficient = (value) => {
@@ -25,22 +27,28 @@
 	};
 	let validAmount = true;
 	let inputRef;
-	$: totalAmount = value;
-	$: totalText = `${value}`;
+	$: totalAmount = value || 0 ;
+	const getValue = (value) => {
+		const _val = typeof value === 'number' ? value.toFixed(decimal) : typeof value === 'string' ? parseFloat(value || '0').toFixed(decimal) : '';
+		if (isNaN(parseFloat(_val))) return '';
+
+		return parseFloat(_val) <= min ? '' : _val;
+	}
+	$: totalText = getValue(value);
 	onMount(() => {
-		totalText = value <= min ? '' : `${value}`;
+		totalText = getValue(value)
 	});
+
+	const checkAmountValid = () => {
+		return !isNaN(parseFloat(totalText)) && parseFloat(totalText) >= min && !isInsufficient(parseFloat(totalText))
+	}
 
 	const validateTotalAmountInfo = (totalText) => {
 		if (document.activeElement === inputRef) {
-			totalAmount = parseInt(totalText);
-			validAmount = false;
-			onAmountChanged(0);
-			if (isNaN(totalAmount)) return `Please enter ${placeholder}`;
-			else if (totalAmount < min) return `Total must be at least ${min}`;
-			else if (isInsufficient(totalAmount)) return 'Not enough available balance';
-			validAmount = true;
-			onAmountChanged(totalAmount);
+			const _totalAmount = parseFloat(totalText);
+			if (isNaN(_totalAmount)) return `Please enter ${placeholder}`;
+			else if (_totalAmount < min) return `Total must be at least ${min}`;
+			else if (isInsufficient(_totalAmount)) return 'Not enough available balance';
 			return null;
 		}
 	};
@@ -55,8 +63,8 @@
 			</div>
 		{:else}
 		<div class="_9bbde898">
-			<div
-			data-tip={validateTotalAmountInfo(totalText)}
+			<div data-tip={validateTotalAmountInfo(totalText)}
+			style="display: flex!important"
 			class="polo-input right polo-input-small polo-input-default {dropdownOption.items.length>0?'_1ac4ce2c':''} {validAmount
 				? ''
 				: 'tooltip tooltip-focus tooltip-overlay error'}"
@@ -68,10 +76,14 @@
 				type="text"
 				placeholder=""
 				bind:this={inputRef}
-				bind:value={totalText}
+				value={totalText}
 				on:input={(e) => {
 					if (!e.target) return;
-					totalText = e.target.value.replace(/[^0-9.]/g, '');
+					totalText = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
+					e.target.value = totalText;
+					totalAmount = parseFloat(totalText);
+					validAmount = checkAmountValid()
+					onAmountChanged(totalAmount)
 				}}
 			/>
 			<!-- svelte-ignore a11y-no-static-element-interactions -->

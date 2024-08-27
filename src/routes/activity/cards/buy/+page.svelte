@@ -66,7 +66,7 @@
 								></path></svg
 							><span>{$_('g-wallet')}</span></a
 						>
-					</li><!-- 
+					</li>
 					<li>
 						<a href="/activity/spot/" class=""
 							><svg
@@ -84,6 +84,7 @@
 							><span>{$_('g-spot')}</span></a
 						>
 					</li>
+					<!-- 
 					<li>
 						<a href="/activity/futures/" class=""
 							><svg

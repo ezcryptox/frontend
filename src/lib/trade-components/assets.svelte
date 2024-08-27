@@ -3,6 +3,7 @@
 	import { getContext } from 'svelte';
 	import { findPos } from './utils';
 	import { currentSelectedPair } from '$lib/store/marketdata';
+	import { tradeBalance } from './store';
 	export let marginTradingEnabled;
 	export let onboardingData;
 	const toggleMarginModal = getContext('toggleMarginModal');
@@ -114,10 +115,10 @@
 			</div>
 			<div class="c9ee1d63">
 				<div class="_596549f7">
-					<span>{$currentSelectedPair?.baseCurrencyName}<em>Balance</em></span><span>--</span>
+					<span>{$currentSelectedPair?.baseCurrencyName}<em>Balance</em></span><span>${($tradeBalance.base.balance || 0).toFixed(2)}</span>
 				</div>
 				<div class="_596549f7">
-					<span>{$currentSelectedPair?.quoteCurrencyName}<em>Balance</em></span><span>--</span>
+					<span>{$currentSelectedPair?.quoteCurrencyName}<em>Balance</em></span><span>${($tradeBalance.quote.balance || 0).toFixed(2)}</span>
 				</div>
 			</div>
 			<div class="_2ef9552d">
@@ -171,8 +172,8 @@
 			</div>
 
 			<div class="_11817139">
-				<a href="javascript:;" class="_6fda91af {!$isLogin ? 'edd5a9be' : ''}">Deposit</a><a
-					href="javascript:;"
+				<a href="/wallet/deposit/{$currentSelectedPair?.baseCurrencyName}" class="_6fda91af {!$isLogin ? 'edd5a9be' : ''}">Deposit</a><a
+					href="/cards/buy"
 					class="_6fda91af {!$isLogin ? 'edd5a9be' : ''}">Buy Crypto</a
 				>
 			</div>

@@ -12,7 +12,7 @@
 		"sourceMap": true,
 		"strict": true,
 		"moduleResolution": "bundler",
-		"noImplicitAny": true,
+		"noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
       "$lib": ["./src/lib"],
