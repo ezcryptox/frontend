@@ -7,7 +7,7 @@ body.v3-body .app-homepage {
     padding-top: 50px;
 }
 ._5f16684d._04f0c363 {
-    background-image: url(https://v3.polo-static.com/spot-web/static/img/bg.13d4e6b2.svg);
+    background-image: url(../lib/images/bg.13d4e6b2.svg);
     background-position: 50%;
     background-size: auto 706px;
 }
@@ -87,7 +87,7 @@ body.v3-body .app-homepage {
     left: -8px;
     width: 314px;
     height: 412px;
-    background-image: url(https://v3.polo-static.com/spot-web/static/img/bg.e9e9ea1d.svg);
+    background-image: url(../lib/images/bg.e9e9ea1d.svg);
     background-size: 314px 412px;
 }
 
@@ -97,7 +97,7 @@ body.v3-body .app-homepage {
     transform: translateX(-50%);
     width: 280px;
     height: 384px;
-    background-image: url(https://v3.polo-static.com/spot-web/static/img/phone.fbd52cdd.svg);
+    background-image: url(../lib/images/phone.fbd52cdd.svg);
     background-size: 280px auto;
     overflow: hidden;
     padding-top: 48px;
@@ -163,7 +163,7 @@ body.v3-body .app-homepage {
     margin: 0 auto;
 }
 ._238572a7 ._590fc55f._7c2fb6ee, ._238572a7 ._590fc55f._7c2fb6ee:hover {
-    background-image: url(https://v3.polo-static.com/spot-web/static/img/arrow.disabled.a0fa2fdd.svg);
+    background-image: url(../lib/images/arrow.disabled.a0fa2fdd.svg);
 }
 ._238572a7 ._590fc55f._0e85c167 {
     left: -32px;
@@ -174,7 +174,7 @@ body.v3-body .app-homepage {
     transform: translateY(-50%);
     width: 24px;
     height: 24px;
-    background-image: url(https://v3.polo-static.com/spot-web/static/img/arrow.e86fec2d.svg);
+    background-image: url(../lib/images/arrow.e86fec2d.svg);
     background-size: 24px auto;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -191,7 +191,7 @@ body.v3-body .app-homepage {
     transform: translateY(-50%);
     width: 24px;
     height: 24px;
-    background-image: url(https://v3.polo-static.com/spot-web/static/img/arrow.e86fec2d.svg);
+    background-image: url(../lib/images/arrow.e86fec2d.svg);
     background-size: 24px auto;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -441,7 +441,10 @@ body.v3-body .app-homepage {
     width: 290px;
 }
 ._394bd770 ._2f588215 ._989d578a._3c4b34ca {
-    background-image: url(https://v3.polo-static.com/spot-web/static/img/01.light.25285b47.png);
+    background-image: url(../lib/images/01.light.25285b47.png);
+}
+body.dark-theme ._394bd770 ._2f588215 ._989d578a._3c4b34ca {
+    background-image: url(../lib/images/01.9cdda82f.png);
 }
 ._394bd770 ._2f588215 ._989d578a {
     width: 336px;
@@ -505,11 +508,18 @@ body.v3-body .app-homepage {
     display: none;
 }
 ._394bd770 ._2f588215 ._989d578a._0ab34971 {
-    background-image: url(https://v3.polo-static.com/spot-web/static/img/02.light.1d409143.png);
+    background-image: url(../lib/images/02.light.1d409143.png);
+}
+body.dark-theme ._394bd770 ._2f588215 ._989d578a._0ab34971 {
+    background-image: url(../lib/images/02.a6c7e104.svg);
 }
 ._394bd770 ._2f588215 ._989d578a.cc033262 {
-    background-image: url(https://v3.polo-static.com/spot-web/static/img/03.light.b7d103c1.png);
+    background-image: url(../lib/images/03.light.b7d103c1.png);
 }
+body.dark-theme ._394bd770 ._2f588215 ._989d578a.cc033262 {
+    background-image: url(../lib/images/03.637ffea0.png);
+}
+
 ._394bd770 {
     margin-bottom: 160px;
 }
@@ -874,7 +884,7 @@ svg:not(:root) {
     background-size: 500px 242px;
     background-position: 100%;
     background-repeat: no-repeat;
-    background-image: url(https://v3.polo-static.com/spot-web/static/img/bg-right.1f97b611.png);
+    background-image: url(../lib/images/bg-right.1f97b611.png);
 }
 
 ._4aaab2bd:before {

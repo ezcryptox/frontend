@@ -42,8 +42,7 @@
                 autoplay="autoplay"
                 muted="muted"
                 playsinline=""
-                class="_40b45abf"
-              >
+                class="_40b45abf">
                 <source
                   src="https://res.cloudinary.com/dxwhz3r81/video/upload/v1715949779/video_2024-05-17_07-40-24_ggla8f.mp4"
                   type="video/mp4"
@@ -53,8 +52,7 @@
             <div class="b2b8b0c1">
               <a
                 href="?itunes.apple.com/us/app/poloniex/id1234141021?mt=8"
-                class="_67ae8ef1"
-              >
+                class="_67ae8ef1">
                 <svg
                   width="25"
                   height="24"

@@ -11,6 +11,7 @@
 	export let size: $$Props["size"] = "default";
 	export let builders: $$Props["builders"] = [];
 	export { className as class };
+	
 </script>
 
 <ButtonPrimitive.Root
@@ -19,7 +20,7 @@
 	type="button"
 	{...$$restProps}
 	on:click
-	on:keydown
->
+	on:keydown >
+
 	<slot />
 </ButtonPrimitive.Root>

@@ -304,7 +304,7 @@
 			</svg>
 			<span>EN</span>
 		</li>
-		<li
+		<button
 			class="b1398ab6 relative"
 			on:click={() => {
 				dispatch('close');
@@ -325,8 +325,8 @@
 			>
 				<use xlink:href="#uniframe-icon-moon"></use>
 			</svg>
-			<span style="padding-left: 40px">{mode === 'dark' ? $_("light-mode") : $_("dark-mode") }</span>
-		</li>
+			<span style="padding-left: 40px">{$mode === 'dark' ? $_("light-mode") : $_("dark-mode") }</span>
+		</button>
 		<li>
 			<a
 				on:click={() => dispatch('close')}

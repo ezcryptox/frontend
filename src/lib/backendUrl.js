@@ -1,14 +1,14 @@
 import { browser } from '$app/environment'
 export const ServerURl = () => {
-  // return "http://localhost:8000"
+  let url = "";
   if (browser) {
     if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-      return "http://localhost:8000";
+      url = "http://localhost:8000";
     } else {
-      return "https://backend-8wyk.onrender.com";
+      url = "https://ezcryptox.onrender.com";
     }
   }
-  return "https://backend-8wyk.onrender.com";
+  return url
 };
 
 export const pageURL = () => {
