@@ -2178,10 +2178,6 @@ html[data-theme=dark] .a8700312._9de842b1._48576cc9 em {
     padding: 6px 0
 }
 
-.el-table tr {
-    background-color: #fff
-}
-
 .el-table tr input[type=checkbox] {
     margin: 0
 }
@@ -2393,11 +2389,6 @@ html[data-theme=dark] .a8700312._9de842b1._48576cc9 em {
 
 .el-table__footer-wrapper,.el-table__header-wrapper {
     overflow: hidden
-}
-
-.el-table__footer-wrapper tbody td.el-table__cell,.el-table__header-wrapper tbody td.el-table__cell {
-    background-color: #f5f7fa;
-    color: #606266
 }
 
 .el-table__body-wrapper {

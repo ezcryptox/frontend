@@ -4,7 +4,7 @@
 	import BuysellButton from './buysell-button.svelte';
 	import Checkbox from './checkbox.svelte';
 	import { tradeBalance, tradeConfig } from '../store';
-	import { currentSelectedPair } from '$lib/store/marketdata';
+	import { cryptoQuotes, currentSelectedPair } from '$lib/store/marketdata';
 	export let autoBorrow = false;
 	export let isBuying = true;
 	export let asset;
@@ -17,6 +17,10 @@
 	tradeBalance.subscribe(tb => {
 		if (!quoteAmount) quoteAmount = tb.base.usd / tb.quote.usd;
 	})
+	cryptoQuotes.subscribe(q => {
+		if (!quoteAmount && !!q && q[$currentSelectedPair?.quoteCurrencyName || '']?.price)
+			quoteAmount =  q[$currentSelectedPair?.quoteCurrencyName || '']?.price || 0
+	})
 
 	$: showAdvanceSetting = false;
 	$: postOnly = false;
@@ -26,9 +30,9 @@
 	<!----><!----><!---->
 	<AmountInput
 		value={quoteAmount}
-		decimal={4}
+		decimal={$currentSelectedPair?.tradeLimit?.priceScale || 4}
 		assetLabel={asset.quote}
-		min={0}
+		min={1}
 		isInsufficient={(amount) => false}
 		onAmountChanged={(amount) => {
 			tradeConfig.update((prev) => ({ ...prev, price: amount }));
@@ -38,8 +42,9 @@
 	<AmountInput
 		value={baseAmount}
 		assetLabel={asset.base}
-		min={0.00000001}
-		isInsufficient={(amount) => false}
+		decimal={$currentSelectedPair?.tradeLimit?.quantityScale || 4}
+		min={parseFloat($currentSelectedPair?.tradeLimit?.minQuantity || '0.00001')}
+		isInsufficient={(amount) => $tradeBalance.quote.balance < totalAmount}
 		onAmountChanged={(amount) => {
 			tradeConfig.update((prev) => ({ ...prev, amount }));
 			totalAmount = amount * quoteAmount
@@ -54,8 +59,8 @@
 	<AmountInput
 		value={totalAmount}
 		assetLabel={asset.quote}
-		decimal={4}
-		min={0.00000001}
+		decimal={$currentSelectedPair?.tradeLimit?.amountScale || 4}
+		min={$currentSelectedPair?.tradeLimit?.amountScale || 0.00001}
 		isInsufficient={(amount) => $tradeBalance.quote.balance < amount}
 		onAmountChanged={(total) => {
 			baseAmount = total / quoteAmount

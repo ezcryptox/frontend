@@ -30,7 +30,7 @@
 	$: {
 		loading = true;
 		dataListFetcher()
-			.then((data) => dataList.set(data))
+			.then((data) => dataList.set(data || []))
 			.finally(() => {
 				loading = false;
 			});

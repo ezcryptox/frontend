@@ -27,6 +27,8 @@
 	import { handleAuthToken } from '$lib/store/routes';
 	import axios from 'axios';
 	import { ServerURl } from '$lib/backendUrl';
+	import { isLogin } from '$lib/store/profile';
+	
 	$: selectedAsset = null;
 	$: showBorrowModal = false;
 	$: showOrderModal = false;
@@ -35,6 +37,7 @@
 	$: showMarginRatioModal = false;
 	$: showOnBoarding = false;
 	$: marginTradingEnabled = false;
+
 	$: onboardingData = {
 		title: '',
 		message: '',
@@ -87,6 +90,7 @@
 
 	
 	async function getAssetBalance(asset) {
+		if (!$isLogin) return;
 		const {balances} = await axios.get(
 				`${ServerURl()}/api/assets/trade-balance?base=${asset.base}&quote=${asset.quote}`,
 				{

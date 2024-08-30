@@ -71,13 +71,14 @@
 		if (widget) {
 			const { overrides, theme } = getOverrides(isDark);
 			try {
-        await widget.changeTheme(theme).catch();
-      } catch (err) {
+        // await widget.changeTheme(theme).catch();
+      
+				widget.applyOverrides(overrides);
+				widget.save((content) => {
+					return saveChartConfig.save(content);
+				});
+			} catch (err) {
       }
-			widget.applyOverrides(overrides);
-			widget.save((content) => {
-				return saveChartConfig.save(content);
-			});
 		}
 	};
 
@@ -281,7 +282,7 @@
 						initWidget({
 							debug: false, // uncomment this line to see Library errors and warnings in the console
 							fullscreen: false,
-							symbol: asset.symbol.replace('_', '/'),
+							symbol: asset.displayName,
 							// @ts-ignore
 							interval: resolutionMap[activeInterval],
 							container: 'tv_chart_container',

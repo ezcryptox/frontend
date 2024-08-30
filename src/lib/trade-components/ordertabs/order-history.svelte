@@ -9,7 +9,7 @@
 
 	$: fetcher = (hide = $hideCanceledOrders, refreshKey) => 
 	async () => {
-		if (!$isLogin) return Promise.resolve();
+		if (!$isLogin) return Promise.resolve([]);
 		return axios
 			.get(`${ServerURl()}/api/spot/order-history${hide ? '?hide_canceled=1' : ''}`, {
 				headers: {

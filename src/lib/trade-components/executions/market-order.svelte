@@ -3,6 +3,7 @@
 	import ProgressBar from './progress.svelte';
 	import BuysellButton from './buysell-button.svelte';
 	import { tradeBalance, tradeConfig } from '../store';
+	import { currentSelectedPair } from '$lib/store/marketdata';
 	export let asset;
 	export let autoBorrow = false;
 	export let isBuying = true;
@@ -16,7 +17,7 @@
 	<AmountInput
 		assetLabel={''}
 		min={0}
-        disableInput
+    disableInput
 		isInsufficient={(amount) => false}
 		onAmountChanged={(amount) => {}}
 		placeholder="Most optimal price"
@@ -24,7 +25,8 @@
 	<AmountInput
 		value={baseAmount}
 		assetLabel={asset.base}
-		min={-0}
+		decimal={$currentSelectedPair?.tradeLimit?.quantityScale || 4}
+		min={parseFloat($currentSelectedPair?.tradeLimit?.minQuantity || '0.00001')}
 		isInsufficient={(amount) => $tradeBalance.quote.balance < totalAmount}
 		onAmountChanged={(amount) => {
 			tradeConfig.update((prev) => ({ ...prev, amount }));

@@ -20,12 +20,12 @@ export async function load({ params }) {
 }
 
 async function getPairs() {
-  if (browser) {
-    const pairsString = localStorage.getItem('x-currency-list');
-    if (pairsString) {
-      return JSON.parse(pairsString);
-    }
-  }
+  // if (browser) {
+  //   const pairsString = localStorage.getItem('x-currency-list');
+  //   if (pairsString) {
+  //     return JSON.parse(pairsString);
+  //   }
+  // }
   const { zones, pairs } = (await axios.get(`${ServerURl()}/api/market/currdata`)).data;
   if (browser) {
     localStorage.setItem('x-currency-list', JSON.stringify(pairs));
