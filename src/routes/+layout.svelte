@@ -17,7 +17,7 @@
 	import { socketData } from '$lib/store/socket';
 	import SocketManager from '$lib/socket/Socketmanager';
 	import { ServerURl } from '$lib/backendUrl';
-	import  {Toaster}  from '$lib/components/ui/sonner';
+	import { Toaster } from '$lib/components/ui/sonner';
 	$: url.set($page.url.pathname);
 
 	$: urlString = $page.url.href;
@@ -76,10 +76,12 @@
 
 		if (browser) {
 			const io = SocketManager.socket(ServerURl());
-			socketData.set({
-				io,
-				request: SocketManager.socketRequestBind(io)
-			})
+			io.on('connect', () => {
+				socketData.set({
+					io,
+					request: SocketManager.socketRequestBind(io)
+				});
+			});
 		}
 	});
 
@@ -89,12 +91,13 @@
 		}
 	}
 </script>
+
 <ModeWatcher />
 <div>
 	{#if !$screen}
 		<div class="preload">
 			<div class="prewsUBw">
-				<Loader height='100vh'></Loader>
+				<Loader height="100vh"></Loader>
 			</div>
 		</div>
 	{:else}
@@ -145,7 +148,7 @@
         </div> -->
 	{/if}
 </div>
-<Toaster/>
+<Toaster />
 <!--
 <style>
 	.preload {
