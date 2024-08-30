@@ -14,8 +14,7 @@
 
 		const { io, request } = data;
 
-		io.on('connect', () => {
-			currentSelectedPair.subscribe((pair) => {
+		currentSelectedPair.subscribe((pair) => {
 				if (pair) {
 					request('join-ticker', { symbol: pair.symbol });
 					request('sub-trade', { symbol: pair.symbol });
@@ -24,7 +23,6 @@
 						localStorage.setItem('x-last-symbol', pair.symbol);
 					}
 				}
-			});
 		});
 
 		io.on('qts', (data) => {
