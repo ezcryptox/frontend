@@ -6,24 +6,9 @@
   import { screen } from "$lib/store/screen";
   import Contents from "$lib/home-page/contents.svelte";
 </script>
-<div
-  class="app-homepage _686bf1d6 {$screen > 1200
-    ? 'w1200'
-    : $screen > 1022
-      ? 'w1024'
-      : $screen > 770
-        ? 'w768'
-        : 'w375'} "
->
-  <div
-    class="dark-theme _5f16684d _04f0c363 {$screen > 1200
-      ? 'w1200'
-      : $screen > 1022
-        ? 'w1024'
-        : $screen > 770
-          ? 'w768'
-          : 'w375'} "
-  >
+
+<div class="app-homepage _686bf1d6 {$screen > 1200  ? 'w1200' : $screen > 1022 ? 'w1024' : $screen > 770  ? 'w768' : 'w375'} ">
+  <div class="dark-theme _5f16684d _04f0c363 {$screen > 1200 ? 'w1200' : $screen > 1022 ? 'w1024'  : $screen > 770  ? 'w768' : 'w375'} ">
     <div class="_9640f16f _86eb487d">
       <div class="b2c55fc1">
         <h1 class="d33f49de">
@@ -43,10 +28,7 @@
                 muted="muted"
                 playsinline=""
                 class="_40b45abf">
-                <source
-                  src="https://res.cloudinary.com/dxwhz3r81/video/upload/v1715949779/video_2024-05-17_07-40-24_ggla8f.mp4"
-                  type="video/mp4"
-                />
+                <source src="https://res.cloudinary.com/dxwhz3r81/video/upload/v1715949779/video_2024-05-17_07-40-24_ggla8f.mp4"  type="video/mp4" />
               </video>
             </div>
             <div class="b2b8b0c1">
