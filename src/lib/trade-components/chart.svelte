@@ -18,20 +18,21 @@
 		localStorage.setItem('x-tabs', JSON.stringify(tabs));
 		openTabs = tabs;
 		if (tabs.length > 0) {
-			const asset = tabs[tabs.length - 1];
-			handleAssetSelected(asset)();
-			history.pushState(null, '', `/trade/${asset.symbol}/?type=spot`); // Update the URL without reloading the page
+			if ($currentSelectedPair?.symbol === asset.symbol) {
+				const asset = tabs[tabs.length - 1];
+				handleAssetSelected(asset)();
+				// history.pushState(null, '', `/trade/${asset.symbol}/?type=spot`); // Update the URL without reloading the page
+			}
 		}
 	};
 
 	const handleAssetSelected = (asset) => (ev) => {
-		if (ev) ev.preventDefault();
 		if (asset.symbol === $currentSelectedPair?.symbol) return;
 		const pair = $tradePairs.find((p) => p.symbol === asset.symbol);
 		if (pair) {
-			history.pushState(null, '', `/trade/${pair.symbol}/?type=spot`); // Update the URL without reloading the page
 			currentSelectedPair.set(pair);
 		}
+		if (ev) ev.preventDefault();
 	};
 
 
@@ -69,6 +70,7 @@
 					openTabs = _tabs;
 					localStorage.setItem('x-tabs', JSON.stringify(_tabs));
 				}
+				history.pushState(null, '', `/trade/${asset.symbol}/?type=spot`); // Update the URL without reloading the page
 			}
 
 
@@ -76,14 +78,15 @@
 		});
 
 		cryptoQuotes.subscribe((q) => {
+			if (!q) return;
 			const _pair = $currentSelectedPair;
-			if (q && _pair && q[_pair.symbol]) {
+			if (_pair && q[_pair.symbol]) {
 				let _tabs = [...openTabs];
 				_tabs = _tabs.map((t) => ({
 					...t,
 					...(t.symbol === _pair.symbol || !t.price
 						? {
-								price: parseFloat(q[t.symbol].price)
+								price: parseFloat(q[t.symbol]?.price || '0')
 							}
 						: {})
 				}));

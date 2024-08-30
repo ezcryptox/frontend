@@ -10,7 +10,7 @@
 
 	$: fetcher = (hide = $hideOtherPairs, refreshKey) => 
 	async () => {
-		if (!$isLogin) return Promise.resolve();
+		if (!$isLogin) return Promise.resolve([]);
 		return axios
 			.get(`${ServerURl()}/api/spot/open-orders${hide ? `?pair=${$currentSelectedPair?.displayName}` : ''}`, {
 				headers: {

@@ -19,9 +19,9 @@
 
 	// Generate QR code for a given string
 
-	function loadQRCode(address: string) {
+ async function loadQRCode(address: string) {
 		if (canvasEL) {
-			QRCode.toDataURL(address)
+			await QRCode.toDataURL(address)
 				.then((url) => {
 					const img = new Image();
 					img.src = url;
@@ -100,6 +100,7 @@
 			currentStep = 1;
 			selectedBlockchain = null;
 		}
+		cryptoMenuOpen = false;
 	};
 
 	async function loadCurrencies() {
@@ -117,7 +118,9 @@
 			console.log('error loading currencies', err.message);
 		}
 	}
+	let fetchingAddress = {};
 	async function fetchDepositAddress(currency, chain) {
+		fetchingAddress[currency] = true;
 		try {
 			const { address, tag } = (
 				await axios.get(
@@ -138,6 +141,8 @@
 			currentStep++;
 		} catch (err: any) {
 			console.log('error loading currencies', err.message);
+		} finally {
+			fetchingAddress[currency] = false;
 		}
 	}
 
@@ -527,7 +532,7 @@
 										Important Note: Send only {selectedCurrency?.name} to this address. Sending other
 										cryptos to this address may result in the loss of your deposit.
 									</p>
-									<div class="nwyne">
+									<div class="nwyne {!!fetchingAddress[selectedCurrency?.name || ''] ? 'address-loader' : ''}">
 										<ul>
 											<li>
 												<canvas
@@ -751,6 +756,23 @@
 
 
 <style>
+	.address-loader {
+		border: 1px solid grey;
+		animation: blink 1s infinite;
+	}
+
+	@keyframes blink {
+		0%, 100% {
+			border-color: transparent;
+		}
+		50% {
+			border-color: grey;
+		}
+	}
+
+	body.dark-theme .address-loader {
+		border-color: lightgrey; /* Adjust for dark theme */
+	}
 	@media only screen and (max-width:1000px) {
 		.f7TBC.aOozD {
 			flex-wrap: wrap;
@@ -768,6 +790,17 @@
 		}
 		.depositWithdrawDropdown.el-dropdown__popper {
 			width: 100%!important;
+		}
+		._3Johe.Bte5E.currencySelectInput, .PipoQ {
+			width: 100%!important
+		}
+		.PipoQ h5 {
+			text-wrap: nowrap;
+			font-size: 11px;
+			max-width: 60px;
+			word-wrap: normal;
+			text-overflow: ellipsis;
+			overflow: hidden;
 		}
 	}
 </style>

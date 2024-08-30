@@ -2,7 +2,6 @@
 	import { slideFade } from '$lib/transitions';
 	import { onMount } from 'svelte';
 	import { findPos } from '../utils';
-	import { number } from 'svelte-i18n';
 	export let style = '';
 	export let assetLabel;
 	export let placeholder = 'Amount';
@@ -77,6 +76,10 @@
 				placeholder=""
 				bind:this={inputRef}
 				value={totalText}
+				on:change={() => {
+					totalAmount = parseFloat(totalText);
+					validAmount = checkAmountValid()
+				}}
 				on:input={(e) => {
 					if (!e.target) return;
 					totalText = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
@@ -140,9 +143,6 @@
 					
 				{/if}
 				</div>
-
-			
-				
 			{:else}
 			<span class="_3d54521c">{assetLabel}</span>
 			{/if}

@@ -7,7 +7,7 @@
 	import axios from 'axios';
 
 	$: fetcher = async () => {
-		if (!$isLogin) return Promise.resolve();
+		if (!$isLogin) return Promise.resolve([]);
 		return axios
 			.get(`${ServerURl()}/api/spot/trade-history`, {
 				headers: {

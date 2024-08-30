@@ -181894,9 +181894,6 @@ body.dark-theme .c2825692 ._6c75d35c .dd75317f .f583df2e ._6c7773b5 strong {
     padding: 6px 0
 }
 
-.el-table tr {
-    background-color: #fff
-}
 
 .el-table tr input[type=checkbox] {
     margin: 0
@@ -182107,11 +182104,6 @@ body.dark-theme .c2825692 ._6c75d35c .dd75317f .f583df2e ._6c7773b5 strong {
 
 .el-table__footer-wrapper,.el-table__header-wrapper {
     overflow: hidden
-}
-
-.el-table__footer-wrapper tbody td.el-table__cell,.el-table__header-wrapper tbody td.el-table__cell {
-    background-color: #f5f7fa;
-    color: #606266
 }
 
 .el-table__body-wrapper {

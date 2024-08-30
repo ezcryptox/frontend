@@ -17,6 +17,7 @@ export const marketTrades = writable(_marketTrades)
 type CryptoPair = {
   baseCurrencyName: string;
   quoteCurrencyName: string;
+  baseCurrencyDisplayName: string;
   symbol: string;
   displayName: string;
   state: string;
@@ -25,6 +26,10 @@ type CryptoPair = {
   sort: number;
   symbolZones: string;
   symbolTags: string;
+  blockchain: {
+    displayName: string,
+    symbol: string
+  }
   tradeLimit: {
     symbol: string;
     priceScale: number;

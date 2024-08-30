@@ -6,12 +6,12 @@
 	import { cryptoQuotes, currentSelectedPair } from '$lib/store/marketdata';
 	import { browser } from '$app/environment';
 	import { abbreviateNumber } from '$lib/utils';
-
+  import BlockchainDetails from './modals/blockchaindetails.svelte';
 	let falling = false;
 	$: showCryptoDialog = false;
 	$: onboarding = true;
 	let _onboardingFocusRef = null;
-
+	let showBlockchainDetails = false;
 	const toggleBorrowModal = getContext('toggleBorrowModal');
 	const startOnBoarding = getContext('toggleOnBoarding');
 	const updateData = getContext('updateOnboardingData');
@@ -19,9 +19,9 @@
 	let quotes;
 	cryptoQuotes.subscribe((q) => {
 		if (!q) return;
-		quotes = {...($currentSelectedPair || {})};
+		quotes = quotes ?? {...($currentSelectedPair || {})};
 		if (!Object.keys(quotes).length) return;
-		if (quotes && quotes.price > parseFloat(q[quotes.symbol]?.price || 0)) {
+		if (!!quotes && quotes.price > parseFloat(q[quotes.symbol]?.price || 0)) {
 			falling = true;
 		} else {
 			falling = false;
@@ -144,7 +144,7 @@
 						></svg
 					>
 				</div>
-				<div class="_88741fd9">
+				<div class="_88741fd9" on:click={() => showBlockchainDetails = true}>
 					<svg width="12" height="12" x="0" y="0" viewBox="0 0 512 512"
 						><g
 							><path
@@ -183,8 +183,7 @@
 							></path></g
 						></svg
 					>
-
-					<span class="cf00bf05">--</span>
+					<span class="cf00bf05">{$currentSelectedPair?.baseCurrencyDisplayName || '--'}</span>
 				</div>
 			</div>
 			{#if showCryptoDialog}
@@ -397,3 +396,6 @@
 		</div>
 	</section>
 </div>
+{#if showBlockchainDetails}
+	<BlockchainDetails on:close={() => showBlockchainDetails = false} />
+{/if}
