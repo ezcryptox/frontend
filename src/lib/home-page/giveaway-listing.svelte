@@ -51,7 +51,6 @@ const handleChangeView = ((event)=>{
                 <span class="ac20bdee"> 04-01 </span>
             </a>
         {/if}
-      
         <a  href="?support.poloniex.com/hc/en-us/categories/360002700674" class="_41acdb78">{$_('learn-more-1')}</a>
     </div>
 </div>

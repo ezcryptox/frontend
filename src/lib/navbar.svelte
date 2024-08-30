@@ -36,6 +36,8 @@
   });
 
 
+  // aria-account-unread="{unreadnotifications}"
+
 </script>
 <Language {showLanguageModal} on:click={() => (showLanguageModal = false)} />
 <div id="uniframe-header" data-v-app>
@@ -229,7 +231,7 @@
           </div>
           <button
             class="dd8dbce9" 
-            aria-account-unread="{unreadnotifications}"
+            
             on:mouseenter={() => (showNotification = true)}
             on:mouseleave={() => (showNotification = false)}
           >
