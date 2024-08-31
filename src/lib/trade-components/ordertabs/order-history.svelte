@@ -7,7 +7,7 @@
 	import axios from 'axios';
 	import {dataRefreshKey, hideCanceledOrders } from '../store';
 
-	$: fetcher = (hide = $hideCanceledOrders, refreshKey) => 
+	$: fetcher = (hide = $hideCanceledOrders, refreshKey = $dataRefreshKey) => 
 	async () => {
 		if (!$isLogin) return Promise.resolve([]);
 		return axios
@@ -21,8 +21,10 @@
 	};
 </script>
 
-<div class="_67f779d2 _6d122bdf">
-	<Datatable
+<div class="_67f779d2 _6d122bdf pb-10">
+	<div class="min-h-[350px]">
+		<Datatable
+		maxHeight="250px"
 		hasContent={!$isLogin}
 		dataListColumns={[
 			{ accessor: 'time', header: 'Time', cell: (value) => new Date(value).toLocaleString() },
@@ -41,6 +43,7 @@
 			<a href="/login">Log In </a>or <a href="/signup">Sign Up </a> Now to trade
 		</div>
 	</Datatable>
+</div>
 	<div class="_787d513b">
 		*Only shows data in 7 days. Click <a href="/activity/spot/trades/">All Orders</a> to view more.
 	</div>

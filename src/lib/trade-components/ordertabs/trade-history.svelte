@@ -5,8 +5,9 @@
 	import { isLogin } from '$lib/store/profile';
 	import { handleAuthToken } from '$lib/store/routes';
 	import axios from 'axios';
+	import { dataRefreshKey } from '../store';
 
-	$: fetcher = async () => {
+	$: fetcher =(refreshKey = $dataRefreshKey) => async () => {
 		if (!$isLogin) return Promise.resolve([]);
 		return axios
 			.get(`${ServerURl()}/api/spot/trade-history`, {
@@ -19,8 +20,10 @@
 	};
 </script>
 
-<div class="_67f779d2 _6d122bdf">
-	<Datatable
+<div class="_67f779d2 _6d122bdf pb-10">
+	<div class="min-h-[350px]">
+		<Datatable
+		maxHeight="250px"
 		hasContent={!$isLogin}
 		dataListColumns={[
 			{ accessor: 'time', header: 'Time', cell: (value) => new Date(value).toLocaleString() },
@@ -31,12 +34,13 @@
 			{ accessor: 'total', header: 'Total', cell: (value) => value.toFixed(2) },
 			{ accessor: 'fees', header: 'Fees' }
 		]}
-		dataListFetcher={fetcher}
+		dataListFetcher={fetcher($dataRefreshKey)}
 	>
 		<div class="_9e7987dd">
 			<a href="/login">Log In </a>or <a href="/signup">Sign Up </a> Now to trade
 		</div>
 	</Datatable>
+	</div>
 	<div class="_787d513b">
 		*Only shows data in 7 days. Click <a href="/activity/spot/trades/">All Orders</a> to view more.
 	</div>

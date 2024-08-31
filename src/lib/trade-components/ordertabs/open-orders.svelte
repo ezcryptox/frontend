@@ -8,7 +8,7 @@
 	import {dataRefreshKey, hideOtherPairs, openOrders } from '../store';
 	import { currentSelectedPair } from '$lib/store/marketdata';
 
-	$: fetcher = (hide = $hideOtherPairs, refreshKey) => 
+	$: fetcher = (hide = $hideOtherPairs, refreshKey = $dataRefreshKey) => 
 	async () => {
 		if (!$isLogin) return Promise.resolve([]);
 		return axios
@@ -25,8 +25,10 @@
 	};
 </script>
 
-<div class="_67f779d2 _6d122bdf">
-	<Datatable
+<div class="_67f779d2 _6d122bdf pb-10">
+	<div class="min-h-[350px]">
+		<Datatable
+		maxHeight="250px"
 		hasContent={!$isLogin}
 		dataListColumns={[
 			{ accessor: 'time', header: 'Time', cell: (value) => new Date(value).toLocaleString() },
@@ -34,10 +36,10 @@
 			{ accessor: 'type', header: 'Type' },
 			{ accessor: 'side', header: 'Side', cell: (value) => value.toUpperCase() },
 			{ accessor: 'price', header: 'price', cell: (value) => value.toFixed(2) },
-			{ accessor: 'amount', header: 'Amount', cell: (value) => value.toFixed(2) },
+			{ accessor: 'amount', header: 'Amount', cell: (value) => value.toFixed(6) },
 			{ accessor: 'total', header: 'Total', cell: (value) => value.toFixed(2) },
-			{ accessor: 'filled', header: 'Filled', cell: (value) => value.toFixed(2) },
-			{ accessor: 'unfilled', header: 'Unfilled', cell: (value) => value.toFixed(2)  }
+			{ accessor: 'filled', header: 'Filled', cell: (value) => value.toFixed(6) },
+			{ accessor: 'unfilled', header: 'Unfilled', cell: (value) => value.toFixed(6)  }
 		]}
 		dataListFetcher={fetcher($hideOtherPairs, $dataRefreshKey)}
 	>
@@ -45,6 +47,8 @@
 			<a href="/login">Log In </a>or <a href="/signup">Sign Up </a> Now to trade
 		</div>
 	</Datatable>
+	</div>
+	
 	<div class="_787d513b">
 		*Only shows data in 7 days. Click <a href="/activity/spot/trades/">All Orders</a> to view more.
 	</div>

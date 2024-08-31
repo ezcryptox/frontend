@@ -22,7 +22,7 @@
 	import MarginRatioModal from '$lib/trade-components/modals/margin-ratio.svelte';
 	import Onboarding from './onboarding.svelte';
 	import { browser } from '$app/environment';
-	import { tradeBalance } from './store';
+	import { balanceChangeRefreshKey, tradeBalance } from './store';
 	import { currentSelectedPair } from '$lib/store/marketdata';
 	import { handleAuthToken } from '$lib/store/routes';
 	import axios from 'axios';
@@ -117,6 +117,16 @@
 
 	currentSelectedPair.subscribe(pair => {
 		if (!pair) return
+		getAssetBalance({
+			base: pair.baseCurrencyName,
+			quote: pair.quoteCurrencyName
+		}).catch(err => console.log('Error getting balance => ', err))
+	})
+
+	balanceChangeRefreshKey.subscribe(k => {
+		if (!k) return;
+		const pair = $currentSelectedPair;
+		if (!pair) return;
 		getAssetBalance({
 			base: pair.baseCurrencyName,
 			quote: pair.quoteCurrencyName
