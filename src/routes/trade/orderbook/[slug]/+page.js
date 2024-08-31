@@ -1,9 +1,9 @@
 import { redirect } from '@sveltejs/kit';
 import axios from 'axios'
+import { get } from 'svelte/store';
 import { ServerURl } from '$lib/backendUrl'
 import { browser } from '$app/environment';
 import { tradePairs } from '$lib/store/marketdata';
-import { get } from 'svelte/store';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
@@ -18,16 +18,8 @@ export async function load({ params }) {
 }
 
 async function getPairs() {
-  
   const _pairs = get(tradePairs);
   if (_pairs.length) return _pairs;
-  // if (browser) {
-  //   const pairsString = localStorage.getItem('x-currency-list');
-  //   if (pairsString) {
-  //     tradePairs.set(JSON.parse(pairsString));
-  //     return JSON.parse(pairsString);
-  //   }
-  // }
   const { zones, pairs } = (await axios.get(`${ServerURl()}/api/market/currdata`)).data;
   tradePairs.set(pairs);
   if (browser) {

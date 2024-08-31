@@ -4,16 +4,10 @@
 	import { getContext } from 'svelte';
 	import { isLogin } from '$lib/store/profile';
 	import LimitOrder from './executions/limit-order.svelte';
-	import StopLimit from './executions/stop-limit.svelte';
 	import MarketOrder from './executions/market-order.svelte';
-	import StopMarket from './executions/stop-market.svelte';
-	import TrailingOrder from './executions/trailing-order.svelte';
 	import { cryptoQuotes, currentSelectedPair } from '$lib/store/marketdata';
-	import { ServerURl } from '$lib/backendUrl';
-	import { handleAuthToken } from '$lib/store/routes';
-	import axios from 'axios';
 	import { tradeBalance, tradeConfig } from './store';
-	 
+		 
 
 	export let onboardingData;
 	export let marginTradingEnabled;
@@ -227,14 +221,14 @@
 						>
 							Preferences
 						</li>
-						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<!-- svelte-ignore a11y-click-events-have-key-events
 						<li class="c63a1f03" on:click={() => window.open('/margin/insurance-fund', '_blank')}>
 							Insurance Fund
 						</li>
-						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<!-- svelte-ignore a11y-click-events-have-key-events 
 						<li class="c63a1f03" on:click={() => window.open('/fee/margin', '_blank')}>
 							Interest Rate &amp; Borrow Limit
-						</li>
+						</li> -->
 						<li
 							class="c63a1f03"
 							on:click={() =>

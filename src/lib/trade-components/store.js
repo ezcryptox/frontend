@@ -29,3 +29,4 @@ export const hideOtherPairs = writable(false)
 export const hideCanceledOrders = writable(false)
 
 export const dataRefreshKey = writable(1)
+export const openOrders = writable(0)

@@ -6,6 +6,7 @@
 	import VirtualList from '@sveltejs/svelte-virtual-list';
 	import { abbreviateNumber } from '$lib/utils';
 	import pkg from 'lodash';
+	import X from 'lucide-svelte/icons/x';
 	const { debounce } = pkg;
 	const dispatch = createEventDispatcher();
 
@@ -114,6 +115,7 @@
 					subs: []
 				},
 				...zones
+					.filter(z => ['USD', 'BTC'].includes(z.zoneName))
 					.filter((z) => z.parentId === 0)
 					.sort((a, b) => b.sort - a.sort)
 					.map((z) => ({
@@ -204,18 +206,19 @@
 				</div>
 			</div>
 		</div>
-		{#if tabs.length && tabs[currentTab]?.subs?.length}
-			<div class="_896a701d" style="">
-				{#each tabs[currentTab].subs as subTab}
+		
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
+		<!-- {#if tabs.length && tabs[currentTab]?.subs?.length}
+			<div class="_896a701d" style="">
+				{#each tabs[currentTab].subs as subTab}
 					<span
 						on:click={() => handleSubTabChange(subTab)}
 						class={subTab.id === zoneToFilterBy?.id ? '_606d29e6' : ''}>{subTab.label}</span
 					>
 				{/each}
 			</div>
-		{/if}
+		{/if} -->
 	</nav>
 	<div class="de0a0725">
 		<dl class="abc336e7 _0fae74ff">
