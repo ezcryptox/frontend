@@ -6,13 +6,13 @@
 </script>
 
 <Sonner
-	theme={$mode}
+	theme="{$mode}"
 	class="toaster group"
 	toastOptions={{
 		classes: {
-			toast: "p-[10px] group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
+			toast: "p-[18px] group toast group-[.toaster]:border-border group-[.toaster]:shadow-lg",
 			description: "group-[.toast]:text-muted-foreground",
-			actionButton: "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
+			actionButton: "group-[.toast]:text-primary-foreground",
 			cancelButton: "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
 		},
 	}}

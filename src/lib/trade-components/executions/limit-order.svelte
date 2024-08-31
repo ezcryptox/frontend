@@ -13,14 +13,25 @@
 	let totalAmount = ($tradeConfig?.amount || 0) * ($tradeConfig?.quotePrice || 0);
 	let baseAmount = $tradeConfig?.amount || 0;
 	let quoteAmount = $tradeConfig?.quotePrice || 0;
-
+	let lastQuotePair
+	
 	tradeBalance.subscribe(tb => {
-		if (!quoteAmount) quoteAmount = tb.base.usd / tb.quote.usd;
+		if (!quoteAmount) {
+			quoteAmount = tb.base.usd / tb.quote.usd;
+			tradeConfig.update(prev => ({...prev, price: quoteAmount}))
+		}
 	})
-	cryptoQuotes.subscribe(q => {
-		if (!quoteAmount && !!q && q[$currentSelectedPair?.quoteCurrencyName || '']?.price)
-			quoteAmount =  q[$currentSelectedPair?.quoteCurrencyName || '']?.price || 0
-	})
+	currentSelectedPair.subscribe(sp => {
+		if (!sp) return;
+		if (!lastQuotePair || sp.symbol !== lastQuotePair) {
+			const q = $cryptoQuotes?.[sp.symbol];
+			if (q?.price) {
+				quoteAmount = q.price;
+				tradeConfig.update(prev => ({...prev, price: quoteAmount}))
+			}
+			lastQuotePair = sp.symbol;
+		}	
+	});
 
 	$: showAdvanceSetting = false;
 	$: postOnly = false;

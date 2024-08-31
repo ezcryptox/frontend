@@ -5,7 +5,7 @@
 	import { isLogin } from '$lib/store/profile';
 	import { handleAuthToken } from '$lib/store/routes';
 	import axios from 'axios';
-	import {dataRefreshKey, hideOtherPairs } from '../store';
+	import {dataRefreshKey, hideOtherPairs, openOrders } from '../store';
 	import { currentSelectedPair } from '$lib/store/marketdata';
 
 	$: fetcher = (hide = $hideOtherPairs, refreshKey) => 
@@ -18,7 +18,10 @@
 					Authorization: `Bearer ${$handleAuthToken}`
 				}
 			})
-			.then((d) => d.data);
+			.then((d) => {
+				openOrders.set(d.data?.length || 0)
+				return d.data;
+			});
 	};
 </script>
 

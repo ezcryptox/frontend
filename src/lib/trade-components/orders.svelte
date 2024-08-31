@@ -6,7 +6,7 @@
 	import { findPos } from './utils';
 	import { isLogin } from '$lib/store/profile';
 	import { getContext } from 'svelte';
-	import { dataRefreshKey, hideCanceledOrders, hideOtherPairs } from './store';
+	import { dataRefreshKey, hideCanceledOrders, hideOtherPairs, openOrders } from './store';
 	import { ServerURl } from '$lib/backendUrl';
 	import { handleAuthToken } from '$lib/store/routes';
 	import axios from 'axios';
@@ -22,7 +22,7 @@
 
 	$: cancelingOrder = false;
 	const onCancelCurrentTradingPairOrder = () => {
-		if (!$isLogin || cancelingOrder) return;
+		if (!$isLogin || cancelingOrder || !openOrders) return;
 		const p = $currentSelectedPair;
 		if (!p) return;
 		axios
@@ -132,11 +132,11 @@
 							{#each orderActions as action}
 								{#if action.id === selectedActionID}
 									<button
-										disabled={cancelingOrder}
+										disabled={cancelingOrder || !$openOrders}
 										bind:this={buttonRef}
 										on:click={() =>
 											!action.id ? onCancelCurrentTradingPairOrder() : onCancelAllOrder()}
-										class="_2fcd4389"
+										class="_2fcd4389 {(cancelingOrder || !$openOrders) && !action.id ? 'opacity-45 pointer-events-none cursor-not-allowed' : ''}"
 									>
 										{action.label}
 									</button>

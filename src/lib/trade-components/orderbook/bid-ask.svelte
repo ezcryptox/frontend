@@ -4,12 +4,12 @@
 	import { abbreviateNumber } from '$lib/utils';
 
 	export let ask = false;
-    export let limit = 13;
-	$: orderData = Array(limit).fill({
-                    price: '--',
-                    amount: '--',
-                    total: '--'
-                });
+	export let limit = 13;
+	let orderData = Array(limit).fill({
+		price: '--',
+		amount: '--',
+		total: '--'
+	});
 
 	function calculateBackgroundSize(amount) {
 		const maxAmount = Math.max(...orderData.map((o) => parseFloat(o.amount)));
@@ -24,18 +24,23 @@
 		if ($currentSelectedPair?.symbol === `${base}_${quote}`) {
 			// @ts-ignore
 			const obj = ob.orderbook[ask ? 'asks' : 'bids'];
-			orderData = Object.entries(obj).map(([price, amount]) => ({
-				price: parseFloat(price).toFixed(2),
-				amount: parseFloat(amount).toFixed(2),
-				total: abbreviateNumber((parseFloat(price) * parseFloat(amount)).toFixed(2))
-			})).slice(0,limit);
-             if (orderData.length < limit) {
-                orderData = [...orderData, ...Array(limit - orderData.length).fill({
-                    price: '--',
-                    amount: '--',
-                    total: '--'
-                })]
-            }
+			orderData = Object.entries(obj)
+				.map(([price, amount]) => ({
+					price: parseFloat(price).toFixed(2),
+					amount: parseFloat(amount).toFixed(2),
+					total: abbreviateNumber((parseFloat(price) * parseFloat(amount)).toFixed(2))
+				}))
+				.slice(0, limit);
+			if (orderData.length < limit) {
+				orderData = [
+					...orderData,
+					...Array(limit - orderData.length).fill({
+						price: '--',
+						amount: '--',
+						total: '--'
+					})
+				];
+			}
 		}
 	});
 </script>
@@ -52,6 +57,6 @@
 				<span title="">{order.total}</span>
 			</div>
 		{/each}
-        
 	</div>
 </div>
+

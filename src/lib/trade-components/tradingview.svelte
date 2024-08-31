@@ -209,11 +209,7 @@
 		} else console.log('Trading View is null')
 	}
 
-	mode.subscribe((theme) => {
-		if (tvWidget) {
-			tvWidget.changeTheme(theme);
-		}
-	});
+	
 	function appendScript(onload) {
     if (typeof TradingView !== 'undefined') {
       onload()
@@ -271,9 +267,13 @@
 	onMount(() => {
 		activeInterval = browser ? localStorage.getItem('x-interval') || '1min' : '1min';
 		loadIntervalList();
-
+		const unsubMode = mode.subscribe((theme) => {
+		if (tvWidget) {
+			tvWidget.changeTheme(theme);
+		}
+	});
 		let prevSelected = $currentSelectedPair?.symbol;
-		currentSelectedPair.subscribe(async (asset) => {
+	 const unsubPair = 	currentSelectedPair.subscribe(async (asset) => {
 			if (asset && (asset.symbol !== prevSelected || !tvWidget)) {
 				if (tvWidget) {
 					tvWidget.activeChart().setSymbol(asset.displayName);
@@ -328,6 +328,11 @@
 			}
 			prevSelected = asset?.symbol;
 		});
+
+		return () => {
+			unsubMode()
+			unsubPair();
+		}
 	});
 </script>
 <section class="_7f9800af">

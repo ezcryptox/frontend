@@ -6,7 +6,7 @@
 	import { cryptoQuotes, currentSelectedPair } from '$lib/store/marketdata';
 	import { browser } from '$app/environment';
 	import { abbreviateNumber } from '$lib/utils';
-  import BlockchainDetails from './modals/blockchaindetails.svelte';
+	import BlockchainDetails from './modals/blockchaindetails.svelte';
 	let falling = false;
 	$: showCryptoDialog = false;
 	$: onboarding = true;
@@ -17,9 +17,19 @@
 	const updateData = getContext('updateOnboardingData');
 	export let onboardingData;
 	let quotes;
+	const getQuoteData = (q, symbol) => {
+		return {
+			changePercent: parseFloat(q[symbol].changePercent) || 0,
+			volumeFrom: parseFloat(q[symbol].volumeFrom) || 0,
+			volumeTo: parseFloat(q[symbol].volumeTo) || 0,
+			high: parseFloat(q[symbol].high) || 0,
+			low: parseFloat(q[symbol].low) || 0,
+			price: parseFloat(q[symbol].price) || 0
+		};
+	};
 	cryptoQuotes.subscribe((q) => {
 		if (!q) return;
-		quotes = quotes ?? {...($currentSelectedPair || {})};
+		quotes = { ...(quotes || $currentSelectedPair || {}) };
 		if (!Object.keys(quotes).length) return;
 		if (!!quotes && quotes.price > parseFloat(q[quotes.symbol]?.price || 0)) {
 			falling = true;
@@ -29,12 +39,19 @@
 		if (q[quotes.symbol]) {
 			quotes = {
 				...quotes,
-				changePercent: parseFloat(q[quotes.symbol].changePercent) || 0,
-				volumeFrom: parseFloat(q[quotes.symbol].volumeFrom) || 0,
-				volumeTo: parseFloat(q[quotes.symbol].volumeTo) || 0,
-				high: parseFloat(q[quotes.symbol].high) || 0,
-				low: parseFloat(q[quotes.symbol].low) || 0,
-				price: parseFloat(q[quotes.symbol].price) || 0
+				...getQuoteData(q,quotes.symbol),
+			};
+		}
+	});
+	currentSelectedPair.subscribe((cp) => {
+		if (!cp) return;
+		const q = $cryptoQuotes;
+		if (!q) return;
+		if (q[cp.symbol].price) {
+			quotes = {
+				...(quotes || {}),
+				...cp,
+				...getQuoteData(q,cp.symbol),
 			};
 		}
 	});
@@ -62,16 +79,16 @@
 		}
 	}
 	const _clickHandler = () => {
-			showCryptoDialog = false;
-	}
+		showCryptoDialog = false;
+	};
 	onMount(() => {
 		if (browser) {
-			document.body.addEventListener('click',_clickHandler)
+			document.body.addEventListener('click', _clickHandler);
 		}
-	})
+	});
 	onDestroy(() => {
-		document.body.removeEventListener('click', _clickHandler)
-	})
+		document.body.removeEventListener('click', _clickHandler);
+	});
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -144,7 +161,7 @@
 						></svg
 					>
 				</div>
-				<div class="_88741fd9" on:click={() => showBlockchainDetails = true}>
+				<div class="_88741fd9" on:click={() => (showBlockchainDetails = true)}>
 					<svg width="12" height="12" x="0" y="0" viewBox="0 0 512 512"
 						><g
 							><path
@@ -188,11 +205,7 @@
 			</div>
 			{#if showCryptoDialog}
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
-				<div
-					id="assetMenu"
-					class="_64aeb761"
-					style="height: calc(100vh - 155px); display: block"
-				>
+				<div id="assetMenu" class="_64aeb761" style="height: calc(100vh - 155px); display: block">
 					<!-- svelte-ignore missing-declaration -->
 					<AssetsMenu
 						on:onAssetSelected={(e) => {
@@ -206,63 +219,42 @@
 			<div class="_0c7c0f49">
 				<dl class="_0166c194">
 					<dt class="_395fff9e">
-						{quotes?.price
-							? parseFloat(quotes?.price?.toFixed(2) || '0').toLocaleString()
-							: '--'}
+						{quotes?.price ? parseFloat(quotes?.price?.toFixed(2) || '0').toLocaleString() : '--'}
 					</dt>
 					<dd>
-						${quotes?.price
-							? parseFloat(quotes?.price?.toFixed(2) || '0').toLocaleString()
-							: '--'}
+						${quotes?.price ? parseFloat(quotes?.price?.toFixed(2) || '0').toLocaleString() : '--'}
 					</dd>
 				</dl>
 				<dl>
 					<dt>{$_('24h-change')}</dt>
-					<dd
-						class={quotes && quotes?.changePercent < 0
-							? '_395fff9e'
-							: '_0ce4a56e'}
-					>
-						<span
-							class={quotes && quotes?.changePercent < 0
-								? '_395fff9e'
-								: '_0ce4a56e'}
-							>{quotes?.changePercent
-								? quotes?.changePercent?.toFixed(2)
-								: '--'}%</span
+					<dd class={quotes && quotes?.changePercent < 0 ? '_395fff9e' : '_0ce4a56e'}>
+						<span class={quotes && quotes?.changePercent < 0 ? '_395fff9e' : '_0ce4a56e'}
+							>{quotes?.changePercent ? quotes?.changePercent?.toFixed(2) : '--'}%</span
 						>
 					</dd>
 				</dl>
 				<dl>
 					<dt>{$_('24h-high')}</dt>
 					<dd>
-						{quotes?.high
-							? parseFloat(quotes?.high?.toFixed(2) || '0').toLocaleString()
-							: '--'}
+						{quotes?.high ? parseFloat(quotes?.high?.toFixed(2) || '0').toLocaleString() : '--'}
 					</dd>
 				</dl>
 				<dl>
 					<dt>{$_('24h-low')}</dt>
 					<dd>
-						{quotes?.low
-							? parseFloat(quotes?.low?.toFixed(2) || '0').toLocaleString()
-							: '--'}
+						{quotes?.low ? parseFloat(quotes?.low?.toFixed(2) || '0').toLocaleString() : '--'}
 					</dd>
 				</dl>
 				<dl>
 					<dt>24h Volume({quotes?.baseCurrencyName || '--'})</dt>
 					<dd>
-						{quotes?.volumeFrom
-							? abbreviateNumber(quotes?.volumeFrom)
-							: '--'}
+						{quotes?.volumeFrom ? abbreviateNumber(quotes?.volumeFrom) : '--'}
 					</dd>
 				</dl>
 				<dl>
 					<dt>24h Volume({quotes?.quoteCurrencyName || '--'})</dt>
 					<dd>
-						{quotes?.volumeTo
-							? abbreviateNumber(quotes?.volumeTo)
-							: '--'}
+						{quotes?.volumeTo ? abbreviateNumber(quotes?.volumeTo) : '--'}
 					</dd>
 				</dl>
 			</div>
@@ -397,5 +389,5 @@
 	</section>
 </div>
 {#if showBlockchainDetails}
-	<BlockchainDetails on:close={() => showBlockchainDetails = false} />
+	<BlockchainDetails on:close={() => (showBlockchainDetails = false)} />
 {/if}

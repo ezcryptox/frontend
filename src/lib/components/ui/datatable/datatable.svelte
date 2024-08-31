@@ -9,6 +9,8 @@
 	export let dataListColumns: { accessor: string; header: string; cell?: (value: any) => any }[] =
 		[];
 	export let dataListFetcher = () => Promise.resolve([]);
+	export let tableRowClasses = (row: any) => ''
+	export let tableCellClasses = (row: any, cell: any) => ''
 
 	$: loading = true;
 	const dataList = writable<{ [k: string]: any }[]>([]);
@@ -68,10 +70,10 @@
 			{:else}
 				{#each $pageRows as row (row.id)}
 					<Subscribe rowAttrs={row.attrs()} let:rowAttrs>
-						<Table.Row {...rowAttrs} style="height: 54px!important" class="h-[54px]">
+						<Table.Row {...rowAttrs} style="height: 54px!important " class="h-[54px] {tableRowClasses(row)}">
 							{#each row.cells as cell (cell.id)}
 								<Subscribe attrs={cell.attrs()} let:attrs>
-									<Table.Cell {...attrs}>
+									<Table.Cell {...attrs} class="{tableCellClasses(row, cell)}">
 										<Render of={cell.render()} />
 									</Table.Cell>
 								</Subscribe>
