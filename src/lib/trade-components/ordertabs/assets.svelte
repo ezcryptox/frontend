@@ -15,25 +15,32 @@
 					Authorization: `Bearer ${$handleAuthToken}`
 				}
 			})
-			.then((d) => Object.keys( d.data.balances).map((k) => ({...d.data.balances[k], available: d.data.balances[k].balance, in_use: 0})));
+			.then((d) =>
+				Object.keys(d.data.balances).map((k) => ({
+					...d.data.balances[k],
+					available: d.data.balances[k].balance,
+					balance: d.data.balances[k].balance + d.data.balances[k].inUse,
+				}))
+			);
 	};
-	
 </script>
 
-<div class="_67f779d2 _6d122bdf">
-	
-	<Datatable
-		dataListFetcher={fetcher}
-		hasContent={!$isLogin}
-		dataListColumns={[
-			{ accessor: 'symbol', header: 'Coin'},
-			{ accessor: 'available', header: 'Available', cell: (value) => value.toFixed(8) },
-			{ accessor: 'in_use', header: 'In Use', cell: (value) => value.toFixed(2) },
-			{ accessor: 'balance', header: 'Balance', cell: (value) => value.toFixed(8) },
-		]}
-	>
-		<div class="_9e7987dd">
-			<a href="/login">Log In </a>or <a href="/signup">Sign Up </a> Now to trade
-		</div>
-	</Datatable>
+<div class="_67f779d2 _6d122bdf pb-10">
+	<div class="h-[350px]">
+		<Datatable
+			maxHeight='250px'
+			dataListFetcher={fetcher}
+			hasContent={!$isLogin}
+			dataListColumns={[
+				{ accessor: 'symbol', header: 'Coin' },
+				{ accessor: 'available', header: 'Available', cell: (value) => value.toFixed(8) },
+				{ accessor: 'inUse', header: 'In Use', cell: (value) => value.toFixed(8) },
+				{ accessor: 'balance', header: 'Balance', cell: (value) => value.toFixed(8) }
+			]}
+		>
+			<div class="_9e7987dd">
+				<a href="/login">Log In </a>or <a href="/signup">Sign Up </a> Now to trade
+			</div>
+		</Datatable>
+	</div>
 </div>

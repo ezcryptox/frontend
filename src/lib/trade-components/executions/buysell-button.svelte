@@ -3,7 +3,7 @@
 	import { isLogin } from '$lib/store/profile';
 	import { handleAuthToken } from '$lib/store/routes';
 	import axios from 'axios';
-	import { tradeBalance, tradeConfig } from '../store';
+	import { dataRefreshKey, tradeBalance, tradeConfig } from '../store';
 	import { toast } from 'svelte-sonner';
 	import {vipLevels} from '$lib/trade-components/utils'
 	import { currentSelectedPair } from '$lib/store/marketdata';
@@ -62,6 +62,7 @@
 				}
 			}));
 			toast.success(config.side.toUpperCase() + ' Order placed successfully!');
+			dataRefreshKey.update(p => p + 1)
 		// @ts-ignore
 		} catch (error) {
 			// @ts-ignore

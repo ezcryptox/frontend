@@ -6,7 +6,7 @@
 	import { findPos } from './utils';
 	import { isLogin } from '$lib/store/profile';
 	import { getContext } from 'svelte';
-	import { dataRefreshKey, hideCanceledOrders, hideOtherPairs, openOrders } from './store';
+	import { balanceChangeRefreshKey, dataRefreshKey, hideCanceledOrders, hideOtherPairs, openOrders } from './store';
 	import { ServerURl } from '$lib/backendUrl';
 	import { handleAuthToken } from '$lib/store/routes';
 	import axios from 'axios';
@@ -34,7 +34,8 @@
 			})
 			.then(() => {
 				toast.success('Order canceled successfully');
-				dataRefreshKey.update(p => p++)
+				dataRefreshKey.update(p => ++p)
+				balanceChangeRefreshKey.update(p=> ++p)
 			})
 			.finally(() => {
 				cancelingOrder = false;
@@ -54,7 +55,8 @@
 			.catch()
 			.then(() => {
 				toast.success('Order canceled successfully');
-				dataRefreshKey.update(p => p++)
+				dataRefreshKey.update(p => ++p)
+				balanceChangeRefreshKey.update(p=> ++p)
 			})
 			.finally(() => {
 				cancelingOrder = false;

@@ -3,7 +3,9 @@
 	import { createTable, Render, Subscribe } from 'svelte-headless-table';
 	import * as Table from '$lib/components/ui/table';
 	import { writable } from 'svelte/store';
+	import { onMount } from 'svelte';
 
+	export let maxHeight = '350px';
 	export let embeded = true;
 	export let hasContent = false;
 	export let dataListColumns: { accessor: string; header: string; cell?: (value: any) => any }[] =
@@ -11,6 +13,7 @@
 	export let dataListFetcher = () => Promise.resolve([]);
 	export let tableRowClasses = (row: any) => ''
 	export let tableCellClasses = (row: any, cell: any) => ''
+	export let tableClasses = ''
 
 	$: loading = true;
 	const dataList = writable<{ [k: string]: any }[]>([]);
@@ -37,11 +40,19 @@
 				loading = false;
 			});
 	}
+	let tableWrapper;
+
+	onMount(() => {
+		if (tableWrapper && maxHeight) {
+			tableWrapper.firstChild.style.height = maxHeight;
+			// tableWrapper.style.overflow = 'auto'; // Ensure scroll if content exceeds max-height
+		}
+	});
 </script>
 
-<div class="{!embeded ? 'rounded-md border' : ''}">
-	<Table.Root {...$tableAttrs} class="min-h-[350px]">
-		<Table.Header>
+<div bind:this={tableWrapper} class="{!embeded ? 'rounded-md border' : ''}">
+	<Table.Root  {...$tableAttrs} class="{tableClasses}">
+		<Table.Header class="sticky top-0 dark:bg-black bg-white z-10">
 			{#each $headerRows as headerRow}
 				<Subscribe rowAttrs={headerRow.attrs()}>
 					<Table.Row>
@@ -112,6 +123,7 @@
 </div>
 
 <style>
+	
 	.el-table__empty-block {
 		min-height: 60px;
 		text-align: center;

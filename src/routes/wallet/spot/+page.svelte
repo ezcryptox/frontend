@@ -348,8 +348,8 @@
 							</div>
 							<div><span class="_3bf1f82c">{masked ? '********' : asset.balance.toFixed(8)} </span></div>
 							<!----><!---->
-							<div><span class="_3bf1f82c"> {masked ? '********' : 0.00 } </span></div>
-							<div class="_2762e6ea"><span class="_3bf1f82c">{masked ? '********' : asset.balance.toFixed(8)} </span><!----></div>
+							<div><span class="_3bf1f82c"> {masked ? '********' : asset.inUse.toFixed(8) } </span></div>
+							<div class="_2762e6ea"><span class="_3bf1f82c">{masked ? '********' : (asset.balance + asset.inUse).toFixed(8)} </span><!----></div>
 							<div class="dd466019">
 								<span class="ebff5032 _5a4e75d5 _2c143edc">
 									Trade <ul class="e643ae4b"></ul>

@@ -13,7 +13,6 @@
 </script>
 
 <div data-v-39752d79="" class="order-form _8a4bb888">
-	<!----><!----><!---->
 	<AmountInput
 		assetLabel={''}
 		min={0}
