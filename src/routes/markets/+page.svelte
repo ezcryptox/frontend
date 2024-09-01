@@ -7,24 +7,34 @@ import SpotTabs from "$lib/market/market-content/spot/spot-tabs.svelte";
 import "../../styles/market.css"
 import Spot from "$lib/market/market-content/spot/spot.market.svelte";
 import { screen } from "$lib/store/screen"
-import { cryptoQuotes, currentSelectedPair, tradePairs } from '$lib/store/marketdata';
+
 import { onMount } from "svelte";
 import { handleExchanegerate } from "$lib/home-page/hook"
 import Loader from '$lib/loader.svelte';
 
+import {cryptoQuotes} from '$lib/store/marketdata';
+import { browser } from '$app/environment';
+import { socketData } from '$lib/store/socket';
 
-$: tab = 1
-// let respons = []
-// $: loading = false
+socketData.subscribe((data) => {
+    if (!data) return;
+    
+    const { io, request } = data;
+    request('join-ticker');
 
-// onMount(async () => {
-//     loading = true
-//     let {  is_loading, response } = await handleExchanegerate()
-//     loading = is_loading
-//     if (response) {
-//         respons = response
-//     }
-// })
+    io.on('qts', (data) => {
+        cryptoQuotes.set(data);
+    });
+
+});
+
+
+$: tab = "USDT"
+
+const handleChangeTab = ((event)=>{
+    let _tab = event.detail
+    tab = _tab
+})
 
 
 </script>
@@ -73,14 +83,11 @@ $: tab = 1
                             </div>
                             {/if}
                         </div>
-                        <SpotTabs />
+                        <SpotTabs tab={tab} on:select={handleChangeTab}/>
                     </section>  
                 </div>
-                <Spot response={$tradePairs} cryptoquote={$cryptoQuotes}/>
+                <Spot tab={tab}/>
             </div>
         </div>
     </main>
 </div>
-<style>
-
-</style>

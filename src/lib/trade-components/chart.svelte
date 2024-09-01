@@ -10,6 +10,7 @@
 	import { _ } from 'svelte-i18n';
 	import DepthChart from './depthchart.svelte';
 	import TradingView from './tradingview.svelte';
+	import { formatPrice } from './utils';
 
 	let openTabs = [];
 
@@ -112,7 +113,7 @@
 						class="router-link-exact-active router-link-active"
 					>
 						<span class="_2365dc81">{tb.symbol.replace('_', '/')}</span>
-						<span class="_48a39702">{parseFloat(tb.price.toFixed(2)).toLocaleString()}</span>
+						<span class="_48a39702">{formatPrice(tb.price)}</span>
 					</a>
 					<!-- svelte-ignore a11y-no-static-element-interactions -->
 					{#if openTabs.length > 1}
