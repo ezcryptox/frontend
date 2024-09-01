@@ -2,7 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import { getContext, onDestroy, onMount } from 'svelte';
 	import AssetsMenu from './assets-menu.svelte';
-	import { findPos } from './utils';
+	import { findPos, formatPrice } from './utils';
 	import { cryptoQuotes, currentSelectedPair } from '$lib/store/marketdata';
 	import { browser } from '$app/environment';
 	import { abbreviateNumber } from '$lib/utils';
@@ -47,7 +47,7 @@
 		if (!cp) return;
 		const q = $cryptoQuotes;
 		if (!q) return;
-		if (q[cp.symbol].price) {
+		if (q[cp.symbol]?.price) {
 			quotes = {
 				...(quotes || {}),
 				...cp,
@@ -94,7 +94,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-	class="_61aea1ce"
+	class="_61aea1ce z-[11]"
 	on:click={(ev) => {
 		showCryptoDialog = false;
 		ev.stopPropagation();
@@ -219,10 +219,10 @@
 			<div class="_0c7c0f49">
 				<dl class="_0166c194">
 					<dt class="_395fff9e">
-						{quotes?.price ? parseFloat(quotes?.price?.toFixed(2) || '0').toLocaleString() : '--'}
+						{quotes?.price ? formatPrice(quotes?.price) : '--'}
 					</dt>
 					<dd>
-						${quotes?.price ? parseFloat(quotes?.price?.toFixed(2) || '0').toLocaleString() : '--'}
+						${quotes?.price ? formatPrice(quotes?.price) : '--'}
 					</dd>
 				</dl>
 				<dl>
@@ -236,13 +236,13 @@
 				<dl>
 					<dt>{$_('24h-high')}</dt>
 					<dd>
-						{quotes?.high ? parseFloat(quotes?.high?.toFixed(2) || '0').toLocaleString() : '--'}
+						{quotes?.high ? formatPrice(quotes?.high) : '--'}
 					</dd>
 				</dl>
 				<dl>
 					<dt>{$_('24h-low')}</dt>
 					<dd>
-						{quotes?.low ? parseFloat(quotes?.low?.toFixed(2) || '0').toLocaleString() : '--'}
+						{quotes?.low ? formatPrice(quotes?.low) : '--'}
 					</dd>
 				</dl>
 				<dl>
