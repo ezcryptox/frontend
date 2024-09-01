@@ -7,6 +7,7 @@
 	import { abbreviateNumber } from '$lib/utils';
 	import pkg from 'lodash';
 	import X from 'lucide-svelte/icons/x';
+	import { formatPrice } from './utils';
 	const { debounce } = pkg;
 	const dispatch = createEventDispatcher();
 
@@ -85,23 +86,32 @@
 	let favList = {};
 	onMount(() => {
 		pairs = [...$tradePairs];
-		cryptoQuotes.subscribe((q) => {
-			if (!q) return;
+		const unSubTP = tradePairs.subscribe((tp) => {
+			const q = tp.reduce((prev, curr) => ({ ...prev, [curr.symbol]: curr }), {});
 			pairs = pairs.map((p) => ({
 				...p,
 				price: p.price || 0,
-				...(q[p.symbol]
-					? {
-							changePercent: parseFloat(q[p.symbol].changePercent) || 0,
-							volumeFrom: parseFloat(q[p.symbol].volumeFrom) || 0,
-							volumeTo: parseFloat(q[p.symbol].volumeTo) || 0,
-							high: parseFloat(q[p.symbol].high) || 0,
-							low: parseFloat(q[p.symbol].low) || 0,
-							price: parseFloat(q[p.symbol].price || p.price) || 0
-						}
-					: {})
+				...(q[p.symbol] || {})
 			}));
 		});
+		// cryptoQuotes.subscribe((q) => {
+		// 	if (!q) return;
+
+		// 	pairs = pairs.map((p) => ({
+		// 		...p,
+		// 		price: p.price || 0,
+		// 		...(q[p.symbol]
+		// 			? {
+		// 					changePercent: parseFloat(q[p.symbol].changePercent) || 0,
+		// 					volumeFrom: parseFloat(q[p.symbol].volumeFrom) || 0,
+		// 					volumeTo: parseFloat(q[p.symbol].volumeTo) || 0,
+		// 					high: parseFloat(q[p.symbol].high) || 0,
+		// 					low: parseFloat(q[p.symbol].low) || 0,
+		// 					price: parseFloat(q[p.symbol].price || p.price) || 0
+		// 				}
+		// 			: {})
+		// 	}));
+		// });
 		if (browser) {
 			const favs = localStorage.getItem('favs_list');
 			if (favs) {
@@ -115,7 +125,7 @@
 					subs: []
 				},
 				...zones
-					.filter(z => ['USD', 'BTC'].includes(z.zoneName))
+					.filter((z) => ['USD', 'BTC'].includes(z.zoneName))
 					.filter((z) => z.parentId === 0)
 					.sort((a, b) => b.sort - a.sort)
 					.map((z) => ({
@@ -133,6 +143,9 @@
 			];
 			zoneToFilterBy = tabs[1].subs[0];
 		}
+		return () => {
+			unSubTP();
+		};
 	});
 	const handleFav = (pair) => {
 		const temp = { ...favList };
@@ -166,14 +179,18 @@
 
 	const handleAssetClick = (item) => (ev) => {
 		ev.stopPropagation();
-		currentSelectedPair.set(item);
-		dispatch('onAssetSelected');
+		if (item.price) {
+			currentSelectedPair.set(item);
+			dispatch('onAssetSelected');
+		}
 		ev.preventDefault();
 	};
+
 </script>
+
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-						<!-- svelte-ignore a11y-no-static-element-interactions -->
-<section class="eccdf1e6 _66ad3486" on:click={ev => ev.stopPropagation()}>
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<section class="eccdf1e6 _66ad3486" on:click={(ev) => ev.stopPropagation()}>
 	<div class="d08552a7">
 		<div class="polo-input left polo-input-medium polo-input-default">
 			<span class="c82c0403"
@@ -206,9 +223,9 @@
 				</div>
 			</div>
 		</div>
-		
-				<!-- svelte-ignore a11y-click-events-have-key-events -->
-						<!-- svelte-ignore a11y-no-static-element-interactions -->
+
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<!-- {#if tabs.length && tabs[currentTab]?.subs?.length}
 			<div class="_896a701d" style="">
 				{#each tabs[currentTab].subs as subTab}
@@ -366,11 +383,14 @@
 					</div>
 				{:else}
 					<VirtualList itemHeight={52} items={pairs} let:item>
-						<dl class="abc336e7 _1d9ddf38" style="min-height: 52px;">
+						<dl
+							class="abc336e7 _1d9ddf38 {!item.volumeFrom ? 'pointer-events-none opacity-45' : ''}"
+							style="min-height: 52px;"
+						>
 							<dd>
 								<span
 									on:click={() => handleFav(item)}
-									class="_8f210f7a {favList[item.symbol] ? '_1d9ddf38' : ''}"
+									class="_8f210f7a {favList[item.symbol] ? '_1d9ddf38' : ''} pointer-events-auto"
 									><svg
 										aria-hidden="true"
 										class="svgicon"
@@ -400,10 +420,10 @@
 							</dd>
 							<dd>
 								<a
+								title="{item.price}"
 									href="/trade/{item.symbol}/?type=spot"
 									class="router-link-exact-active router-link-active"
-									aria-current="page"
-									>{parseFloat(item.price?.toFixed(2) || '0').toLocaleString()}</a
+									aria-current="page">{formatPrice(item.price)}</a
 								>
 							</dd>
 							<dd>
@@ -411,7 +431,7 @@
 									href="/trade/{item.symbol}/?type=spot"
 									class="router-link-exact-active router-link-active"
 									aria-current="page"
-									><span class="_7cb43809 {item.change < 0 ? '_65a0ee45' : '_9b99c5d7'}">
+									><span class="_7cb43809 {item.changePercent < 0 ? '_65a0ee45' : '_9b99c5d7'}">
 										{parseFloat(item.changePercent?.toFixed(2) || '0')}%
 									</span></a
 								>

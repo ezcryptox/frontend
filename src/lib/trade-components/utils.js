@@ -159,3 +159,18 @@ export const vipLevels = {
         iconClass: '_8fU-2'
     }
 };
+
+export function formatPrice(price) {
+    if (price === undefined || price === null) return 0;
+    let formattedPrice;
+    if (price >= 0.009) {
+        formattedPrice = price.toFixed(2);
+    } else if (price >= 0.00009) {
+        formattedPrice = price.toFixed(4);
+    } else if (price >= 0.000009) {
+        formattedPrice = price.toFixed(6);
+    } else {
+        formattedPrice = price.toFixed(8);
+    }
+    return parseFloat(formattedPrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 8 });
+}
