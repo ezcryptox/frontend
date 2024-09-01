@@ -7,23 +7,25 @@ import SpotTabs from "$lib/market/market-content/spot/spot-tabs.svelte";
 import "../../styles/market.css"
 import Spot from "$lib/market/market-content/spot/spot.market.svelte";
 import { screen } from "$lib/store/screen"
-
+import { cryptoQuotes, currentSelectedPair, tradePairs } from '$lib/store/marketdata';
 import { onMount } from "svelte";
 import { handleExchanegerate } from "$lib/home-page/hook"
 import Loader from '$lib/loader.svelte';
 
-$: tab = 1
-let respons = []
-$: loading = false
 
-onMount(async () => {
-    loading = true
-    let {  is_loading, response } = await handleExchanegerate()
-    loading = is_loading
-    if (response) {
-        respons = response
-    }
-})
+$: tab = 1
+// let respons = []
+// $: loading = false
+
+// onMount(async () => {
+//     loading = true
+//     let {  is_loading, response } = await handleExchanegerate()
+//     loading = is_loading
+//     if (response) {
+//         respons = response
+//     }
+// })
+
 
 </script>
 <div class="app-markets">
@@ -74,7 +76,7 @@ onMount(async () => {
                         <SpotTabs />
                     </section>  
                 </div>
-                <Spot response={respons}/>
+                <Spot response={$tradePairs} cryptoquote={$cryptoQuotes}/>
             </div>
         </div>
     </main>

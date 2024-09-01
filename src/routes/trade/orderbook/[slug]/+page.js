@@ -3,7 +3,7 @@ import axios from 'axios'
 import { get } from 'svelte/store';
 import { ServerURl } from '$lib/backendUrl'
 import { browser } from '$app/environment';
-import { tradePairs } from '$lib/store/marketdata';
+
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
@@ -22,6 +22,7 @@ async function getPairs() {
   if (_pairs.length) return _pairs;
   const { zones, pairs } = (await axios.get(`${ServerURl()}/api/market/currdata`)).data;
   tradePairs.set(pairs);
+
   if (browser) {
     localStorage.setItem('x-currency-list', JSON.stringify(pairs));
     localStorage.setItem('x-symbol-zones', JSON.stringify(zones))

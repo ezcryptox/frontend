@@ -2,6 +2,7 @@
 	import { _ } from 'svelte-i18n';
 import { screen } from "$lib/store/screen"
 export let response;
+export let cryptoquote
 
 </script>
 <div class="d68d17a2 _1e5e2a71">
@@ -58,7 +59,7 @@ export let response;
                         </tr>
                     </thead>
                     <tbody>
-                        {#each response.slice(0, 20) as resp}
+                        {#each response.slice(0, 50) as resp}
                         <tr class="el-table__row">
                             <td rowspan="1" colspan="1" class="el-table_1_column_1  _8e0516f6 el-table__cell">
                                 <div class="cell">
@@ -67,11 +68,14 @@ export let response;
                                             <use xlink:href="#star"></use>
                                         </svg> -->
                                         <i class="_5f81b418" style="width: 20px; height: 20px; min-width: 20px; min-height: 20px;">
-                                            <img loading="lazy" alt="" src="{resp.image}" class="_390cb02c">
+                                            <img loading="lazy" alt="" src="{resp.baseIcon}" class="_390cb02c">
                                         </i>
-                                        {resp.symbol}/USDT
+                                        {resp.symbol.replace('_', '/')}
                                         <!---->
-                                        <span class="_2033d003">3X</span>
+                                        <span class="_2033d003">	
+                                            {#if resp.crossMargin.maxLeverage === 3}
+                                            <i class="_6e4b4277">3X</i>
+                                        {/if}</span>
                                     </div>
                                 </div>
                             </td>
@@ -114,15 +118,12 @@ export let response;
                 </table>
             </div>
 
-            <div class="el-table__body-wrapper is-scrolling-none">
+            <!-- <div class="el-table__body-wrapper is-scrolling-none">
                 <table cellspacing="0" cellpadding="0" border="0" class="el-table__body">
                   
                    
                 </table>
-            </div>
+            </div> -->
         </div>
     </section>
 </div>
-<style>
-
-</style>
