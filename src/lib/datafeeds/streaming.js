@@ -1,14 +1,14 @@
 import { RESOLUTION_MAP, splitSymbolName } from './helpers.js';
 import { socketData } from '$lib/store/socket';
-import {get} from 'svelte/store'
+import { get } from 'svelte/store'
 const channelToSubscription = new Map();
 socketData.subscribe(data => {
 	if (!data) return;
 	const { io } = data;
 	io.on('ks', data => {
-		// console.log('ON KLINE DATA => ', data)
 		const kline = data.data.k; // Access the Kline data
-		if (!kline || !kline.x) return; 
+		if (!kline) return;
+		// console.log('ON KLINE DATA PRICE=> ', kline.c)
 		const { o: open, h: high, l: low, c: close, i: interval } = kline;
 		const tradePrice = parseFloat(kline.c); // Closing price
 		const { base, quote } = splitSymbolName(kline.s)
@@ -18,6 +18,7 @@ socketData.subscribe(data => {
 		const subscriptionItem = channelToSubscription.get(channelString);
 		// console.log('SUB ITEM> ', subscriptionItem, channelString)
 		if (subscriptionItem === undefined) {
+			// console.log('SUB undefined => ', channelString )
 			return;
 		}
 		const lastDailyBar = subscriptionItem.lastDailyBar;
@@ -33,9 +34,9 @@ socketData.subscribe(data => {
 				close: parseFloat(close),
 				volume: tradeVolume
 			};
-		
+
 			// console.log('[socket] Generate new bar', bar);
-		} else if (tradeTime  > lastDailyBar.time) {
+		} else if (tradeTime >= lastDailyBar.time) {
 			bar = {
 				...lastDailyBar,
 				high: Math.max(lastDailyBar.high, tradePrice),
@@ -46,6 +47,7 @@ socketData.subscribe(data => {
 			// console.log('[socket] Update the latest bar by price', tradePrice);
 		} else {
 			// Ignore out-of-order data
+			// console.log('[socket] Ignore out-of-order data', tradeTime, lastDailyBar.time, nextDailyBarTime);
 			return;
 		}
 		subscriptionItem.lastDailyBar = bar;
@@ -107,7 +109,7 @@ export function subscribeOnStream(
 
 
 	channelToSubscription.set(channelString, subscriptionItem);
-	
+
 	sd.request('sub-klines', {
 		symbol: symbolInfo.name,
 		interval: RESOLUTION_MAP[resolution]
@@ -131,13 +133,9 @@ export function unsubscribeFromStream(subscriberUID) {
 			subscriptionItem.handlers.splice(handlerIndex, 1);
 
 			if (subscriptionItem.handlers.length === 0) {
-				
-				// Unsubscribe from the channel if it was the last handler
-				// console.log(
-				// 	'[unsubscribeBars]: Unsubscribe from streaming. Channel:',
-				// 	channelString
-				// );
-				// Unsubcribing is now handle on the server
+				get(socketData)?.request('unsub-klines', {
+					channel: channelString
+				});
 				channelToSubscription.delete(channelString);
 				break;
 			}
