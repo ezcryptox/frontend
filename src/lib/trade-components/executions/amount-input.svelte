@@ -87,14 +87,14 @@
 						value={totalText}
 						on:change={() => {
 							totalAmount = parseFloat(totalText);
-							validAmount = checkAmountValid();
+							// validAmount = checkAmountValid(totalText, min, isBuying);
 						}}
 						on:input={(e) => {
 							if (!e.target) return;
 							totalText = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
 							e.target.value = totalText;
 							totalAmount = parseFloat(totalText);
-							validAmount = checkAmountValid();
+							// validAmount = checkAmountValid(totalText, min, isBuying);
 							onAmountChanged(totalAmount);
 						}}
 					/>
