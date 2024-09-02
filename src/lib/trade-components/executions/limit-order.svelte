@@ -52,27 +52,29 @@
 	/>
 	<AmountInput
 		value={baseAmount}
+		{isBuying}
 		assetLabel={asset.base}
 		decimal={$currentSelectedPair?.tradeLimit?.quantityScale || 4}
 		min={parseFloat($currentSelectedPair?.tradeLimit?.minQuantity || '0.00001')}
-		isInsufficient={(amount) => $tradeBalance.quote.balance < totalAmount}
+		isInsufficient={(amount) => isBuying ? false : $tradeBalance.base.balance < amount}
 		onAmountChanged={(amount) => {
 			tradeConfig.update((prev) => ({ ...prev, amount }));
 			totalAmount = amount * quoteAmount
 		}}
 		placeholder="Amount"
 	/>
-	<ProgressBar onProgressUpdate={(prog) => {
+	<ProgressBar {isBuying} onProgressUpdate={(prog) => {
 		totalAmount = $tradeBalance.quote.balance * (prog/100);
 		baseAmount = totalAmount / quoteAmount
 			tradeConfig.update(prev => ({...prev, amount: baseAmount}))
 	}} {onboardingData} {progress} autoBorrow={false} />
 	<AmountInput
 		value={totalAmount}
+		{isBuying}
 		assetLabel={asset.quote}
 		decimal={$currentSelectedPair?.tradeLimit?.amountScale || 4}
 		min={$currentSelectedPair?.tradeLimit?.amountScale || 0.00001}
-		isInsufficient={(amount) => $tradeBalance.quote.balance < amount}
+		isInsufficient={(amount) => isBuying ? $tradeBalance.quote.balance < amount : false}
 		onAmountChanged={(total) => {
 			baseAmount = total / quoteAmount
 			tradeConfig.update(prev => ({...prev, amount: baseAmount}))

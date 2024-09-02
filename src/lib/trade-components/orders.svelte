@@ -116,7 +116,7 @@
 				class="_6bf69178 {onboarding ? 'c806c316' : ''}"
 				style={onboarding ? 'pointer-events: none; z-index: 1000002; position: relative;' : ''}
 			>
-				<div class="_667a0527">
+				<div class="_667a0527 min-h-[28px]">
 					{#each tabs as name, index}
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
