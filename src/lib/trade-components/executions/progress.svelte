@@ -5,6 +5,7 @@
 	import { tradeBalance } from '../store';
 	export let autoBorrow = false;
 	export let progress;
+	export let isBuying = true;
 	export let onProgressUpdate = (progress) => {};
 	let startX;
 	let progressDiv;
@@ -84,18 +85,18 @@
 			<dl>
 				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 				<dt
-					class="el-tooltip tips-text _69279727 tooltip"
+					class="el-tooltip tips-text _69279727 tooltip "
 					data-tip="The amount of the chosen currency you can trade without borrowing, excluding the assets in use."
 					tabindex="0"
 				>
 					Available
 				</dt>
 				<dd>
-						<span class="dcf97881">{($tradeBalance.quote.balance || 0).toFixed(2)}</span><span>{$currentSelectedPair?.quoteCurrencyName || '--'}</span>
+						<span class="dcf97881">{($tradeBalance[isBuying ? 'quote' : 'base'].balance || 0).toFixed(2)}</span><span>{$currentSelectedPair?.[isBuying ? 'quoteCurrencyName' : 'baseCurrencyName'] || '--'}</span>
 						<a
 						bind:this={_onboardingFocusRef}
 							user-guide="2"
-							href="/wallet/deposit/{$currentSelectedPair?.baseCurrencyName}/"
+							href="/wallet/deposit/{$currentSelectedPair?.[isBuying ? 'quoteCurrencyName' : 'baseCurrencyName']}/"
 							style={onboarding ? 'pointer-events: none; z-index: 1000002; position: relative;' : ''}
 						class="dfad9a60 {onboarding ? 'c806c316' : ''}"
 							><svg width="14" height="14" x="0" y="0" viewBox="0 0 6.35 6.35" fill="#1a8f5c"

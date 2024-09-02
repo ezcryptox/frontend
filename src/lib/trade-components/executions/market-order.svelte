@@ -16,28 +16,49 @@
 	<AmountInput
 		assetLabel={''}
 		min={0}
-    disableInput
+		disableInput
 		isInsufficient={(amount) => false}
 		onAmountChanged={(amount) => {}}
 		placeholder="Most optimal price"
 	/>
-	<AmountInput
-		value={baseAmount}
-		assetLabel={asset.base}
-		decimal={$currentSelectedPair?.tradeLimit?.quantityScale || 4}
-		min={parseFloat($currentSelectedPair?.tradeLimit?.minQuantity || '0.00001')}
-		isInsufficient={(amount) => $tradeBalance.quote.balance < totalAmount}
-		onAmountChanged={(amount) => {
-			tradeConfig.update((prev) => ({ ...prev, amount }));
-			totalAmount = amount * $tradeConfig.quotePrice
-		}}
-		placeholder="Amount"
-	/>
-	<ProgressBar onProgressUpdate={(prog) => {
-		totalAmount = $tradeBalance.quote.balance * (prog/100);
-		const amount = totalAmount / $tradeConfig.quotePrice
-			tradeConfig.update(prev => ({...prev, amount}))
-	}} {progress} {autoBorrow} />
+	{#if isBuying}
+		<AmountInput
+			value={totalAmount}
+			assetLabel={asset.quote}
+			decimal={$currentSelectedPair?.tradeLimit?.amountScale || 4}
+			min={$currentSelectedPair?.tradeLimit?.amountScale || 0.00001}
+			isInsufficient={(amount) => $tradeBalance.quote.balance < amount}
+			onAmountChanged={(total) => {
+				baseAmount = total / $tradeConfig.quotePrice;
+				tradeConfig.update((prev) => ({ ...prev, amount: baseAmount }));
+			}}
+			placeholder="Total"
+		/>
+	{:else}
+		<AmountInput
+			value={baseAmount}
+			assetLabel={asset.base}
+			decimal={$currentSelectedPair?.tradeLimit?.quantityScale || 4}
+			min={parseFloat($currentSelectedPair?.tradeLimit?.minQuantity || '0.00001')}
+			isInsufficient={(amount) => $tradeBalance.base.balance < totalAmount}
+			onAmountChanged={(amount) => {
+				tradeConfig.update((prev) => ({ ...prev, amount }));
+				totalAmount = amount * $tradeConfig.quotePrice;
+			}}
+			placeholder="Amount"
+		/>
+	{/if}
 
-	<BuysellButton assetLabel={asset.base} isBuying={isBuying} />
+	<ProgressBar
+		{isBuying}
+		onProgressUpdate={(prog) => {
+			totalAmount = $tradeBalance.quote.balance * (prog / 100);
+			const amount = totalAmount / $tradeConfig.quotePrice;
+			tradeConfig.update((prev) => ({ ...prev, amount }));
+		}}
+		{progress}
+		{autoBorrow}
+	/>
+
+	<BuysellButton assetLabel={asset.base} {isBuying} />
 </div>
