@@ -223,19 +223,18 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<!-- {#if tabs.length && tabs[currentTab]?.subs?.length}
+		{#if tabs.length && tabs[currentTab]?.subs?.length}
 			<div class="_896a701d" style="">
 				{#each tabs[currentTab].subs as subTab}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<!-- svelte-ignore a11y-no-static-element-interactions -->
 					<span
 						on:click={() => handleSubTabChange(subTab)}
 						class={subTab.id === zoneToFilterBy?.id ? '_606d29e6' : ''}>{subTab.label}</span
 					>
 				{/each}
 			</div>
-		{/if} -->
+		{/if}
 	</nav>
 	<div class="de0a0725">
 		<dl class="abc336e7 _0fae74ff">

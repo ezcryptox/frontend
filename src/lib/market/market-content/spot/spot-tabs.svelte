@@ -1,5 +1,8 @@
 <script>
 	import { _ } from 'svelte-i18n';
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
+    export let tab
 
 </script>
 <div class="_9ee5e188">
@@ -11,27 +14,19 @@
         </span>
         <div class="e67d2568">
             <div class="_4fe14017">
-                <div class="d7b97cd2 _4907f2bd">
+                <button on:click={()=> dispatch("select", "USDT")} class="d7b97cd2 {tab === "USDT" ? "_4907f2bd" : ""}  ">
                     <span class="e0294d2e">
                         USDT
                     </span>
-                </div>
-                <div class="d7b97cd2">
+                </button>
+                <button on:click={()=> dispatch("select", "BTC")} class="d7b97cd2 {tab === "BTC" ? "_4907f2bd" : ""}">
                     <span class="e0294d2e"> BTC <!----></span>
-                </div>
-                <div class="d7b97cd2">
-                    <span class="e0294d2e"> BUSD <!----></span>
-                </div>
-                <div class="d7b97cd2">
-                    <span class="e0294d2e">
-                        BNB
-                    </span>
-                </div>
-                <div class="d7b97cd2">
+                </button>
+                <button on:click={()=> dispatch("select", "ETH")} class="d7b97cd2 {tab === "ETH" ? "_4907f2bd" : ""}">
                     <span class="e0294d2e">
                         ETH
                     </span>
-                </div>
+                </button>
             </div>
         </div>
         <span class="_8733ff05 accd8ea7">
