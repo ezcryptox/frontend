@@ -3,6 +3,7 @@ import axios from 'axios'
 import { get } from 'svelte/store';
 import { ServerURl } from '$lib/backendUrl'
 import { browser } from '$app/environment';
+import {tradePairs} from '$lib/store/marketdata'
 
 
 /** @type {import('./$types').PageLoad} */
