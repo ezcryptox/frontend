@@ -12,7 +12,7 @@
 	async () => {
 		if (!$isLogin) return Promise.resolve([]);
 		return axios
-			.get(`${ServerURl()}/api/spot/open-orders${hide ? `?pair=${$currentSelectedPair?.displayName}` : ''}`, {
+			.get(`${ServerURl()}/api/trading/open-orders${hide ? `?pair=${$currentSelectedPair?.displayName}` : ''}`, {
 				headers: {
 					'Content-type': 'application/json',
 					Authorization: `Bearer ${$handleAuthToken}`

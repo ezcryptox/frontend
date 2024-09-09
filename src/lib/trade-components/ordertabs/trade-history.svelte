@@ -10,7 +10,7 @@
 	$: fetcher =(refreshKey = $dataRefreshKey) => async () => {
 		if (!$isLogin) return Promise.resolve([]);
 		return axios
-			.get(`${ServerURl()}/api/spot/trade-history`, {
+			.get(`${ServerURl()}/api/trading/trade-history`, {
 				headers: {
 					'Content-type': 'application/json',
 					Authorization: `Bearer ${$handleAuthToken}`

@@ -26,7 +26,7 @@
 		const p = $currentSelectedPair;
 		if (!p) return;
 		axios
-			.post(`${ServerURl()}/api/spot/cancel-all-orders?pair=${p.displayName}`, {}, {
+			.post(`${ServerURl()}/api/trading/cancel-all-orders?pair=${p.displayName}`, {}, {
 				headers: {
 					'Content-type': 'application/json',
 					Authorization: `Bearer ${$handleAuthToken}`
@@ -46,7 +46,7 @@
 		const p = $currentSelectedPair;
 		if (!p) return;
 		axios
-			.post(`${ServerURl()}/api/spot/cancel-all-orders?pair=${p.displayName}`,{}, {
+			.post(`${ServerURl()}/api/trading/cancel-all-orders?pair=${p.displayName}`,{}, {
 				headers: {
 					'Content-type': 'application/json',
 					Authorization: `Bearer ${$handleAuthToken}`

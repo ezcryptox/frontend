@@ -14,7 +14,9 @@ export async function load({ params }) {
       slug: params.slug,
       pair,
     };
-  } else redirect(302, '/trade/orderbook/ETH_USDT')
+  } else {
+    redirect(302, '/trade')
+  }
 }
 
 async function getPairs() {

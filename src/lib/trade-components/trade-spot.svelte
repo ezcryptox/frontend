@@ -36,7 +36,7 @@
 	$: showMarginModal = false;
 	$: showMarginRatioModal = false;
 	$: showOnBoarding = false;
-	$: marginTradingEnabled = false;
+	$: marginTradingEnabled = browser ? localStorage.getItem('margin_enabled') === 'true' :  false;
 
 	$: onboardingData = {
 		title: '',
@@ -62,6 +62,9 @@
 	});
 	setContext('onEnableMarginTrading', () => {
 		marginTradingEnabled = true;
+		if (browser) {
+			localStorage.setItem('margin_enabled', 'true')
+		}
 	});
 	setContext('toggleMarginRatio', () => {
 		showMarginRatioModal = !showMarginRatioModal;
@@ -105,17 +108,30 @@
 				base: {
 					symbol: asset.base,
 					balance: balances[asset.base.toUpperCase()].balance,
-					usd: balances[asset.base.toUpperCase()].usd
+					usd: balances[asset.base.toUpperCase()].usd,
+					borrowable: 0,
 				},
 				quote: {
 					symbol: asset.quote,
 					balance: balances[asset.quote.toUpperCase()].balance,
-					usd: balances[asset.quote.toUpperCase()].usd
+					usd: balances[asset.quote.toUpperCase()].usd,
+					borrowable: balances[asset.quote.toUpperCase()].borrowable,
 				}
 			})
 	}
 
-	currentSelectedPair.subscribe(pair => {
+
+
+	
+
+	onMount(() => {
+		if (browser) {
+			if (!localStorage.getItem('x-onboarding-state')) {
+				toggleOnBoarding();
+			}
+			marginTradingEnabled = localStorage.getItem('margin_enabled') === 'true'
+		}
+		const csp = currentSelectedPair.subscribe(pair => {
 		if (!pair) return
 		getAssetBalance({
 			base: pair.baseCurrencyName,
@@ -123,7 +139,7 @@
 		}).catch(err => console.log('Error getting balance => ', err))
 	})
 
-	balanceChangeRefreshKey.subscribe(k => {
+	const bcf = balanceChangeRefreshKey.subscribe(k => {
 		if (!k) return;
 		const pair = $currentSelectedPair;
 		if (!pair) return;
@@ -132,13 +148,10 @@
 			quote: pair.quoteCurrencyName
 		}).catch(err => console.log('Error getting balance => ', err))
 	})
-
-	onMount(() => {
-		if (browser) {
-			if (!localStorage.getItem('x-onboarding-state')) {
-				toggleOnBoarding();
-			}
-		}
+	return () => {
+		csp();
+		bcf();
+	}
 	});
 </script>
 

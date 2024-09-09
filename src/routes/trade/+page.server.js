@@ -1,4 +1,10 @@
 import { redirect } from '@sveltejs/kit';
-export function load() {
-  redirect(302,'/trade/ETH_USDT?type=spot')
+import {browser} from '$app/environment'
+export function load({url}) {
+  let pair = 'ETH_USDT';
+  let type = url.searchParams.get('type') || 'spot';
+  if (browser) {
+    pair = localStorage.getItem('x-last-symbol') || pair;
+  }
+  redirect(302,`/trade/${pair}?type=${type}`)
 }

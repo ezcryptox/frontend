@@ -1,4 +1,4 @@
 import { redirect } from '@sveltejs/kit';
 export function load() {
-  redirect(302,'/wallet/withdraw')
+  redirect(302,'/activity/wallet/withdraw')
 }

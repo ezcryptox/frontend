@@ -9,6 +9,7 @@
 	import StopMarket from './executions/stop-market.svelte';
 	import TrailingOrder from './executions/trailing-order.svelte';
 	import { currentSelectedPair } from '$lib/store/marketdata';
+	import { tradeConfig } from './store';
 	 
 
 	export let onboardingData;
@@ -19,7 +20,7 @@
 	};
 	$: buyAsset = true;
 	$: sellAsset = false;
-	$: autoBurrow = false;
+	$: autoBorrow = false;
 
 	$: showDropDownMenu = false;
 	$: showStopLimitMenu = false;
@@ -45,7 +46,7 @@
 	];
 	$: selectedStopOrder = 0;
 	$: selectedExecutionIndex =
-		autoBurrow && selectedExecutionIndex === 2 ? 0 : selectedExecutionIndex || 0;
+		autoBorrow && selectedExecutionIndex === 2 ? 0 : selectedExecutionIndex || 0;
 
 	const onExecutionTypeSelected = (index) => {
 		selectedExecutionIndex = index;
@@ -77,15 +78,14 @@
 			base: pair.baseCurrencyName,
 			quote: pair.quoteCurrencyName
 		}
-		//TODO: Fetch assets balances Here!
 	})
 	$: {
 		if (onboardingData && (_onboardingFocusRef || _onboardingFocusRef2)) {
 			if (onboardingData.show){
 				onExecutionTypeSelected(0);
-				autoBurrow = true;
+				autoBorrow = true;
 			}
-			else autoBurrow = false;
+			else autoBorrow = false;
 
 			if (onboardingData.show && onboardingData.step === 3 && onboardingData.id !== 'place_order') {
 				const coordinate = findPos(_onboardingFocusRef);
@@ -138,19 +138,20 @@
 					<span
 						disabled={!isLogin}
 						bind:this={_onboardingFocusRef2}
-						class="polo-switch polo-switch-middle {autoBurrow ? 'is-checked' : ''}"
+						class="polo-switch polo-switch-middle {autoBorrow ? 'is-checked' : ''}"
 					>
 						<span class="polo-switch-box">
 							<input
-								disabled={!isLogin}
+								disabled={!$isLogin || !$currentSelectedPair?.crossMargin.supportCrossMargin}
 								type="checkbox"
 								on:change={(e) => {
 									if (e.target.checked && !marginTradingEnabled) {
 										toggleMarginModal();
 										e.target.checked = false;
 									}
+									tradeConfig.update(prev => ({...prev, autoBorrow: e.target.checked}))
 								}}
-								bind:checked={autoBurrow}
+								checked={autoBorrow || $tradeConfig.autoBurrow}
 							/>
 						</span>
 						<!---->
@@ -158,7 +159,7 @@
 
 					<span
 						class="el-tooltip tips-text _13a24dcf _5ee158b0 tooltip"
-						data-tip={isLogin
+						data-tip={$isLogin
 							? "When Auto Borrow is enabled, you can borrow up to the borrow limit (determined by the spot account's margin) for this transaction. However, please be cautious as borrowing funds will incur interest and thus add to the risk of forced liquidation."
 							: 'Margin trading is not available'}
 						aria-describedby="el-tooltip-5500"
@@ -293,7 +294,7 @@
 						>
 							Market
 						</span>
-						{#if !autoBurrow}
+						{#if !autoBorrow}
 							<div class="el-dropdown _11f0f85e">
 								<!-- svelte-ignore a11y-incorrect-aria-attribute-type -->
 								<!-- svelte-ignore a11y-mouse-events-have-key-events -->
@@ -375,7 +376,7 @@
 					<!-- svelte-ignore a11y-no-static-element-interactions -->
 					<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 
-					{#if !autoBurrow}
+					{#if !autoBorrow}
 						<span
 							class="_9d87404a tooltip tooltip-left"
 							data-tip={stopOrders[selectedStopOrder].info}
@@ -402,19 +403,18 @@
 				{#if selectedExecutionIndex === 0}
 					<LimitOrder
 						{onboardingData}
-						autoBorrow={autoBurrow}
 						isBuying={buyAsset}
 						{asset}
 					/>
 				{:else if selectedExecutionIndex === 1}
-					<MarketOrder autoBorrow={autoBurrow} isBuying={buyAsset} {asset} />
+					<MarketOrder autoBorrow={autoBorrow} isBuying={buyAsset} {asset} />
 				{:else if selectedExecutionIndex === 2}
 					{#if selectedStopOrder === 0}
-						<StopLimit autoBorrow={autoBurrow} isBuying={buyAsset} {asset} />
+						<StopLimit autoBorrow={autoBorrow} isBuying={buyAsset} {asset} />
 					{:else if selectedStopOrder === 1}
-						<StopMarket autoBorrow={autoBurrow} isBuying={buyAsset} {asset} />
+						<StopMarket autoBorrow={autoBorrow} isBuying={buyAsset} {asset} />
 					{:else if selectedStopOrder === 2}
-						<TrailingOrder autoBorrow={autoBurrow} isBuying={buyAsset} {asset} />
+						<TrailingOrder autoBorrow={autoBorrow} isBuying={buyAsset} {asset} />
 					{/if}
 				{/if}
 			</div>

@@ -15,9 +15,9 @@
 	import { RangeCalendar, type DateRange } from 'bits-ui';
 	import { DateFormatter, type DateValue, getLocalTimeZone, today } from '@internationalized/date';
 	import { cn } from '$lib/utils.js';
-	let sideOpen = false;
-	let pairOpen = false;
 
+	let cryptoOpen = false;
+	let coinList = ['All']
 	const df = new DateFormatter('en-US', {
 		dateStyle: 'medium'
 	});
@@ -26,22 +26,17 @@
 		start: today(getLocalTimeZone()),
 		end: today(getLocalTimeZone()).add({ days: 7 })
 	};
-
-	let startValue: DateValue | undefined = undefined;
-
 	const selectedFilter = writable({
-		pair: 'All',
-		side: 'All',
+		coin: 'All',
 		time: {
 			start: value?.start?.toDate(getLocalTimeZone())?.getTime() || 0,
 			end: value.end?.toDate(getLocalTimeZone())?.getTime() || 0
 		}
 	});
-	let pairList = ['All'];
+	let startValue: DateValue | undefined = undefined;
 
 	function closeAndFocusTrigger(triggerId: string) {
-		sideOpen = false;
-		pairOpen = false;
+		cryptoOpen = false;
 		tick().then(() => {
 			document.getElementById(triggerId)?.focus();
 		});
@@ -52,7 +47,7 @@
 		async () => {
 			return axios
 				.get(
-					`${ServerURl()}/api/trading/order-history?side=${filters.side}&pair=${filters.pair}&start=${filters.time.start}&end=${filters.time.end}`,
+					`${ServerURl()}/api/assets/repayments?${filters.coin !== 'All' ? `coin=${filters.coin}&` : ''}start=${filters.time.start}&end=${filters.time.end}`,
 					{
 						headers: {
 							'Content-type': 'application/json',
@@ -63,12 +58,29 @@
 				.then((d) => d.data);
 		};
 
+	async function loadCurrencies() {
+		try {
+			const result = (
+				await axios.get(`${ServerURl()}/api/assets/currencies`, {
+					headers: {
+						'Content-type': 'application/json',
+						Authorization: `Bearer ${$handleAuthToken}`
+					}
+				})
+			).data;
+			return result;
+		} catch (err: any) {
+			console.log('error loading currencies', err.message);
+			return [];
+		}
+
+	}
 	onMount(async () => {
 		try {
-			const { pairs } = (await axios.get(`${ServerURl()}/api/market/currdata`)).data;
-			pairList = ['All', ...pairs.map((p: any) => p.displayName)];
+			const list = await loadCurrencies();
+			coinList = ['All', ...list.map((p: any) => p.name)];
 		} catch (error) {
-			console.log('Error Loading Pairs');
+			console.log('Error Loading currencies');
 		}
 	});
 </script>
@@ -142,7 +154,7 @@
 							<li class="">
 								<a aria-current="page" href="/activity/spot/open-orders" class="">Open Orders</a>
 							</li>
-							<li class="g5GQK router-link-exact-active _5m-Bj">
+							<li class="">
 								<a href="/activity/spot/order-history" class="_5m-Bj">Order History</a>
 							</li>
 							<li class="">
@@ -151,7 +163,7 @@
 							<li class="">
 								<a href="/activity/spot/interest" class="_5m-Bj">Interest</a>
 							</li>
-							<li class="">
+							<li class="g5GQK router-link-exact-active _5m-Bj">
 								<a href="/activity/spot/repayments" class="_5m-Bj">Repayments</a>
 							</li>
 						</ul>
@@ -165,72 +177,35 @@
 								<div class="_1mSet">
 									<div class="iL5vR">
 										<div>
-											<div class="field-header"><label>Side</label><!----></div>
-											<Popover.Root bind:open={sideOpen} let:ids>
+											<div class="field-header"><label>Coin</label><!----></div>
+											<Popover.Root bind:open={cryptoOpen} let:ids>
 												<Popover.Trigger asChild let:builder>
 													<Button
 														builders={[builder]}
 														variant="outline"
 														role="combobox"
-														aria-expanded={sideOpen}
+														aria-expanded={cryptoOpen}
 														class="w-[200px] justify-between"
 													>
-														{$selectedFilter.side}
+														{$selectedFilter.coin}
 														<ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
 													</Button>
 												</Popover.Trigger>
 												<Popover.Content class="w-[200px] p-0">
 													<Command.Root>
-														<Command.Group>
-															{#each ['All', 'Buy', 'Sell'] as side}
+														<Command.Group class="h-[300px] overflow-y-auto">
+															{#each coinList as coin}
 																<Command.Item
-																	value={side}
+																	value={coin}
 																	onSelect={(currentValue) => {
 																		selectedFilter.set({
 																			...$selectedFilter,
-																			side: currentValue
+																			coin: currentValue
 																		});
 																		closeAndFocusTrigger(ids.trigger);
 																	}}
 																>
-																	{side}
-																</Command.Item>
-															{/each}
-														</Command.Group>
-													</Command.Root>
-												</Popover.Content>
-											</Popover.Root>
-										</div>
-										<div>
-											<div class="field-header"><label>Pair</label><!----></div>
-											<Popover.Root bind:open={pairOpen} let:ids>
-												<Popover.Trigger asChild let:builder>
-													<Button
-														builders={[builder]}
-														variant="outline"
-														role="combobox"
-														aria-expanded={pairOpen}
-														class="w-[200px] justify-between"
-													>
-														{$selectedFilter.pair}
-														<ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
-													</Button>
-												</Popover.Trigger>
-												<Popover.Content class="w-[200px] p-0">
-													<Command.Root>
-														<Command.Group>
-															{#each pairList as pair}
-																<Command.Item
-																	value={pair}
-																	onSelect={(currentValue) => {
-																		selectedFilter.set({
-																			...$selectedFilter,
-																			pair: currentValue
-																		});
-																		closeAndFocusTrigger(ids.trigger);
-																	}}
-																>
-																	{pair}
+																	{coin}
 																</Command.Item>
 															{/each}
 														</Command.Group>
@@ -294,13 +269,10 @@
 								<DataListTable
 									dataListColumns={[
 										{ accessor: 'time', header: 'Time' },
-										{ accessor: 'pair', header: 'Pair' },
-										{ accessor: 'side', header: 'Side' },
-										{ accessor: 'price', header: 'Price' },
-										{ accessor: 'amount', header: 'Amount' },
-										{ accessor: 'total', header: 'Total' },
-										{ accessor: 'filled', header: 'Filled' },
-										{ accessor: 'unfilled', header: 'Unfilled' }
+										{ accessor: 'coin', header: 'Coin' },
+										{ accessor: 'principalAmount', header: 'Principal Amount' },
+										{ accessor: 'interest', header: 'Interest' },
+										{ accessor: 'totalValue', header: 'Total Value' },
 									]}
 									dataListFetcher={fetchOrder($selectedFilter)}
 								/>

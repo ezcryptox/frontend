@@ -5,32 +5,35 @@
 	import Checkbox from './checkbox.svelte';
 	import { tradeBalance, tradeConfig } from '../store';
 	import { cryptoQuotes, currentSelectedPair } from '$lib/store/marketdata';
-	export let autoBorrow = false;
 	export let isBuying = true;
 	export let asset;
 	export let onboardingData;
 	let progress = 0;
 	let totalAmount = ($tradeConfig?.amount || 0) * ($tradeConfig?.quotePrice || 0);
+	let borrowing =
+		$tradeConfig.autoBorrow && totalAmount > $tradeBalance.quote.balance
+			? Math.min(totalAmount - $tradeBalance.quote.balance, $tradeBalance.quote.borrowable)
+			: 0;
 	let baseAmount = $tradeConfig?.amount || 0;
 	let quoteAmount = $tradeConfig?.quotePrice || 0;
-	let lastQuotePair
-	
-	tradeBalance.subscribe(tb => {
+	let lastQuotePair;
+
+	tradeBalance.subscribe((tb) => {
 		if (!quoteAmount) {
 			quoteAmount = tb.base.usd / tb.quote.usd;
-			tradeConfig.update(prev => ({...prev, price: quoteAmount}))
+			tradeConfig.update((prev) => ({ ...prev, price: quoteAmount }));
 		}
-	})
-	currentSelectedPair.subscribe(sp => {
+	});
+	currentSelectedPair.subscribe((sp) => {
 		if (!sp) return;
-		if (!lastQuotePair || sp.symbol !== lastQuotePair) {
+		if (!lastQuotePair || sp.symbol !== lastQuotePair || !quoteAmount) {
 			const q = $cryptoQuotes?.[sp.symbol];
 			if (q?.price) {
 				quoteAmount = q.price;
-				tradeConfig.update(prev => ({...prev, price: quoteAmount}))
+				tradeConfig.update((prev) => ({ ...prev, price: quoteAmount }));
 			}
 			lastQuotePair = sp.symbol;
-		}	
+		}
 	});
 
 	$: showAdvanceSetting = false;
@@ -56,28 +59,102 @@
 		assetLabel={asset.base}
 		decimal={$currentSelectedPair?.tradeLimit?.quantityScale || 4}
 		min={parseFloat($currentSelectedPair?.tradeLimit?.minQuantity || '0.00001')}
-		isInsufficient={(amount) => isBuying ? false : $tradeBalance.base.balance < amount}
+		isInsufficient={(amount) => (isBuying ? false : $tradeBalance.base.balance < amount)}
 		onAmountChanged={(amount) => {
 			tradeConfig.update((prev) => ({ ...prev, amount }));
-			totalAmount = amount * quoteAmount
+			totalAmount = amount * quoteAmount;
 		}}
 		placeholder="Amount"
 	/>
-	<ProgressBar {isBuying} onProgressUpdate={(prog) => {
-		totalAmount = $tradeBalance.quote.balance * (prog/100);
-		baseAmount = totalAmount / quoteAmount
-			tradeConfig.update(prev => ({...prev, amount: baseAmount}))
-	}} {onboardingData} {progress} autoBorrow={false} />
+	<ProgressBar
+		{isBuying}
+		onProgressUpdate={(prog) => {
+			totalAmount =
+				($tradeBalance.quote.balance +
+					($tradeConfig.autoBorrow ? $tradeBalance.quote.borrowable : 0)) *
+				(prog / 100);
+			baseAmount = totalAmount / quoteAmount;
+			tradeConfig.update((prev) => ({ ...prev, amount: baseAmount }));
+			borrowing =
+				$tradeConfig.autoBorrow && totalAmount > $tradeBalance.quote.balance
+					? Math.min(totalAmount - $tradeBalance.quote.balance, $tradeBalance.quote.borrowable)
+					: 0;
+		}}
+		{onboardingData}
+		{progress}
+		autoBorrow={$tradeConfig.autoBorrow}
+	/>
+
+	<div class="c1783486" data-v-39752d79="">
+		{#if $tradeConfig.autoBorrow && $tradeConfig.side.toLowerCase() === 'buy'}
+			<dl>
+				<dt>
+					<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+					<span
+					style="z-index: 99999"
+						class="el-tooltip tips-text _6dd30582 focusing tooltip tooltip-overlay"
+						data-tip="Max Available refers to the maximum amount of the chosen currency you can trade with borrowing, which equals your available amount plus the borrowable amount. It equals your available amount when the currency does not support borrowing or the borrowable amount is reduced to zero."
+						tabindex="0">Max Available</span
+					>
+				</dt>
+				<dd class="_75ff0e99">
+					{($tradeBalance.quote.balance + $tradeBalance.quote.borrowable).toFixed(2)}
+					{$currentSelectedPair?.quoteCurrencyName || '--'}
+				</dd>
+			</dl>
+			<dl>
+				<dt>
+					<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+					<span
+					style="z-index: 99999"
+						class="el-tooltip tips-text _6dd30582 tooltip tooltip-overlay"
+						data-tip="You will need to borrow funds when your order amount exceeds the available amount."
+						aria-describedby="el-tooltip-7357"
+						tabindex="0">Borrow</span
+					>
+				</dt>
+				<dd class="c4065325">
+					{borrowing.toFixed(2)}
+					{$currentSelectedPair?.quoteCurrencyName || '--'}
+				</dd>
+			</dl>
+			<dl style="display: {!!borrowing ? 'block' : 'none'};">
+				<dt>
+					<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+					<span
+						class="el-tooltip tips-text _6dd30582"
+						aria-describedby="el-tooltip-3387"
+						tabindex="0">Borrow</span
+					>
+				</dt>
+				<dd class="c4065325">
+					{borrowing.toFixed(2)}
+					{$currentSelectedPair?.quoteCurrencyName || '--'}
+				</dd>
+			</dl>
+		{/if}
+	</div>
+
 	<AmountInput
 		value={totalAmount}
 		{isBuying}
 		assetLabel={asset.quote}
 		decimal={$currentSelectedPair?.tradeLimit?.amountScale || 4}
 		min={$currentSelectedPair?.tradeLimit?.amountScale || 0.00001}
-		isInsufficient={(amount) => isBuying ? $tradeBalance.quote.balance < amount : false}
+		isInsufficient={(amount) =>
+			isBuying
+				? $tradeBalance.quote.balance +
+						($tradeConfig.autoBorrow ? $tradeBalance.quote.borrowable : 0) <
+					amount
+				: false}
 		onAmountChanged={(total) => {
-			baseAmount = total / quoteAmount
-			tradeConfig.update(prev => ({...prev, amount: baseAmount}))
+			baseAmount = total / quoteAmount;
+			tradeConfig.update((prev) => ({ ...prev, amount: baseAmount }));
+
+			borrowing =
+				$tradeConfig.autoBorrow && total > $tradeBalance.quote.balance
+					? Math.min(total - $tradeBalance.quote.balance, $tradeBalance.quote.borrowable)
+					: 0;
 		}}
 		placeholder="Total"
 	/>
@@ -116,5 +193,5 @@
 			<!---->
 		</div>
 	</div>
-	<BuysellButton assetLabel={asset.base} {isBuying}/>
+	<BuysellButton assetLabel={asset.base} {isBuying} />
 </div>
