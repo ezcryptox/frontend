@@ -4,6 +4,9 @@
 	import { findPos } from './utils';
 	import { currentSelectedPair } from '$lib/store/marketdata';
 	import { tradeBalance } from './store';
+	import { ServerURl } from '$lib/backendUrl';
+	import { handleAuthToken } from '$lib/store/routes';
+	import axios from 'axios';
 	export let marginTradingEnabled;
 	export let onboardingData;
 	const toggleMarginModal = getContext('toggleMarginModal');
@@ -34,6 +37,29 @@
 			onboarding = onboardingData.show && onboardingData.step === 5;
 		}
 	}
+	let margins = {
+		totalMargin: 0,
+		freeMargin: 0,
+		maintenanceMargin: 0,
+		totalBorrowed: 0,
+		leverage: 0
+	}
+	async function getMarginBalance() {
+		if (!$isLogin) return;
+		margins = await axios.get(
+				`${ServerURl()}/api/trading/margins`,
+				{
+					headers: {
+						'Content-type': 'application/json',
+						Authorization: `Bearer ${$handleAuthToken}`
+					}
+				}
+			).then(d => d.data)
+	}
+	currentSelectedPair.subscribe(pair => {
+		if (!pair) return
+		getMarginBalance().catch(err => console.log('Error getting margins => ', err))
+	})
 </script>
 
 <div class="bf4db17d">
@@ -109,7 +135,7 @@
 									></stop><stop offset="0.8125" stop-color="#1A8F5C"></stop></linearGradient
 								></defs
 							></svg
-						><span class="_9ccc6adb"> Margin Ratio <span>--</span></span>
+						><span class="_9ccc6adb"> Margin Ratio <span>{(margins.totalMargin && margins.maintenanceMargin ? `${parseInt(margins.totalMargin/ margins.maintenanceMargin * 100)}%` : '--')}</span></span>
 					</div>
 				{/if}
 			</div>
@@ -123,48 +149,58 @@
 			</div>
 			<div class="_2ef9552d">
 				<!---->
-				{#if $isLogin}
+				{#if $isLogin && marginTradingEnabled}
 					<div class="d76572a4">
 						<div class="_885eb473">
 							<div class="_0573d27f">
+								<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 								<span
+									style="z-index: 99999"
 									class="el-tooltip tips-text _3cb3befc tooltip"
 									data-tip={'Total value of your assets after the haircut'}
 									aria-describedby="el-tooltip-5703"
 									tabindex="0">Total Margin</span
-								><b>$ 0.00</b>
+								><b>$ {margins.totalMargin.toFixed(2)}</b>
 							</div>
 							<div class="_0573d27f">
+								<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 								<span
+								style="z-index: 99999"
 									class="el-tooltip tips-text _3cb3befc tooltip"
 									data-tip={'Value of your usable assets after the haircut'}
 									aria-describedby="el-tooltip-9751"
 									tabindex="0">Free Margin</span
-								><b>$ 0.00</b>
+								><b>$ {margins.freeMargin.toFixed(2)}</b>
 							</div>
 							<div class="_0573d27f">
+								<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 								<span
+								style="z-index: 99999"
 									class="el-tooltip tips-text _3cb3befc tooltip"
 									aria-describedby="el-tooltip-6956"
 									data-tip={'Minimum margin required to keep your account from being liquidated'}
 									tabindex="0">Maintenance Margin</span
-								><b class="_3cb5001e">$ 0.00</b>
+								><b class="_3cb5001e">$ {margins.maintenanceMargin.toFixed(2)}</b>
 							</div>
 							<div class="_0573d27f">
+								<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 								<span
+								style="z-index: 99999"
 									class="el-tooltip tips-text _3cb3befc tooltip"
 									aria-describedby="el-tooltip-2998"
 									data-tip={'Total value of your borrowed assets and interest. Purchases and deposits of the currencies borrowed will be used for repayment first'}
 									tabindex="0">Total Borrowed</span
-								><b class="_3cb5001e">$ 0.00</b>
+								><b class="_3cb5001e">$ {margins.totalBorrowed.toFixed(2)}</b>
 							</div>
 							<div class="_0573d27f">
+								<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 								<span
+								style="z-index: 99999"
 									class="el-tooltip tips-text _3cb3befc tooltip"
 									aria-describedby="el-tooltip-5207"
 									data-tip={'Ratio of your total account value (margin currency with a balance greater than 0) to your balance'}
 									tabindex="0">Leverage</span
-								><b class="_3cb5001e">0x</b>
+								><b class="_3cb5001e">{margins.leverage}x</b>
 							</div>
 						</div>
 					</div>

@@ -157,7 +157,7 @@
         {#if $isLogin}
           <div class="a7ddb18f">
             <a class="ba0dfc48" href="/wallet/?tab=spot">{$_('g-wallet')}</a>
-            <!-- <a href="/activity" class="ba0dfc48">{$_('activity')}</a> -->
+            <a href="/activity" class="ba0dfc48">{$_('activity')}</a>
             <div class="b87cb199">
               <svg fill="currentColor" style="width: 20px; height: 20px;">
                 <use xlink:href="#uniframe-icon-profile"></use>

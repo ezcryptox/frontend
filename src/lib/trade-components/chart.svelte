@@ -11,6 +11,8 @@
 	import DepthChart from './depthchart.svelte';
 	import TradingView from './tradingview.svelte';
 	import { formatPrice } from './utils';
+	import {pushState} from '$app/navigation';
+	import { page } from '$app/stores';
 
 	let openTabs = [];
 
@@ -22,7 +24,6 @@
 			if ($currentSelectedPair?.symbol === asset.symbol) {
 				const asset = tabs[tabs.length - 1];
 				handleAssetSelected(asset)();
-				// history.pushState(null, '', `/trade/${asset.symbol}/?type=spot`); // Update the URL without reloading the page
 			}
 		}
 	};
@@ -35,7 +36,6 @@
 		}
 		if (ev) ev.preventDefault();
 	};
-
 
 	onMount(() => {
 		const tabsString = localStorage.getItem('x-tabs');
@@ -71,9 +71,9 @@
 					openTabs = _tabs;
 					localStorage.setItem('x-tabs', JSON.stringify(_tabs));
 				}
-				history.pushState(null, '', `/trade/${asset.symbol}/?type=spot`); // Update the URL without reloading the page
+				const currentType = new URLSearchParams(window.location.search).get('type') || 'spot';
+				if (!!prevSelected) pushState(`/trade/${asset.symbol}/?type=${currentType}`, $page.state); // Update the URL without reloading the page
 			}
-
 
 			prevSelected = asset?.symbol;
 		});
@@ -135,7 +135,7 @@
 			{/each}
 		</div>
 		{#if $exchangeChartType === 'kline'}
-			<TradingView/>
+			<TradingView />
 		{:else}
 			<DepthChart />
 		{/if}

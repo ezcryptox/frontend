@@ -11,7 +11,7 @@
 	async () => {
 		if (!$isLogin) return Promise.resolve([]);
 		return axios
-			.get(`${ServerURl()}/api/spot/order-history${hide ? '?hide_canceled=1' : ''}`, {
+			.get(`${ServerURl()}/api/trading/order-history${hide ? '?hide_canceled=1' : ''}`, {
 				headers: {
 					'Content-type': 'application/json',
 					Authorization: `Bearer ${$handleAuthToken}`

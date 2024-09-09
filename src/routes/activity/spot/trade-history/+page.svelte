@@ -52,7 +52,7 @@
 		async () => {
 			return axios
 				.get(
-					`${ServerURl()}/api/spot/trade-history?side=${filters.side}&pair=${filters.pair}&start=${filters.time.start}&end=${filters.time.end}`,
+					`${ServerURl()}/api/trading/trade-history?${filters.side !== 'All' ? 	`side=${filters.side}&` : ''}${filters.pair !== "All" ? `pair=${filters.pair}&` : ''}start=${filters.time.start}&end=${filters.time.end}`,
 					{
 						headers: {
 							'Content-type': 'application/json',
@@ -97,7 +97,7 @@
 						>
 					</li>
 					<li>
-						<a href="/activity/spot/" class=""
+						<a href="/activity/spot/" class="p3PPD"
 							><svg
 								width="18"
 								height="18"
@@ -114,7 +114,7 @@
 						>
 					</li>
 					<li>
-						<a href="/activity/cards" class="p3PPD"
+						<a href="/activity/cards" class=""
 							><svg
 								width="18"
 								height="18"
@@ -147,6 +147,12 @@
 							</li>
 							<li class="g5GQK router-link-exact-active _5m-Bj">
 								<a href="/activity/spot/trade-history" class="_5m-Bj">Trade History</a>
+							</li>
+							<li class="">
+								<a href="/activity/spot/interest" class="_5m-Bj">Interest</a>
+							</li>
+							<li class="">
+								<a href="/activity/spot/repayments" class="_5m-Bj">Repayments</a>
 							</li>
 						</ul>
 					</div>

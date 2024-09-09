@@ -1,40 +1,42 @@
 <script>
 	import { slideFade } from '$lib/transitions';
 	import { findPos } from './utils';
-	import { getContext } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import { isLogin } from '$lib/store/profile';
 	import LimitOrder from './executions/limit-order.svelte';
 	import MarketOrder from './executions/market-order.svelte';
 	import { cryptoQuotes, currentSelectedPair } from '$lib/store/marketdata';
 	import { tradeBalance, tradeConfig } from './store';
-		 
+	import { browser } from '$app/environment';
 
 	export let onboardingData;
 	export let marginTradingEnabled;
-	$: asset =  {
-		base:'--',
-		quote:'--'
+	$: asset = {
+		base: '--',
+		quote: '--'
 	};
-	$: autoBurrow = false;
+	$: autoBorrow = false;
 
 	$: showDropDownMenu = false;
 	const DISMISS_DURATION = 300;
 	let showDropDownMenuId;
 	let drapDownMenuCoordinate = 0;
 
-	$: orderType =  'limit';
-	$: tradeSide = 'buy'
+	$: orderType = 'limit';
+	$: tradeSide = 'buy';
 
 	const onOrderTypeSelected = (type) => {
 		orderType = type;
-		tradeConfig.update(prev => ({...prev, orderType: type}))
+		tradeConfig.update((prev) => ({ ...prev, orderType: type }));
 	};
 
 	const onSideChange = (side) => {
 		tradeSide = side;
-		tradeConfig.update(prev => ({...prev, side}))
-	}
-	
+		tradeConfig.update((prev) => ({
+			...prev,
+			side
+		}));
+	};
 
 	const toggleOrderModal = getContext('toggleOrderModal');
 	const toggleRedeemModal = getContext('toggleRedeemModal');
@@ -46,39 +48,12 @@
 	let _onboardingFocusRef2 = null;
 	const updateData = getContext('updateOnboardingData');
 
-
-	currentSelectedPair.subscribe(pair => {
-		if (!pair) return
-		asset = {
-			base: pair.baseCurrencyName,
-			quote: pair.quoteCurrencyName
-		}
-		tradeConfig.update(prev => ({
-			...prev,
-			amount: 0,
-			orderType,
-			pair: `${asset.base}/${asset.quote}`,
-			side: tradeSide
-		}))
-	})
-	tradeBalance.subscribe(balances => {
-		if (!balances || balances.base.symbol !== $currentSelectedPair?.baseCurrencyName || balances.quote.symbol !== $currentSelectedPair.quoteCurrencyName) return;
-		tradeConfig.update(prev => ({...prev, quotePrice: balances.base.usd / balances.quote.usd}))
-	});
-	cryptoQuotes.subscribe((q) => {
-		const pair = $currentSelectedPair;
-		if (!q || !pair) return;
-		if (q[pair.symbol] && orderType !== 'limit') {
-			tradeConfig.update(prev => ({...prev, quotePrice: q[pair.symbol].price}));
-		}
-	});
 	$: {
 		if (onboardingData && (_onboardingFocusRef || _onboardingFocusRef2)) {
-			if (onboardingData.show){
+			if (onboardingData.show) {
 				onOrderTypeSelected(0);
-				autoBurrow = true;
-			}
-			else autoBurrow = false;
+				autoBorrow = true;
+			} else autoBorrow = false;
 
 			if (onboardingData.show && onboardingData.step === 3 && onboardingData.id !== 'place_order') {
 				const coordinate = findPos(_onboardingFocusRef);
@@ -110,13 +85,79 @@
 			onboarding_2 = onboardingData.show && onboardingData.step === 4;
 		}
 	}
+	onMount(() => {
+		if(browser) {
+			if ($isLogin) {
+				const currentType = new URLSearchParams(window.location.search).get('type') || 'spot';
+				tradeConfig.update(prev => ({...prev, autoBorrow: currentType.toLowerCase() === 'margin'}))
+				if (currentType.toLowerCase() === 'margin' && !marginTradingEnabled) {
+					toggleMarginModal();
+				}
+			}
+		}
+	 const csp =	currentSelectedPair.subscribe((pair) => {
+			if (!pair) return;
+			asset = {
+				base: pair.baseCurrencyName,
+				quote: pair.quoteCurrencyName
+			};
+			tradeConfig.update((prev) => ({
+				...prev,
+				amount: 0,
+				orderType,
+				pair: `${asset.base}/${asset.quote}`,
+				side: tradeSide
+			}));
+		});
+	 const tb =	tradeBalance.subscribe((balances) => {
+			if (
+				!balances ||
+				balances.base.symbol !== $currentSelectedPair?.baseCurrencyName ||
+				balances.quote.symbol !== $currentSelectedPair.quoteCurrencyName
+			)
+				return;
+			tradeConfig.update((prev) => ({
+				...prev,
+				quotePrice: balances.base.usd / balances.quote.usd
+			}));
+		});
+	 const cq =	cryptoQuotes.subscribe((q) => {
+			const pair = $currentSelectedPair;
+			if (!q || !pair) return;
+			if (q[pair.symbol] && orderType !== 'limit') {
+				tradeConfig.update((prev) => ({ ...prev, quotePrice: q[pair.symbol].price }));
+			}
+		});
+		const tconf = tradeConfig.subscribe(config => {
+			if (!browser || !$isLogin) return;
+			const currentType = new URLSearchParams(window.location.search).get('type') || 'spot';
+			const newType = config.autoBorrow ? 'margin' : 'spot'
+			if (currentType !== newType) {
+				//update URL with new query type
+				const url = new URL(window.location.href);
+				url.searchParams.set('type', newType);
+				history.pushState(null, '', url.toString());
+			}
+			
+		});
+		return () => {
+			csp();
+			tb();
+			cq();
+			tconf();
+		}
+	});
 </script>
 
 <div class="d568c879">
 	<section class="_23f4b355 {$tradeConfig.placingOrder ? 'pointer-events-none opacity-45' : ''}">
 		<nav class="_3f2fed70">
-			<button on:click={() => onSideChange('buy')} class={tradeSide === 'buy' ? 'ad797042' : ''}> Buy </button>
-			<button on:click={() => onSideChange('sell')} class={tradeSide === 'sell' ? 'ad797042' : ''}> Sell </button>
+			<button on:click={() => onSideChange('buy')} class={tradeSide === 'buy' ? 'ad797042' : ''}>
+				Buy
+			</button>
+			<button on:click={() => onSideChange('sell')} class={tradeSide === 'sell' ? 'ad797042' : ''}>
+				Sell
+			</button>
 		</nav>
 		<div
 			user-guide="4"
@@ -131,33 +172,49 @@
 					<span
 						disabled={true}
 						bind:this={_onboardingFocusRef2}
-						class="polo-switch polo-switch-middle {autoBurrow ? 'is-checked' : ''}"
+						class="polo-switch polo-switch-middle {autoBorrow || $tradeConfig.autoBorrow
+							? 'is-checked'
+							: ''}"
 					>
 						<span class="polo-switch-box">
 							<input
-								disabled={true}
+								disabled={!$isLogin ||
+									!$currentSelectedPair?.crossMargin.supportCrossMargin ||
+									$tradeConfig.side.toLowerCase() !== 'buy'}
 								type="checkbox"
 								on:change={(e) => {
-									if (e.target.checked && !marginTradingEnabled) {
-										toggleMarginModal();
-										e.target.checked = false;
+									if (
+										!(
+											!$isLogin ||
+											!$currentSelectedPair?.crossMargin.supportCrossMargin ||
+											$tradeConfig.side.toLowerCase() !== 'buy'
+										)
+									) {
+										if (e.target.checked && !marginTradingEnabled) {
+											toggleMarginModal();
+											e.target.checked = false;
+										}
+										if (marginTradingEnabled) tradeConfig.update((prev) => ({ ...prev, autoBorrow: e.target.checked }));
 									}
 								}}
-								bind:checked={autoBurrow}
+								checked={(autoBorrow || $tradeConfig.autoBurrow) &&
+									$tradeConfig.side.toLowerCase() !== 'sell'}
 							/>
 						</span>
 						<!---->
 					</span>
 
 					<span
+						style="z-index: 99999"
 						class="el-tooltip tips-text _13a24dcf _5ee158b0 tooltip"
-						data-tip={isLogin
+						data-tip={($isLogin && $currentSelectedPair?.crossMargin.supportCrossMargin )
 							? "When Auto Borrow is enabled, you can borrow up to the borrow limit (determined by the spot account's margin) for this transaction. However, please be cautious as borrowing funds will incur interest and thus add to the risk of forced liquidation."
 							: 'Margin trading is not available'}
 						aria-describedby="el-tooltip-5500"
 						tabindex="0">Auto Borrow</span
 					>
 				</div>
+
 
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<!-- svelte-ignore a11y-mouse-events-have-key-events -->
@@ -224,11 +281,11 @@
 						<!-- svelte-ignore a11y-click-events-have-key-events
 						<li class="c63a1f03" on:click={() => window.open('/margin/insurance-fund', '_blank')}>
 							Insurance Fund
-						</li>
-						<!-- svelte-ignore a11y-click-events-have-key-events 
+						</li>-->
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<li class="c63a1f03" on:click={() => window.open('/fee/margin', '_blank')}>
 							Interest Rate &amp; Borrow Limit
-						</li> -->
+						</li>
 						<li
 							class="c63a1f03"
 							on:click={() =>
@@ -273,7 +330,7 @@
 						<span
 							style="font-size: small;"
 							class="e0093a3f {orderType === 'limit' ? '_8c3dc366' : ''}"
-							on:click={() => onOrderTypeSelected("limit")}
+							on:click={() => onOrderTypeSelected('limit')}
 						>
 							Limit
 						</span>
@@ -282,7 +339,7 @@
 						<span
 							style="font-size: small;"
 							class="e0093a3f {orderType === 'market' ? '_8c3dc366' : ''}"
-							on:click={() => onOrderTypeSelected("market")}
+							on:click={() => onOrderTypeSelected('market')}
 						>
 							Market
 						</span>
@@ -290,14 +347,9 @@
 				</div>
 
 				{#if orderType === 'limit'}
-					<LimitOrder
-						{onboardingData}
-						autoBorrow={false}
-						isBuying={tradeSide === 'buy'}
-						{asset}
-					/>
-				{:else }
-					<MarketOrder autoBorrow={false} isBuying={tradeSide === 'buy'} {asset}/>
+					<LimitOrder {onboardingData} isBuying={tradeSide === 'buy'} {asset} />
+				{:else}
+					<MarketOrder autoBorrow={false} isBuying={tradeSide === 'buy'} {asset} />
 				{/if}
 			</div>
 		</div>

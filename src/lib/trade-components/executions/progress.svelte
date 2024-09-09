@@ -176,38 +176,3 @@
 	</div>
 </div>
 
-<div class="c1783486" data-v-39752d79="">
-	{#if autoBorrow}
-		<dl>
-			<dt>
-				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-				<span
-					class="el-tooltip tips-text _6dd30582 focusing tooltip tooltip-overlay"
-					data-tip="Max Available refers to the maximum amount of the chosen currency you can trade with borrowing, which equals your available amount plus the borrowable amount. It equals your available amount when the currency does not support borrowing or the borrowable amount is reduced to zero."
-					tabindex="0">Max Available</span
-				>
-			</dt>
-			<dd class="_75ff0e99">0.00 USDT</dd>
-		</dl>
-		<dl>
-			<dt>
-				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-				<span
-					class="el-tooltip tips-text _6dd30582 tooltip tooltip-overlay"
-					data-tip="You will need to borrow funds when your order amount exceeds the available amount."
-					aria-describedby="el-tooltip-7357"
-					tabindex="0">Borrow</span
-				>
-			</dt>
-			<dd class="c4065325">0.00 USDT</dd>
-		</dl>
-		<dl style="display: none;">
-			<dt>
-				<span class="el-tooltip tips-text _6dd30582" aria-describedby="el-tooltip-3387" tabindex="0"
-					>Repay</span
-				>
-			</dt>
-			<dd class="c4065325">BTC</dd>
-		</dl>
-	{/if}
-</div>

@@ -22,7 +22,7 @@
 	export let disableInput = false;
 	export let onAmountChanged = (value) => {};
 	export let isInsufficient = (value) => {
-		return true;
+		return false;
 	};
 	$: validAmount = checkAmountValid(totalText, min, isBuying);
 	let inputRef;
@@ -40,11 +40,18 @@
 	};
 	$: totalText = getValue(value);
 	$: amountInfo = validateTotalAmountInfo(totalText, isBuying);
+	let firstCheck = true;
 	onMount(() => {
 		totalText = getValue(value);
+		setTimeout(() => {
+			firstCheck = false;
+		}, 300)
 	});
 
 	const checkAmountValid = (totalText, min, isBuying) => {
+		if (firstCheck) {
+			return true;
+		}
 		return (
 			!isNaN(parseFloat(totalText)) &&
 			parseFloat(totalText) >= min &&

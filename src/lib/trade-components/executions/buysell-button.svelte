@@ -5,40 +5,47 @@
 	import axios from 'axios';
 	import { dataRefreshKey, tradeBalance, tradeConfig } from '../store';
 	import { toast } from 'svelte-sonner';
-	import {vipLevels} from '$lib/trade-components/utils'
 	import { currentSelectedPair } from '$lib/store/marketdata';
 	import { handleUserProfile } from '$lib';
 	export let isBuying = true;
 	export let assetLabel;
-
 
 	const handlePlaceOrder = async () => {
 		if ($tradeConfig.placingOrder) return;
 		const currentBalance = $tradeBalance;
 		const config = $tradeConfig;
 		if (!config.price && config.orderType === 'limit') {
-			toast.error('Enter '+ $currentSelectedPair?.quoteCurrencyName + ' price!');
+			toast.error('Enter ' + $currentSelectedPair?.quoteCurrencyName + ' price!');
 			return;
 		}
 		if (!config.amount) {
-			toast.error('Enter '+ $currentSelectedPair?.baseCurrencyName + ' amount!');
+			toast.error('Enter ' + $currentSelectedPair?.baseCurrencyName + ' amount!');
 			return;
 		}
-		if (currentBalance.quote.balance < (config.amount * config.price)) {
-			toast.error('Insufficient Balance!');
-			return;
+		if (config.side.toLowerCase() === 'buy') {
+			if (currentBalance.quote.balance + (config.autoBorrow ? currentBalance.quote.borrowable : 0) < config.amount * config.price) {
+				toast.error('Insufficient Balance!');
+				return;
+			}
+		} else {
+			if (currentBalance.base.balance < config.amount) {
+				toast.error('Insufficient Balance!');
+				return;
+			}
 		}
+
 		tradeConfig.update((prev) => ({ ...prev, placingOrder: true }));
 		try {
 			const balances = await axios
 				.post(
-					`${ServerURl()}/api/spot/trade`,
+					`${ServerURl()}/api/trading/trade`,
 					{
 						side: config.side,
 						amount: config.amount,
 						price: config.price || config.quotePrice,
 						pair: config.pair,
-						type: config.orderType
+						type: config.orderType,
+						autoBorrow: config.side.toLowerCase() === 'buy' ? config.autoBorrow : false
 					},
 					{
 						headers: {
@@ -62,30 +69,30 @@
 				}
 			}));
 			toast.success(config.side.toUpperCase() + ' Order placed successfully!');
-			dataRefreshKey.update(p => p + 1)
-		// @ts-ignore
+			dataRefreshKey.update((p) => p + 1);
+			// @ts-ignore
 		} catch (error) {
 			// @ts-ignore
-			const message = error.response?.data?.message || 'Error Placing order!'
+			const message = error.response?.data?.message || 'Error Placing order!';
 			// @ts-ignore
 			toast.error(message);
 		} finally {
 			tradeConfig.update((prev) => ({ ...prev, placingOrder: false }));
 		}
 	};
-	
 
-	let tradingFee = '0.2%/0.2%'
+	let vipLevels = {};
+	let tradingFee = '0.2%/0.2%';
 	isLogin.subscribe(async (loggedIn) => {
 		if (loggedIn) {
 			const response = await handleUserProfile($handleAuthToken);
 			if (response?.profile) {
+				vipLevels = (await axios.get(`${ServerURl()}/api/trading/spot-fees`)).data;
 				const level = parseInt(response?.profile.level?.toString() || '0');
-				tradingFee = `${(vipLevels[`VIP${level}`].makerTaker.maker * 100).toFixed(2)}%/${(vipLevels[`VIP${level}`].makerTaker.taker * 100).toFixed(2)}%`
+				tradingFee = `${(vipLevels[`VIP${level}`].spotMakerFee * 100).toFixed(2)}%/${(vipLevels[`VIP${level}`].spotTakerFee * 100).toFixed(2)}%`;
 			}
-		} else tradingFee = '0.2%/0.2%'
+		} else tradingFee = '0.2%/0.2%';
 	});
-
 </script>
 
 <div class="_89425504" data-v-39752d79="">
