@@ -62,6 +62,7 @@
 		"jsonwebtoken": "^9.0.2",
 		"keymaster": "^1.6.2",
 		"konva": "^9.2.0",
+		"lightweight-charts": "^4.2.0",
 		"lodash": "^4.17.21",
 		"lottie-web": "^5.12.2",
 		"lucide-svelte": "^0.408.0",

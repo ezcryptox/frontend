@@ -6,8 +6,6 @@ import { locale, waitLocale } from 'svelte-i18n'
 import { getCookie, setCookie } from "$lib/store/cookies";
 import '$lib/i18n'
 
-
-
 /** @type {import('./$types').PageLoad} */
 
 export async function load({ route }) {

@@ -1,5 +1,21 @@
 
 import { ServerURl } from '$lib/backendUrl'
+
+// Your CryptoCompare API key
+export const apiKey = "9cfe10e21a2c3c472360e431db4d096e73e6fdea1f37a1dd029c87170fd5639a";
+
+// Makes requests to CryptoCompare API
+// export async function makeApiRequest(path) {
+//     try {
+//         const url = new URL(`https://min-api.cryptocompare.com/${path}`);
+//         url.searchParams.append('api_key',apiKey)
+//         const response = await fetch(url.toString());
+//         return response.json();
+//     } catch (error) {
+//         throw new Error(`CryptoCompare request error: ${error.status}`);
+//     }
+// }
+
 export async function makeApiRequest(path) {
 	try {
 		const url = new URL(`${ServerURl()}/${path}`);

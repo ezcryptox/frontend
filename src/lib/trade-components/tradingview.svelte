@@ -272,7 +272,7 @@
 			tvWidget.changeTheme(theme);
 		}
 	});
-		let prevSelected = $currentSelectedPair?.symbol;
+	let prevSelected = $currentSelectedPair?.symbol;
 	 const unsubPair = 	currentSelectedPair.subscribe(async (asset) => {
 			if (asset && (asset.symbol !== prevSelected || !tvWidget)) {
 				if (tvWidget) {

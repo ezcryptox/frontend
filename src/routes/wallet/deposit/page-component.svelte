@@ -3,7 +3,7 @@
 	import '../../../styles/wallet/deposit_withdrawal.css';
 	import { DataListTable } from '$lib/components/ui/datatable';
 	import { onMount } from 'svelte';
-	import {mode} from 'mode-watcher';
+	import { mode } from 'mode-watcher';
 	import QRCode from 'qrcode';
 	import axios from 'axios';
 	import VirtualList from '@sveltejs/svelte-virtual-list';
@@ -15,7 +15,7 @@
 	const { debounce } = pkg;
 	import { toast } from 'svelte-sonner';
 
-  export let defaultSelectedCurrency = null;
+  	export let defaultSelectedCurrency = null;
 
 	// Generate QR code for a given string
 
@@ -221,8 +221,7 @@
 							<div style="padding-bottom: 40px;">
 								<div class="el-dropdown relative" style="margin-right: 30px;">
 									<!-- svelte-ignore a11y-interactive-supports-focus -->
-									<div
-										on:click={(ev) => {
+									<div on:click={(ev) => {
 											ev.stopPropagation();
 											cryptoMenuOpen = true;
 										}}
@@ -244,15 +243,13 @@
 												fill="currentColor"
 												class="arrowIcon"
 												style="width: 16px; height: 16px;"
-												><use xlink:href="#web-core-icon-arrow-down"></use></svg
-											>
+												><use xlink:href="#web-core-icon-arrow-down"></use></svg>
 										{:else if !selectedCurrency && !cryptoMenuOpen}
 											Select Crypto
 											<svg fill="currentColor" class="arrowIcon" style="width: 16px; height: 16px;"
 												><use xlink:href="#web-core-icon-arrow-down"></use></svg
 											><svg fill="currentColor" class="arrowIcon" style="width: 16px; height: 16px;"
-												><use xlink:href="#web-core-icon-arrow-down"></use></svg
-											>
+												><use xlink:href="#web-core-icon-arrow-down"></use></svg>
 										{:else}
 											<div class="ZT1pJ -KOfC">
 												<!-- svelte-ignore a11y-click-events-have-key-events -->

@@ -1,6 +1,5 @@
-import {
-	makeApiRequest,
-} from './helpers.js';
+
+import { makeApiRequest } from './helpers.js';
 import {
 	subscribeOnStream,
 	unsubscribeFromStream,
@@ -10,6 +9,7 @@ import {browser} from '$app/environment'
 import {RESOLUTION_MAP} from './helpers';
 
 const lastBarsCache = new Map();
+
 
 // DatafeedConfiguration implementation
 const configurationData = {
@@ -46,6 +46,35 @@ async function getAllSymbols() {
 		quantityScale: s.tradeLimit.quantityScale
 	}));
 }
+
+
+// DatafeedConfiguration implementation
+// ...
+// Obtains all symbols for all exchanges supported by CryptoCompare API
+// async function getAllSymbols() {
+//     const data = await makeApiRequest('data/v3/all/exchanges');
+//     let allSymbols = [];
+
+//     for (const exchange of configurationData.exchanges) {
+//         const pairs = data.Data[exchange.value].pairs;
+
+//         for (const leftPairPart of Object.keys(pairs)) {
+//             const symbols = pairs[leftPairPart].map(rightPairPart => {
+//                 const symbol = generateSymbol(exchange.value, leftPairPart, rightPairPart);
+//                 return {
+//                     symbol: symbol.short,
+//                     ticker: symbol.short,
+//                     description: symbol.short,
+//                     exchange: exchange.value,
+//                     type: 'crypto',
+//                 };
+//             });
+//             allSymbols = [...allSymbols, ...symbols];
+//         }
+//     }
+//     return allSymbols;
+// }
+
 
 export default {
 	onReady: (callback) => {

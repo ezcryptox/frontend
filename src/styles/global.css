@@ -3507,3 +3507,7 @@ body.dark-theme .polo-select .polo-option dt {
 body.dark-theme .polo-select .polo-option dt strong {
     color: #fff;
 }
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
