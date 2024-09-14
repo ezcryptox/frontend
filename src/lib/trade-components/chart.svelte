@@ -1,17 +1,12 @@
 <script>
-	import {
-		currentSelectedPair,
-		tradePairs,
-		cryptoQuotes,
-		exchangeChartType
-	} from '$lib/store/marketdata';
+	import { currentSelectedPair, tradePairs, cryptoQuotes, exchangeChartType } from '$lib/store/marketdata';
 	import { onMount } from 'svelte';
 	import '../../styles/trade/chart.css';
 	import { _ } from 'svelte-i18n';
 	import DepthChart from './depthchart.svelte';
 	import TradingView from './tradingview.svelte';
 	import { formatPrice } from './utils';
-	import {pushState} from '$app/navigation';
+	import { pushState } from '$app/navigation';
 	import { page } from '$app/stores';
 
 	let openTabs = [];

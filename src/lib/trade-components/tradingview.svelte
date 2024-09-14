@@ -11,6 +11,7 @@
 	import { browser } from '$app/environment';
 	let activeInterval = '1min';
 	let showMoreIntervals = false;
+
 	const supportedIntervals = [
 		'1min',
 		'5min',
@@ -72,7 +73,6 @@
 			const { overrides, theme } = getOverrides(isDark);
 			try {
         // await widget.changeTheme(theme).catch();
-      
 				widget.applyOverrides(overrides);
 				widget.save((content) => {
 					return saveChartConfig.save(content);
@@ -268,12 +268,12 @@
 		activeInterval = browser ? localStorage.getItem('x-interval') || '1min' : '1min';
 		loadIntervalList();
 		const unsubMode = mode.subscribe((theme) => {
-		if (tvWidget) {
-			tvWidget.changeTheme(theme);
-		}
-	});
-	let prevSelected = $currentSelectedPair?.symbol;
-	 const unsubPair = 	currentSelectedPair.subscribe(async (asset) => {
+			if (tvWidget) {
+				tvWidget.changeTheme(theme);
+			}
+		});
+		let prevSelected = $currentSelectedPair?.symbol;
+	 	const unsubPair = 	currentSelectedPair.subscribe(async (asset) => {
 			if (asset && (asset.symbol !== prevSelected || !tvWidget)) {
 				if (tvWidget) {
 					tvWidget.activeChart().setSymbol(asset.displayName);
@@ -350,38 +350,29 @@
 									fill="#2B2B2E"
 									stroke="white"
 									stroke-width="0.2"
-								></path></svg
-							>
+								></path></svg>
 						</div>
 						<div class="_5daf8810">
 							<!-- svelte-ignore a11y-no-static-element-interactions -->
 							<!-- svelte-ignore a11y-click-events-have-key-events -->
-							<span
-								on:click={handleChartType('time')}
-								class="_9391ea7a{currChartType === 'time' ? ' d6ac01f2' : ''}">{$_('g-date')}</span
-							>
+							<span on:click={handleChartType('time')}
+								class="_9391ea7a{currChartType === 'time' ? ' d6ac01f2' : ''}">{$_('g-date')}</span>
 							{#each intervalFavList as interval}
 								<!-- svelte-ignore a11y-no-static-element-interactions -->
 								<!-- svelte-ignore a11y-click-events-have-key-events -->
-								<span
-									on:click={handleIntervalChange(interval)}
+								<span on:click={handleIntervalChange(interval)}
 									class="_9391ea7a{interval === activeInterval && currChartType === 'candle'
-										? ' d6ac01f2'
-										: ''}">{interval}</span
-								>
+										? ' d6ac01f2' : ''}">{interval}</span>
 							{/each}
 							<!-- svelte-ignore a11y-no-static-element-interactions -->
-							<span
-								on:mouseenter={() => (showMoreIntervals = true)}
+							<span on:mouseenter={() => (showMoreIntervals = true)}
 								on:mouseleave={() => (showMoreIntervals = false)}
-								class="_40989834{showMoreIntervals ? ' _870ec573' : ' _8ac44990'}"
-							>
+								class="_40989834{showMoreIntervals ? ' _870ec573' : ' _8ac44990'}">
 								<span
 									class="_432cfdda{!intervalFavList.includes(activeInterval) ? ' d6ac01f2' : ''}"
 									>{!intervalFavList.includes(activeInterval) && currChartType === 'candle'
 										? activeInterval
-										: $_('g-more')}</span
-								>
+										: $_('g-more')}</span>
 								<div class="_41c42367">
 									{#each supportedIntervals as interval}
 										<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -392,8 +383,7 @@
 													aria-hidden="true"
 													class="svgicon _3c0880e0"
 													style="width: 14px; height: 14px; min-width: 14px;"
-													><use xlink:href="#star"></use></svg
-												>
+													><use xlink:href="#star"></use></svg>
 											{/if}
 
 											<span
@@ -430,9 +420,8 @@
 							><span class="_087a05bb"></span>
 							<!-- svelte-ignore a11y-click-events-have-key-events -->
 							<!-- svelte-ignore a11y-no-static-element-interactions -->
-							<span on:click={handleShowSetting} class="b0a0fc30"
-								><svg
-									width="16"
+							<span on:click={handleShowSetting} class="b0a0fc30">
+								<svg width="16"
 									height="16"
 									viewBox="0 0 16 16"
 									fill="currentColor"
@@ -465,22 +454,17 @@
 						></span>
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
-						<span on:click={handleFullScreenMode} class="a09788c4"
-							><svg
+						<span on:click={handleFullScreenMode} class="a09788c4">
+							<svg
 								width="16"
 								height="16"
 								viewBox="0 0 16 16"
 								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-								><path
-									d="M9.34443 8L12.0575 5.28738L14 7.22995L14 2.00031L8.77058 2.00031L10.7131 3.94288L8 6.65551L9.34443 8Z"
-									fill="#616161"
-								></path><path
-									d="M6.65557 8L3.9425 10.7126L2.00001 8.77005L2.00001 13.9997H7.22942L5.28693 12.0571L8 9.34449L6.65557 8Z"
-									fill="#616161"
-								></path></svg
-							></span
-						>
+								xmlns="http://www.w3.org/2000/svg" >
+								<path d="M9.34443 8L12.0575 5.28738L14 7.22995L14 2.00031L8.77058 2.00031L10.7131 3.94288L8 6.65551L9.34443 8Z"	fill="#616161" ></path>
+								<path d="M6.65557 8L3.9425 10.7126L2.00001 8.77005L2.00001 13.9997H7.22942L5.28693 12.0571L8 9.34449L6.65557 8Z" fill="#616161"></path>
+							</svg>
+						</span>
 					</div>
 				</div>
 				<div id="tv_chart_container" style="flex: 1 1 0%;" />

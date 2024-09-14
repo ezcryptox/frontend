@@ -1,5 +1,7 @@
 <script>
-	import {cryptoQuotes, currentSelectedPair, depthChartList, marketTrades, orderBook, tradePairs } from '$lib/store/marketdata';
+   import Header from "$lib/futures/header.svelte";
+    import "../../styles/futures/header.css";
+    import {cryptoQuotes, currentSelectedPair, depthChartList, marketTrades, orderBook, tradePairs } from '$lib/store/marketdata';
 	import { browser } from '$app/environment';
 	import { socketData } from '$lib/store/socket';
 	import { onMount } from 'svelte';
@@ -8,9 +10,8 @@
 		let unsubPair;
 		const unsubSock = socketData.subscribe((data) => {
 			if (!data) return;
-
+		
 			const { io, request } = data;
-
 			unsubPair = currentSelectedPair.subscribe((pair) => {
 				if (pair) {
 					request('join-ticker', { symbol: pair.symbol });
@@ -76,4 +77,9 @@
 	});
 </script>
 
-<slot></slot>
+<div id="root" class="vue3-app" data-v-app>
+    <div class="d31bb42e flex-column">
+        <Header />
+        <slot></slot>
+    </div>
+</div>

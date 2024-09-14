@@ -67,6 +67,8 @@
 			);
 		return (assetBalances ? walletBalance[key].toFixed(8) : '--') + ' BTC';
 	};
+
+
 </script>
 
 <div class="wc-wallet f25e176f">
