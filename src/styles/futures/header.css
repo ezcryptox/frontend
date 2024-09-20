@@ -120,6 +120,9 @@
     --el-svg-monochrome-grey: var(--el-border-color)
 }
 
+html {
+    --polo-header-height: 50px;
+}
 .el-icon-loading {
     animation: rotating 2s linear infinite
 }
@@ -3351,7 +3354,10 @@
 .el-radio.is-bordered.is-checked {
     border-color: var(--el-color-primary)
 }
-
+.ac8232da .b20ab108 dd .ad57f5c6, .ac8232da .b20ab108 dd .c364c28e {
+    padding-right: 3px;
+    color: #ffaa47;
+}
 .el-radio.is-bordered.is-disabled {
     cursor: not-allowed;
     border-color: var(--el-border-color-lighter)
@@ -5403,11 +5409,16 @@
     display: block;
     transform: translateY(.5px)
 }
-
+html[data-theme=dark] {
+    --color-html-bg: #000;
+    --color-html-text: #fff;
+}
 .el-select__tags .el-tag--info {
     background-color: var(--el-fill-color)
 }
-
+html[data-theme=dark] .ad2fe32b .f65f73b3 {
+    color: #b8b8b8;
+}
 .el-select__collapse-tags {
     white-space: normal;
     z-index: var(--el-index-normal);
@@ -5452,8 +5463,10 @@
     height: inherit;
     display: flex
 }
-
-
+html[data-theme=dark] .a93e0a6c {
+    color: #fff;
+    border-right-color: #2b2b2e;
+}
 html[data-theme=light] .d31bb42e {
     --color-layout-trade-card-text: #131316;
     --color-layout-trade-card-bg: #fff;
@@ -5466,14 +5479,19 @@ html[data-theme=light] .d31bb42e {
     min-height: calc(100vh - var(--polo-header-height));
     min-width: 1280px;
     padding-bottom: 24px;
-    margin-top: 50px;
+    margin-top: 60px;
+}
+html[data-theme=light] .d31bb42e{
+    background: gainsboro;
+}
+html[data-theme=dark] .d31bb42e {
+    --color-layout-trade-card-text: #fff;
+    --color-layout-trade-card-bg: #1f1f24;
+    --color-layout-trade-card-bd: #2b2b2e;
 }
 .flex-column {
     display: flex;
     flex-direction: column;
-}
-html[data-theme=light] .d31bb42e .card, html[data-theme=light] .d31bb42e .e62681cd {
-    border: none;
 }
 .d31bb42e .card, .d31bb42e .e62681cd {
     border-radius: var(--layout-trade-border-radius);
@@ -5481,6 +5499,11 @@ html[data-theme=light] .d31bb42e .card, html[data-theme=light] .d31bb42e .e62681
     background-color: var(--color-layout-trade-card-bg);
     border: 1px solid var(--color-layout-trade-card-bd);
 }
+
+html[data-theme=light] .d31bb42e .card, html[data-theme=light] .d31bb42e .e62681cd {
+    border: none;
+}
+
 .afa972df {
     position: relative;
     z-index: 10;

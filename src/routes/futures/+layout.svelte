@@ -1,6 +1,9 @@
 <script>
    import Header from "$lib/futures/header.svelte";
     import "../../styles/futures/header.css";
+    import "../../styles/futures/orderbook.css";
+    import "../../styles/futures/controllers.css";
+	 import {futuresCurrentPair, futuresTradePairs} from "$lib/store/future.store"
     import {cryptoQuotes, currentSelectedPair, depthChartList, marketTrades, orderBook, tradePairs } from '$lib/store/marketdata';
 	import { browser } from '$app/environment';
 	import { socketData } from '$lib/store/socket';
@@ -12,9 +15,9 @@
 			if (!data) return;
 		
 			const { io, request } = data;
-			unsubPair = currentSelectedPair.subscribe((pair) => {
+			unsubPair = futuresCurrentPair.subscribe((pair) => {
 				if (pair) {
-					request('join-ticker', { symbol: pair.symbol });
+					request('join-futures-ticker', { symbol: pair.symbol });
 					request('sub-trade', { symbol: pair.symbol });
 					request('sub-depth', { symbol: pair.symbol, speed: '1000ms' });
 					if (browser) {
@@ -22,6 +25,21 @@
 					}
 				}
 			});
+
+			io.on("ticker", data =>{
+				console.log(data)
+				futuresTradePairs.set(data)
+			})
+
+			io.on("ticker2", data =>{
+				console.log(data)
+			})
+
+			io.on('poloniexData', (data) => {
+				console.log('Data from Poloniex:', data);
+				// You can process or display the data as needed here
+			});
+
 
 			io.on('qts', (data) => {
 				cryptoQuotes.set(data);
@@ -47,7 +65,7 @@
 
 			io.on('obs', (data) => {
 				orderBook.set(data);
-				const symbol = $currentSelectedPair?.symbol;
+				const symbol = $futuresCurrentPair?.symbol;
 				const orderbook = data.orderbook;
 				if (symbol && orderbook) {
 					depthChartList.set({

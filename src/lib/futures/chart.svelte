@@ -1,13 +1,13 @@
 <script >
-  import { widget } from "$lib/charting_library";
-  import { _ } from 'svelte-i18n';
-  import { getContext } from "svelte";
+	import { widget } from "$lib/charting_library";
+	import { _ } from 'svelte-i18n';
+	import { getContext } from "svelte";
 	import { mode } from 'mode-watcher';
-  import {	currentSelectedPair, exchangeChartType } from '$lib/store/marketdata';
-  import { UDFCompatibleDatafeed } from "$lib/datafeeds/udf/src/udf-compatible-datafeed";
-  import { onMount } from "svelte";
-  import Datafeed from "$lib/datafeeds/datafeed";
-  import { browser } from '$app/environment';
+	import {	currentSelectedPair, exchangeChartType } from '$lib/store/marketdata';
+	import { UDFCompatibleDatafeed } from "$lib/datafeeds/udf/src/udf-compatible-datafeed";
+	import { onMount } from "svelte";
+	import Datafeed from "$lib/datafeeds/datafeed";
+	import { browser } from '$app/environment';
 
 	let activeInterval = '1hour';
 	let showMoreIntervals = false;
@@ -189,49 +189,97 @@
       : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
 
+  function appendScript(onload) {
+    if (typeof TradingView !== 'undefined') {
+      onload()
+      return;
+    }
+		if (document.getElementById(SCRIPT_ID) === null) {
+			const script = document.createElement('script');
+			script.id = SCRIPT_ID;
+			script.type = 'text/javascript';
+			script.async = true;
+			script.src = '/charting_library/charting_library.js';
+			script.onload = onload;
+			document.getElementsByTagName('head')[0].appendChild(script);
+		} else {
+			const script = document.getElementById(SCRIPT_ID);
+			// @ts-ignore
+			const oldOnload = script.onload;
+			// @ts-ignore
+			return (script.onload = () => {
+				// @ts-ignore
+				oldOnload();
+				onload();
+			});
+		}
+	}
+
 	// const fume = getContext("futures-last-symbol")
 	// console.log(fume)
 
-  onMount(() => {
-    const widgetOptions = {
-      symbol: "BTC/USDT",
-      // BEWARE: no trailing slash is expected in feed URL
-      datafeed: Datafeed,
-      interval: resolutionMap[activeInterval],
-      container: "tv-chart-container",
-      library_path: "/charting_library/",
-      locale: getLanguageFromURL() || "en",
-      disabled_features: ["use_localstorage_for_settings"],
-      enabled_features: ["study_templates"],
-      charts_storage_url: "https://saveload.tradingview.com",
-      charts_storage_api_version: "1.1",
-      client_id: "ezcrytox.com",
-	  symbolSearch: {
-		enabled: false
-	},
-	symbol_search_request: false,
-	  custom_font_family: "'Inconsolata', monospace",
-      user_id: "1",
-      fullscreen: false,
-      theme: $mode,
-      autosize: true,
-      debug: false,
-	  loading_screen: { backgroundColor: $mode === "dark" ? "#000000" : "#fff" }
-    };
+	onMount(()=>{
+		appendScript(() => {
+			initWidget({
+				debug: false, // uncomment this line to see Library errors and warnings in the console
+				fullscreen: false,
+				symbol: "DOGE/USDT",
+				// @ts-ignore
+				interval: resolutionMap[activeInterval],
+				container: 'tv_chart_container',
+				custom_css_url: 'tv.css',
+				overrides: {
+					'mainSeriesProperties.showCountdown': false
+				},
+				datafeed: Datafeed,
+				library_path: '/charting_library/',
+				// @ts-ignore
+				locale: 'en',
+				symbolSearch: {
+					enabled: false
+				},
+				symbol_search_request: false,
+				symbol_search_control: {
+					enabled: false
+				},
+				disabled_features: [
+					'header_widget',
+					'timeframes_toolbar',
+					'volume_force_overlay',
+					'symbol_info'
+				],
+				enabled_features: [
+					'move_logo_to_main_pane',
+					'side_toolbar_in_fullscreen_mode',
+					'study_templates'
+				],
+				loading_screen: {
+					backgroundColor: 'transparent'
+				},
+				// charts_storage_url: 'https://saveload.tradingview.com',
+				// charts_storage_api_version: '1.1',
+				client_id: 'ezcryptox',
+				user_id: '1',
+				// @ts-ignore
+				theme: $mode,
+				autosize: true,
+			});
+	});
 
-    const tvWidget = new widget(widgetOptions);
-  });
+	})
+
+
 
 </script>
 
 <div class="d09e8c81 flex-column">
     <div class="c1ffc6e0">
-        <div class="bfd5c32f" style="height: 520px;" id="tv-chart-container"></div>
+        <div class="bfd5c32f" style="height: 520px;" id="tv_chart_container"></div>
     </div>
 </div>
 
 <style>
-    #tv-chart-container {
+    #tv_chart_container {
       height: calc(100vh - 41px);
     }
   </style>

@@ -397,8 +397,7 @@
 													on:click={handleFavIntervalToggle(interval)}
 													class="_53b7858e{intervalFavMap[interval] ? ' _689984b3' : ' _829577c6'}"
 												></span></span
-											></span
-										>
+											></span>
 									{/each}
 								</div>
 							</span><span class="_087a05bb"></span>

@@ -8,7 +8,53 @@ html[data-theme=light] .ed1e27a3.f7624ee7 .d4d24d97 {
     border-color: #e3e3e3;
     box-shadow: 0 6px 16px rgba(0, 0, 0, .3);
 }
+html[data-theme=dark] .d9d76915 {
+    --border-color: #2b2b2e;
+}
+.f06f2df1 .ad8a0de7 .ef27dd05 {
+    margin-left: 4px;
+    width: 11px;
+    height: 11px;
+}
+html[data-theme=dark] .f06f2df1 .ad8a0de7 .ef27dd05 {
+    color: #b8b8b8;
+}
+html[data-theme=dark] .d5e5a2f1 .e6b0be8e .c780de9c {
+    color: #b8b8b8;
+}
+.f06f2df1 .ad8a0de7 .e6b0be8e {
+    display: flex;
+    align-items: center;
+}
 
+.f06f2df1>li {
+    margin-left: 10px;
+}
+.e6b0be8e .c780de9c {
+    vertical-align: top;
+    width: 16px;
+    height: 16px;
+}
+.e6b0be8e {
+    height: 16px;
+    line-height: 16px;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color .2s;
+    color: #878787;
+}
+.a7092df3 {
+    width: 1px;
+    overflow: hidden;
+    background-color: var(--border-color);
+}
+html[data-theme=dark] .e6b0be8e.c542570a, html[data-theme=dark] .e6b0be8e:hover {
+    color: #fff;
+}
+.flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
 html[data-theme=light] .d31bb42e .card, html[data-theme=light] .d31bb42e .e62681cd {
     border: none;
 }
@@ -33,7 +79,7 @@ html[data-theme=light] .d31bb42e .card, html[data-theme=light] .d31bb42e .e62681
 }
 .e14f4b26 .cae6acea {
     height: 60vh;
-    min-height: 500px;
+    min-height: 554px;
     margin-bottom: 8px;
 }
 html[data-theme=light] .d31bb42e .card, html[data-theme=light] .d31bb42e .e62681cd {
@@ -43,12 +89,7 @@ html[data-theme=light] .d31bb42e .card, html[data-theme=light] .d31bb42e .e62681
     margin-right: 8px;
 }
 
-.d31bb42e .card, .d31bb42e .e62681cd {
-    border-radius: 8px;
-    color: #131316;
-    background-color: #fff;
-    border: 1px solid #fff;
-}
+
 .f0ebd5a0 {
     position: relative;
     height: 100%;

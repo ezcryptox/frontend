@@ -29,7 +29,7 @@
                 <div class="ddfb18d1">{$_('grid-trade-subtitle')}</div>
             </a>
         </li>
-        <li>
+        <!-- <li>
             <a class="d3f3d2f7" target="_self" href="/strategy/copytrading">
                 <div class="d667695c">
                     <svg fill="currentColor">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="ddfb18d1">{$_('copy-trading-subtitle')}</div>
             </a>
-        </li>
+        </li> -->
     </ul>
 </div>
 <style>
