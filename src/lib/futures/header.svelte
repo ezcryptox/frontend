@@ -9,7 +9,6 @@
        return (price).replace(/\d(?=(\d{3})+\.)/g, '$&,');
      })
 
-     $: console.log($futuresCurrentPair)
 </script>
 
 <div class="afa972df e62681cd">

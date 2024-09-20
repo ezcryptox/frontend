@@ -27,12 +27,7 @@
 			});
 
 			io.on("ticker", data =>{
-				console.log(data)
 				futuresTradePairs.set(data)
-			})
-
-			io.on("ticker2", data =>{
-				console.log(data)
 			})
 
 			io.on('poloniexData', (data) => {
