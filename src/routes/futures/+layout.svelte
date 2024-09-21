@@ -4,7 +4,7 @@
     import "../../styles/futures/orderbook.css";
     import "../../styles/futures/controllers.css";
 	 import {futuresCurrentPair, futuresTradePairs} from "$lib/store/future.store"
-    import {cryptoQuotes, currentSelectedPair, depthChartList, marketTrades, orderBook, tradePairs } from '$lib/store/marketdata';
+    import {cryptoQuotes, depthChartList, marketTrades, orderBook, tradePairs } from '$lib/store/marketdata';
 	import { browser } from '$app/environment';
 	import { socketData } from '$lib/store/socket';
 	import { onMount } from 'svelte';
@@ -13,11 +13,11 @@
 		let unsubPair;
 		const unsubSock = socketData.subscribe((data) => {
 			if (!data) return;
-		
 			const { io, request } = data;
 			unsubPair = futuresCurrentPair.subscribe((pair) => {
 				if (pair) {
 					request('join-futures-ticker', { symbol: pair.symbol });
+					request('join-ticker', { symbol: pair.symbol });
 					request('sub-trade', { symbol: pair.symbol });
 					request('sub-depth', { symbol: pair.symbol, speed: '1000ms' });
 					if (browser) {

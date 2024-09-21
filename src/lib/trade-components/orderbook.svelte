@@ -48,9 +48,13 @@
 	<div class="b24f0f42">
 		<section class="_6b23a6d3">
 			<nav class="cdc6768f" value="orders">
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<span class={selectedTab === 0 ? 'bf786d3a' : ''} on:click={() => onTabSelected(0)}>
 					Order Book
 				</span>
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<span class={selectedTab === 1 ? 'bf786d3a' : ''} on:click={() => onTabSelected(1)}>
 					Market Trades
 				</span>
@@ -60,6 +64,8 @@
 				{#if selectedTab === 0}
 					<div class="_57a26a53">
 						<div>
+								<!-- svelte-ignore a11y-click-events-have-key-events -->
+								<!-- svelte-ignore a11y-no-static-element-interactions -->
 							<span
 								on:click={() => onBidAskTabSelected(0)}
 								class="_986e6957 {selectedBidAskTab === 0 ? '_4f405bfc' : ''}"
@@ -78,6 +84,8 @@
 									></path></svg
 								></span
 							>
+							<!-- svelte-ignore a11y-click-events-have-key-events -->
+							<!-- svelte-ignore a11y-no-static-element-interactions -->
 							<span
 								on:click={() => onBidAskTabSelected(1)}
 								class="_986e6957 {selectedBidAskTab === 1 ? '_4f405bfc' : ''}"
@@ -96,6 +104,8 @@
 									></path></svg
 								></span
 							>
+							<!-- svelte-ignore a11y-click-events-have-key-events -->
+							<!-- svelte-ignore a11y-no-static-element-interactions -->
 							<span
 								on:click={() => onBidAskTabSelected(2)}
 								class="_986e6957 {selectedBidAskTab === 2 ? '_4f405bfc' : ''}"
