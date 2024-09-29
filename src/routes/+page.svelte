@@ -1,106 +1,305 @@
 <script>
-	import { _ } from 'svelte-i18n';
+  import "../styles/home.css"
   import Footer from "$lib/footer.svelte";
-  import GiveawayListing from "$lib/home-page/giveaway-listing.svelte";
-  import "../styles/homepage.css";
-  import { screen } from "$lib/store/screen";
-  import Contents from "$lib/home-page/contents.svelte";
-</script>
-
-<div class="app-homepage _686bf1d6 {$screen > 1200  ? 'w1200' : $screen > 1022 ? 'w1024' : $screen > 770  ? 'w768' : 'w375'} ">
-  <div class="dark-theme _5f16684d _04f0c363 {$screen > 1200 ? 'w1200' : $screen > 1022 ? 'w1024'  : $screen > 770  ? 'w768' : 'w375'} ">
-    <div class="_9640f16f _86eb487d">
-      <div class="b2c55fc1">
-        <h1 class="d33f49de">
-          <span class="_6aa36300">{$_('connecting-you-to-the')}</span>
-          <span class="_45b54cef">{$_('power-of-crypto')}</span>
-        </h1>
-        <a href="/signup" class="_89d349f0">{$_('get-started')}</a>
-        <!---->
+  const banner = new URL('$lib/images/into-banner 1.png', import.meta.url).href
+  const tv = new URL('$lib/images/guidedDownload.png', import.meta.url).href
+  const Safeguard = new URL('$lib/images/Screenshot 2024-09-26 160652.png', import.meta.url).href
+  const googleImg = new URL('$lib/images/fa7d7931679b6c250489e847177ba1be.png', import.meta.url).href
+  $: marketTab = 0
+  
+  let d = [1,2,3,4,5,6, 7]
+  let c = [1,2,3,4]
+  </script>
+  
+  <div class="app-homepage _686bf1d6 w1200">
+      <div class="_9640f16f _86eb487d">
+          <div class="content">
+              <h1 class="d33f49de">Welcome to the world of crypto</h1>
+              <div class="controllers">
+                  <button class="g-started button light">Get started</button>
+                  <div class="or-container">
+                      <div class="line"></div>
+                      <span>or</span>
+                      <div class="line"></div>
+                  </div>
+                  <div class="google-container button">
+                      <img src="{googleImg}" style="width: 20px; height: 20px" alt="">
+                      Google
+                  </div>
+              </div>
+          </div>
+          <div class="_24b300b3 _41fe8b9f font-ss3">
+              <img src="{banner}" alt="">
+          </div>
       </div>
-      <div>
-        <div class="_24b300b3 _41fe8b9f font-ss3">
-          <div class="eb280c89">
-            <div class="_9d9fd489">
-              <video
-                id="homepageBigBannerVideo"
-                autoplay="autoplay"
-                muted="muted"
-                playsinline=""
-                class="_40b45abf">
-                <source src="https://res.cloudinary.com/dxwhz3r81/video/upload/v1715949779/video_2024-05-17_07-40-24_ggla8f.mp4"  type="video/mp4" />
-              </video>
-            </div>
-            <div class="b2b8b0c1">
-              <a
-                href="?itunes.apple.com/us/app/poloniex/id1234141021?mt=8"
-                class="_67ae8ef1">
-                <svg
-                  width="25"
-                  height="24"
-                  viewBox="0 0 25 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18.5347 12.7627C18.5068 9.0422 20.8182 8.94592 20.9221 8.88632C19.622 7.16703 17.5995 6.89653 16.8797 6.87132C15.1588 6.71314 13.5215 7.76993 12.6471 7.76993C11.7753 7.76993 10.4269 6.86902 9.00001 6.89195C7.12451 6.91716 5.39347 7.87538 4.4253 9.39523C2.4763 12.4556 3.92601 16.9876 5.82686 19.468C6.75448 20.6829 7.86204 22.0469 9.31682 21.9988C10.7158 21.9483 11.2456 21.1781 12.9386 21.1781C14.6316 21.1781 15.1055 21.9988 16.5882 21.9713C18.0937 21.946 19.0492 20.7334 19.9692 19.5138C21.0362 18.104 21.4747 16.8088 21.5 16.74C21.4671 16.7263 18.5626 15.2431 18.5321 12.7627H18.5347ZM12.5001 6.99969C12.5001 4.23966 14.9738 2 18.0278 2C18.0278 4.76232 15.5516 6.99969 12.5001 6.99969Z"
-                    fill="#B8B8B8"
-                  ></path>
-                </svg>{$_('app-store')}</a>
-              <a
-                href="?play.google.com/store/apps/details?id=com.plunien.poloniex"
-                class="_67ae8ef1"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M16.0717 15.2806L20.8086 12.4632C20.998 12.366 21.1875 12.0746 21.1875 11.8803V11.5888C21.1875 11.2973 21.0928 11.103 20.8086 11.0059L16.0717 8.18846L12.9454 11.686L16.0717 15.2806ZM12.1875 10.8116L15.0296 7.50839L4.51382 1.0963C4.32434 0.999149 4.13487 0.999149 3.94539 1.0963L12.1875 10.8116ZM12.1875 12.6575L3.94539 22.3728C4.13487 22.4699 4.32434 22.4699 4.51382 22.3728L15.0296 16.0578L12.1875 12.6575ZM3.1875 2.06783V21.3041L11.4296 11.686L3.1875 2.06783Z"
-                    fill="#B8B8B8"
-                  ></path>
-                </svg>{$_('google-play')}</a>
-              <a
-                href="?apps.poloniex.com/android/poloniex_android_latest.apk?r=1715556464088"
-                class="_67ae8ef1"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6.74865 7.92289C6.49489 7.92289 6.28906 8.14252 6.28906 8.41303V18.6231C6.28906 18.8939 6.49489 19.1136 6.74865 19.1136H8.7841V22.5541C8.7841 23.3527 9.39115 24 10.1396 24C10.8884 24 11.4952 23.3527 11.4952 22.5541V19.1136H13.3912V22.5541C13.3912 23.3527 13.9982 24 14.7467 24C15.4955 24 16.1022 23.3527 16.1022 22.5541V19.1136H18.1658C18.42 19.1136 18.6258 18.8939 18.6258 18.6231V8.41303C18.6258 8.14252 18.42 7.92289 18.1658 7.92289H6.74865Z"
-                    fill="#B8B8B8"
-                  ></path>
-                  <path
-                    d="M3 9.36771V15.2393C3 16.0374 3.60674 16.6846 4.35554 16.6846C5.104 16.6846 5.71101 16.0374 5.71101 15.2393V9.36771C5.71101 8.56943 5.104 7.92213 4.35554 7.92213C3.60701 7.92213 3 8.56943 3 9.36771Z"
-                    fill="#B8B8B8"
-                  ></path>
-                  <path
-                    d="M19.1992 9.36674V15.2383C19.1992 16.0364 19.806 16.6836 20.5548 16.6836C21.3033 16.6836 21.9103 16.0364 21.9103 15.2383V9.36674C21.9103 8.56846 21.3033 7.92115 20.5548 7.92115C19.806 7.92115 19.1992 8.56846 19.1992 9.36674Z"
-                    fill="#B8B8B8"
-                  ></path>
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M10.1364 4.46077C10.1364 4.76761 9.90312 5.01638 9.61532 5.01638C9.32776 5.01638 9.09422 4.76761 9.09422 4.46077C9.09422 4.15381 9.3275 3.90504 9.61532 3.90504C9.90312 3.90504 10.1364 4.15381 10.1364 4.46077ZM15.2606 5.01638C14.9728 5.01638 14.7395 4.76761 14.7395 4.46077C14.7395 4.15381 14.9728 3.90504 15.2606 3.90504C15.5484 3.90504 15.7814 4.15381 15.7814 4.46077C15.7814 4.76761 15.5484 5.01638 15.2606 5.01638ZM18.0408 7.20741C18.3329 7.20741 18.551 6.9203 18.4908 6.61507C18.1203 4.73139 16.9957 3.14376 15.4694 2.22657L16.4273 0.383761C16.4922 0.25896 16.4499 0.101502 16.3329 0.0326298C16.2155 -0.0369551 16.0685 0.00852424 16.0036 0.133207L15.0385 1.99003C14.2479 1.599 13.367 1.38051 12.4382 1.38051C11.5089 1.38051 10.628 1.599 9.83764 1.99003L8.87235 0.132971C8.80744 0.00816942 8.66012 -0.0365988 8.54307 0.0323923C8.42606 0.101502 8.38382 0.258722 8.44864 0.383405L9.40653 2.22657C7.88047 3.14376 6.75555 4.73139 6.385 6.61507C6.32493 6.9203 6.54303 7.20741 6.83533 7.20741H18.0408Z"
-                    fill="#B8B8B8"
-                  ></path>
-                </svg>{$_('android')}</a>
-            </div>
+      <!-- News section -->
+       <div class="news-section">
+          <div class="announce">
+              <svg fill="currentColor" style="width: 20px; height: 20px;">
+                  <use xlink:href="#uniframe-icon-announcement"></use>
+              </svg>
+          </div>
+          <div class="content">
+              <!-- svelte-ignore a11y-distracting-elements -->
+              <marquee behavior="" direction="">
+                  <span class="details">Demystifying MetaTrader 5: Tune in to Share 250,000 DOGS</span>
+                  <span class="details">Fortune Circles: Win iPhone 16 Pro Max and Share Up to 100,000 USDT</span>
+                  <span class="details">Complete the Puzzle and Win Big: 600,000 CATI Up for Grabs!</span>
+              </marquee>
+          </div>
+          <div class="open-more">
+              <svg fill="currentColor" style="width: 20px; height: 20px;">
+                  <use xlink:href="#uniframe-icon-direction"></use>
+              </svg>
+          </div>
+   
+       </div>
+  
+  
+       <!-- Next trading opporturnity -->
+       <div class="JsklSmkl">
+          <h1 class="sectiion-title">Catch Your Next Trading Opportunity</h1>
+          <button class="search-more button">
+              <span>
+                  Search More 
+              </span>
+              <svg fill="currentColor" style="width: 20px; height: 20px;">
+                  <use xlink:href="#uniframe-icon-direction"></use>
+              </svg>
+          </button>
+          <div class="market-containers">
+              <div class="card-1">
+                  <div class="card-1-tabs">
+                      <!-- svelte-ignore a11y-click-events-have-key-events -->
+                      <!-- svelte-ignore a11y-no-static-element-interactions -->
+                      <div on:click={()=> marketTab = 0} class="tab {marketTab ? "" : "active"}">Hot Derivatives</div>
+                      <!-- svelte-ignore a11y-click-events-have-key-events -->
+                      <!-- svelte-ignore a11y-no-static-element-interactions -->
+                      <div on:click={()=> marketTab = 1} class="tab {!marketTab ? "" : "active"}">Hot Coins</div>
+                  </div>
+                  <div class="data-table">
+                      <table>
+                          <thead>
+                              <tr class="header-tr">
+                                  <th>Trading pairs</th>
+                                  <th>Last Trading Price</th>
+                                  <th>24hr Change</th>
+                                  <th>Charts</th>
+                                  <th>Trade</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {#each d as w}
+                              <tr class="assets-container">
+                                  <td>
+                                   <div class="assets">
+                                       <div class="assets-icons">
+                                           <img src="https://www.datocms-assets.com/51952/1635193869-btc.png" alt="">
+                                       </div>
+                                       <div class="assets-pairs">
+                                           <p>BTC/USDT</p>
+                                       </div>
+                                   </div>
+                                  </td> 
+                                  <td>
+                                   <div class="asset-price">
+                                       63,234.90
+                                   </div>
+                                  </td>
+                                  <td>
+                                       <div class="price-change">
+                                           -2.23%
+                                       </div>
+                                  </td>
+                                  <td>
+                                   <div class="chart">
+                                       ---
+                                   </div>
+                              </td>
+                              <td>
+                                   <button class="snjbeSNje button">trade</button>
+                              </td>
+                               </tr>
+                              {/each}
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+  
+  
+              <div class="card-2">
+                  <div class="card-2-title"> Top Gainers</div>
+                  <div class="card-2-container">
+                      {#each c as f}
+                      <div class="card-2-display">
+                          <div class="assets">
+                              <div class="assets-icons">
+                                  <img src="https://www.datocms-assets.com/51952/1635193869-btc.png" alt="">
+                              </div>
+                              <div class="assets-pairs">
+                                  <p>BTC/USDT</p>
+                              </div>
+                          </div>
+                          <div class="asset-price">
+                              <p> 63,234.90</p>
+                            
+                          </div>
+                          <div class="price-change">
+                              
+                              <p>-2.23%</p>
+                          </div>
+                      </div>
+                      {/each}
+                    
+                  </div>
+  
+  
+                  <div class="card-2-title"> Top Gainers</div>
+                  <div class="card-2-container">
+                      {#each c as f}
+                      <div class="card-2-display">
+                          <div class="assets">
+                              <div class="assets-icons">
+                                  <img src="https://www.datocms-assets.com/51952/1635193869-btc.png" alt="">
+                              </div>
+                              <div class="assets-pairs">
+                                  <p>BTC/USDT</p>
+                              </div>
+                          </div>
+                          <div class="asset-price">
+                              <p> 63,234.90</p>
+                            
+                          </div>
+                          <div class="price-change">
+                              
+                              <p>-2.23%</p>
+                          </div>
+                      </div>
+                      {/each}
+                    
+                  </div>
+                
+              </div>
+  
+          </div>
+       </div>
+  
+       <div class="JsklSmkl _394bd770 fae21543">
+          <h1 class="sectiion-title">Your one-stop shop for crypto trading</h1>
+          <div class="f6472c3e font-ss3">
+              <a href="/trade" class="_2f588215">
+                  <div class="_989d578a _3c4b34ca"></div>
+                  <div class="b0673997">Trade all the trending assets</div>
+                  <div class="_580e1c84">Discover over 400 cryptocurrencies including all the trending new listings.</div>
+                  <div class="_12d43166 _8d9f59a3">
+                      <b>400+</b> 
+                      cryptocurrencies
+                  </div>    
+                  <div class="b62fad60">Trade Now &gt;</div>
+              </a>
+                  <a href="/futures/trade" class="_2f588215"><!----><div class="b0673997">Hedge with Poloniex Futures</div>
+                      <div class="_580e1c84">Trade Bitcoin, Ethereum, and other perpetual swap contracts with up to 100x leverage on Poloniex Futures.</div>
+                      <div class="_989d578a _0ab34971"></div>
+                      <div class="_12d43166 _8d9f59a3"><b>100x</b> Max leverage</div>
+                      <div class="b62fad60">Trade Now &gt;</div>
+                  </a>
+                  <a href="/trade" class="_2f588215">
+                      <div class="_989d578a cc033262"></div>
+                      <div class="b0673997">Cross Margin Trading</div>
+                      <div class="_580e1c84">Brand-new cross margin trading with 3x leverage. Auto borrow and repay funds in your portfolio account.</div>
+                      <div class="_12d43166">As low as <b>1%</b> interest rate</div>
+                      <div class="b62fad60">Trade Now &gt;</div>
+                  </a>
+              </div>
+       </div>
+  
+        <div class="cks-tv-mobile-viw">
+          <div class="_swiopsn">
+              <div class="text">
+                  <div class="_skeOes234l">
+                      Trade Anytime, Anywhere.
+                  </div>
+                  <div class="jsh-small">
+                      Open new positions instantly, whether it's on ezcryptox App or Web.
+                  </div>
+              </div>
+              <div class="uskjs img">
+                  <img src="{tv}" alt="">
+              </div>
           </div>
         </div>
+  
+        <div class="safe-guard">
+              <div class="safe-guard-container">
+                  <div class="img-container">
+                      <img src="{Safeguard}" alt="">
+                  </div>
+                  <div class="text-container">
+                      <div class="text-header">Safeguard Your Assets</div>
+                      <div class="text-content">24/7 system monitoring, 100% PoR, and multiple levels of security.</div>
+                      <div class="text-footer">
+                          <div class="_swkwjksw">
+                              Proof of Reserves 
+                              <svg fill="currentColor" style="width: 20px; height: 20px;">
+                                  <use xlink:href="#uniframe-icon-direction"></use>
+                              </svg>
+                          </div>
+                          <div class="_swkwjksw">
+                              Multilevel Account Security
+                              <svg fill="currentColor" >
+                                  <use xlink:href="#uniframe-icon-direction"></use>
+                              </svg>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+        </div>
+  
+      <div class="d4ced24e">
+          <div class="_0afb5503">
+              <h3 class="_0b275020">The Most Trusted Exchange as Always</h3>
+              <div class="ce33e2f7 font-ss3">
+                  <div class="bfdc8ba7">
+                      <div class="_04640162 _26537c60"></div>
+                      <div class="_15c0afd9">
+                          <div class="_5eaa08ba">Secure and Stable</div>
+                          <div class="c40d812e"> We provide a trusted and intuitive platform for users, of all experience levels, to trade how they want. </div>
+                      </div>
+                  </div>
+                  <div class="bfdc8ba7">
+                      <div class="_04640162 _59617368"></div>
+                      <div class="_15c0afd9">
+                          <div class="_5eaa08ba">24 / 7 Support</div>
+                          <div class="c40d812e"> Reach out to our support team with any issues and we'll help you resolve them as quickly as possible. </div>
+                      </div>
+                  </div>
+                  <div class="bfdc8ba7">
+                      <div class="_04640162 _0498cef7"></div>
+                      <div class="_15c0afd9">
+                          <div class="_5eaa08ba">VIP Service</div>
+                          <div class="c40d812e"> Poloniex offers high rate limit, and low latency API for you with good overall liquidity; friendly for institutional traders. </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
-    <GiveawayListing />
+  
+      <div class="_4aaab2bd">
+          <div class="fdf11cf7">
+              <div class="_960fdf24">
+                  <h3 class="_986dc130">Start Your Crypto Journey Now</h3>
+                  <div class="_10b939b9 font-ss3"> Connecting you to the power of crypto </div>
+              </div>
+              <div class="_73a8d391 font-ss3">
+                  <input type="email" placeholder="Enter your email">
+                  <button type="button" class="polo-btn polo-btn-button polo-btn-primary polo-btn-large">
+                      <!---->
+                      <div class="btn-sp"> Sign Up </div>
+                  </button>
+              </div>
+          </div>
+      </div>
+  
   </div>
-  <Contents />
-</div>
-
-<Footer />
+  
+  <Footer />

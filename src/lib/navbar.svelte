@@ -1,5 +1,6 @@
 <script>
   import { screen } from "$lib/store/screen";
+  import { app } from "$lib/store/config.store.js";
   import { onMount } from "svelte";
   import MobileMenu from "./mobile-menu.svelte";
   import BuyCrypto from "./navbar-components/buy-crypto.svelte";
@@ -10,7 +11,7 @@
   import Trade from "./navbar-components/trade.svelte";
   import { isLogin } from "$lib/store/profile";
   import Language from "./navbar-components/language.svelte";
-  import { toggleMode } from "mode-watcher";
+  import { browser } from '$app/environment';
   import {
 		fetchUnreadCount,
 	} from '$lib/navbar-components/notifications';
@@ -36,6 +37,14 @@
   });
 
 
+  const handleTheme = (()=>{
+    if(browser){
+          localStorage.setItem("theme", $app.theme ? "" : "darken" );
+          $app.themeConfig($app.theme ? "" : "darken")
+          app.set($app)
+      }
+  })
+
   // aria-account-unread="{unreadnotifications}"
 
 </script>
@@ -43,11 +52,11 @@
 <div id="uniframe-header" data-v-app>
   <header class="cdd74806 uniframe-root uniframe-header">
     <div class="d576b507">
-
       <div>
         <div class="c0f4158f">
-          <a href="/">
-            <img src="{logo}"  alt="" />
+          <a class="{$app.theme ? "darken" : ""}" href="/">
+               ezcryptox
+            <!-- <img src="{logo}"  alt="" /> -->
           </a>
         </div>
       </div>
@@ -217,7 +226,7 @@
         <div>
           <!-- svelte-ignore a11y-click-events-have-key-events -->
           <!-- svelte-ignore a11y-no-static-element-interactions -->
-          <div class="c9759bc4 relative" on:click={() => toggleMode()}>
+          <div class="c9759bc4 relative" on:click={() => handleTheme()}>
             <svg fill="currentColor" style="width: 20px; height: 20px;" class="absolute scale-100 transition-all dark:scale-0">
               <use
                 xlink:href="#uniframe-icon-sun"

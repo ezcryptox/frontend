@@ -274,7 +274,7 @@
 
 <div class="d09e8c81 flex-column">
     <div class="c1ffc6e0">
-        <div class="bfd5c32f" style="height: 520px;" id="tv_chart_container"></div>
+        <div class="bfd5c32f" style="height: 55vh;" id="tv_chart_container"></div>
     </div>
 </div>
 

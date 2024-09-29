@@ -1,0 +1,107 @@
+.cdd74806 {
+    -webkit-user-select: none;
+    user-select: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000000;
+    min-width: 320px;
+    width: 100%;
+    --uniframe-header-height: 50px;
+}
+.cdd74806>.d576b507 {
+    padding-left: 16px;
+    padding-right: 16px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    justify-content: space-between;
+    height: var(--uniframe-header-height);
+    background-color: var(--background-color);
+}
+.c0f4158f a {
+    display: flex;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 23.44px;
+    letter-spacing: 0.03em;
+    text-align: left;
+}
+.cdd74806>.d576b507, .cdd74806>.d576b507>div {
+    display: flex;
+    align-items: center;
+}
+.uniframe-root menu, .uniframe-root ol, .uniframe-root ul {
+    list-style: none;
+}
+.a3107c1e, .a3107c1e .bfe44f5e {
+    display: flex;
+    align-items: center;
+}
+.a3107c1e {
+    padding-left: 16px;
+    white-space: nowrap;
+}
+.a3107c1e .b8777ccf {
+    position: relative;
+}
+.a3107c1e .bfe44f5e {
+    height: 50px;
+    margin: 0 10px;
+    position: relative;
+    cursor: pointer;
+    transition: all .3s;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 15.23px;
+    letter-spacing: 0.03em;
+    text-align: center;
+}
+
+
+.b6d9e754 .b4f29bce {
+    margin-right: 12px;
+    color: var(--scroll-color) !important;
+}
+.ce727619 {
+    position: relative;
+    line-height: 1;
+    white-space: nowrap;
+    outline: 0;
+    transition: background-color .2s, border-color .2s, color .2s;
+    font-weight: 500;
+    -webkit-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    padding: 4px 16px;
+    font-size: 12px;
+}
+.b6d9e754 .d2c677df.d2c677df { 
+    color: var(--text-color);
+    background-color: transparent;
+    border: 1px solid var(--border-line);
+}
+.c9759bc4, .dd8dbce9, .a9d0f06a, .eb58c575 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    height: var(--uniframe-header-height);
+    cursor: pointer;
+    color: var(--icon-colors);
+    transition: color .3s;
+}
+.eb58c575 {
+    margin-left: 8px;
+}
+.eb58c575 span {
+    font-weight: 600;
+    font-size: 14px !important;
+}

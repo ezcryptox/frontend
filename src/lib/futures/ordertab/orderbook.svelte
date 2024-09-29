@@ -1,5 +1,8 @@
 <script>
-let r = [1,2,3,4,5,6,7,8,9,0]
+	import AskPrice from "./ask-price.svelte";
+	import Price from "./price.svelte";
+
+
 </script>
 
 <div class="e4fc3f26 flex-space-between flex-1 h-0">
@@ -46,46 +49,11 @@ let r = [1,2,3,4,5,6,7,8,9,0]
                 <div class="b893d92b">Total <span>(Cont)</span></div>
             </div>
             <div class="c213652d f642df92 flex-1 flex-column h-0">
-                <div class="e792ba77 cbe10470">
-                    <div class="el-scrollbar__wrap el-scrollbar__wrap--hidden-default">
-                        <div class="el-scrollbar__view" style="">
-                            {#each r as e}
-                                <div class="fbaac962">
-                                    <div class="add4c847">1.90000</div>
-                                    <div class="b946a8ff">22</div>
-                                    <div class="b893d92b">52,334</div>
-                                    <div class="a36c8eee" style="transform: translateX(-0.0420377%);"></div>
-                                </div>
-                            {/each}
-                        </div>
-                    </div>
-                </div>
+                
+                <AskPrice limit={20} ask={true}/>
+                <Price />
+                <AskPrice limit={20} ask={false}/>
 
-                <div class="f8581459">
-                    <div class="a9537268 e295c28d">
-                        <span>0.10023</span>
-                        <svg class="svgicon a3334039" aria-hidden="true">
-                            <use xlink:href="#arrow-down-2"></use>
-                        </svg>
-                    </div>
-                    <div class="c5d35a84">
-                        <span class="el-only-child__content el-tooltip__trigger el-tooltip__trigger">Mark Price: 0.10023 </span>
-                    </div>
-                </div>
-                <div class="e792ba77 cbe10470 d850b396">
-                    <div class="el-scrollbar__wrap el-scrollbar__wrap--hidden-default">
-                        <div class="el-scrollbar__view" style="">
-                            {#each r as e}
-                                <div class="fbaac962">
-                                    <div class="add4c847">1.90000</div>
-                                    <div class="b946a8ff">22</div>
-                                    <div class="b893d92b">52,334</div>
-                                    <div class="a36c8eee" style="transform: translateX(-0.0420377%);"></div>
-                                </div>
-                            {/each}
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

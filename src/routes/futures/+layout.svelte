@@ -2,6 +2,7 @@
    import Header from "$lib/futures/header.svelte";
     import "../../styles/futures/header.css";
     import "../../styles/futures/orderbook.css";
+	import '../../styles/trade/orders.css';
     import "../../styles/futures/controllers.css";
 	 import {futuresCurrentPair, futuresTradePairs} from "$lib/store/future.store"
     import {cryptoQuotes, depthChartList, marketTrades, orderBook, tradePairs } from '$lib/store/marketdata';
@@ -29,12 +30,6 @@
 			io.on("ticker", data =>{
 				futuresTradePairs.set(data)
 			})
-
-			io.on('poloniexData', (data) => {
-				console.log('Data from Poloniex:', data);
-				// You can process or display the data as needed here
-			});
-
 
 			io.on('qts', (data) => {
 				cryptoQuotes.set(data);

@@ -1,7 +1,54 @@
 /* html[data-uniframe-theme=light] .c0f4158f a {
   background-image: url(https://res.cloudinary.com/dxwhz3r81/image/upload/v1715942424/ezcryptox.ioo-01_y2dny9.png);
 } */
-
+.c0f4158f a {
+  background: linear-gradient(94.55deg, #3C93F9 -9.57%, #062D5A 108.93%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.c0f4158f a.darken {
+  background: linear-gradient(94.55deg, #E2F0FF -9.57%, #176ACB 108.93%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.button{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 4px;
+  color: var(--scroll-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+.button.light{
+  color: var(--primary-color);
+  background-color: var(--scroll-color);
+  border: 1px solid var(--scroll-color);
+}
+.button.light:hover{
+  background-color: var(--scroll-color);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.068);
+}
+.button:hover{
+  background-color: var(--primary-color-hover);
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+.uniframe-root *, .uniframe-root :after, .uniframe-root :before {
+  box-sizing: border-box;
+}
+#app{
+  width: 100%;
+  /* display: flex;
+  justify-content: center; */
+}
+.app-display{
+  margin-top: 50px;
+  /* max-width: 1312px; */
+}
 
 html[data-theme=light] .el-popper, html[data-theme=light] .e-dropdown {
   --el-color-primary: #131316;
@@ -52,9 +99,6 @@ html[data-uniframe-theme=light] .ce727619.fc91b736 {
   font: inherit;
 }
 
-html[data-uniframe-theme=light] .eb58c575 span {
-  color: #2b2b2e;
-}
 
 ::-webkit-scrollbar {
   width: 5px;

@@ -45,6 +45,7 @@
 			});
 
 			io.on('obs', (data) => {
+				
 				orderBook.set(data);
 				const symbol = $currentSelectedPair?.symbol;
 				const orderbook = data.orderbook;

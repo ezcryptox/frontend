@@ -11,6 +11,7 @@
 	import { onMount } from 'svelte';
 	import '../styles/global.css';
 	import '../styles/navbar.css';
+	import '../styles/navbarV2.css';
 	import Navbar from '$lib/navbar.svelte';
 	import Loader from '$lib/loader.svelte';
 	import { ModeWatcher, mode } from 'mode-watcher';
@@ -102,7 +103,10 @@
 		</div>
 	{:else}
 		<Navbar></Navbar>
-		<slot></slot>
+		<div class="app-display">
+			<slot></slot>
+		</div>
+
 
 		{#if $error_message}
 			<div style="background-color:crimson;" class="error-message">
