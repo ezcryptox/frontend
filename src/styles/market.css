@@ -922,7 +922,7 @@ table {
 }
 
  ._9df3dcbf ._4b9aaf1e .c4f3185a {
-  color: rgb(255, 255, 255);
+  color: var(--text-color);
 }
 
 ._9df3dcbf ._09ad3d84, ._9df3dcbf .d7b95752 {

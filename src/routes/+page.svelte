@@ -1,16 +1,64 @@
 <script>
-  import { app } from '$lib/store/config.store.js';
-  import "../styles/home.css"
-  import Footer from "$lib/footer.svelte";
-  const banner = new URL('$lib/images/into-banner 1.png', import.meta.url).href
-  const tv = new URL('$lib/images/guidedDownload.png', import.meta.url).href
-  const Safeguard = new URL('$lib/images/Screenshot 2024-09-26 160652.png', import.meta.url).href
-  const Safeguard_dark = new URL('$lib/images/safe-guade.png', import.meta.url).href
-  const googleImg = new URL('$lib/images/fa7d7931679b6c250489e847177ba1be.png', import.meta.url).href
-  $: marketTab = 0
-  
-  let d = [1,2,3,4,5,6, 7]
-  let c = [1,2,3,4]
+    import { app } from '$lib/store/config.store.js';
+    import "../styles/home.css";
+    import Footer from "$lib/footer.svelte";
+    import {cryptoQuotes, tradePairs} from '$lib/store/marketdata';
+    const banner = new URL('$lib/images/into-banner 1.png', import.meta.url).href
+    const tv = new URL('$lib/images/guidedDownload.png', import.meta.url).href
+    const Safeguard = new URL('$lib/images/Screenshot 2024-09-26 160652.png', import.meta.url).href
+    const Safeguard_dark = new URL('$lib/images/safe-guade.png', import.meta.url).href
+    const googleImg = new URL('$lib/images/fa7d7931679b6c250489e847177ba1be.png', import.meta.url).href
+    import { socketData } from '$lib/store/socket';
+    import { onMount } from 'svelte';
+    $: marketTab = 0
+    $: pairs = []
+    
+    let d = [1,2,3,4,5,6, 7]
+    let c = [1,2,3,4]
+
+    socketData.subscribe((data) => {
+        if (!data) return;
+        const { io, request } = data;
+        request('join-ticker');
+
+        io.on('qts', (data) => {
+            cryptoQuotes.set(data);
+        });
+    });
+
+    onMount(()=>{
+        pairs = [...$tradePairs]
+        cryptoQuotes.subscribe((q) => {
+			if (!q) return;
+			pairs = pairs.map((p) => ({
+				...p,
+				price: p.price || 0,
+				...(q[p.symbol]
+					? {
+							changePercent: parseFloat(q[p.symbol].changePercent) || 0,
+							volumeFrom: parseFloat(q[p.symbol].volumeFrom) || 0,
+							volumeTo: parseFloat(q[p.symbol].volumeTo) || 0,
+							high: parseFloat(q[p.symbol].high) || 0,
+							low: parseFloat(q[p.symbol].low) || 0,
+							price: parseFloat(q[p.symbol].price || p.price) || 0
+						}
+					: {})
+			}));
+		});
+    })
+
+    $: topGainers =  [...pairs]
+    .filter(item => item.changePercent > 0)        
+    .sort((a, b) => b.changePercent - a.changePercent)   
+    .slice(0, 4);    
+    
+    $: topLosers =  [...pairs]
+    .filter(item => item.changePercent < 0)        
+    .sort((a, b) => b.changePercent - a.changePercent)   
+    .slice(0, 4);                             
+
+
+
   </script>
   
   <div class="app-homepage _686bf1d6 w1200">
@@ -61,14 +109,14 @@
        <!-- Next trading opporturnity -->
        <div class="JsklSmkl">
           <h1 class="sectiion-title">Catch Your Next Trading Opportunity</h1>
-          <button class="search-more button">
+          <!-- <button class="search-more button">
               <span>
                   Search More 
               </span>
               <svg fill="currentColor" style="width: 20px; height: 20px;">
                   <use xlink:href="#uniframe-icon-direction"></use>
               </svg>
-          </button>
+          </button> -->
           <div class="market-containers">
               <div class="card-1">
                   <div class="card-1-tabs">
@@ -91,37 +139,41 @@
                               </tr>
                           </thead>
                           <tbody>
-                              {#each d as w}
+                              {#each pairs.slice(0, 10) as pair}
+                              {#if pair.quoteCurrencyName === "USDT" && pair.price}
+
                               <tr class="assets-container">
-                                  <td>
-                                   <div class="assets">
-                                       <div class="assets-icons">
-                                           <img src="https://www.datocms-assets.com/51952/1635193869-btc.png" alt="">
-                                       </div>
-                                       <div class="assets-pairs">
-                                           <p>BTC/USDT</p>
-                                       </div>
-                                   </div>
-                                  </td> 
-                                  <td>
-                                   <div class="asset-price">
-                                       63,234.90
-                                   </div>
-                                  </td>
-                                  <td>
-                                       <div class="price-change">
-                                           -2.23%
-                                       </div>
-                                  </td>
-                                  <td>
-                                   <div class="chart">
-                                       ---
-                                   </div>
-                              </td>
-                              <td>
-                                   <button class="snjbeSNje button">trade</button>
-                              </td>
-                               </tr>
+                                <td>
+                                 <div class="assets">
+                                     <div class="assets-icons">
+                                         <img src="{pair.baseIcon}" alt="">
+                                     </div>
+                                     <div class="assets-pairs">
+                                         <p>{pair.displayName}</p>
+                                     </div>
+                                 </div>
+                                </td> 
+                                <td>
+                                 <div class="asset-price">
+                                     {pair.price}
+                                 </div>
+                                </td>
+                                <td>
+                                     <div class="price-change {pair.changePercent > 0 ? "positive" : ""}">
+                                        {pair.changePercent > 0 ? "+" : ""}{parseFloat(pair.changePercent).toFixed(2)}%
+                                     </div>
+                                </td>
+                                <td>
+                                 <div class="chart">
+                                     ---
+                                 </div>
+                            </td>
+                            <td>
+                                 <button class="snjbeSNje button">trade</button>
+                            </td>
+                             </tr>
+                              {/if}
+                            
                               {/each}
                           </tbody>
                       </table>
@@ -132,52 +184,51 @@
               <div class="card-2">
                   <div class="card-2-title"> Top Gainers</div>
                   <div class="card-2-container">
-                      {#each c as f}
+                      {#each topGainers as pair}
+                      {#if  pair.price}
                       <div class="card-2-display">
                           <div class="assets">
                               <div class="assets-icons">
-                                  <img src="https://www.datocms-assets.com/51952/1635193869-btc.png" alt="">
+                                  <img src="{pair.baseIcon}" alt="">
                               </div>
                               <div class="assets-pairs">
-                                  <p>BTC/USDT</p>
+                                  <p>{pair.displayName}</p>
                               </div>
                           </div>
                           <div class="asset-price">
-                              <p> 63,234.90</p>
-                            
+                              <p>{pair.price}</p>
                           </div>
-                          <div class="price-change">
-                              
-                              <p>-2.23%</p>
+                          <div class="price-change {pair.changePercent > 0 ? "positive" : ""}">
+                              <p> {pair.changePercent > 0 ? "+" : ""}{parseFloat(pair.changePercent).toFixed(2)}%</p>
                           </div>
                       </div>
-                      {/each}
-                    
+                      {/if}
+                    {/each}
                   </div>
   
   
-                  <div class="card-2-title"> Top Gainers</div>
+                  <div class="card-2-title"> Top Loser</div>
                   <div class="card-2-container">
-                      {#each c as f}
-                      <div class="card-2-display">
-                          <div class="assets">
-                              <div class="assets-icons">
-                                  <img src="https://www.datocms-assets.com/51952/1635193869-btc.png" alt="">
-                              </div>
-                              <div class="assets-pairs">
-                                  <p>BTC/USDT</p>
-                              </div>
-                          </div>
-                          <div class="asset-price">
-                              <p> 63,234.90</p>
-                            
-                          </div>
-                          <div class="price-change">
-                              
-                              <p>-2.23%</p>
-                          </div>
-                      </div>
-                      {/each}
+                    {#each topLosers as pair}
+                    {#if  pair.price}
+                    <div class="card-2-display">
+                        <div class="assets">
+                            <div class="assets-icons">
+                                <img src="{pair.baseIcon}" alt="">
+                            </div>
+                            <div class="assets-pairs">
+                                <p>{pair.displayName}</p>
+                            </div>
+                        </div>
+                        <div class="asset-price">
+                            <p>{pair.price}</p>
+                        </div>
+                        <div class="price-change {pair.changePercent > 0 ? "positive" : ""}">
+                            <p> {pair.changePercent > 0 ? "+" : ""}{parseFloat(pair.changePercent).toFixed(2)}%</p>
+                        </div>
+                    </div>
+                    {/if}
+                  {/each}
                     
                   </div>
                 
@@ -199,8 +250,8 @@
                   </div>    
                   <div class="b62fad60">Trade Now &gt;</div>
               </a>
-                  <a href="/futures/trade" class="_2f588215"><!----><div class="b0673997">Hedge with Poloniex Futures</div>
-                      <div class="_580e1c84">Trade Bitcoin, Ethereum, and other perpetual swap contracts with up to 100x leverage on Poloniex Futures.</div>
+                  <a href="/futures/trade" class="_2f588215"><!----><div class="b0673997">Hedge with Ezcryptox Futures</div>
+                      <div class="_580e1c84">Trade Bitcoin, Ethereum, and other perpetual swap contracts with up to 100x leverage on Ezcryptox Futures.</div>
                       <div class="_989d578a _0ab34971"></div>
                       <div class="_12d43166 _8d9f59a3"><b>100x</b> Max leverage</div>
                       <div class="b62fad60">Trade Now &gt;</div>
@@ -279,7 +330,7 @@
                       <div class="_04640162 _0498cef7"></div>
                       <div class="_15c0afd9">
                           <div class="_5eaa08ba">VIP Service</div>
-                          <div class="c40d812e"> Poloniex offers high rate limit, and low latency API for you with good overall liquidity; friendly for institutional traders. </div>
+                          <div class="c40d812e"> Ezcryptox offers high rate limit, and low latency API for you with good overall liquidity; friendly for institutional traders. </div>
                       </div>
                   </div>
               </div>

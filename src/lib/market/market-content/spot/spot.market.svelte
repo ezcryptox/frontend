@@ -41,8 +41,6 @@
     })
 
 
-    $: console.log(search)
-
 </script>
 <div class="d68d17a2 _1e5e2a71">
     <section class="c6e41aee">
