@@ -8,9 +8,7 @@
     --tooltip-text-color: var(--fallback-nc,oklch(var(--nc)/1));
     --tooltip-tail-offset: calc(100% + 0.0625rem - var(--tooltip-tail))
 }
-.tooltip.tooltip-overlay {
-    z-index: 1000000;
-}
+
  
 .tooltip.tooltip-focus:not(:focus-visible):before,
 .tooltip.tooltip-focus:not(:focus-visible):after {

@@ -3089,7 +3089,6 @@
   padding: 0 24px;
   border-radius: 25px;
   color: #131316;
-  font-family: Source Sans 3;
   font-size: 21px;
   font-style: normal;
   font-weight: 400;
@@ -6227,13 +6226,6 @@ pre {
   overflow: auto;
 }
 
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
 
 button,
 input,
@@ -6348,14 +6340,6 @@ html {
   height: 100%;
 }
 
-html body {
-  font-family: proxima-nova, Helvetica Neue, Helvetica, PingFang SC,
-    Hiragino Sans GB, Microsoft YaHei, 微软雅黑, Aril, sans-serif;
-}
-
-.f-pnc {
-  font-family: proxima-nova-condensed, sans-serif;
-}
 
 h1,
 h2,
@@ -6454,12 +6438,9 @@ body.v3-body {
   flex-direction: column;
   min-height: 100%;
   overflow: auto;
-  font-family: source-sans3-regular !important;
+
 }
 
-body.v3-body.zh-cn {
-  font-family: PingFang SC !important;
-}
 
 body.v3-body.dark-theme .wc-referral {
   background: #131316;
@@ -8006,7 +7987,6 @@ button.swiper-pagination-bullet {
 
 [class*=" el-icon-"],
 [class^="el-icon-"] {
-  font-family: element-icons !important;
   speak: none;
   font-style: normal;
   font-weight: 400;
@@ -11207,7 +11187,6 @@ body.os-dragging * {
 }
 
 .os-text-inherit {
-  font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
   font-style: inherit;

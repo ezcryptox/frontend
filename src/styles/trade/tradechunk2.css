@@ -798,19 +798,16 @@ body.dark-theme ._0c7c0f49 {
     color: #616161
 }
 
-body.dark-theme ._0c7c0f49>dl dt {
-    color: #b8b8b8
-}
 
 ._0c7c0f49>dl dd {
     margin: 0;
     font-size: 12px;
     line-height: 18px;
-    color: #131316
+    color: var(--text-color)
 }
 
-body.dark-theme ._0c7c0f49>dl dd {
-    color: #fff
+ ._0c7c0f49>dl dd {
+    color: var(--text-color)
 }
 
 ._0c7c0f49 ._0ce4a56e,._0c7c0f49 .cc1b15b1 {
@@ -47560,11 +47557,10 @@ body.dark-theme ._4b0c0787 .afed7137:hover>a {
     width: 100%;
     display: flex;
     flex-direction: column;
-    color: #878787
 }
 
  ._4b0c0787 .afed7137>a {
-    color: var(--text-color)
+    color: var(--inactive-text-color)
 }
 
 ._4b0c0787 .afed7137 ._2365dc81 {
@@ -53425,27 +53421,13 @@ body.dark-theme ._4b0c0787 .afed7137 .e05cba42 {
 }
 
 
-.cdc6768f>span {
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    margin-left: 16px;
-    color: #616161
-}
-
-body.dark-theme .cdc6768f>span {
-    color: #b8b8b8
-}
 
 .cdc6768f>span.bf786d3a,.cdc6768f>span:hover {
     font-weight: 600;
-    color: #2b2b2e
+    color: var(--text-color);
 }
 
-body.dark-theme .cdc6768f>span.bf786d3a,body.dark-theme .cdc6768f>span:hover {
-    color: #fff
-}
+
 
 @media screen and (min-width: 2560px) {
     .cdc6768f>span:not(.bf786d3a) {
@@ -56383,11 +56365,7 @@ body.dark-theme .cdc6768f>span.bf786d3a,body.dark-theme .cdc6768f>span:hover {
     line-height: 18px;
     letter-spacing: .15px;
     margin-right: 10px;
-    color: #2b2b2e
-}
-
-body.dark-theme .bd304729 ._86c486b8 {
-    color: #fff
+    color: var(--text-color)
 }
 
 .bd304729 ._8054e9cd {
@@ -62257,21 +62235,7 @@ body.dark-theme ._3a629d1d {
     overflow-y: auto
 }
 
-._68e93d14 ._360ce864 {
-    height: 17px;
-    padding: 0 16px;
-    font-size: 12px;
-    overflow: hidden;
-    line-height: 18px;
-    letter-spacing: .2px;
-    background-position: 100%;
-    background-repeat: no-repeat;
-    color: #2b2b2e
-}
 
-body.dark-theme ._68e93d14 ._360ce864 {
-    color: #fff
-}
 
 ._68e93d14 ._360ce864>span {
     overflow: hidden;
@@ -97856,42 +97820,20 @@ body.dark-theme .vm--modal {
     padding: 8px 16px 0
 }
 
-._43a2945c ._6bf69178 span {
-    cursor: pointer;
-    font-size: 14px;
-    line-height: 20px;
-    position: relative;
-    padding-bottom: 2px;
-    color: #616161
-}
 
-body.dark-theme ._43a2945c ._6bf69178 span {
-    color: #b8b8b8
-}
 
 ._43a2945c ._6bf69178 span+span {
     margin-left: 24px
 }
 
 ._43a2945c ._6bf69178 span:hover {
-    color: #131316
+    color: var(--text-color);
 }
 
 body.dark-theme ._43a2945c ._6bf69178 span:hover {
     color: #fff
 }
 
-._43a2945c ._6bf69178 span._667a0527 {
-    font-weight: 600;
-    border-bottom: 2px solid;
-    color: #131316;
-    border-color: #1a8f5c
-}
-
-body.dark-theme ._43a2945c ._6bf69178 span._667a0527 {
-    color: #fff;
-    border-color: #119e5f
-}
 
 ._43a2945c .e75d47dd {
     gap: 0 16px;

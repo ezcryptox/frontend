@@ -182,7 +182,6 @@ html .el-date-editor.el-range-editor.el-input__wrapper {
 
 .ag-icon::before {
   content: "";
-  font-family: inherit;
 }
 
 .ag-icon::after {
@@ -195,7 +194,6 @@ html .el-date-editor.el-range-editor.el-input__wrapper {
 }
 
 .ag-icon-filter {
-  font-family: var(--ag-icon-font-family-filter, var(--ag-icon-font-family));
   font-weight: var(--ag-icon-font-weight-filter, var(--ag-icon-font-weight));
   color: var(--ag-icon-font-color-filter, var(--ag-icon-font-color));
 }
@@ -212,7 +210,7 @@ html .el-date-editor.el-range-editor.el-input__wrapper {
 }
 
 .ag-icon-first {
-  font-family: var(--ag-icon-font-family-first, var(--ag-icon-font-family));
+
   font-weight: var(--ag-icon-font-weight-first, var(--ag-icon-font-weight));
   color: var(--ag-icon-font-color-first, var(--ag-icon-font-color));
 }
@@ -229,7 +227,7 @@ html .el-date-editor.el-range-editor.el-input__wrapper {
 }
 
 .ag-icon-last {
-  font-family: var(--ag-icon-font-family-last, var(--ag-icon-font-family));
+
   font-weight: var(--ag-icon-font-weight-last, var(--ag-icon-font-weight));
   color: var(--ag-icon-font-color-last, var(--ag-icon-font-color));
 }
@@ -246,7 +244,7 @@ html .el-date-editor.el-range-editor.el-input__wrapper {
 }
 
 .ag-icon-next {
-  font-family: var(--ag-icon-font-family-next, var(--ag-icon-font-family));
+
   font-weight: var(--ag-icon-font-weight-next, var(--ag-icon-font-weight));
   color: var(--ag-icon-font-color-next, var(--ag-icon-font-color));
 }
@@ -263,7 +261,6 @@ html .el-date-editor.el-range-editor.el-input__wrapper {
 }
 
 .ag-icon-previous {
-  font-family: var(--ag-icon-font-family-previous, var(--ag-icon-font-family));
   font-weight: var(--ag-icon-font-weight-previous, var(--ag-icon-font-weight));
   color: var(--ag-icon-font-color-previous, var(--ag-icon-font-color));
 }
@@ -798,7 +795,6 @@ html .el-date-editor.el-range-editor.el-input__wrapper {
 }
 
 .ag-checkbox-input-wrapper {
-  font-family: var(--ag-icon-font-family);
   font-weight: var(--ag-icon-font-weight);
   color: var(--ag-icon-font-color);
   font-size: var(--ag-icon-size);
@@ -826,7 +822,6 @@ html .el-date-editor.el-range-editor.el-input__wrapper {
 
 .ag-checkbox-input-wrapper::after {
   content: var(--ag-icon-font-code-checkbox-unchecked, "");
-  font-family: inherit;
   color: var(--ag-checkbox-unchecked-color);
   display: var(--ag-icon-font-display-checkbox-unchecked, var(--ag-icon-font-display));
   position: absolute;
@@ -911,9 +906,7 @@ html .el-date-editor.el-range-editor.el-input__wrapper {
   --ag-widget-vertical-spacing: calc(var(--ag-grid-size) * 1.5);
   --ag-toggle-button-height: 18px;
   --ag-toggle-button-width: 28px;
-  --ag-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   --ag-font-size: 13px;
-  --ag-icon-font-family: agGridAlpine;
   --ag-selected-tab-underline-color: var(--ag-alpine-active-color);
   --ag-selected-tab-underline-width: 2px;
   --ag-selected-tab-underline-transition-speed: .3s;
@@ -983,7 +976,6 @@ html .el-date-editor.el-range-editor.el-input__wrapper {
 
 .po-ag-table {
   flex: 1 0 auto;
-  --ag-font-family: "source-sans3", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "Aril", sans-serif;
   --ag-borders: none;
   --ag-row-border-color: var(--po-ag-color-border);
   --ag-background-color: transparent;

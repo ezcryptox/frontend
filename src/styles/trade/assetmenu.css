@@ -4100,9 +4100,6 @@ body.dark-theme .polo-input.focus,body.dark-theme .polo-input:hover {
     border-color: #c44749
 }
 
-body.dark-theme .polo-input.error {
-    border-color: #9a2c2e
-}
 
 .polo-input.left>input {
     text-align: left

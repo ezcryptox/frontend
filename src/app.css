@@ -1,8 +1,8 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
  
-@layer base {
+/* @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -67,7 +67,7 @@
     --ring: hsl(212.7,26.8%,83.9);
   }
 }
- 
+  */
 /* @layer base {
   * {
     @apply border-border;
@@ -76,7 +76,7 @@
     @apply bg-background text-foreground;
   }
 } */
-
+/* 
 @font-face {
     font-family: proxima-regular;
     font-style: normal;
@@ -242,4 +242,4 @@
     font-family: source-sans3;
     font-weight: 700;
     src: url(/fonts/SourceSans3-Bold.8cca21f5.ttf) format("truetype")
-}
+} */

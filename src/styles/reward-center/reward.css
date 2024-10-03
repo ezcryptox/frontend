@@ -3687,10 +3687,6 @@ body.v3-body .footer-wrapper {
     border-color: #c44749
 }
 
-[data-theme=dark] .polo-input.error {
-    border-color: #9a2c2e
-}
-
 .polo-input.left>input {
     text-align: left
 }

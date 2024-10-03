@@ -1,8 +1,6 @@
-body.v3-body .wc-wallet {
-    padding-top: 50px;
-}
+
 .wc-wallet {
-    background-color: #f6f7f9;
+    background-color: var(--background-color);
 }
 .f25e176f {
     position: relative;
@@ -20,10 +18,10 @@ body.v3-body .wc-wallet {
 .dfafa451 {
     position: relative;
     padding-top: 40px;
-    color: #2a2a2a;
+    color: var(--text-color);
 }
 .dfafa451 ._8979253c {
-    color: #616161;
+    color: var(--inactive-text-color);
     height: 24px;
     margin: 0;
     display: flex;
@@ -106,13 +104,13 @@ body.v3-body .wc-wallet {
 .dfafa451 ._3b04c316 ._8b305fc7 {
     height: 114px;
     border-radius: 3px;
-    background: #fff;
+    background: var(--card-bg);
     margin-bottom: 20px;
     width: calc(33.33333% - 10px);
     padding: 20px 16px;
     padding-left: 15px;
     position: relative;
-    box-shadow: 5px 10px 8px #888888;
+    box-shadow: 5px 10px 8px var(--border-line);
     border-radius: 9px;
 }
 .dfafa451 ._3b04c316 ._8b305fc7 ._66590ade ._92aab3aa {
@@ -157,9 +155,8 @@ body.v3-body .wc-wallet {
 }
 ._0fafb26d {
     position: relative;
-    background-color: #fff;
     padding: 0 20px;
-    color: #616161;
+    color: var(--inactive-text-color);
 }
 ._0fafb26d .c4856b09 {
     display: flex;
@@ -167,7 +164,7 @@ body.v3-body .wc-wallet {
     padding-left: 8px;
 }
 ._0fafb26d .c4856b09 ._833dd21c {
-    color: #818181;
+    color: var(--inactive-text-color);
     font-size: 16px;
     margin-right: 40px;
     font-weight: 700;
@@ -176,7 +173,7 @@ body.v3-body .wc-wallet {
     line-height: 66px;
 }
 ._0fafb26d .c4856b09 ._833dd21c._34945ed8, ._0fafb26d .c4856b09 ._833dd21c:hover {
-    color: #2a2a2a;
+    color: var(--text-color);
 }
 ._0fafb26d .c4856b09 ._833dd21c ._8f87c557 {
     display: inline-block;
@@ -188,7 +185,7 @@ body.v3-body .wc-wallet {
     position: absolute;
     width: 30px;
     height: 6px;
-    background-color: #1a8f5c;
+    background-color: var(--primary-color);
     transform: translateX(-50%);
     left: 50%;
     bottom: 0;
@@ -211,7 +208,7 @@ body.v3-body .wc-wallet {
     margin-right: 20px;
     height: 20px;
     align-items: center;
-    border-right: 1px solid #d1d1d1;
+    border-right: 1px solid var(--border-line);
 }
 .polo-switch {
     display: flex;
@@ -329,20 +326,20 @@ input[type=checkbox], input[type=radio] {
     width: 190px;
     height: 30px;
     border-radius: 3px;
-    border: 1px solid #d1d1d1;
+    border: 1px solid var(--border-line);
     padding: 4px;
     padding-left: 34px;
     outline: 0;
 }
 ._753fc960 {
-    background: #fff;
+    background: var(--card-bg);
     padding: 0;
 }
 .d52631a5 {
     display: flex;
     padding: 0 20px;
     height: 48px;
-    background: #fbfbfb;
+    background: var(--card-bg);
 }
 .d52631a5>span._6c80e451 {
     position: relative;

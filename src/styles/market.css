@@ -294,10 +294,6 @@ table {
   margin-right: 8px;
 }
 
-.a1fc5931 ._017f116d, .a1fc5931 ._34b47978 {
-  font-family: source-sans3-semibold;
-}
-
 .a1fc5931 .a1a0ec07 {
   color: rgb(26, 143, 92);
 }
@@ -457,7 +453,7 @@ table {
 }
 
 ._1fc1e37e > span._4907f2bd {
-  font-family: source-sans3-semibold;
+  
   background-color: rgb(242, 242, 242);
 }
 
@@ -515,7 +511,7 @@ table {
   cursor: pointer;
   line-height: 28px;
   align-items: center;
-  font-family: source-sans3-semibold;
+  
   color: rgb(97, 97, 97);
 }
 
@@ -641,7 +637,7 @@ table {
   display: inline-block;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  font-family: source-sans3-semibold;
+  
 }
 
 ._2a39ccb4 ._2033d003,  ._2a39ccb4 ._2033d003 {
@@ -687,16 +683,13 @@ table {
   padding-right: 24px;
 }
 
-._2a39ccb4 tr td._8e0516f6, ._2a39ccb4 tr td._582f7adf, ._2a39ccb4 tr td.ba00c845 {
-  font-family: source-sans3-semibold;
-}
 
 ._2a39ccb4 ._9a05003e {
   display: inline-block;
   font-size: 16px;
   margin-left: 4px;
   color: rgb(97, 97, 97);
-  font-family: source-sans3;
+
 }
 
  ._2a39ccb4 ._9a05003e {

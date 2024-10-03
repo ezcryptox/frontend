@@ -284,7 +284,7 @@
 														<img src={selectedCurrency.icon} alt="" class="imgICon" />
 													</div>
 													<input
-														style="background-color: transparent !important; font-size: 24px; line-height: 34px; font-family: source-sans3-semibold; padding-left: 8px; min-width: 80px;"
+														style="background-color: transparent !important; font-size: 24px; line-height: 34px;  padding-left: 8px; min-width: 80px;"
 														readonly={true}
 														value={selectedCurrency.code}
 														type="text"
@@ -416,7 +416,7 @@
 												<img src={selectedCrypto.icon} alt="" class="imgICon" />
 											</div>
 											<input
-												style="background-color: transparent !important; font-size: 24px; line-height: 34px; font-family: source-sans3-semibold; padding-left: 8px; min-width: 80px;"
+												style="background-color: transparent !important; font-size: 24px; line-height: 34px;  padding-left: 8px; min-width: 80px;"
 												readonly={true}
 												value={selectedCrypto.code}
 												type="text"

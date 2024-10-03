@@ -128,7 +128,7 @@ body.v3-body .wc-signup {
     border: none;
     background-color: transparent;
     border-radius: 4px;
-    /* color: #131316; */
+    color: var(--text-color);
 }
 .form-item .msg-box {
     margin-top: 4px;
@@ -540,7 +540,7 @@ body.v3-body .wc-login {
     width: 190px;
     height: 30px;
     border-radius: 3px;
-    border: 1px solid #d1d1d1;
+    border: 1px solid var(--border-line);
     padding: 4px;
     padding-left: 34px;
     outline: 0;
@@ -609,7 +609,7 @@ body.v3-body .wc-login {
     font-weight: 700;
     font-size: 30px;
     line-height: 37px;
-    color: #131316;
+    color: var(--text-color);
 }
 
 form-item .form-item-content {
@@ -625,7 +625,7 @@ form-item .form-item-content {
     font-style: normal;
 }
 ._848abb12 ._81c39b32 strong {
-    color: #131316;
+    color: var(--text-color);
 }
 ._041e59c9 {
     height: 48px;
@@ -652,7 +652,7 @@ form-item .form-item-content {
     padding: 0;
     font-size: 14px;
     line-height: 20px;
-    color: #000;
+    color: var(--text-color);
 }
 ._041e59c9 span .a30257f6 {
     font-weight: 600;

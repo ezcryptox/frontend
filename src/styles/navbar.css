@@ -1,6 +1,4 @@
-.uniframe-root * {
-    font-family: source-sans3, PingFang SC, Hiragino Sans GB, Microsoft YaHei, å¾®è½¯é›…é»‘, Aril, sans-serif;
-  }
+
   .uniframe-root * {
     margin: 0;
     padding: 0;
@@ -358,7 +356,7 @@ html[data-uniframe-theme=light] .a7ddb18f .ba0dfc48 {
     margin: 0 8px;
     height: var(--uniframe-header-height);
     cursor: pointer;
-    color: var(--uniframe-header-text-color);
+    color: var(--text-color);
     transition: color .3s;
 }
 .b87cb199 .c8958f69 {

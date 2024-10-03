@@ -1088,7 +1088,7 @@ html {
     box-sizing: border-box;
     width: 100%;
     font-size: inherit;
-    font-family: inherit;
+
     color: var(--el-input-text-color,var(--el-text-color-regular));
     background-color: var(--el-input-bg-color,var(--el-fill-color-blank));
     background-image: none;

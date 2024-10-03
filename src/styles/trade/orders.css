@@ -688,12 +688,9 @@ body.dark-theme .e369efc5 {
 ._9e7987dd {
     font-size: 14px;
     line-height: 20px;
-    color: #2b2b2e
+    color: var(--inactive-color)
 }
 
-body.dark-theme ._9e7987dd {
-    color: #fff
-}
 
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -906,12 +903,9 @@ body.dark-theme ._9e7987dd {
     font-size: 12px;
     line-height: 17px;
     padding: 12px 16px;
-    color: #878787
+    color: var(--inactive-color)
 }
 
-body.dark-theme ._787d513b {
-    color: #616161
-}
 
 ._5de077c3 {
     display: inline-block;

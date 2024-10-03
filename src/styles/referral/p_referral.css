@@ -3055,7 +3055,6 @@
     transition: all .3s cubic-bezier(.4,.4,.25,1.35);
     border: 1px solid transparent;
     background-color: transparent;
-    font-family: source-sans3-regular
 }
 
 .polo-btn.is-loading {
@@ -6544,7 +6543,6 @@ body.dark-theme .polo-btn-outline.is-disabled:disabled {
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
-    font-family: proxima-nova
 }
 
 .polo-message-fade-enter,.polo-message-fade-leave-active {
@@ -9492,7 +9490,7 @@ body.dark-theme .polo-btn-outline.is-disabled:disabled {
     font-weight: 700;
     font-size: 14px;
     line-height: 20px;
-    font-family: source-sans3-regular
+    
 }
 
 .polo-toast-fade-enter,.polo-toast-fade-leave-active {
@@ -18423,10 +18421,6 @@ body.dark-theme ._86658441 ._3f342225[data-index="0"],body.dark-theme ._86658441
     color: #878787
 }
 
-._86658441 ._9b7b4107 {
-    font-family: source-sans3
-}
-
 ._86658441 ._9b7b4107 td {
     border-bottom: 1px dashed #f2f2f2!important
 }
@@ -18442,17 +18436,17 @@ body.dark-theme ._86658441 ._3f342225[data-index="0"],body.dark-theme ._86658441
 }
 
 ._86658441 .ec42ef1b[data-index="0"] span {
-    font-family: Impact;
+
     background: url(https://v3.polo-static.com/spot-web/static/img/1.986b2757.svg) no-repeat 50%/cover
 }
 
 ._86658441 .ec42ef1b[data-index="1"] span {
-    font-family: Impact;
+
     background: url(https://v3.polo-static.com/spot-web/static/img/2.827984f7.svg) no-repeat 50%/cover
 }
 
 ._86658441 .ec42ef1b[data-index="2"] span {
-    font-family: Impact;
+
     background: url(https://v3.polo-static.com/spot-web/static/img/3.bf91e4e6.svg) no-repeat 50%/cover
 }
 
@@ -27406,7 +27400,7 @@ body.dark-theme ._7b3e46a4 .af53e76b {
     margin-left: auto;
     line-height: 25px;
     color: #616161;
-    font-family: source-sans3
+   
 }
 
 ._7b3e46a4 ._300f3ce5 ._63f7ee9e p strong.e56b9b15 {
@@ -48145,7 +48139,7 @@ body.dark-theme .fef54d3a .e8611f99 ._99bda4e8 {
     overflow: hidden;
     white-space: nowrap;
     max-width: 36%;
-    font-family: source-sans3
+   
 }
 
 .fef54d3a ._5370c68a ._830a66f5 .a7a784a5 span {
@@ -57109,7 +57103,7 @@ body.zh-cn ._8ca0ec16 .da84151d ._0348a516,body.zh-tw ._8ca0ec16 .da84151d ._034
 }
 
 ._8ca0ec16 .da84151d ._10f77353 ._9e7a0370 strong {
-    font-family: source-sans3;
+   ;
     font-weight: 600;
     color: #9df65d
 }
@@ -57139,7 +57133,7 @@ body.zh-cn ._8ca0ec16 .da84151d ._0348a516,body.zh-tw ._8ca0ec16 .da84151d ._034
 ._8ca0ec16 .da84151d ._0348a516 strong {
     display: inline-block;
     vertical-align: middle;
-    font-family: proxima-nova;
+    
     font-weight: 700;
     background: linear-gradient(100.64deg,#83f57f,#d7f50d);
     -webkit-background-clip: text;
@@ -95935,7 +95929,7 @@ body.zh-cn ._20861834 ._87679926,body.zh-tw ._20861834 ._87679926 {
     font-size: .12rem;
     line-height: .2rem;
     font-weight: 600;
-    font-family: source-sans3
+   
 }
 
 ._20861834 button._5d6c546b {
@@ -107929,7 +107923,7 @@ body.dark-theme .list-wrapper .col-4.list-item .benefits svg[data-v-87e0bb9c] {
 }
 
 .list-wrapper .col-4.list-item[data-ranking="1"] .ranking span[data-v-87e0bb9c],.list-wrapper .col-4.list-item[data-ranking="2"] .ranking span[data-v-87e0bb9c],.list-wrapper .col-4.list-item[data-ranking="3"] .ranking span[data-v-87e0bb9c] {
-    font-family: Impact;
+
     color: #2b2b2e
 }
 
@@ -125629,7 +125623,7 @@ body.dark-theme .filter-popup nav li[data-v-b2915380]:not(:last-child) {
 }
 
 .ad8bfc67 ._2eae2e09 .bddbe4c8 ._70c4f6db strong {
-    font-family: proxima-nova;
+    
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -128659,7 +128653,7 @@ body.dark-theme ._9b656ac8 {
 }
 
 ._9b656ac8 ._6edd0650 span strong {
-    font-family: source-sans3;
+   ;
     font-weight: 600;
     color: #9df65d
 }
@@ -149462,10 +149456,7 @@ pre {
     overflow: auto
 }
 
-code,kbd,pre,samp {
-    font-family: monospace,monospace;
-    font-size: 1em
-}
+
 
 button,input,optgroup,select,textarea {
     color: inherit;
@@ -149561,30 +149552,6 @@ body.dark-theme .ant-spin-container:after {
     z-index: 2
 }
 
-body,html {
-    height: 100%
-}
-
-html body {
-    font-family: proxima-nova,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,å¾®è½¯é›…é»‘,Aril,sans-serif
-}
-
-.f-pnc {
-    font-family: proxima-nova-condensed,sans-serif
-}
-
-h1,h2,h3,h4,h5,h6,li,p,ul {
-    margin: 0;
-    padding: 0
-}
-
-li,ol,ul {
-    list-style-type: none
-}
-
-a {
-    text-decoration: none
-}
 
 .ant-table-column-title {
     font-weight: 400;
@@ -149759,7 +149726,6 @@ body.v3-body .home .bottom {
 
 
 .ag-icon {
-    font-family: var(--ag-icon-font-family);
     font-size: var(--ag-icon-size);
     line-height: var(--ag-icon-size);
     font-style: normal;
@@ -150077,7 +150043,6 @@ body.v3-body .home .bottom {
     --ag-tab-min-width: 220px;
     --ag-menu-min-width: 181px;
     --ag-side-bar-panel-width: 200px;
-    --ag-font-family: "Helvetica Neue",sans-serif;
     --ag-font-size: 14px;
     --ag-card-radius: var(--ag-border-radius);
     --ag-card-shadow: none;
@@ -150090,7 +150055,6 @@ body.v3-body .home .bottom {
 
 [class*=ag-theme-] {
     -webkit-font-smoothing: antialiased;
-    font-family: var(--ag-font-family);
     font-size: var(--ag-font-size);
     line-height: normal;
     color: var(--ag-foreground-color)
@@ -150229,7 +150193,6 @@ ag-grid,ag-grid-angular,ag-grid-aurelia,ag-grid-ng2,ag-grid-polymer {
 .ag-watermark-text {
     opacity: .5;
     font-weight: 700;
-    font-family: Impact,sans-serif;
     font-size: 19px;
     padding-left: .7rem
 }
@@ -155331,7 +155294,6 @@ button[class^=ag-]:focus,input[class^=ag-][type=button]:focus {
 
 button.ag-side-button-button {
     color: inherit;
-    font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
     line-height: inherit;
@@ -155443,7 +155405,6 @@ button.ag-side-button-button:focus {
 }
 
 .ag-filter-toolpanel-group.ag-has-filter>.ag-group-title-bar .ag-group-title:after {
-    font-family: var(--ag-icon-font-family);
     font-size: var(--ag-icon-size);
     line-height: var(--ag-icon-size);
     font-style: normal;
@@ -155869,7 +155830,6 @@ button.ag-side-button-button:focus {
 
 .ag-floating-filter-button-button {
     color: inherit;
-    font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
     line-height: inherit;
@@ -156583,7 +156543,6 @@ button.ag-side-button-button:focus {
 }
 
 .ag-checkbox-input-wrapper {
-    font-family: var(--ag-icon-font-family);
     font-size: var(--ag-icon-size);
     line-height: var(--ag-icon-size);
     font-style: normal;
@@ -156698,7 +156657,6 @@ button.ag-side-button-button:focus {
 }
 
 .ag-radio-button-input-wrapper {
-    font-family: var(--ag-icon-font-family);
     font-size: var(--ag-icon-size);
     line-height: var(--ag-icon-size);
     font-style: normal;
@@ -156914,9 +156872,7 @@ input[class^=ag-][type=range]:disabled {
     --ag-widget-vertical-spacing: calc(var(--ag-grid-size)*1.5);
     --ag-toggle-button-height: 18px;
     --ag-toggle-button-width: 28px;
-    --ag-font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
     --ag-font-size: 13px;
-    --ag-icon-font-family: agGridAlpine;
     --ag-selected-tab-underline-color: var(--ag-alpine-active-color);
     --ag-selected-tab-underline-width: 2px;
     --ag-selected-tab-underline-transition-speed: 0.3s;
@@ -157194,7 +157150,6 @@ input[class^=ag-][type=range]:disabled {
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
  @font-face {
-    font-family: FontAwesome;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.674f50d2.eot);
     src: url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.674f50d2.eot#iefix) format("embedded-opentype"),url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.af7ae505.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.fee66e71.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.b06871f2.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/fontawesome-webfont.912ec66d.svg) format("svg");
     font-weight: 400;
@@ -163097,7 +163052,6 @@ input[class^=ag-][type=range]:disabled {
     padding: 0 24px;
     border-radius: 25px;
     color: #131316;
-    font-family: Source Sans 3;
     font-size: 21px;
     font-style: normal;
     font-weight: 400;
@@ -166121,7 +166075,7 @@ pre {
 }
 
 code,kbd,pre,samp {
-    font-family: monospace,monospace;
+    
     font-size: 1em
 }
 
@@ -166219,31 +166173,6 @@ body.dark-theme .ant-spin-container:after {
     z-index: 2
 }
 
-body,html {
-    height: 100%
-}
-
-html body {
-    font-family: proxima-nova,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,微软雅黑,Aril,sans-serif
-}
-
-.f-pnc {
-    font-family: proxima-nova-condensed,sans-serif
-}
-
-h1,h2,h3,h4,h5,h6,li,p,ul {
-    margin: 0;
-    padding: 0
-}
-
-li,ol,ul {
-    list-style-type: none
-}
-
-a {
-    text-decoration: none
-}
-
 .ant-table-column-title {
     font-weight: 400;
     color: #818181
@@ -166312,11 +166241,6 @@ body.v3-body {
     flex-direction: column;
     min-height: 100%;
     overflow: auto;
-    font-family: source-sans3-regular!important
-}
-
-body.v3-body.zh-cn {
-    font-family: PingFang SC!important
 }
 
 body.v3-body.dark-theme .wc-referral {
@@ -178471,7 +178395,7 @@ body.dark-theme .c2825692 ._6c75d35c .dd75317f .f583df2e ._6c7773b5 strong {
     line-height: 34px;
     font-weight: 700;
     color: #484848;
-    font-family: source-sans3
+   
 }
 
 .c2825692 ._6c75d35c ._3993246e {
@@ -178530,7 +178454,7 @@ body.dark-theme .c2825692 ._6c75d35c .dd75317f .f583df2e ._6c7773b5 strong {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    font-family: source-sans3
+   
 }
 
 .c2825692 ._6c75d35c .dd75317f ._859ec72a ._95db046e strong {
@@ -178576,7 +178500,7 @@ body.dark-theme .c2825692 ._6c75d35c .dd75317f .f583df2e ._6c7773b5 strong {
     line-height: 34px;
     font-weight: 700;
     color: #484848;
-    font-family: source-sans3
+   
 }
 
 .c2825692 ._6c75d35c .dd75317f .f583df2e ._6c7773b5 span {
@@ -178604,7 +178528,6 @@ body.dark-theme .c2825692 ._6c75d35c .dd75317f .f583df2e ._6c7773b5 strong {
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 @font-face {
-    font-family: FontAwesome;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.674f50d2.eot);
     src: url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.674f50d2.eot#iefix) format("embedded-opentype"),url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.af7ae505.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.fee66e71.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.b06871f2.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/fontawesome-webfont.912ec66d.svg) format("svg");
     font-weight: 400;
@@ -181515,105 +181438,103 @@ body.dark-theme .c2825692 ._6c75d35c .dd75317f .f583df2e ._6c7773b5 strong {
 }
 
 @font-face {
-    font-family: proxima-regular;
+    
     font-style: normal;
     font-weight: 400;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-regular.b878f9d8.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-regular.109df871.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-regular.a5684ce7.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-regular.807424c0.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-bold;
+  
     font-style: normal;
     font-weight: 400;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-bold.70e71233.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-bold.ad5819b6.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-bold.7bd6fac5.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-bold.0901914a.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-semibold;
+  
     font-style: normal;
     font-weight: 400;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-semibold.55fc096c.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-semibold.faa8a3d9.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-semibold.771b9ec0.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-semibold.5862cf38.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-light;
+  
     font-style: normal;
     font-weight: 400;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-light.faa74f71.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-light.dfea2b7c.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-light.455286a8.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-light.e218e45d.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-nova-condensed-semibold;
+ 
     font-style: normal;
     font-weight: 400;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-semibold.c7bd327b.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-semibold.d80f64fc.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-semibold.3ae991b4.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-condensed-semibold.ec8b463a.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-nova;
     font-style: normal;
     font-weight: 300;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-light.faa74f71.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-light.dfea2b7c.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-light.455286a8.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-light.e218e45d.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-nova;
     font-style: normal;
     font-weight: 400;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-regular.b878f9d8.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-regular.109df871.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-regular.a5684ce7.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-regular.807424c0.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-nova;
+    
     font-style: normal;
     font-weight: 500;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-medium.58183749.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-medium.96676d0d.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-medium.f8ceb7a2.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-medium.2954731b.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-nova;
+    
     font-style: normal;
     font-weight: 600;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-semibold.55fc096c.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-semibold.faa8a3d9.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-semibold.771b9ec0.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-semibold.5862cf38.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-nova;
+    
     font-style: normal;
     font-weight: 700;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-bold.70e71233.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-bold.ad5819b6.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-bold.7bd6fac5.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-bold.0901914a.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-nova-condensed;
+    
     font-style: normal;
     font-weight: 300;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-light.18c783a2.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-light.3a7c5b77.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-light.2a1808cb.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-condensed-light.72a01c19.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-nova-condensed;
+    
     font-style: normal;
     font-weight: 400;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-regular.1236f059.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-regular.ffcd873c.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-regular.7bb7863f.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-condensed-regular.42bc227b.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-nova-condensed;
+    
     font-style: normal;
     font-weight: 500;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-medium.790ec9e1.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-medium.26e19daf.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-medium.242fde91.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-condensed-medium.dd3e5094.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-nova-condensed;
+    
     font-style: normal;
     font-weight: 600;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-semibold.c7bd327b.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-semibold.d80f64fc.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-semibold.3ae991b4.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-condensed-semibold.ec8b463a.svg) format("svg")
 }
 
 @font-face {
-    font-family: proxima-nova-condensed;
+    
     font-style: normal;
     font-weight: 700;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-bold.403acfd9.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-bold.84f20887.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/proxima-nova-condensed-bold.4252b2a6.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/proxima-nova-condensed-bold.80be5448.svg) format("svg")
@@ -181634,49 +181555,49 @@ body.dark-theme .c2825692 ._6c75d35c .dd75317f .f583df2e ._6c7773b5 strong {
 }
 
 @font-face {
-    font-family: source-sans3-regular;
+    ;
     font-weight: 400;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/SourceSans3-Regular.80be24b3.ttf) format("truetype")
 }
 
 @font-face {
-    font-family: source-sans3-semibold;
+   -semibold;
     font-weight: 400;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/SourceSans3-SemiBold.231feadc.ttf) format("truetype")
 }
 
 @font-face {
-    font-family: source-sans3-medium;
+   -medium;
     font-weight: 400;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/SourceSans3-Medium.71364df5.ttf) format("truetype")
 }
 
 @font-face {
-    font-family: source-sans3-bold;
+   -bold;
     font-weight: 400;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/SourceSans3-Bold.8cca21f5.ttf) format("truetype")
 }
 
 @font-face {
-    font-family: source-sans3;
+   ;
     font-weight: 400;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/SourceSans3-Regular.80be24b3.ttf) format("truetype")
 }
 
 @font-face {
-    font-family: source-sans3;
+   ;
     font-weight: 500;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/SourceSans3-Medium.71364df5.ttf) format("truetype")
 }
 
 @font-face {
-    font-family: source-sans3;
+   ;
     font-weight: 600;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/SourceSans3-SemiBold.231feadc.ttf) format("truetype")
 }
 
 @font-face {
-    font-family: source-sans3;
+   ;
     font-weight: 700;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/SourceSans3-Bold.8cca21f5.ttf) format("truetype")
 }

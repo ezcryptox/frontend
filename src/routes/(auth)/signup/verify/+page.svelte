@@ -89,7 +89,7 @@
       <div data-key="emailCode" class="form-item" data-v-39752d79="">
         <!---->
         <div class="form-item-content">
-          <p class="_81c39b32">{$_('enter-the-6-digit-code-sent-to')}<strong>{$otp?.email}</strong>
+          <p class="_81c39b32">{$_('enter-the-6-digit-code-sent-to')} <strong> {$otp?.email}</strong>
           </p>
           <div class="_041e59c9">
             <span>

@@ -243,7 +243,6 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
-    font-family: proxima-nova
 }
 
 .polo-message-fade-enter,.polo-message-fade-leave-active {
@@ -258,7 +257,6 @@
 .polo-switch {
     display: flex;
     align-items: center;
-    font-family: source-sans3-regular
 }
 
 .polo-switch * {
@@ -3074,7 +3072,6 @@ body.v3-body .footer-wrapper {
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 @font-face {
-    font-family: FontAwesome;
     src: url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.674f50d2.eot);
     src: url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.674f50d2.eot#iefix) format("embedded-opentype"),url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.af7ae505.woff2) format("woff2"),url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.fee66e71.woff) format("woff"),url(https://v3.polo-static.com/spot-web/static/fonts/fontawesome-webfont.b06871f2.ttf) format("truetype"),url(https://v3.polo-static.com/spot-web/static/img/fontawesome-webfont.912ec66d.svg) format("svg");
     font-weight: 400;
@@ -3389,7 +3386,6 @@ pre {
 }
 
 code,kbd,pre,samp {
-    font-family: monospace,monospace;
     font-size: 1em
 }
 
@@ -3489,30 +3485,6 @@ td,th {
     z-index: 2
 }
 
-body,html {
-    height: 100%
-}
-
-html body {
-    font-family: proxima-nova,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,å¾®è½¯é›…é»‘,Aril,sans-serif
-}
-
-.f-pnc {
-    font-family: proxima-nova-condensed,sans-serif
-}
-
-h1,h2,h3,h4,h5,h6,li,p,ul {
-    margin: 0;
-    padding: 0
-}
-
-li,ol,ul {
-    list-style-type: none
-}
-
-a {
-    text-decoration: none
-}
 
 .ant-table-column-title {
     font-weight: 400;

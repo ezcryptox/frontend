@@ -117,7 +117,7 @@ svg:not(:root) {
   -webkit-appearance: button;
 }
 .dark a.router-link-active {
-    color: white;
+    color:var(--text-color);
 }
 
 ._960f9952 {
@@ -270,7 +270,7 @@ body.v3-body.dark-theme.ui-is-w768 {
     transition: all .3s cubic-bezier(.4,.4,.25,1.35);
     border: 1px solid transparent;
     background-color: transparent;
-    font-family: source-sans3-regular;
+
 }
 .polo-input-default {
     border-color: #ccc;
@@ -292,7 +292,7 @@ body.v3-body.dark-theme.ui-is-w768 {
     box-sizing: border-box;
     border: 1px solid transparent;
     border-color: #ccc;
-    font-family: source-sans3-regular;
+
 }
 .polo-input>span.input-prefix {
     font-weight: 400;
@@ -325,7 +325,7 @@ body.v3-body.dark-theme.ui-is-w768 {
 .polo-switch {
     display: flex;
     align-items: center;
-    font-family: source-sans3-regular;
+
 }
 .polo-switch-middle .polo-switch-box {
     width: 28px;
@@ -408,7 +408,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 .form-item {
-    font-family: source-sans3-regular;
+
 }
 .form-item .form-item-content {
     position: relative;
@@ -451,7 +451,7 @@ body.v3-body .polo-link {
     cursor: pointer;
     font-size: 14px;
     transition: all .3s cubic-bezier(.4,.4,.25,1.35);
-    font-family: source-sans3-regular;
+
 }
 
 /* ---------ELEMENT UI Styles-------- */
@@ -2914,10 +2914,14 @@ html[data-theme=dark] .el-button--info.is-plain {
 .el-table thead {
     color: #909399;
     font-weight: 500;
+    padding: 5px 0;
 }
 table {
     border-collapse: collapse;
     border-spacing: 0;
+    width: 100%;
+    color: var(--inactive-text-color);
+    padding: 5px 0;
 }
 .el-table th.el-table__cell {
     background: none;

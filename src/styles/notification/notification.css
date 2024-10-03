@@ -553,19 +553,10 @@ html[data-uniframe-theme=dark] .fb4433c0 .a7b1734e.f921c720 {
     animation: uniframe-show-transform-y .3s ease-out
 }
 
-.b87cb199 {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 8px;
-    height: var(--uniframe-header-height);
-    cursor: pointer;
-    color: var(--uniframe-header-text-color);
-    transition: color .3s
-}
+
 
 .b87cb199:hover {
-    color: var(--uniframe-header-active-text-color)
+    color: var(--primary-color)
 }
 
 .b87cb199:hover .c8958f69 {
@@ -722,12 +713,8 @@ html[data-uniframe-theme=light] .a7ddb18f .ba0dfc48:hover {
     color: #1a8f5c
 }
 
-html[data-uniframe-theme=dark] .a7ddb18f .ba0dfc48 {
-    color: #fff
-}
-
-html[data-uniframe-theme=dark] .a7ddb18f .ba0dfc48:hover {
-    color: #119e5f
+.a7ddb18f .ba0dfc48:hover {
+    color: var(--primary-color)
 }
 
 @media screen and (max-width: 550px) {
