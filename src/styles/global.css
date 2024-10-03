@@ -2983,6 +2983,7 @@ table {
     padding-left: 10px;
     padding-right: 10px;
     width: 100%;
+    color: var(--inactive-text-color);
 }
 .el-table .cell {
     box-sizing: border-box;

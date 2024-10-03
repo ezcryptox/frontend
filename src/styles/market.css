@@ -337,7 +337,7 @@ table {
 ._4fe14017 .d7b97cd2 .e0294d2e {
   display: flex;
   cursor: pointer;
-  padding: 2px 12px;
+  padding: 10px 17px;
   border-radius: 4px;
   align-items: center;
 }
@@ -346,13 +346,8 @@ table {
   margin-left: 4px;
 }
 
-._4fe14017 .d7b97cd2:hover .e0294d2e {
-  color: var(--text-color);
-  background-color: var(--primary-color);
-}
-
 ._4fe14017 .d7b97cd2._4907f2bd .e0294d2e {
-  color: var(--text-color);
+  color: #fff;
   background-color: var(--primary-color);
   font-weight: 600;
 }
@@ -622,7 +617,7 @@ table {
 }
 
  ._2a39ccb4 a._189b2a6c {
-  color: var(--text-color);
+  color: rgb(255, 255, 255);
   background-color: var(--primary-color);
 }
 
@@ -971,7 +966,7 @@ table {
     color: white;
 }
  ._2a39ccb4,  td.el-table__cell {
-    color: #fff;
+    color: var(--text-color);
 }
  ._2a39ccb4 ._9675cf33.e7cdbc9f > svg {
   color: rgb(17, 158, 95);
