@@ -26,6 +26,7 @@
 		<div data-modal="dynamic_modal_1" aria-expanded="true" class="vm--overlay">
 			<div class="vm--top-right-slot"></div>
 		</div>
+		<!-- svelte-ignore a11y-role-supports-aria-props -->
 		<div
 			aria-expanded="true"
 			role="dialog"
@@ -108,7 +109,7 @@
                                         : 'display: none;'} "
                                 >
                                     {orderTypes[showTooltip].info}
-                                    <div x-arrow="" class="popper__arrow" style="left: 104px;"></div>
+                                    <div  class="popper__arrow" style="left: 104px;"></div>
                                 </div>
                                     {/if}
 									

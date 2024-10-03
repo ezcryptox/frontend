@@ -5,7 +5,7 @@
   import MobileMenu from "./mobile-menu.svelte";
   import BuyCrypto from "./navbar-components/buy-crypto.svelte";
   import Derivative from "./navbar-components/derivative.svelte";
-  import { _ } from 'svelte-i18n';
+  import { _ , locale} from 'svelte-i18n';
   import Explore from "./navbar-components/explore.svelte";
   import Notification from "./navbar-components/notification.svelte";
   import Trade from "./navbar-components/trade.svelte";
@@ -42,6 +42,7 @@
           localStorage.setItem("theme", $app.theme ? "" : "darken" );
           $app.themeConfig($app.theme ? "" : "darken")
           app.set($app)
+          // window.location.href = ""
       }
   })
 
@@ -113,12 +114,11 @@
                 {/if}
               </button>
             </li>
-            <li>
+            <!-- <li>
               <a class="bfe44f5e" target="_self" href="/earn">
-                <!----><!---->
                 <span>{$_('g-earn')}</span>
               </a>
-            </li>
+            </li> -->
 
             <li>
               <button
@@ -227,16 +227,12 @@
           <!-- svelte-ignore a11y-click-events-have-key-events -->
           <!-- svelte-ignore a11y-no-static-element-interactions -->
           <div class="c9759bc4 relative" on:click={() => handleTheme()}>
-            <svg fill="currentColor" style="width: 20px; height: 20px;" class="absolute scale-100 transition-all dark:scale-0">
+            <svg fill="currentColor" style="width: 20px; height: 20px;" class="absolute scale-100 transition-all ">
               <use
-                xlink:href="#uniframe-icon-sun"
+                xlink:href="#{$app.theme ? "uniframe-icon-moon" : "uniframe-icon-sun"}"
               ></use>
             </svg>
-            <svg fill="currentColor" style="width: 20px; height: 20px;" class="absolute scale-0 transition-all dark:scale-100">
-              <use
-                xlink:href="#uniframe-icon-moon"
-              ></use>
-            </svg>
+
           </div>
           <button
             class="dd8dbce9" 
@@ -262,7 +258,7 @@
           </a>
 
           <button class="eb58c575" on:click={() => (showLanguageModal = true)}>
-            <span>EN</span>
+            <span>{$locale}</span>
             <svg fill="currentColor" style="width: 16px; height: 16px;">
               <use xlink:href="#uniframe-icon-arrow-down"></use>
             </svg>

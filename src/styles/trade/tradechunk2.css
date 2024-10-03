@@ -470,16 +470,7 @@
     align-items: center
 }
 
-._90e8af53 .cb42a1b7 .f7a95949>span {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 20px;
-    color: #131316
-}
 
-body.dark-theme ._90e8af53 .cb42a1b7 .f7a95949>span {
-    color: #fff
-}
 
 ._90e8af53 .cb42a1b7 .f7a95949._5bd83198 {
     cursor: pointer
@@ -44591,9 +44582,9 @@ body.dark-theme .c56b42d9 .c63a1f03>a {
     border-color: #f2f2f2
 }
 
-body.dark-theme ._15e27295,body.dark-theme ._61aea1ce,body.dark-theme ._74efb7cd,body.dark-theme ._721fe061,body.dark-theme ._731f9e0c,body.dark-theme ._7669f8d7,body.dark-theme .b24f0f42,body.dark-theme .bf4db17d,body.dark-theme .d568c879,body.dark-theme .ee935bfd,body.dark-theme .f09bbbf1 {
-    background-color: #131316;
-    border-color: #2b2b2e
+ ._15e27295, ._61aea1ce, ._74efb7cd, ._721fe061, ._731f9e0c, ._7669f8d7, .b24f0f42, .bf4db17d, .d568c879, .ee935bfd, .f09bbbf1 {
+    background-color: var(--card-bg);
+    border-color: var(--border-line)
 }
 
 @media screen and (max-width: 2559px) {
@@ -47522,25 +47513,13 @@ body.dark-theme ._15e27295,body.dark-theme ._61aea1ce,body.dark-theme ._74efb7cd
     min-height: 45px;
     border-bottom: 1px solid;
     border-radius: 8px 8px 0 0;
-    border-color: #e3e3e3
+    border-color: var(--border-line)
 }
 
 body.dark-theme ._4b0c0787 {
     border-color: #2b2b2e
 }
 
-._4b0c0787 .afed7137 {
-    display: flex;
-    min-width: 140px;
-    padding: 8px 12px;
-    position: relative;
-    border: 0 solid transparent;
-    border-color: #e3e3e3
-}
-
-body.dark-theme ._4b0c0787 .afed7137 {
-    border-color: #2b2b2e
-}
 
 ._4b0c0787 .afed7137:last-child {
     border-right-width: 1px
@@ -47555,10 +47534,6 @@ body.dark-theme ._4b0c0787 .afed7137 {
     background-color: #fafafa
 }
 
-body.dark-theme ._4b0c0787 .afed7137._54ffc89b {
-    border-left-color: transparent;
-    background-color: #2b2b2e
-}
 
 ._4b0c0787 .afed7137._54ffc89b+.afed7137 {
     border-left-color: transparent
@@ -47568,9 +47543,6 @@ body.dark-theme ._4b0c0787 .afed7137._54ffc89b {
     color: #2b2b2e
 }
 
-body.dark-theme ._4b0c0787 .afed7137._54ffc89b>a {
-    color: #fff
-}
 
 ._4b0c0787 .afed7137:hover .e05cba42 {
     display: block
@@ -47591,8 +47563,8 @@ body.dark-theme ._4b0c0787 .afed7137:hover>a {
     color: #878787
 }
 
-body.dark-theme ._4b0c0787 .afed7137>a {
-    color: #616161
+ ._4b0c0787 .afed7137>a {
+    color: var(--text-color)
 }
 
 ._4b0c0787 .afed7137 ._2365dc81 {
@@ -53452,16 +53424,6 @@ body.dark-theme ._4b0c0787 .afed7137 .e05cba42 {
     clip: auto
 }
 
-.cdc6768f {
-    height: 32px;
-    padding-top: 8px;
-    border-bottom: 1px solid;
-    border-color: #f2f2f2
-}
-
-body.dark-theme .cdc6768f {
-    border-color: #2b2b2e
-}
 
 .cdc6768f>span {
     cursor: pointer;
@@ -65275,13 +65237,6 @@ body.dark-theme ._68e93d14._90a06506 ._360ce864>span:first-child {
     margin-left: 4px
 }
 
-._57a26a53 ._986e6957._4f405bfc,._57a26a53 ._986e6957:hover {
-    background-color: #f2f2f2
-}
-
-body.dark-theme ._57a26a53 ._986e6957._4f405bfc,body.dark-theme ._57a26a53 ._986e6957:hover {
-    background-color: #2b2b2e
-}
 
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -68278,12 +68233,9 @@ body.dark-theme .c14e70ac {
     z-index: 1;
     width: 100%;
     position: absolute;
-    background-color: #fff
+    background-color: var(--card-bg) 
 }
 
-body.dark-theme ._31e5c959 ._9bd73e27 {
-    background-color: #131316
-}
 
 ._31e5c959 ._2fde4712 {
     justify-content: end
@@ -97895,12 +97847,9 @@ body.dark-theme .vm--modal {
     align-items: center;
     border-bottom: 1px solid;
     justify-content: space-between;
-    border-color: #f2f2f2
+    border-color: var(--border-line)
 }
 
-body.dark-theme ._43a2945c {
-    border-color: #2b2b2e
-}
 
 ._43a2945c ._6bf69178 {
     display: flex;

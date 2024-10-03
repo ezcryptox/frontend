@@ -96,15 +96,15 @@
 				</div>
 			</div>
 			<div class="_8f585bdf">
-				<div class="dec00f0a">
+				<!-- <div class="dec00f0a">
 					<span>{$_('or')}</span>
-				</div>
+				</div> -->
 				<div class="cc314366">
-					<button
+					<!-- <button
 						type="button"
 						class="polo-btn polo-btn-button polo-btn-secondary polo-btn-medium _37ed289d"
 					>
-						<!---->
+			
 						<div class="btn-sp">
 							<img
 								src={google}
@@ -113,7 +113,7 @@
 								alt=""
 							/>
 						</div>
-					</button>
+					</button> -->
 				</div>
 			</div>
 		</div>

@@ -149382,10 +149382,6 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,secti
     display: block
 }
 
-audio,canvas,progress,video {
-    display: inline-block;
-    vertical-align: baseline
-}
 
 audio:not([controls]) {
     display: none;
@@ -181899,9 +181895,9 @@ body.dark-theme .c2825692 ._6c75d35c .dd75317f .f583df2e ._6c7773b5 strong {
     margin: 0
 }
 
-.el-table td.el-table__cell,.el-table th.el-table__cell.is-leaf {
+/* .el-table td.el-table__cell,.el-table th.el-table__cell.is-leaf {
     border-bottom: 1px solid #ebeef5
-}
+} */
 
 .el-table th.el-table__cell.is-sortable {
     cursor: pointer

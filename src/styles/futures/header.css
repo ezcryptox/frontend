@@ -5500,10 +5500,8 @@ html[data-theme=light] .d31bb42e {
     padding-bottom: 24px;
     margin-top: 60px;
 }
-html[data-theme=light] .d31bb42e{
-    background: gainsboro;
-}
-html[data-theme=dark] .d31bb42e {
+
+ .d31bb42e {
     --color-layout-trade-card-text: #fff;
     --color-layout-trade-card-bg: #1f1f24;
     --color-layout-trade-card-bd: #2b2b2e;
@@ -5515,7 +5513,7 @@ html[data-theme=dark] .d31bb42e {
 .d31bb42e .card, .d31bb42e .e62681cd {
     border-radius: var(--layout-trade-border-radius);
     color: var(--color-layout-trade-card-text);
-    background-color: var(--color-layout-trade-card-bg);
+    background-color: var(--card-bg);
     border: 1px solid var(--color-layout-trade-card-bd);
 }
 

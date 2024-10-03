@@ -6143,29 +6143,6 @@ body {
   margin: 0;
 }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section,
-summary {
-  display: block;
-}
-
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
-  vertical-align: baseline;
-}
 
 audio:not([controls]) {
   display: none;
@@ -6812,10 +6789,10 @@ body.v3-body .blindbox-dialog {
   margin: 0;
 }
 
-.el-table td.el-table__cell,
+/* .el-table td.el-table__cell,
 .el-table th.el-table__cell.is-leaf {
   border-bottom: 1px solid #ebeef5;
-}
+} */
 
 .el-table th.el-table__cell.is-sortable {
   cursor: pointer;
@@ -167270,44 +167247,6 @@ body.dark-theme ._46bdd914 ._597d587a {
   clip: auto;
 }
 
-*,
-:after,
-:before {
-  box-sizing: border-box;
-}
-
-html {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section,
-summary {
-  display: block;
-}
-
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
-  vertical-align: baseline;
-}
 
 audio:not([controls]) {
   display: none;
@@ -167398,25 +167337,6 @@ pre,
 samp {
   font-family: monospace, monospace;
   font-size: 1em;
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-}
-
-button {
-  overflow: visible;
-}
-
-button,
-select {
-  text-transform: none;
 }
 
 button,

@@ -4,9 +4,11 @@
     import {cryptoQuotes, tradePairs} from '$lib/store/marketdata';
 	import { onMount } from 'svelte';
     import { abbreviateNumber } from '$lib/utils';
+	import { goto } from '$app/navigation';
 
     $: pairs = []
     export let tab
+    export let search
 
     onMount(()=>{
         pairs = [...$tradePairs]
@@ -29,6 +31,17 @@
 		});
     })
 
+    $: pairs = $tradePairs.filter(id => 
+        id.symbol.toLowerCase().includes(search.toLowerCase())
+    );
+
+
+    const handleGotoMarket = ((route)=>{
+        goto(`/trade/${route}?type=spot`)
+    })
+
+
+    $: console.log(search)
 
 </script>
 <div class="d68d17a2 _1e5e2a71">
@@ -87,7 +100,7 @@
                     <tbody>
                         {#each pairs as resp}
                             {#if resp.price && resp.quoteCurrencyName === tab}
-                            <tr class="el-table__row">
+                            <tr class="el-table__row" on:click={()=> handleGotoMarket(resp.symbol)}>
                                 <td rowspan="1" colspan="1" class="el-table_1_column_1  _8e0516f6 el-table__cell">
                                     <div class="cell">
                                         <div class="_9675cf33 ttu">

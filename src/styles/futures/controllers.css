@@ -394,12 +394,7 @@ html[data-theme=dark] .dd83545a {
 .fdcd9e93 .card+.card {
     margin-top: var(--layout-trade-margin);
 }
-.d31bb42e .card, .d31bb42e .e62681cd {
-    border-radius: var(--layout-trade-border-radius);
-    color: var(--color-layout-trade-card-text);
-    background-color: var(--color-layout-trade-card-bg);
-    border: 1px solid var(--color-layout-trade-card-bd);
-}
+
 .a139b15c {
     padding: 16px 10px 24px;
 }

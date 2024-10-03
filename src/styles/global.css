@@ -119,9 +119,7 @@ svg:not(:root) {
 .dark a.router-link-active {
     color: white;
 }
-html[data-theme=dark] a.router-link-active {
-    color: white;
-}
+
 ._960f9952 {
   width: 100%;
   height: 50px;
@@ -323,22 +321,7 @@ body.v3-body.dark-theme.ui-is-w768 {
     font-weight: 600;
     padding-right: 10px;
 }
-.polo-input>input {
-    flex: 1;
-    width: 100%;
-    height: 100%;
-    outline: none;
-    color: initial;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 24px;
-    box-shadow: none;
-    border: none;
-    background-color: transparent;
-    border-radius: 4px;
-    font-family: source-sans3-regular;
-    color: #131316;
-}
+
 .polo-switch {
     display: flex;
     align-items: center;
@@ -1310,13 +1293,13 @@ html[data-theme=light] .el-input, html[data-theme=light] .el-input__wrapper, htm
   --el-input-placeholder-color: #b8b8b8;
 }
 
-html[data-theme=dark] .el-input, html[data-theme=dark] .el-input__wrapper, html[data-theme=dark] .el-textarea {
+ .el-input, .el-input__wrapper, .el-textarea {
   --el-input-hover-border-color: #119e5f;
   --el-input-focus-border-color: #119e5f;
-  --el-input-text-color: #fff;
-  --el-input-bg-color: #131316;
+  --el-input-text-color: var(--text-color);
+  --el-input-bg-color: var(--card-bg);
   --el-input-border-color: #2b2b2e;
-  --el-input-placeholder-color: #616161;
+  --el-input-placeholder-color: var(--placeholder-color);
 }
 
 .el-popper.el-select__popper[data-popper-placement^=bottom] {
@@ -1710,13 +1693,7 @@ html[data-theme=dark] .el-input, html[data-theme=dark] .el-input__wrapper, html[
   padding: 0px 8px;
 }
 
-.el-table tr {
-  background-color: var(--el-table-tr-bg-color);
-}
 
-.el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf {
-  border-bottom: var(--el-table-border);
-}
 
 .el-table th.el-table__cell.is-sortable {
   cursor: pointer;
@@ -1854,11 +1831,6 @@ html[data-theme=dark] .el-input, html[data-theme=dark] .el-input__wrapper, html[
 
 .el-table__footer-wrapper, .el-table__header-wrapper {
   overflow: hidden;
-}
-
-.el-table__footer-wrapper tbody td.el-table__cell, .el-table__header-wrapper tbody td.el-table__cell {
-  background-color: var(--el-table-row-hover-bg-color);
-  color: var(--el-table-text-color);
 }
 
 .el-table__body-wrapper .el-table-column--selection > .cell, .el-table__header-wrapper .el-table-column--selection > .cell {
@@ -2522,21 +2494,6 @@ html[data-theme=dark] .el-button--info.is-plain {
   line-height: 24px;
 }
 
-html[data-theme=light] .el-table {
-  --el-table-bg-color: transparent;
-  --el-table-tr-bg-color: #fff;
-  --el-table-row-hover-bg-color: transparent;
-  --el-table-header-bg-color: #fafafa;
-  --el-table-border-color: #f2f2f2;
-}
-
-html[data-theme=dark] .el-table {
-  --el-table-bg-color: transparent;
-  --el-table-tr-bg-color: #000;
-  --el-table-row-hover-bg-color: transparent;
-  --el-table-header-bg-color: #2b2b2e;
-  --el-table-border-color: #1f1f24;
-}
 
 .el-pagination {
   --el-pagination-font-size: 14px;
@@ -3360,21 +3317,16 @@ body.dark-theme .polo-link-default {
 [data-theme=dark] .vm--modal {
     box-shadow: 0 6px 16px rgba(0,0,0,.6)
 }
-[data-theme=dark] .polo-btn-button.polo-btn-primary {
-    color: #000;
-    background-color: #fff
-}
 
-[data-theme=dark] .polo-btn-button.polo-btn-primary:hover {
-    color: #000;
-    background-color: #fafafa
+ .polo-btn-button.polo-btn-primary:hover {
+    background-color: var(--primary-color-hover)
 }
-[data-theme=dark] .polo-btn-button.polo-btn-primary:active {
+ .polo-btn-button.polo-btn-primary:active {
     color: #000;
     background-color: #fafafa
 }
 
-[data-theme=dark] .polo-btn-button.polo-btn-primary .icon-loading {
+ .polo-btn-button.polo-btn-primary .icon-loading {
     border-color: #000
 }
 

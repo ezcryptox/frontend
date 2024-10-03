@@ -97,6 +97,7 @@
     cursor: pointer;
     color: var(--icon-colors);
     transition: color .3s;
+    text-transform: uppercase;
 }
 .eb58c575 {
     margin-left: 8px;

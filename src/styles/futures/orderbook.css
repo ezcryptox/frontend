@@ -1,5 +1,5 @@
-html[data-theme=dark] .e814c547 .a031e8a5 {
-    color: #b8b8b8;
+ .e814c547 .a031e8a5 {
+    color: var(--inactive-text-color);
 }
 .e814c547 .a031e8a5 {
     display: flex;
@@ -16,8 +16,8 @@ html[data-theme=dark] .e814c547 .a031e8a5 {
     padding-bottom: 3px;
 }
 
-html[data-theme=dark] .e814c547 .a031e8a5 li.f9994809 {
-    color: #fff;
+ .e814c547 .a031e8a5 li.f9994809 {
+    color: var(--text-color);
 }
 .e814c547 .a031e8a5 li.f9994809 {
     font-weight: 600;
@@ -44,12 +44,7 @@ html[data-theme=light] .e814c547 .a031e8a5 {
     display: flex;
     justify-content: space-between;
 }
-.d31bb42e .card, .d31bb42e .e62681cd {
-    border-radius: var(--layout-trade-border-radius);
-    color: var(--color-layout-trade-card-text);
-    background-color: var(--color-layout-trade-card-bg);
-    border: 1px solid var(--color-layout-trade-card-bd);
-}
+
 .cec2b3b6, .d261a685 {
     min-width: 280px;
     width: 280px;

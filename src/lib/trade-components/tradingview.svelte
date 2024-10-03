@@ -7,6 +7,7 @@
 	import '../../styles/trade/chart.css';
 	import { _ } from 'svelte-i18n';
 	import { mode } from 'mode-watcher';
+	import { app } from '$lib/store/config.store.js';
 	import Datafeed from '$lib/datafeeds/datafeed';
 	import { browser } from '$app/environment';
 	let activeInterval = '1min';
@@ -194,7 +195,7 @@
 			// @ts-ignore
 			tvWidget = new window.TradingView.widget(options);
 			if (tvWidget) {
-				setOverrides(tvWidget, $mode === 'dark');
+				setOverrides(tvWidget, $app.theme === 'dark');
 				tvWidget.onChartReady(() => {
 					tvWidget.activeChart().executeActionById('chartReset');
 					setDefaultMA(tvWidget.activeChart());
@@ -264,12 +265,12 @@
 		}
 	};
   
-	onMount(() => {
+		onMount(() => {
 		activeInterval = browser ? localStorage.getItem('x-interval') || '1min' : '1min';
 		loadIntervalList();
-		const unsubMode = mode.subscribe((theme) => {
+		const unsubMode = app.subscribe((item) => {
 			if (tvWidget) {
-				tvWidget.changeTheme(theme);
+				tvWidget.changeTheme(item.theme);
 			}
 		});
 		let prevSelected = $currentSelectedPair?.symbol;
@@ -320,7 +321,7 @@
 							client_id: 'ezcryptox',
 							user_id: '1',
 							// @ts-ignore
-							theme: $mode,
+							theme: $app.theme ? "dark" : "light",
 							autosize: true
 						});
 					});
@@ -334,6 +335,8 @@
 			unsubPair();
 		}
 	});
+	
+
 </script>
 <section class="_7f9800af">
 				<div class="f2ad5021 _8eddb339">

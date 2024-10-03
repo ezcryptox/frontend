@@ -30,10 +30,15 @@ socketData.subscribe((data) => {
 
 
 $: tab = "USDT"
+$: search = ""
 
 const handleChangeTab = ((event)=>{
     let _tab = event.detail
     tab = _tab
+})
+
+const handleSearchChange = ((event)=>{
+    search = event
 })
 
 
@@ -62,19 +67,17 @@ const handleChangeTab = ((event)=>{
                                     <svg aria-hidden="true" class="svgicon" style="width: 16px; height: 16px; min-width: 16px;">
                                         <use xlink:href="#star"></use>
                                     </svg>{$_('favorites')}</span> -->
-                                <span class="b2b60cf7">
-                                    <!---->{$_('g-spot')}</span>
+                                <!-- <span class="b2b60cf7">
+                                   {$_('g-spot')}</span>
                                 <span class="">
-                                    <!---->{$_('g-futures')}</span>
+                                   {$_('g-futures')}</span> -->
                             </div>
                             {#if $screen > 500}
                             <div class="polo-input left polo-input-small polo-input-default _21d80562">
                                 <span class="c8c021df">
-                                    <svg aria-hidden="true" class="svgicon" style="width: 16px; height: 16px; min-width: 16px;">
-                                        <use xlink:href="#search"></use>
-                                    </svg>
+                                    <svg aria-hidden="true" class="svgicon" style="width: 16px; height: 16px; min-width: 16px;"><use xlink:href="#search"></use></svg>
                                 </span>
-                                <input type="text" placeholder="Search Markets">
+                                <input type="text" on:keyup={(e)=> handleSearchChange(e.target.value)} placeholder="Search Markets">
                                 <span class="_77d9a813" style="display: none;">
                                     <svg aria-hidden="true" class="svgicon" style="width: 16px; height: 16px; min-width: 16px;">
                                         <use xlink:href="#clear"></use>
@@ -86,7 +89,7 @@ const handleChangeTab = ((event)=>{
                         <SpotTabs tab={tab} on:select={handleChangeTab}/>
                     </section>  
                 </div>
-                <Spot tab={tab}/>
+                <Spot tab={tab} {search}/>
             </div>
         </div>
     </main>

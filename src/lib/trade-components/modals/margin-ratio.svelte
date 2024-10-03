@@ -12,6 +12,7 @@
 		<div data-modal="dynamic_modal_8" aria-expanded="true" class="vm--overlay">
 			<div class="vm--top-right-slot"></div>
 		</div>
+			<!-- svelte-ignore a11y-role-supports-aria-props -->
 		<div
 			aria-expanded="true"
 			role="dialog"
@@ -26,6 +27,8 @@
 							><svg class="svgicon" width="16px" height="16px" x="0" y="0" viewBox="0 0 512 512"><g><path d="M26.668 298.668h94.227L101.44 482.582c-.086.555-.109 2.195-.109 2.75 0 14.7 11.969 26.668 26.668 26.668 8.363 0 16.34-4.012 21.633-11.113L336 234.668a26.865 26.865 0 0 0 5.332-16c0-14.7-11.965-26.668-26.664-26.668H199.34l19.2-162.2c.062-.616.105-2.515.105-3.132C218.668 11.968 206.699 0 192 0c-8.363 0-16.34 4.012-21.8 11.328L5.331 256A26.857 26.857 0 0 0 0 272c0 14.7 11.969 26.668 26.668 26.668zm0 0"></path></g></svg>
                             --</span>
 					</div>
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<!-- svelte-ignore a11y-no-static-element-interactions -->
 					<span class="f1585a67" on:click={()=> toggleMarginRatioModal()}
 						>
                         <svg width="16" height="16" x="0" y="0" viewBox="0 0 24 24" class="svgicon"

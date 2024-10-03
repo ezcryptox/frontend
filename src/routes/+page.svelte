@@ -1,9 +1,11 @@
 <script>
+  import { app } from '$lib/store/config.store.js';
   import "../styles/home.css"
   import Footer from "$lib/footer.svelte";
   const banner = new URL('$lib/images/into-banner 1.png', import.meta.url).href
   const tv = new URL('$lib/images/guidedDownload.png', import.meta.url).href
   const Safeguard = new URL('$lib/images/Screenshot 2024-09-26 160652.png', import.meta.url).href
+  const Safeguard_dark = new URL('$lib/images/safe-guade.png', import.meta.url).href
   const googleImg = new URL('$lib/images/fa7d7931679b6c250489e847177ba1be.png', import.meta.url).href
   $: marketTab = 0
   
@@ -232,7 +234,7 @@
         <div class="safe-guard">
               <div class="safe-guard-container">
                   <div class="img-container">
-                      <img src="{Safeguard}" alt="">
+                      <img src="{$app.theme ? Safeguard_dark: Safeguard}" alt="">
                   </div>
                   <div class="text-container">
                       <div class="text-header">Safeguard Your Assets</div>

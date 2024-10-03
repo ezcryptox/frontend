@@ -64,12 +64,12 @@ body.v3-body .wc-signup {
     font-size: 28px;
     line-height: 34px;
     font-weight: 700;
-    color: #1f1f24;
+    /* color: #1f1f24; */
 }
 ._20c1a58b ._17d8b5db ._483da2ae.ab6e6929 {
-    color: #131316;
+    /* color: #131316; */
     font-weight: 600;
-    border-bottom: 4px solid #119e5f;
+    border-bottom: 4px solid var(--primary-color);
 }
 ._20c1a58b ._17d8b5db ._483da2ae {
     color: #b8b8b8;
@@ -128,7 +128,7 @@ body.v3-body .wc-signup {
     border: none;
     background-color: transparent;
     border-radius: 4px;
-    color: #131316;
+    /* color: #131316; */
 }
 .form-item .msg-box {
     margin-top: 4px;
@@ -164,7 +164,6 @@ body.v3-body .wc-signup {
     border: none;
     box-shadow: none;
     font-weight: 600;
-    color: #131316;
     background: transparent;
     box-sizing: border-box;
 }
@@ -258,7 +257,7 @@ body.v3-body .wc-signup {
 }
 .polo-btn-button.polo-btn-primary {
     color: #fff;
-    background-color: #131316;
+    background-color: var(--primary-color);
 }
 ._20c1a58b .c81ae558 .f8c64585 {
     font-size: 12.3px;
@@ -268,9 +267,10 @@ body.v3-body .wc-signup {
 }
 
 ._20c1a58b .c81ae558 .f8c64585 a {
-    color: #1a8f5c;
+    color:var(--primary-color);
     cursor: pointer;
     text-decoration: underline;
+    margin: 0 5px ;
 }
 
 ._20c1a58b .c81ae558 .f8c64585._02dc9043 a {
@@ -297,7 +297,7 @@ body.v3-body .wc-login {
     font-size: 30px;
     line-height: 37px;
     font-weight: 700;
-    color: #1f1f24;
+    /* color: #1f1f24; */
 }
 ._2b9df342 .bc498c42 .item-label-title {
     display: inline-block;
@@ -337,7 +337,8 @@ body.v3-body .wc-login {
     color: #878787;
 }
 ._2b9df342 .bc498c42 ._81d1884f a {
-    color: #1a8f5c;
+    color: var(--primary-color);
+    margin: 0 5px;
     text-decoration: underline;
 }
 ._8f585bdf {

@@ -1,8 +1,10 @@
 <script>
+	import { app } from "$lib/store/config.store.js";
 	import { screen } from '$lib/store/screen';
 	import { createEventDispatcher } from 'svelte';
 	import { toggleMode, mode } from 'mode-watcher';
 	import { _ } from 'svelte-i18n';
+	import { browser } from '$app/environment';
 	import { isLogin } from './store/profile';
 	const dispatch = createEventDispatcher();
 
@@ -10,6 +12,15 @@
 	$: showTrades = false;
 	$: showDerivative = false;
 	$: showExploire = false;
+
+	const handleTheme = (()=>{
+    	if(browser){
+          localStorage.setItem("theme", $app.theme ? "" : "darken" );
+          $app.themeConfig($app.theme ? "" : "darken")
+          app.set($app)
+		}
+	})
+
 </script>
 <div class="ccf482a6">
 	{#if $screen < 500 && !$isLogin}
@@ -308,7 +319,7 @@
 			class="b1398ab6 relative"
 			on:click={() => {
 				dispatch('close');
-				toggleMode();
+				handleTheme();
 			}}
 		>
 			<svg
@@ -325,7 +336,7 @@
 			>
 				<use xlink:href="#uniframe-icon-moon"></use>
 			</svg>
-			<span style="padding-left: 40px">{$mode === 'dark' ? $_("light-mode") : $_("dark-mode") }</span>
+			<span style="padding-left: 40px">{$app.theme === 'dark' ? $_("light-mode") : $_("dark-mode") }</span>
 		</button>
 		<li>
 			<a

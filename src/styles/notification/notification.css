@@ -172,12 +172,12 @@ html[data-uniframe-theme=light] .acab24db .bfe44f5e:hover,html[data-uniframe-the
     background-color: #f2f2f2
 }
 
-html[data-uniframe-theme=dark] .acab24db .bfe44f5e,html[data-uniframe-theme=dark] .acab24db .d3f3d2f7 {
-    color: #fff
+ .acab24db .bfe44f5e, .acab24db .d3f3d2f7 {
+    color: var(--text-color)
 }
 
-html[data-uniframe-theme=dark] .acab24db .bfe44f5e:hover,html[data-uniframe-theme=dark] .acab24db .d3f3d2f7:hover {
-    background-color: #2b2b2e
+ .acab24db .bfe44f5e:hover, .acab24db .d3f3d2f7:hover {
+    background-color: var(--placeholder-color)
 }
 
 .acab24db .d3f3d2f7 {
@@ -1501,12 +1501,8 @@ html[data-uniframe-theme=light] .eb58c575 span {
     box-shadow: 0 4px 8px #00000026
 }
 
-html[data-uniframe-theme=light] .ccf482a6 {
-    background-color: #fafafa
-}
-
-html[data-uniframe-theme=dark] .ccf482a6 {
-    background-color: #1f1f24
+.ccf482a6 {
+    background-color: var(--background-color)
 }
 
 .ccf482a6 .df32d985 {
@@ -1542,12 +1538,12 @@ html[data-uniframe-theme=light] .ccf482a6 .df32d985 .b1398ab6:hover {
     background-color: #f2f2f2
 }
 
-html[data-uniframe-theme=dark] .ccf482a6 .df32d985 .b1398ab6 {
-    color: #fff
+ .ccf482a6 .df32d985 .b1398ab6 {
+    color: var(--text-color)
 }
 
-html[data-uniframe-theme=dark] .ccf482a6 .df32d985 .b1398ab6:hover {
-    background-color: #2b2b2e
+ .ccf482a6 .df32d985 .b1398ab6:hover {
+    background-color: var(--placeholder-color)
 }
 
 @media screen and (max-width: 550px) {
@@ -1578,7 +1574,7 @@ html[data-uniframe-theme=dark] .ccf482a6 .df32d985 .b1398ab6:hover {
     margin-top: 4px;
     width: 100%;
     height: 2px;
-    background-color: var(--uniframe-header-text-color)
+    background-color: var(--icon-colors)
 }
 
 .d5236253>i:first-child {
@@ -1586,7 +1582,7 @@ html[data-uniframe-theme=dark] .ccf482a6 .df32d985 .b1398ab6:hover {
 }
 
 .d5236253:hover i {
-    background-color: var(--uniframe-header-active-text-color)
+    background-color: var(--primary-color)
 }
 
 .d5236253.b53872b6 i:first-child {

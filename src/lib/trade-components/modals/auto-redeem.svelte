@@ -13,6 +13,7 @@
 		<div data-modal="dynamic_modal_5" aria-expanded="true" class="vm--overlay">
 			<div class="vm--top-right-slot"></div>
 		</div>
+		<!-- svelte-ignore a11y-role-supports-aria-props -->
 		<div
 			aria-expanded="true"
 			role="dialog"
