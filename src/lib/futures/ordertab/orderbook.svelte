@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="e96cc2c8 fbaac962">
-                <div class="add4c847">Price <span>(USDT)</span></div>
+                <div class="add4c847">Price </div>
                 <div class="b946a8ff">Size <span>(Cont)</span></div>
                 <div class="b893d92b">Total <span>(Cont)</span></div>
             </div>

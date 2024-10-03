@@ -23,12 +23,12 @@
 .ee4a885c {
     justify-content: space-between;
 }
-html[data-theme=dark] .ee4a885c>button.af1804ca {
-    color: #b8b8b8;
+ .ee4a885c>button.af1804ca {
+    color: var(--placeholder-color);
     font-weight: 600;
 }
-html[data-theme=dark] .ee4a885c>button {
-    background-color: #2b2b2e;
+ .ee4a885c>button {
+    background-color: var(--card-bg-hover);
 }
 .ee4a885c>button.af1804ca {
     font-size: 14px;
@@ -123,23 +123,7 @@ html[data-theme=dark] .a11c9921 {
 .a7038bbe .b023958f {
     padding-top: 16px;
 }
-html[data-theme=dark] .bc4cdcc3 {
-    --color-number-input-arrow: #b8b8b8;
-    --color-number-input-bg: transparent;
-    --color-number-input-bd: #555;
-    --color-number-input-bd-hover: #119e5f;
-    --color-number-input-bd-focus: #119e5f;
-    --color-number-input-text: #fff;
-    --color-number-input-prefix-text: #878787;
-    --color-number-input-suffix-text: #fff;
-    --color-number-input-disabled-bg: #2b2b2e;
-    --color-number-input-disabled-text: #616161;
-    --color-number-input-bd-error: #c44749;
-    --color-number-input-step-text: #878787;
-    --color-number-input-step-bg: #1f1f24;
-    --color-number-input-step-hover-text: #616161;
-    --color-number-input-step-hover-bg: #131316;
-}
+
 .bc4cdcc3.fa2848cc {
     pointer-events: none;
     background-color: var(--color-number-input-disabled-bg);
@@ -203,14 +187,14 @@ html[data-theme=dark] .bc4cdcc3 {
 html[data-theme=dark] .bc4cdcc3 {
     --color-number-input-arrow: #b8b8b8;
     --color-number-input-bg: transparent;
-    --color-number-input-bd: #555;
+    --color-number-input-bd: var(--border-line);
     --color-number-input-bd-hover: #119e5f;
     --color-number-input-bd-focus: #119e5f;
     --color-number-input-text: #fff;
     --color-number-input-prefix-text: #878787;
     --color-number-input-suffix-text: #fff;
-    --color-number-input-disabled-bg: #2b2b2e;
-    --color-number-input-disabled-text: #616161;
+    --color-number-input-disabled-bg: var(--card-bg-hover);
+    --color-number-input-disabled-text: var(--placeholder-color);
     --color-number-input-bd-error: #c44749;
     --color-number-input-step-text: #878787;
     --color-number-input-step-bg: #1f1f24;
@@ -541,20 +525,7 @@ html[data-theme=dark] .e647758b .d04f5a90 .b636949f {
     padding: 0 2px;
     line-height: 32px;
 }
-html[data-theme=dark] .el-button--primary.is-plain {
-    --el-button-text-color: #fff;
-    --el-button-border-color: #b8b8b8;
-    --el-button-bg-color: transparent;
-    --el-button-hover-text-color: #fff;
-    --el-button-hover-border-color: #b8b8b8;
-    --el-button-hover-bg-color: #2b2b2e;
-    --el-button-active-text-color: #fff;
-    --el-button-active-border-color: #b8b8b8;
-    --el-button-active-bg-color: #2b2b2e;
-    --el-button-disabled-text-color: #616161;
-    --el-button-disabled-border-color: #2b2b2e;
-    --el-button-disabled-bg-color: #131316;
-}
+
 .ca6a0117 {
     position: absolute;
     right: 12px;
@@ -609,8 +580,8 @@ html[data-theme=dark] .e142a74a:before {
     padding-left: 16px;
     display: flex;
 }
-html[data-theme=dark] .ee412c01>li.b7bf1d08, html[data-theme=dark] .ee412c01>li:hover {
-    color: #fff;
+ .ee412c01>li.b7bf1d08,  .ee412c01>li:hover {
+    color: var(--text-color);
 }
 .ee412c01>li.b7bf1d08 {
     font-weight: 600;
@@ -651,9 +622,7 @@ html[data-theme=dark] .ee412c01>li.b7bf1d08:after {
     scrollbar-width: none;
     scroll-behavior: smooth;
 }
-html[data-theme=dark] .e142a74a .a7d6a910:before {
-    background-image: linear-gradient(270deg, #1f1f24, rgba(31, 31, 36, .9), rgba(31, 31, 36, 0));
-}
+
 .e142a74a .a7d6a910:before {
     content: "";
     top: 0;
@@ -783,9 +752,7 @@ html[data-theme=light] .bc4cdcc3 {
     --color-number-input-step-hover-text: #616161;
     --color-number-input-step-hover-bg: #fafafa;
 }
-html[data-theme=light] .ee4a885c>button.af1804ca {
-    color: #616161;
-}
+
 html[data-theme=light] .ee4a885c>button {
     background-color: #f2f2f2;
 }
@@ -845,7 +812,7 @@ html[data-theme=dark] .ag-root-wrapper {
     overflow: hidden;
 }
 .ag-dnd-ghost, .ag-root-wrapper, .ag-sticky-top {
-    background-color: var(--ag-background-color);
+    background-color: var(--card-bg);
 }
 .ag-root-wrapper-body.ag-layout-normal {
     flex: 1 1 auto;
@@ -888,7 +855,7 @@ html[data-theme=dark] .c9660edd.dfe9017b .ag-pinned-right-cols-container, html[d
     box-shadow: -5px 0 6px #1f1f24;
 }
 .ag-theme-alpine .ag-header-row, .ag-theme-alpine-dark .ag-header-row {
-    border-bottom: var(--ag-borders-row) var(--color-border-highlight-ag);
+    border-bottom: var(--ag-borders-row) var(--border-line);
 }
 html[data-theme=dark] .d31bb42e {
     --color-layout-trade-card-text: #fff;

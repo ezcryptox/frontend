@@ -48,8 +48,9 @@ html[data-theme=dark] .d5e5a2f1 .e6b0be8e .c780de9c {
     overflow: hidden;
     background-color: var(--border-color);
 }
-html[data-theme=dark] .e6b0be8e.c542570a, html[data-theme=dark] .e6b0be8e:hover {
-    color: #fff;
+ .e6b0be8e.c542570a,  .e6b0be8e:hover {
+    color: var(--text-color);
+    font-weight: 700;
 }
 .flex-space-between {
     display: flex;

@@ -924,7 +924,7 @@ html .el-date-editor.el-range-editor.el-input__wrapper {
 }
 
 .ag-theme-alpine-dark {
-  --ag-background-color: #181d1f;
+  --ag-background-color: var(--card-bg);
   --ag-foreground-color: #fff;
   --ag-border-color: #68686e;
   --ag-secondary-border-color: rgba(88, 86, 82, .5);

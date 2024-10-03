@@ -1,10 +1,11 @@
 <script >
-	import { widget } from "$lib/charting_library";
+	   import { app } from '$lib/store/config.store.js';
+	// import { widget } from "$lib/charting_library";
 	import { _ } from 'svelte-i18n';
-	import { getContext } from "svelte";
+	// import { getContext } from "svelte";
 	import { mode } from 'mode-watcher';
-	import {	currentSelectedPair, exchangeChartType } from '$lib/store/marketdata';
-	import { UDFCompatibleDatafeed } from "$lib/datafeeds/udf/src/udf-compatible-datafeed";
+	// import {	currentSelectedPair, exchangeChartType } from '$lib/store/marketdata';
+	// import { UDFCompatibleDatafeed } from "$lib/datafeeds/udf/src/udf-compatible-datafeed";
 	import { onMount } from "svelte";
 	import Datafeed from "$lib/datafeeds/datafeed";
 	import { browser } from '$app/environment';
@@ -136,7 +137,7 @@
 			// @ts-ignore
 			tvWidget = new window.TradingView.widget(options);
 			if (tvWidget) {
-				setOverrides(tvWidget, $mode === 'dark');
+				setOverrides(tvWidget, $app.theme === 'darken');
 				tvWidget.onChartReady(() => {
 					tvWidget.activeChart().executeActionById('chartReset');
 					setDefaultMA(tvWidget.activeChart());
@@ -261,7 +262,7 @@
 				client_id: 'ezcryptox',
 				user_id: '1',
 				// @ts-ignore
-				theme: $mode,
+				theme: $app.theme === 'darken' ? "dark" : "light",
 				autosize: true,
 			});
 	});
