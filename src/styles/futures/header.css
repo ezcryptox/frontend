@@ -3353,8 +3353,8 @@ html {
 html[data-theme=dark] .ac8232da .cd5394d6.a8f9ff2f dd {
     color: #c44749;
 }
-html[data-theme=dark] .ac8232da>dl>dt {
-    color: #b8b8b8;
+ .ac8232da>dl>dt {
+    color: var(--inactive-text-color);
 }
 html[data-theme=light] .ac8232da .cd5394d6.a8f9ff2f dd {
     color: #9a2c2e;
@@ -5575,6 +5575,7 @@ html[data-theme=light] .a93e0a6c {
     font-weight: 600;
     font-size: 20px;
     line-height: 18px;
+    margin: 0;
     letter-spacing: .10119px;
 }
 .a9faaf47 .ca04e6b8 {

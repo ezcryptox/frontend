@@ -262,7 +262,7 @@
 				client_id: 'ezcryptox',
 				user_id: '1',
 				// @ts-ignore
-				theme: $app.theme === 'darken' ? "dark" : "light",
+				theme: $app.theme ? "dark" : "light",
 				autosize: true,
 			});
 	});
@@ -275,12 +275,12 @@
 
 <div class="d09e8c81 flex-column">
     <div class="c1ffc6e0">
-        <div class="bfd5c32f" style="height: 55vh;" id="tv_chart_container"></div>
+        <div class="bfd5c32f"  id="tv_chart_container"></div>
     </div>
 </div>
 
 <style>
-    #tv_chart_container {
+    /* #tv_chart_container {
       height: calc(100vh - 41px);
-    }
+    } */
   </style>
